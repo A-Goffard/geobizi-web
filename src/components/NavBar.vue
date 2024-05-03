@@ -82,9 +82,13 @@
     }
 };
   
-  const closeMobileNav = () => {
-    mobileNav.value = false;
-  };
+const closeMobileNav = () => {
+  mobileNav.value = false;
+  const hojitasIcon = document.querySelector('.hojitas');
+  if (hojitasIcon) {
+    hojitasIcon.style.transform = 'rotate(0deg)';
+  }
+};
   
   const updateScroll = () => {
     scrolledNav.value = window.scrollY > 50;
@@ -110,7 +114,7 @@
   checkScreen();
   </script>
   
-  <style scoped lang="scss">
+  <style scoped>
   header {
     box-sizing: border-box;
     background-color: rgb(255, 255, 255);
@@ -118,123 +122,130 @@
     width: 100%;
     position: fixed;
     transition: 0.5s ease all;
+  }
+
+  header nav {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    padding: 0.5em 0;
+    transition: 0.5s ease all;
+    width: 98%;
+    margin: 0rem 1rem;
+  }
   
-    nav {
-      position: relative;
-      display: flex;
-      flex-direction: row;
-      padding: 0.5em 0;
-      transition: 0.5s ease all;
-      width: 98%;
-      margin: 0rem 1rem;
+  header nav .branding img {
+    max-height: 5rem;
+  }
   
-      @media(min-width: 990px) {
-        max-width: 1250px;
-      }
+  header nav .navigation {
+    display: flex;
+    align-items: center;
+    flex: 1;
+    justify-content: center
+  }
   
-      .branding {
-        img {
-          max-height: 5rem;
-        }
-      }
+  header nav .icon {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    right: 0.5rem;
+  }
   
-      .navigation {
-        display: flex;
-        align-items: center;
-        flex: 1;
-        justify-content: flex-end;
-      }
+  header nav button {
+    width: 4rem;
+    cursor: pointer;
+    transition: 0.8s ease all;
+    background-color: transparent;
+    border: none;
+    margin: 0.5rem;
+  }
   
-      .icon {
-        display: flex;
-        align-items: center;
-        position: absolute;
-        top: 0;
-        right: 0.5rem;
-      }
+  header nav .hojitas {
+    width: 100%;
+    transition: transform 0.5s ease;
+  }
   
-      button {
-        width: 4rem;
-        cursor: pointer;
-        transition: 0.8s ease all;
-        background-color: transparent;
-        border: none;
-        margin: 0.5rem
-      }
+  header nav .dropdown-nav {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    width: 100%;
+    max-width: 250px;
+    height: 100%;
+    background-color: rgb(255, 255, 255);
+    top: 0;
+    left: 0;
+  }
   
-      .hojitas {
-        width: 100%;
-        transition: transform 0.5s ease;
-      }
+  header nav .dropdown-nav li {
+    margin-left: 1rem;
+  }
   
-      .dropdown-nav {
-        display: flex;
-        flex-direction: column;
-        position: fixed;
-        width: 100%;
-        max-width: 250px;
-        height: 100%;
-        background-color: rgb(255, 255, 255);
-        top: 0;
-        left: 0;
+  header nav .mobile-nav-enter-active,
+  header nav .mobile-nav-leave-active {
+    transition: 1s ease all;
+  }
   
-        li {
-          margin-left: 1rem;
-        }
-      }
+  header nav .mobile-nav-enter-from,
+  header nav .mobile-nav-leave-to {
+    transform: translateX(-250px);
+  }
   
-      .mobile-nav-enter-active,
-      .mobile-nav-leave-active {
-        transition: 1s ease all;
-      }
-  
-      .mobile-nav-enter-from,
-      .mobile-nav-leave-to {
-        transform: translateX(-250px);
-      }
-  
-      .mobile-nav-enter-to {
-        transform: translateX(0);
-      }
-    }
+  header nav .mobile-nav-enter-to {
+    transform: translateX(0);
   }
   
   .scrolled-nav {
-    background-color: rgb(255, 255, 255,);
+    background-color: rgba(255, 255, 255, 0);
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  }
   
-    nav {
-      padding: 0.5rem 0;
-  
-      }
-    }
+  .scrolled-nav nav {
+    padding: 0.5rem 0;
+  }
   
   .link {
     font-weight: bold;
     color: #498536;
     position: relative;
-    transform: 250s ease all;
+    transition: 250s ease all;
+  }
   
-    &:hover {
-      color: #26B12C;
-      border-color: #26B12C;
+  .link:hover {
+    color: #26b12c;
+    border-color: #26b12c;
+    cursor: pointer;
+  }
   
-      &::after {
-        content: '';
-        position: absolute;
-        left: 0;
-        bottom: -3px;
-        width: 100%;
-        height: 2px;
-        background-color: #26B12C;
-      }
-    }
+  .link:hover::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -3px;
+    width: 100%;
+    height: 2px;
+    background-color: #26b12c;
+    cursor: pointer;
   }
   
   li {
-    
     padding: 0.5rem 0.5rem;
     margin-top: 0.2rem;
   }
+  @media (min-width: 1024px) {
+    li {
+      padding: 0.5rem 1.5rem;
+    }
+  }
+  @media (min-width: 768px) {
+    li {
+      padding: 0.5rem 1rem;
+    }
+  }
+  
+
+  
   </style>
   
