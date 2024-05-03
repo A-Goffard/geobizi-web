@@ -177,6 +177,7 @@ const closeMobileNav = () => {
     background-color: rgb(255, 255, 255);
     top: 0;
     left: 0;
+    padding-top: 1rem;
   }
   
   header nav .dropdown-nav li {
