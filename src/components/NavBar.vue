@@ -130,7 +130,7 @@ const closeMobileNav = () => {
     flex-direction: row;
     padding: 0.5em 0;
     transition: 0.5s ease all;
-    width: 98%;
+    width: 100%;
     margin: 0rem 0rem;
   }
   
@@ -199,7 +199,7 @@ const closeMobileNav = () => {
   }
   
   .scrolled-nav {
-    background-color: rgba(255, 255, 255, 0);
+    background-color: rgba(255, 255, 255, 1);
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
   }
   

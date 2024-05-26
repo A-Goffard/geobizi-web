@@ -7,6 +7,7 @@ import ReservasView from '../views/ReservasView.vue';
 import GeotiendaView from '../views/GeotiendaView.vue';
 import BlogView from '../views/BlogView.vue';
 import ContactoView from '../views/ContactoView.vue';
+import PrivacyPolicy from '../views/PrivacyPolicy.vue'
 
 
 const routes = [
@@ -50,6 +51,11 @@ const routes = [
         name: 'contacto',
         component: ContactoView,
     },
+    {
+        path: '/privacy-policy',
+        name: 'PrivacyPolicy',
+        component: PrivacyPolicy
+      },
 ];
 
 const router = createRouter({

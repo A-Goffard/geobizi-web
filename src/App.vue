@@ -2,10 +2,12 @@
   <div>
     <Nav />
     <router-view></router-view>
+    <SiteFooter />
   </div>
 </template>
 <script setup>
 import Nav from './components/NavBar.vue';
+import SiteFooter from './components/SiteFooter.vue';
 
 </script>
 
@@ -19,7 +21,7 @@ list-style: none;
 font-family: Avenir, Helvetica, Arial, sans-serif;
 text-decoration: none;
 box-sizing: border-box;
-background-color: white;
+/* background-color: white; */
 }
 
 h1,
