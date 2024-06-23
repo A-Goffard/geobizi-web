@@ -15,7 +15,7 @@
 
 
     <div class="contenedor-historia">
-      <div>
+      <div class="cont-texto">
         <h2>Historia y misión</h2>
         <h3>Medioambiente y bienestar</h3>
         <p>Una asesoría pedagógica medioambiental especializada en la formación, divulgación científica y medioambiental y el diseño de experiencias centradas en la naturaleza para que conectes con el mundo desde el respeto y el conocimiento.</p>
@@ -26,9 +26,40 @@
       </div>
 
       <div>
-        <img src="" alt="">
+        <img class="imagendiv" src="imagenes/inicio/mision.png" alt="">
       </div>
+    </div>
+
+    <div class="contenedor-historia">
+      <div>
+      <img class="imagendiv" src="imagenes/inicio/esencia.png" alt="">
       </div>
+      <div class="cont-texto">
+        <h2>Esencia</h2>
+        <h3>Creemos en el conocimiento compartido</h3>
+        <p>La ciencia y el conocimiento son el vehículo para acercar a las personas a la naturaleza de una forma respetuosa y sostenible.</p>
+        <p>La base para llevar el aprendizaje al hecho es generando una dinámica que permita interiorizar de forma divertida y práctica los conocimientos y conceptos necesarios para crear hábitos de vida sostenibles y respetar la curiosidad natural del ser humano.</p>
+        <p>Hacer las cosas uno mismo e interactuar con la materia facilita la interiorización además de ayudar a desarrollar otras habilidades y herramientas sociales y mentales.</p>
+        <p>Las actividades medioambientales no son un mero entretenimiento y con esa premisa muy presente siempre realizamos nuestras actividades con una calidad y atención especial y siempre teniendo en cuenta el medioambiente y los ODSs.</p>
+      </div>
+
+    </div>
+
+    <div class="contenedor-historia">
+      <div class="cont-texto">
+        <h2>Nuestro equipo</h2>
+        <h3>Multidisciplinar y colaborativo</h3>
+        <p>Somos un equipo de asesoramiento y de trabajo multidisciplinar de alta cualificación, que colaboramos y trabajamos conjuntamente para satisfacer tus necesidades y mejorar constantemente nuestros servicios.</p>
+        <p>Nuestro equipo no se limita a Geobizi. Además de los compañeros/as que formamos el equipo principal, tenemos otros muchos colaboradores que nos apoyan, ayudan, asesoran, y comparten con nosotros su sabiduría y expertise.</p>
+        <p>Profesionales de la educación, la ciencia, la comunicación y la tecnología forman parte de Geobizi.</p>
+      </div>
+
+      <div>
+        <img class="imagendiv" src="imagenes/inicio/equipo.png" alt="">
+      </div>
+    </div>
+
+
 
   </div>
 
@@ -42,7 +73,7 @@
 
 <style scoped>
 h1 {
-  color: #498536;
+  color: var(--green);
 }
 .contenedor-principal {
   padding-top: 7rem;
@@ -54,15 +85,24 @@ h1 {
   background-image: url('/public/imagenes/background/6.png');
   background-size: cover; 
   background-position: center; 
-  background-color: rgb(44, 119, 15); 
+  background-color: var(--darkgreen); 
 }
 .contenedor-intro {
   max-width: 40rem;
   padding: 2rem;
   background-color: white;
+  border-radius: 0.5rem;
 }
 .contenedor-historia {
+  display: flex;
+  align-items: center;
   padding: 2rem;
+}
+
+.imagendiv {
+
+  width: 100%;
+  border-radius: 0.5rem;
 }
 
 </style>

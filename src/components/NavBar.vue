@@ -8,9 +8,9 @@
           <li>
             <router-link class="NavButton link" :to="{name: 'inicio'}" @click="closeMobileNav">Inicio</router-link>
           </li>
-          <li>
+<!--           <li>
             <router-link class="NavButton link" :to="{name: 'filosofia'}" @click="closeMobileNav">Filosofía</router-link>
-          </li>
+          </li> -->
           <li>
             <router-link class="NavButton link" :to="{name: 'servicios'}" @click="closeMobileNav">Servicios</router-link>
           </li>
@@ -40,9 +40,9 @@
             <li>
               <router-link class="NavButton link" :to="{name: 'inicio'}" @click="closeMobileNav">Inicio</router-link>
             </li>
-            <li>
+<!--             <li>
               <router-link class="NavButton link" :to="{name: 'filosofia'}" @click="closeMobileNav">Filosofía</router-link>
-            </li>
+            </li> -->
             <li>
               <router-link class="NavButton link" :to="{name: 'servicios'}" @click="closeMobileNav">Servicios</router-link>
             </li>
@@ -117,7 +117,7 @@ const closeMobileNav = () => {
   <style scoped>
   header {
     box-sizing: border-box;
-    background-color: rgb(255, 255, 255);
+    background-color: var(--white);
     z-index: 99;
     width: 100%;
     position: fixed;
@@ -130,7 +130,7 @@ const closeMobileNav = () => {
     flex-direction: row;
     padding: 0.5em 0;
     transition: 0.5s ease all;
-    width: 98%;
+    width: 100%;
     margin: 0rem 0rem;
   }
   
@@ -174,7 +174,7 @@ const closeMobileNav = () => {
     width: 100%;
     max-width: 250px;
     height: 100%;
-    background-color: rgb(255, 255, 255);
+    background-color: var(--white);
     top: 0;
     left: 0;
     padding-top: 1rem;
@@ -209,14 +209,14 @@ const closeMobileNav = () => {
   
   .link {
     font-weight: bold;
-    color: #498536;
+    color: var(--green);
     position: relative;
     transition: 250s ease all;
   }
   
   .link:hover {
-    color: #26b12c;
-    border-color: #26b12c;
+    color: var(--ligthgreen);
+    border-color: var(--ligthgreen);
     cursor: pointer;
   }
   
@@ -227,7 +227,7 @@ const closeMobileNav = () => {
     bottom: -3px;
     width: 100%;
     height: 2px;
-    background-color: #26b12c;
+    background-color: var(--ligthgreen);
     cursor: pointer;
   }
   
