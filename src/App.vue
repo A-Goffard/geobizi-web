@@ -27,9 +27,10 @@ background-color: white;
   --black: #000000;
   --white: #ffffff;
 
+  --lightgrey: #dddddd;
   --darkgrey: #333333;
 
-  --ligthgreen: #26B12C;
+  --lightgreen: #26B12C;
   --green: #498536;
   --darkgreen: #2c770f;
 
@@ -40,7 +41,7 @@ h1 {
 }
 h2,
 h3 {
-  color: var(--ligthgreen);
+  color: var(--lightgreen);
   margin: 1rem;
 }
 p {

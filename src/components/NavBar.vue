@@ -215,8 +215,8 @@ const closeMobileNav = () => {
   }
   
   .link:hover {
-    color: var(--ligthgreen);
-    border-color: var(--ligthgreen);
+    color: var(--lightgreen);
+    border-color: var(--lightgreen);
     cursor: pointer;
   }
   
@@ -227,7 +227,7 @@ const closeMobileNav = () => {
     bottom: -3px;
     width: 100%;
     height: 2px;
-    background-color: var(--ligthgreen);
+    background-color: var(--lightgreen);
     cursor: pointer;
   }
   

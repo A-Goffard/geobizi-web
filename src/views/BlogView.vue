@@ -96,6 +96,8 @@
   
   <style scoped>
   .general-container {
+    max-width: 1200px;
+    margin: 0 auto;
     display: flex;
     flex-direction: column;
     padding-top: 7rem;
@@ -156,7 +158,7 @@
   }
   
   .card button:hover {
-    background-color: var(--ligthgreen);
+    background-color: var(--lightgreen);
   }
   </style>
   

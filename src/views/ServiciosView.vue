@@ -70,6 +70,8 @@
   }
   
   .general-container {
+    max-width: 1200px;
+    margin: 0 auto;
     display: flex;
     flex-direction: column;
     padding-top: 7rem;
@@ -81,7 +83,7 @@
   .card {
     width: 300px;
     padding: 20px;
-    border: 1px solid #ddd;
+    border: 1px solid var(--ligthgrey);
     border-radius: 0.5rem;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s, box-shadow 0.3s;

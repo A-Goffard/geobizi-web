@@ -13,7 +13,7 @@
 
     </div>
 
-
+    <div class="contenedor-secundario">
     <div class="contenedor-historia">
       <div class="cont-texto">
         <h2>Historia y misión</h2>
@@ -58,7 +58,7 @@
         <img class="imagendiv" src="imagenes/inicio/equipo.png" alt="">
       </div>
     </div>
-
+  </div>
 
 
   </div>
@@ -70,7 +70,6 @@
 </script>
 
 
-
 <style scoped>
 h1 {
   color: var(--green);
@@ -79,6 +78,11 @@ h1 {
   padding-top: 7rem;
   background-color: rgb(255, 255, 255);
   padding-bottom: 2rem;
+}
+
+.contenedor-secundario {
+  max-width: 1200px;
+    margin: 0 auto;
 }
 .contenedor-cabecero {
   padding: 5rem;
@@ -103,6 +107,18 @@ h1 {
 
   width: 100%;
   border-radius: 0.5rem;
+}
+
+@media (max-width: 550px) {
+  .contenedor-historia {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 420px) {
+.contenedor-cabecero {
+  padding: 2rem;
+}
 }
 
 </style>
