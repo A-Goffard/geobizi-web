@@ -68,7 +68,7 @@
   }
   
   .footer-link:hover {
-    color: var(--ligthgreen);
+    color: var(--lightgreen);
   }
   
   .social-media {

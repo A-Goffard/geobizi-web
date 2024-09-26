@@ -1,6 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import InicioView from '../views/InicioView.vue';
-/* import FilosofiaView from '../views/FilosofiaView.vue'; */
 import ServiciosView from '../views/ServiciosView.vue';
 import CalendarioView from '../views/CalendarioView.vue';
 import ReservasView from '../views/ReservasView.vue';
@@ -18,11 +17,6 @@ const routes = [
         name: 'inicio',
         component: InicioView,
     },
-/*     {
-        path: '/filosofia',
-        name: 'filosofia',
-        component: FilosofiaView,
-    },    */ 
     {
         path: '/servicios',
         name: 'servicios',

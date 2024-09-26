@@ -199,7 +199,7 @@ const closeMobileNav = () => {
   }
   
   .scrolled-nav {
-    background-color: rgba(255, 255, 255, 0);
+    background-color: rgba(255, 255, 255, 1);
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
   }
   
@@ -215,8 +215,8 @@ const closeMobileNav = () => {
   }
   
   .link:hover {
-    color: var(--ligthgreen);
-    border-color: var(--ligthgreen);
+    color: var(--lightgreen);
+    border-color: var(--lightgreen);
     cursor: pointer;
   }
   
@@ -227,7 +227,7 @@ const closeMobileNav = () => {
     bottom: -3px;
     width: 100%;
     height: 2px;
-    background-color: var(--ligthgreen);
+    background-color: var(--lightgreen);
     cursor: pointer;
   }
   
