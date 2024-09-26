@@ -10,6 +10,10 @@ import PoliticadecancelacionesView from '../views/PoliticadecancelacionesView.vu
 import AvisolegalView from '../views/AvisolegalView.vue';
 import PoliticadeprivacidadView from '../views/PoliticadeprivacidadView.vue';
 import PatrimonioEuropeo2023View from '../views/blog/PatrimonioEuropeo2023View.vue';
+import FreeToursView from '@/views/blog/FreeToursView.vue';
+import ValerianaRojaView from '@/views/blog/ValerianaRojaView.vue';
+import EstuariosView from '@/views/blog/EstuariosView.vue';
+
 
 const routes = [
     {
@@ -46,6 +50,21 @@ const routes = [
         path: '/blog/detalle-patrimonio',
         name: 'detalle-patrimonio',
         component: PatrimonioEuropeo2023View,
+    },
+    {
+        path: '/blog/detalle-free-tours',
+        name: 'free-tour',
+        component: FreeToursView,
+    },
+    {
+        path: '/blog/detalle-valeriana-roja',
+        name: 'valerianaroja',
+        component: ValerianaRojaView,
+    },
+    {
+        path: '/blog/detalle-estuarios',
+        name: 'estuarios',
+        component: EstuariosView,
     },
     {
         path: '/contacto',
