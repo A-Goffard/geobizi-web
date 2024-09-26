@@ -10,7 +10,7 @@ import ContactoView from '../views/ContactoView.vue';
 import PoliticadecancelacionesView from '../views/PoliticadecancelacionesView.vue';
 import AvisolegalView from '../views/AvisolegalView.vue';
 import PoliticadeprivacidadView from '../views/PoliticadeprivacidadView.vue';
-
+import PatrimonioEuropeo2023View from '../views/blog/PatrimonioEuropeo2023View.vue';
 
 const routes = [
     {
@@ -47,6 +47,11 @@ const routes = [
         path: '/blog',
         name: 'blog',
         component: BlogView,
+    },
+    {
+        path: '/blog/detalle-patrimonio',
+        name: 'detalle-patrimonio',
+        component: PatrimonioEuropeo2023View,
     },
     {
         path: '/contacto',

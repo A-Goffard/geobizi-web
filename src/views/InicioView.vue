@@ -1,17 +1,19 @@
 <template>
+  <div>
+      <div class="contenedor-cabecero">
+
+
+<div class="contenedor-intro">
+  <h1>Geobizi, naturaleza desde el corazón</h1>
+  <h2>Una empresa nacida del amor a la naturaleza y las ganas de compartir</h2>
+  <h3>Diseñamos experiencias medioambientales únicas</h3>
+  <p>Desarrollamos e implementamos actividades a medida para que disfrutes, desconectes, aprendas y sobre todo, compartamos, siempre con el foco en la naturaleza y el medioambiente.</p>
+</div>
+
+</div>
   <div class="contenedor-principal">
 
-    <div class="contenedor-cabecero">
 
-
-      <div class="contenedor-intro">
-        <h1>Geobizi, naturaleza desde el corazón</h1>
-        <h2>Una empresa nacida del amor a la naturaleza y las ganas de compartir</h2>
-        <h3>Diseñamos experiencias medioambientales únicas</h3>
-        <p>Desarrollamos e implementamos actividades a medida para que disfrutes, desconectes, aprendas y sobre todo, compartamos, siempre con el foco en la naturaleza y el medioambiente.</p>
-      </div>
-
-    </div>
 
 
     <div class="contenedor-historia">
@@ -62,7 +64,7 @@
 
 
   </div>
-
+</div>
 </template>
 
 <script setup>

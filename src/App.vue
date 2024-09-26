@@ -46,4 +46,21 @@ h3 {
 p {
   margin: 1rem;
 }
+.margen {
+margin: 2rem;
+}
+
+.contenedor-principal {
+  padding-top: 7rem;
+  background-color: rgb(255, 255, 255);
+  padding-bottom: 2rem;
+}
+
+
+@media (min-width: 950px) {
+  .contenedor-principal {
+    max-width: 950px;
+    margin: 0 auto; /* Centra el contenido */
+  }
+}
 </style>
