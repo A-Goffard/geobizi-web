@@ -20,7 +20,7 @@
         <label for="message">Mensaje:</label>
         <textarea id="message" v-model="formData.message" required></textarea>
       </div>
-      <div class="form-group">
+      <div class="form-group horizontal">
         <input type="checkbox" id="privacy" v-model="formData.privacyAccepted" required>
         <label for="privacy">He leído y acepto la política de privacidad.</label>
       </div>
@@ -89,12 +89,15 @@ const submitForm = () => {
   max-width: 600px;
   margin: 0 auto;
   padding: 2rem;
-  border: 1px solid var(--lightgrey);
+  border: 1px solid var(--shoftgreen);
   border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 0px 10px rgba(49, 49, 49, 0.7);
   padding-bottom: 2rem;
 }
-
+.horizontal{
+  display: flex;
+  gap: 2rem;
+}
 .form-group {
   margin-bottom: 1rem;
 }
@@ -111,7 +114,8 @@ textarea {
   width: 100%;
   padding: 0.5rem;
   font-size: 1rem;
-  border: 1px solid var(--lightgrey);
+  border: 1px solid var(--shoftgreen);
+  background-color: var(--supershoftgreen);
   border-radius: 4px;
 }
 
