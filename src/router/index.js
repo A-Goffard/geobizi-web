@@ -14,6 +14,13 @@ import FreeToursView from '@/views/blog/FreeToursView.vue';
 import ValerianaRojaView from '@/views/blog/ValerianaRojaView.vue';
 import EstuariosView from '@/views/blog/EstuariosView.vue';
 import MariquitasView from '@/views/blog/MariquitasView.vue';
+import BiodiversidadView from '@/views/blog/BiodiversidadView.vue';
+import SapitoView from '@/views/blog/SapitoView.vue';
+import CarpobrotusView from '@/views/blog/CarpobrotusView.vue';
+import FloraAutoctonaView from '@/views/blog/FloraAutoctonaView.vue';
+import FosilesView from '@/views/blog/FosilesView.vue';
+import DiaTierraView from '@/views/blog/DiaTierraView.vue';
+import MariquitasView from '@/views/blog/MariquitasView.vue';
 
 const routes = [
     {
@@ -66,6 +73,43 @@ const routes = [
         name: 'estuarios',
         component: EstuariosView,
     },
+    {
+        path: '/blog/detalle-mariquitas',
+        name: 'mariquitas',
+        component: MariquitasView,
+    },
+    {
+        path: '/blog/detalle-biodiversidad',
+        name: 'biodiversidad',
+        component: BiodiversidadView,
+    },
+    {
+        path: '/blog/detalle-sapito',
+        name: 'sapito',
+        component: SapitoView,
+    },
+    {
+        path: '/blog/detalle-carpobrotus',
+        name: 'carpobrotus',
+        component: CarpobrotusView,
+    },
+    {
+        path: '/blog/detalle-flora-autoctona',
+        name: 'flora-autoctona',
+        component: FloraAutoctonaView,
+    },
+    {
+        path: '/blog/detalle-fosiles',
+        name: 'fosiles',
+        component: FosilesView,
+    },
+    {
+        path: '/blog/detalle-dia-tierra',
+        name: 'dia-tierra',
+        component: DiaTierraView,
+    },
+
+
     {
         path: '/blog/detalle-mariquitas',
         name: 'mariquitas',

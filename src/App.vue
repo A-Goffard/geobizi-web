@@ -30,6 +30,8 @@ background-color: white;
   --lightgrey: #dddddd;
   --darkgrey: #333333;
 
+  --supershoftgreen: #ccf5ce;
+  --shoftgreen: #9bee9f;
   --lightgreen: #26B12C;
   --green: #498536;
   --darkgreen: #2c770f;
