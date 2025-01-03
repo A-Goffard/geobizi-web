@@ -13,7 +13,7 @@ import PatrimonioEuropeo2023View from '../views/blog/PatrimonioEuropeo2023View.v
 import FreeToursView from '@/views/blog/FreeToursView.vue';
 import ValerianaRojaView from '@/views/blog/ValerianaRojaView.vue';
 import EstuariosView from '@/views/blog/EstuariosView.vue';
-
+import MariquitasView from '@/views/blog/MariquitasView.vue';
 
 const routes = [
     {
@@ -65,6 +65,11 @@ const routes = [
         path: '/blog/detalle-estuarios',
         name: 'estuarios',
         component: EstuariosView,
+    },
+    {
+        path: '/blog/detalle-mariquitas',
+        name: 'mariquitas',
+        component: MariquitasView,
     },
     {
         path: '/contacto',
