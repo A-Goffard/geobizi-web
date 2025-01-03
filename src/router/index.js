@@ -20,7 +20,6 @@ import CarpobrotusView from '@/views/blog/CarpobrotusView.vue';
 import FloraAutoctonaView from '@/views/blog/FloraAutoctonaView.vue';
 import FosilesView from '@/views/blog/FosilesView.vue';
 import DiaTierraView from '@/views/blog/DiaTierraView.vue';
-import MariquitasView from '@/views/blog/MariquitasView.vue';
 
 const routes = [
     {
