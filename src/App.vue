@@ -50,6 +50,9 @@ h3 {
 p {
   margin: 1rem;
 }
+ul{
+    margin: 1rem;
+}
 .margen {
 margin: 2rem;
 }
