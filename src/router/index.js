@@ -20,6 +20,12 @@ import CarpobrotusView from '@/views/blog/CarpobrotusView.vue';
 import FloraAutoctonaView from '@/views/blog/FloraAutoctonaView.vue';
 import FosilesView from '@/views/blog/FosilesView.vue';
 import DiaTierraView from '@/views/blog/DiaTierraView.vue';
+import DetalleColegios from '../components/servicios/DetalleColegios.vue';
+import DetalleAsociaciones from '../components/servicios/DetalleAsociaciones.vue';
+import DetalleInstituciones from '../components/servicios/DetalleInstituciones.vue';
+import DetalleFamilias from '../components/servicios/DetalleFamilias.vue';
+import DetalleMayores from '../components/servicios/DetalleMayores.vue';
+import DetalleGeneral from '../components/servicios/DetalleGeneral.vue';
 
 const routes = [
     {
@@ -107,8 +113,6 @@ const routes = [
         name: 'dia-tierra',
         component: DiaTierraView,
     },
-
-
     {
         path: '/blog/detalle-mariquitas',
         name: 'mariquitas',
@@ -134,6 +138,37 @@ const routes = [
         name: 'privacidad',
         component: PoliticadeprivacidadView,
     },
+    {
+        path: '/detalle-colegios',
+        name: 'DetalleColegios',
+        component: DetalleColegios
+      },
+      {
+        path: '/detalle-asociaciones',
+        name: 'DetalleAsociaciones',
+        component: DetalleAsociaciones
+      },
+      {
+        path: '/detalle-instituciones',
+        name: 'DetalleInstituciones',
+        component: DetalleInstituciones
+      },
+      {
+        path: '/detalle-familias',
+        name: 'DetalleFamilias',
+        component: DetalleFamilias
+      },
+      {
+        path: '/detalle-mayores',
+        name: 'DetalleMayores',
+        component: DetalleMayores
+      },
+      {
+        path: '/detalle-general',
+        name: 'DetalleGeneral',
+        component: DetalleGeneral
+      }
+
 ];
 
 const router = createRouter({
