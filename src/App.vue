@@ -65,20 +65,18 @@ margin: 2rem;
 
 .img {
   border-radius: 0.5rem;
-  border: solid 2px blue;
   width: 100%;/* Ensure the image maintains its aspect ratio */
 }
 
-.horizontal {
+.horizontal { 
+  margin: 1rem;
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
   gap: 1rem;
-  border: solid 2px blue;
 }
 
 .card-servicios {
-  border: solid 2px rgb(255, 60, 0);
   flex: 1; /* Ensure all cards take an equal amount of space */
   display: flex;
   flex-direction: column; /* Stack the image and list vertically */
@@ -86,7 +84,6 @@ margin: 2rem;
 }
 
 .imagen-servicios {
-  border: solid 2px rgb(9, 255, 0);
   width: 100%;
   display: flex;
   justify-content: center; /* Center the image horizontally */
