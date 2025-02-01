@@ -10,12 +10,15 @@
       Aquí tienes algunas de las actividades que ofrecemos. Todas nuestras actividades pueden realizarse en euskera y/o castellano.
       Si tienes algún interés especial, diseñamos una actividad a tu medida.
     </p>
-
+    <p>Si te gusta hacer cosas en familia, no te pierdas las actividades que tenemos programadas. También puedes juntarte con otras familias y pedir una actividad para todos.</p>
+    <p>
+      ¿Que si hacemos actividades para los más experimentados de la vida? Por supuesto que sí. Un taller, una ruta, un día de actividades. ¿Qué te apetece más?
+    </p>
     <div class="horizontal">
 
       <div class="card-servicios">
         <div class="imagen-servicios">
-          <img class="img" src="/imagenes/servicios/detalle/talleres_publico.jpg" alt="Talleres para público general"/>
+          <img class="img" src="/imagenes/servicios/detalle/22.png" alt="Talleres para público general"/>
         </div>
         <div class="lista-servicios">
           <h3>Talleres</h3>
@@ -31,7 +34,7 @@
 
       <div class="card-servicios">
         <div class="imagen-servicios">
-          <img class="img" src="/imagenes/servicios/detalle/rutas_publico.jpg" alt="Rutas para público general"/>
+          <img class="img" src="/imagenes/servicios/detalle/23.png" alt="Rutas para público general"/>
         </div>
         <div class="lista-servicios">
           <h3>Rutas Guiadas</h3>
@@ -39,14 +42,13 @@
             <li>Ruta geológica por el Flysch de Sopela</li>
             <li>Ruta geomedioambiental por el Flysch de Getxo</li>
             <li>Identificación de árboles</li>
-            <li>Ruta geominera en la Arboleda</li>
           </ul>
         </div>
       </div>
 
       <div class="card-servicios">
         <div class="imagen-servicios">
-          <img class="img" src="/imagenes/servicios/detalle/experiencias_publico.jpg" alt="Experiencias para público general"/>
+          <img class="img" src="/imagenes/servicios/detalle/11.png" alt="Experiencias para público general"/>
         </div>
         <div class="lista-servicios">
           <h3>Experiencias</h3>

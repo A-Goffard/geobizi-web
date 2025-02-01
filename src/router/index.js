@@ -23,8 +23,8 @@ import DiaTierraView from '@/views/blog/DiaTierraView.vue';
 import DetalleColegios from '../components/servicios/DetalleColegios.vue';
 import DetalleAsociaciones from '../components/servicios/DetalleAsociaciones.vue';
 import DetalleInstituciones from '../components/servicios/DetalleInstituciones.vue';
-import DetalleFamilias from '../components/servicios/DetalleFamilias.vue';
-import DetalleMayores from '../components/servicios/DetalleMayores.vue';
+import DetalleDigital from '../components/servicios/DetalleDigital.vue';
+import DetalleProyectos from '../components/servicios/DetalleProyectos.vue';
 import DetalleGeneral from '../components/servicios/DetalleGeneral.vue';
 
 const routes = [
@@ -154,14 +154,14 @@ const routes = [
         component: DetalleInstituciones
       },
       {
-        path: '/detalle-familias',
-        name: 'DetalleFamilias',
-        component: DetalleFamilias
+        path: '/detalle-digital',
+        name: 'DetalleDigital',
+        component: DetalleDigital
       },
       {
-        path: '/detalle-mayores',
-        name: 'DetalleMayores',
-        component: DetalleMayores
+        path: '/detalle-proyectos',
+        name: 'DetalleProyectos',
+        component: DetalleProyectos
       },
       {
         path: '/detalle-general',

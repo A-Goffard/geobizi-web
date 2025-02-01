@@ -15,40 +15,40 @@
 
       <div class="card-servicios">
         <div class="imagen-servicios">
-          <img class="img" src="/imagenes/servicios/detalle/formacion_instituciones.jpg" alt="Formación para instituciones"/>
+          <img class="img" src="/imagenes/servicios/detalle/1.png" alt="Formación para instituciones"/>
         </div>
         <div class="lista-servicios">
-          <h3>Formación y Material Didáctico</h3>
+          <h3>Formación para las empresas y el pueblo</h3>
           <ul>
-            <li>Divulgación medioambiental</li>
             <li>Sensibilización medioambiental</li>
-            <li>Interpretación del patrimonio</li>
-            <li>Didáctica de la ciencia</li>
+            <li>Mejora de la sostenibilidad empresarial</li>
+            <li>Sinergias sostenibles</li>
           </ul>
         </div>
       </div>
 
       <div class="card-servicios">
         <div class="imagen-servicios">
-          <img class="img" src="/imagenes/servicios/detalle/rutas_instituciones.jpg" alt="Rutas para instituciones"/>
+          <img class="img" src="/imagenes/servicios/detalle/7.png" alt="Rutas para instituciones"/>
         </div>
         <div class="lista-servicios">
-          <h3>Rutas Guiadas</h3>
+          <h3>Rutas Guiadas y talleres</h3>
           <ul>
-            <li>Ruta geológica por el Flysch de Sopela</li>
-            <li>Ruta geomedioambiental por el Flysch de Getxo</li>
+            <li>Rutas geológicas</li>
+            <li>Rutas geomedioambientales</li>
             <li>Identificación de árboles</li>
-            <li>Ruta geominera en la Arboleda</li>
+            <li>Talleres temáticos para eventos</li>
+            <li>Talleres temáticos para grupos sociales</li>
           </ul>
         </div>
       </div>
 
       <div class="card-servicios">
         <div class="imagen-servicios">
-          <img class="img" src="/imagenes/servicios/detalle/bio_regeneracion.jpg" alt="Proyectos de Bio-regeneración"/>
+          <img class="img" src="/imagenes/servicios/detalle/31.png" alt="Proyectos de Bio-regeneración"/>
         </div>
         <div class="lista-servicios">
-          <h3>Proyectos de Bio-regeneración y Mejora Medioambiental</h3>
+          <h3>Proyectos de Bio-regeneración colaborativos</h3>
           <ul>
             <li>Diagnóstico inicial</li>
             <li>Diseño y desarrollo del proyecto</li>

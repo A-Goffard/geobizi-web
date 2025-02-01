@@ -16,7 +16,7 @@
 
       <div class="card-servicios">
         <div class="imagen-servicios">
-          <img class="img" src="/imagenes/servicios/detalle/talleres_empresas.jpg" alt="Talleres para empresas"/>
+          <img class="img" src="/imagenes/servicios/detalle/actividades.jpg" alt="Talleres para empresas"/>
         </div>
         <div class="lista-servicios">
           <h3>Talleres</h3>
@@ -32,7 +32,7 @@
 
       <div class="card-servicios">
         <div class="imagen-servicios">
-          <img class="img" src="/imagenes/servicios/detalle/rutas_empresas.jpg" alt="Rutas para empresas"/>
+          <img class="img" src="/imagenes/servicios/detalle/rutas2.jpg" alt="Rutas para empresas"/>
         </div>
         <div class="lista-servicios">
           <h3>Rutas guiadas</h3>
@@ -40,14 +40,13 @@
             <li>Ruta geológica por el Flysch de Sopela</li>
             <li>Ruta geomedioambiental por el Flysch de Getxo</li>
             <li>Identificación de árboles</li>
-            <li>Ruta geominera en la Arboleda</li>
           </ul>
         </div>
       </div>
 
       <div class="card-servicios">
         <div class="imagen-servicios">
-          <img class="img" src="/imagenes/servicios/detalle/experiencias_empresas.jpg" alt="Experiencias para empresas"/>
+          <img class="img" src="/imagenes/servicios/detalle/experiencias2.jpg" alt="Experiencias para empresas"/>
         </div>
         <div class="lista-servicios">
           <h3>Experiencias</h3>

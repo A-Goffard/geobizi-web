@@ -51,7 +51,6 @@
           <li>Ruta medioambiental en Azkorri</li>
           <li>Ruta por el Arboretum de la UPV-EHU</li>
           <li>En busca de plantas medicinales</li>
-          <li>Ruta geominera en la Arboleda</li>
         </ul>
         </div>
       </div>

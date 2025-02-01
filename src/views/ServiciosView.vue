@@ -37,22 +37,22 @@
       image: '/imagenes/servicios/ayuntas.png',
     },
     {
-      title: 'Para familias',
-      content: 'Si te gusta hacer cosas en familia, no te pierdas las actividades que tenemos programadas. También puedes juntarte con otras familias y pedir una actividad para todos.',
-      link: '/detalle-familias',
-      image: '/imagenes/servicios/familias.png',
+      title: 'Proyectos Digitales',
+      content: 'El mundo digital y el natural pueden estar unidos y por ese camino ofrecemos yincanas digitales, o material didáctico digital relacionado con la naturaleza y el medioambiente.',
+      link: '/detalle-digital',
+      image: '/imagenes/servicios/digital.png',
     },
     {
-      title: 'Para mayores',
-      content: '¿Que si hacemos actividades para los más experimentados de la vida? Por supuesto que sí. Un taller, una ruta, un día de actividades. ¿Qué te apetece más?',
-      link: '/detalle-mayores',
-      image: '/imagenes/servicios/mayores.png',
+      title: 'Proyectos Natura',
+      content: 'También diseñamos proyectos relacionados con la naturaleza, para tu barrio o escuela. ¿Quieres un poryecto para mejorar el medioambiente de tu zona? ¿O participar cuidando la naturaleza?',
+      link: '/detalle-proyectos',
+      image: '/imagenes/servicios/general.png',
     },
     {
       title: 'Población general',
       content: 'Siempre tenemos disponibles rutas y talleres para la población general. ¿Quieres contratar una ruta o un taller? Cuéntanos lo que quieres.',
       link: '/detalle-general',
-      image: '/imagenes/servicios/general.png',
+      image: '/imagenes/servicios/familias.png',
     }
   ])
   
