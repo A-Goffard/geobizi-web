@@ -10,8 +10,8 @@
       <section>
         <h2>Localización de la sede central</h2>
         <p>
-          Aranguren-Zalla<br>
-          48850, Bizkaia
+          Calle Enkarterri N3 bis<br>
+          48840, Güeñes, Bizkaia
         </p>
       </section>
       <section>
@@ -21,19 +21,19 @@
       <section>
         <h2>Otros datos</h2>
         <p>
-          La colaboradora principal (Aintzane Goffard Sevillano) es programadora web Full Stack y geóloga licenciada con Máster en cuaternario: Cambios Ambientales y Huella Humana en la universidad del País Vasco. Inscrita en el Ilustre colegio oficial de geólogos con el Nº 8111. Desarrolladora, diseñadora, formadora, comunicadora, coordinadora, monitora, técnico especialista, guía, con titulaciones/conocimientos/formación en psicología, pedagogía, arteterapia, mindfulness, medioambiente, arqueología, musicoterapia, docencia, formación, turismo, cosmética natural y fitoterapia entre otros.
+          La CEO Aintzane Goffard Sevillano, es programadora web Full Stack y geóloga licenciada con Máster en cuaternario: Cambios Ambientales y Huella Humana en la universidad del País Vasco. Inscrita en el Ilustre colegio oficial de geólogos con el Nº 8111. Desarrolladora, diseñadora, formadora, comunicadora, coordinadora, monitora, técnico especialista, guía, con titulaciones/conocimientos/formación en psicología, pedagogía, arteterapia, mindfulness, medioambiente, arqueología, musicoterapia, docencia, formación, turismo, cosmética natural y fitoterapia entre otros.
         </p>
         <p>
-          Prestamos servicios de talleres, formaciones, rutas y actividades relacionadas con la geología, el medioambiente, conexión con la naturaleza, bienestar y ciencia. También diseñamos y vendemos distintos tipos de materiales con varias finalidades como: materiales para talleres, juguetes científicos, formaciones y similares.
+          Prestamos servicios de biorregeneración colaborativa, talleres, formaciones, rutas y actividades relacionadas con la geología, el medioambiente, conexión con la naturaleza, bienestar y ciencia. También diseñamos y vendemos distintos tipos de materiales con varias finalidades como: materiales para talleres, juguetes científicos, formaciones y similares.
         </p>
         <p>
-          Los precios que aparecen salvo que esté expresamente descrito llevan el IVA incluido (21%) salvo en los casos de formación exenta de IVA. Los gastos de envío se indican en la página de comercio electrónico y variarán en función del tipo de envío, el lugar, y la elección del comprador.
+          Los precios que aparecen salvo que esté expresamente descrito, llevan el IVA incluido (21%) salvo en los casos de formación exenta de IVA. Los gastos de envío se indican en la página de comercio electrónico y variarán en función del tipo de envío, el lugar, y la elección del comprador.
         </p>
         <p>Para más información, contactar vía teléfono o mail.</p>
       </section>
       <section>
         <h2>Última modificación</h2>
-        <p>23/06/2024</p>
+        <p>20/02/2025</p>
       </section>
       <section>
         <h2>Contacto</h2>
