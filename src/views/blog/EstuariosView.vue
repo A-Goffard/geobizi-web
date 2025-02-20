@@ -25,6 +25,30 @@
 
         <p>Por eso es tan importante la <strong>educación medioambiental</strong> y que se le dé el valor que realmente merece. Nosotros, con nuestro trabajo, aportamos lo que podemos para impulsar la <strong>sostenibilidad</strong> y la mejora medioambiental.</p>
 
+        <div class="imagen-trio">
+      <div>
+              <img
+        class="img"
+        src="/imagenes/blog/detalle/estuario1.png"
+        alt="Para cambiar por lo que corresponda"
+      />
+      </div>
+      <div>
+              <img
+        class="img"
+        src="/imagenes/blog/detalle/estuario2.png"
+        alt="Para cambiar por lo que corresponda"
+      />
+      </div>
+      <div>
+              <img
+        class="img"
+        src="/imagenes/blog/detalle/estuario3.png"
+        alt="Para cambiar por lo que corresponda"
+      />
+      </div>
+
+      </div>
     </div>
 </template>
 

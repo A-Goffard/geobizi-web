@@ -122,7 +122,7 @@ textarea {
   padding: 0.5rem;
   font-size: 1rem;
   border: 1px solid var(--shoftgreen);
-  background-color: var(--supershoftgreen);
+  background-color: var(--megashoftgreen);
   border-radius: 4px;
 }
 

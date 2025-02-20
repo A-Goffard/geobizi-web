@@ -62,6 +62,30 @@
     <a href="https://www.facebook.com/geobizirik/" target="_blank">
         <img src="@/assets/icons/facebook.png" alt="Facebook" class="social-icon" />
     </a>
+    <div class="imagen-trio">
+      <div>
+              <img
+        class="img"
+        src="/imagenes/blog/detalle/freetour1.png"
+        alt="Para cambiar por lo que corresponda"
+      />
+      </div>
+      <div>
+              <img
+        class="img"
+        src="/imagenes/blog/detalle/freetour2.png"
+        alt="Para cambiar por lo que corresponda"
+      />
+      </div>
+      <div>
+              <img
+        class="img"
+        src="/imagenes/blog/detalle/freetour3.png"
+        alt="Para cambiar por lo que corresponda"
+      />
+      </div>
+
+      </div>
     </div>
 </template>
 

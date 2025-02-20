@@ -31,6 +31,30 @@
       <p>Por lo tanto, a pesar de que la <strong>Carpobrotus edulis</strong> puede ser una planta atractiva y resistente, también puede tener un impacto significativo en los ecosistemas locales. Es importante tomar medidas para controlar su propagación y restaurar la <strong>diversidad vegetal</strong> en las áreas afectadas por su presencia.</p>
       
       <p>Por favor, no siembres o propagues plantas invasoras. ¡Pueden hacer mucho daño!</p>
+      <div class="imagen-trio">
+      <div>
+              <img
+        class="img"
+        src="/imagenes/blog/detalle/carpobrotus1.jpeg"
+        alt="Para cambiar por lo que corresponda"
+      />
+      </div>
+      <div>
+              <img
+        class="img"
+        src="/imagenes/blog/detalle/carpobrotus2.jpg"
+        alt="Para cambiar por lo que corresponda"
+      />
+      </div>
+      <div>
+              <img
+        class="img"
+        src="/imagenes/blog/detalle/carpobrotus3.jpg"
+        alt="Para cambiar por lo que corresponda"
+      />
+      </div>
+
+    </div>
     </div>
   </template>
   

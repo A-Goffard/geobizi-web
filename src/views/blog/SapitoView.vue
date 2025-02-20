@@ -35,6 +35,30 @@
       <p>La educación y la sensibilización pública también juegan un papel crucial en la protección de estas <strong>especies vulnerables</strong>. Al aprender sobre el <strong>Buffo Calamita</strong> y su importancia ecológica, podemos fomentar una mayor conciencia y respeto por la biodiversidad de nuestro planeta.</p>
       
       <p>Con esfuerzos conjuntos, podemos garantizar la supervivencia de esta especie y preservar su hábitat natural para las generaciones futuras.</p>
+      <div class="imagen-trio">
+      <div>
+              <img
+        class="img"
+        src="/imagenes/blog/detalle/sapito1.png"
+        alt="Para cambiar por lo que corresponda"
+      />
+      </div>
+      <div>
+              <img
+        class="img"
+        src="/imagenes/blog/detalle/sapito2.png"
+        alt="Para cambiar por lo que corresponda"
+      />
+      </div>
+      <div>
+              <img
+        class="img"
+        src="/imagenes/blog/detalle/sapito3.webp"
+        alt="Para cambiar por lo que corresponda"
+      />
+      </div>
+
+      </div>
     </div>
   </template>
   

@@ -24,10 +24,12 @@
           <h3>Talleres</h3>
           <ul>
             <li>Talleres científicos</li>
-            <li>Telares</li>
             <li>Reciclaje</li>
             <li>Plantas medicinales</li>
             <li>Herbario</li>
+            <li>Huertos</li>
+            <li>Bombas de semillas</li>
+            <li>Biorregeneración</li>
           </ul>
         </div>
       </div>

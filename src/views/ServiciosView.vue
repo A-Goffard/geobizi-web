@@ -83,7 +83,8 @@
   .card {
     width: 300px;
     padding: 20px;
-    border: 1px solid var(--ligthgrey);
+    background-color: var(--megashoftgreen);
+    border: 1px solid var(--shoftgreen);
     border-radius: 0.5rem;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s, box-shadow 0.3s;

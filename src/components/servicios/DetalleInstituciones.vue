@@ -35,7 +35,7 @@
           <h3>Rutas Guiadas y talleres</h3>
           <ul>
             <li>Rutas geológicas</li>
-            <li>Rutas geomedioambientales</li>
+            <li>Rutas medioambientales</li>
             <li>Identificación de árboles</li>
             <li>Talleres temáticos para eventos</li>
             <li>Talleres temáticos para grupos sociales</li>

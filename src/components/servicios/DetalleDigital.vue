@@ -15,9 +15,15 @@
 
       <div class="card-servicios">
         <div class="imagen-trio">
-          <img class="img" src="/imagenes/servicios/detalle/digital1.jpg" alt="Yincana Digital"/>
+          <div>
+            <img class="img" src="/imagenes/servicios/detalle/digital1.jpg" alt="Yincana Digital"/>
+          </div>
+          <div>
           <img class="img" src="/imagenes/servicios/detalle/digital2.jpg" alt="Yincana Digital"/>
+          </div>
+          <div>
           <img class="img" src="/imagenes/servicios/detalle/digital3.jpg" alt="Yincana Digital"/>
+          </div>
         </div>
         <div class="lista-servicios">
           <h3>Yincana: Flysch Digital</h3>

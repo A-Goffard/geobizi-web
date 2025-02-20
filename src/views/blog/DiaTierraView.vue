@@ -12,7 +12,6 @@
     <div class="contenedor-principal margen">
       <h1>DÍA MUNDIAL DE LA TIERRA</h1>
       
-      <h3>Introducción:</h3>
       <p>En el año 1968, el Servicio de Salud Pública de Estados Unidos organizó una conferencia sobre medio ambiente llamada <strong>Simposio de Ecología Humana</strong>, que se enfocaba en los efectos del deterioro de la <strong>biodiversidad</strong> en la salud humana. El evento fue un éxito y esto llevó a que el profesor Morton Hilbert y ciertos grupos de estudiantes desarrollaran la idea de un <strong>Día de la Tierra</strong>. En esa misma época, otras iniciativas similares también surgieron para concienciar sobre la importancia del medio ambiente.</p>
       
       <p>Finalmente, el 22 de abril de 1970, el senador y activista estadounidense <strong>Gayrold Nelson</strong> promovió una manifestación a favor del medio ambiente que contó con la participación de más de 2.000 universidades, 10.000 escuelas y cientos de comunidades diferentes. Esta presión social llevó al Gobierno de Estados Unidos a crear la <strong>Agencia de Protección Ambiental</strong> y a aprobar una serie de leyes para la defensa del medio ambiente.</p>
@@ -32,6 +31,32 @@
       <p>En el año 2022, se entregaron un total de 5 premios. En su sitio web, se pueden ver todos los ganadores y la descripción de su proyecto, así como las categorías de premios. Estas categorías incluyen el premio al trabajo de toda una vida, al liderazgo, a la inspiración, a la ciencia e innovación y al espíritu emprendedor.</p>
       
       <p>También puedes participar en alguna actividad medioambiental como las nuestras con la familia, el cole o los amig@s para apoyar empresas como la nuestra que trata durante todo el año de educar a la población en estas materias.</p>
+    
+      <div class="imagen-trio">
+      <div>
+              <img
+        class="img"
+        src="/imagenes/blog/detalle/diatierra1.png"
+        alt="Para cambiar por lo que corresponda"
+      />
+      </div>
+      <div>
+              <img
+        class="img"
+        src="/imagenes/blog/detalle/diatierra2.png"
+        alt="Para cambiar por lo que corresponda"
+      />
+      </div>
+      <div>
+              <img
+        class="img"
+        src="/imagenes/blog/detalle/diatierra3.png"
+        alt="Para cambiar por lo que corresponda"
+      />
+      </div>
+
+      </div>
+
     </div>
   </template>
   

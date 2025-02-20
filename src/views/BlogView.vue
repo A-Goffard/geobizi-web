@@ -116,7 +116,8 @@
   .card {
     width: 300px;
     padding: 20px;
-    border: 1px solid #ddd;
+    background-color: var(--megashoftgreen);
+    border: 1px solid var(--shoftgreen);
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s, box-shadow 0.3s;
@@ -125,7 +126,7 @@
     flex-direction: column;
     align-items: center;
   }
-  
+
   .card img {
     max-width: 100%;
     height: auto;

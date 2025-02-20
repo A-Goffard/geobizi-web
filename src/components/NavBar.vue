@@ -46,7 +46,7 @@
             <li>
               <router-link class="NavButton link" :to="{name: 'servicios'}" @click="closeMobileNav">Servicios</router-link>
             </li>
-            <li>
+            <!-- <li>
               <router-link class="NavButton link" :to="{name: 'calendario'}" @click="closeMobileNav">Calendario</router-link>
             </li>
             <li>
@@ -54,7 +54,7 @@
             </li>
             <li>
               <router-link class="NavButton link" :to="{name: 'geotienda'}" @click="closeMobileNav">Geotienda</router-link>
-            </li>
+            </li> -->
             <li>
               <router-link class="NavButton link" :to="{name: 'blog'}" @click="closeMobileNav">Blog</router-link>
             </li>
@@ -100,16 +100,27 @@ const closeMobileNav = () => {
       mobileNav.value = false;
     }
   };
-  
+
+  const closeOnClickOutside = (event) => {
+  const nav = document.querySelector('.dropdown-nav');
+  const button = document.querySelector('.icon button');
+
+  if (mobileNav.value && nav && !nav.contains(event.target) && button && !button.contains(event.target)) {
+    closeMobileNav();
+  }
+};
+
   onMounted(() => {
-    window.addEventListener('resize', checkScreen);
-    window.addEventListener('scroll', updateScroll);
-  });
+  window.addEventListener('resize', checkScreen);
+  window.addEventListener('scroll', updateScroll);
+  document.addEventListener('click', closeOnClickOutside);
+ });
   
-  onUnmounted(() => {
-    window.removeEventListener('resize', checkScreen);
-    window.removeEventListener('scroll', updateScroll);
-  });
+ onUnmounted(() => {
+  window.removeEventListener('resize', checkScreen);
+  window.removeEventListener('scroll', updateScroll);
+  document.removeEventListener('click', closeOnClickOutside);
+});
   
   checkScreen();
   </script>
@@ -229,6 +240,10 @@ const closeMobileNav = () => {
     height: 2px;
     background-color: var(--lightgreen);
     cursor: pointer;
+  }
+
+  ul{
+    margin: 0;
   }
   
   li {

@@ -50,11 +50,36 @@
         <p>Este ámbito abarca creencias diversas sobre la fauna, flora, meteorología, ciclos lunares, témporas y cambios estacionales. Incluye también la medicina tradicional con sus remedios, el uso de plantas medicinales, la figura de los curanderos y las creencias acerca de las causas o curas de algunas enfermedades.</p>
 
         <h2>Nuestro granito de arena</h2>
-        <p>Ya participamos el año pasado (2022) en las Jornadas sobre patrimonio sostenible con varias actividades. Las que tuvieron mayor éxito fueron la Ruta por el Flysch de Getxo y Rocas que hablan en Algorta.</p>
-        <p>Este año también participamos de forma oficial con una actividad sobre los Eguzkilores. Un taller original en el que compartiremos un buen rato hablando sobre la historia, el uso y algunos datos interesantes sobre los Eguzkilores además de realizar unas manualidades relacionadas con ellos.</p>
+        <p>Nuestra primera participación fue en 2022 en las Jornadas sobre patrimonio sostenible con varias actividades. Las que tuvieron mayor éxito fueron la Ruta por el Flysch de Getxo y Rocas que hablan en Algorta.</p>
+        <p>En 2023 también participamos de forma oficial con una actividad sobre los Eguzkilores. Un taller original en el que compartiremos un buen rato hablando sobre la historia, el uso y algunos datos interesantes sobre los Eguzkilores además de realizar unas manualidades relacionadas con ellos.</p>
+        <p>En 2024 realizamos actividades en Getxo realizando la ruta por el Flysch de Getxo pero con un añadido tecnólogico interesante, vimos el mundo desde un microscópio electrónico.</p>
         <p>Si queréis apuntaros solo tenéis que mandar un mail o un mensaje de WhatsApp dejando vuestro nombre y apellido, número de personas que queréis asistir, número de teléfono y edades aproximadas de los asistentes.</p>
         <p>¿Quieres que hagamos un taller como éste para tu grupo, asociación, escuela...? Contáctanos y hablamos.</p>
 
+        <div class="imagen-trio">
+      <div>
+              <img
+        class="img"
+        src="/imagenes/blog/detalle/patrimonio1.png"
+        alt="Para cambiar por lo que corresponda"
+      />
+      </div>
+      <div>
+              <img
+        class="img"
+        src="/imagenes/blog/detalle/patrimonio2.png"
+        alt="Para cambiar por lo que corresponda"
+      />
+      </div>
+      <div>
+              <img
+        class="img"
+        src="/imagenes/blog/detalle/patrimonio3.png"
+        alt="Para cambiar por lo que corresponda"
+      />
+      </div>
+
+      </div>
     </div>
 </template>
 

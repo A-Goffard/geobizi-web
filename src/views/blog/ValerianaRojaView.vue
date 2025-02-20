@@ -23,7 +23,30 @@
         <p>La <strong>valeriana roja (Centranthus ruber)</strong> es un ejemplo destacado de cómo una planta aparentemente inofensiva puede convertirse en una amenaza significativa para los <strong>ecosistemas locales</strong>. La toma de conciencia sobre sus rasgos invasores y la implementación de prácticas de manejo y prevención adecuadas son cruciales para preservar la <strong>diversidad</strong> y la salud de nuestros entornos naturales.</p>
 
         <p>Recientemente ha aparecido esta especie en el <strong>paseo de la Galea</strong>, donde solemos realizar rutas divulgativas en un <strong>espacio protegido</strong>. Ya hemos dado el aviso a las autoridades competentes y esperamos que pronto se solucione el problema que puede llegar a causar esta planta en un entorno como este.</p>
+        <div class="imagen-trio">
+      <div>
+              <img
+        class="img"
+        src="/imagenes/blog/detalle/valeriana1.png"
+        alt="Para cambiar por lo que corresponda"
+      />
+      </div>
+      <div>
+              <img
+        class="img"
+        src="/imagenes/blog/detalle/valeriana2.png"
+        alt="Para cambiar por lo que corresponda"
+      />
+      </div>
+      <div>
+              <img
+        class="img"
+        src="/imagenes/blog/detalle/valeriana3.png"
+        alt="Para cambiar por lo que corresponda"
+      />
+      </div>
 
+      </div>
     </div>
 </template>
 

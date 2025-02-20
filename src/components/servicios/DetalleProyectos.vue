@@ -7,7 +7,7 @@
 
     <h2>Actividades de Bio-regeneración</h2>
     <p>
-      Aquí tienes algunas de las actividades que ofrecemos dentro de nuestros proyectos Natura. Todas nuestras actividades pueden realizarse en euskera y/o castellano.
+      Aquí tienes un ejemplo de lo que ofrecemos dentro de nuestros proyectos Natura. Todas nuestras actividades pueden realizarse en euskera y/o castellano.
       Si tienes algún interés especial, diseñamos una actividad a tu medida.
     </p>
 
@@ -15,8 +15,12 @@
 
       <div class="card-servicios">
         <div class="imagen-trio">
-          <img class="img" src="/imagenes/servicios/detalle/bioregeneracion.jpg" alt="Proyecto de Bio-regeneración"/>
-          <img class="img" src="/imagenes/servicios/detalle/bioregeneracion2.jpg" alt="Proyecto de Bio-regeneración"/>
+          <div>
+            <img class="img" src="/imagenes/servicios/detalle/bioregeneracion.jpg" alt="Proyecto de Bio-regeneración"/>
+          </div>
+          <div>
+            <img class="img" src="/imagenes/servicios/detalle/bioregeneracion2.jpg" alt="Proyecto de Bio-regeneración"/>
+          </div>
         </div>
         <div class="lista-servicios">
           <h2>Proyecto de Bio-regeneración</h2>
