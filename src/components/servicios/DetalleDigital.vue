@@ -14,8 +14,10 @@
     <div class="horizontal">
 
       <div class="card-servicios">
-        <div class="imagen-servicios">
-          <img class="img" src="/imagenes/servicios/detalle/yincana_digital.jpg" alt="Yincana Digital"/>
+        <div class="imagen-trio">
+          <img class="img" src="/imagenes/servicios/detalle/digital1.jpg" alt="Yincana Digital"/>
+          <img class="img" src="/imagenes/servicios/detalle/digital2.jpg" alt="Yincana Digital"/>
+          <img class="img" src="/imagenes/servicios/detalle/digital3.jpg" alt="Yincana Digital"/>
         </div>
         <div class="lista-servicios">
           <h3>Yincana: Flysch Digital</h3>
@@ -36,4 +38,20 @@
 // No hay lógica adicional para este artículo
 </script>
 
-<style scoped></style>
+<style scoped>
+.imagen-trio{
+  display: flex;
+  gap: 1rem;
+}
+
+@media (max-width: 750px) {
+
+  .imagen-trio{
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+}
+
+
+</style>

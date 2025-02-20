@@ -92,6 +92,11 @@ margin: 2rem;
 .lista-servicios {
   padding: 1rem;
 }
+.imagen-trio{
+  display: flex;
+  gap: 1rem;
+}
+
 @media (min-width: 950px) {
   .contenedor-principal {
     max-width: 950px;

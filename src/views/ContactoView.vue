@@ -20,11 +20,16 @@
         <label for="message">Mensaje:</label>
         <textarea id="message" v-model="formData.message" required></textarea>
       </div>
-      <div class="form-group horizontal">
+      <div class="horizontalC">
         <input type="checkbox" id="privacy" v-model="formData.privacyAccepted" required>
-        <label for="privacy">He leído y acepto la política de privacidad.</label>
+        <label for="privacy">
+          He leído y acepto la 
+          <a href="/politica-de-privacidad" target="_blank">política de privacidad</a>.
+        </label>
       </div>
-      <button type="submit">Enviar mensaje</button>
+      <div class="center">
+        <button type="submit">Enviar mensaje</button>
+      </div>
     </form>
   </div>
 </div>
@@ -94,9 +99,11 @@ const submitForm = () => {
   box-shadow: 0px 0px 10px rgba(49, 49, 49, 0.7);
   padding-bottom: 2rem;
 }
-.horizontal{
+.horizontalC { 
+  margin: 1rem;
   display: flex;
-  gap: 2rem;
+  flex-direction: row;
+  gap: 1rem;
 }
 .form-group {
   margin-bottom: 1rem;
@@ -132,5 +139,15 @@ button {
 
 button:hover {
   background-color: var(--lightgreen);
+}
+
+a{
+  color: var(--green);
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+
 }
 </style>
