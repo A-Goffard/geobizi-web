@@ -1,0 +1,128 @@
+[
+  { 
+    "titulo": "Azkorri al microscopio", 
+    "fecha": "2025-03-22", 
+    "hora": "17:00", 
+    "color": "orange" 
+  },
+  { 
+    "titulo": "Azkorri al microscopio", 
+    "fecha": "2025-04-17", 
+    "hora": "17:00", 
+    "color": "orange" 
+  },
+  { 
+    "titulo": "Azkorri al microscopio", 
+    "fecha": "2025-04-19", 
+    "hora": "17:00", 
+    "color": "orange" 
+  },
+  { 
+    "titulo": "Azkorri al microscopio", 
+    "fecha": "2025-05-04", 
+    "hora": "17:00", 
+    "color": "orange" 
+  },
+  { 
+    "titulo": "Azkorri al microscopio", 
+    "fecha": "2025-06-15", 
+    "hora": "17:00", 
+    "color": "orange" 
+  },
+  { 
+    "titulo": "Azkorri al microscopio", 
+    "fecha": "2025-07-25", 
+    "hora": "17:00", 
+    "color": "orange" 
+  },
+  { 
+    "titulo": "Azkorri al microscopio", 
+    "fecha": "2025-08-09", 
+    "hora": "17:00", 
+    "color": "orange" 
+  },
+  { 
+    "titulo": "Azkorri al microscopio", 
+    "fecha": "2025-10-04", 
+    "hora": "17:00", 
+    "color": "orange" 
+  },
+  { 
+    "titulo": "Azkorri al microscopio", 
+    "fecha": "2025-10-05", 
+    "hora": "17:00", 
+    "color": "orange" 
+  },
+  { 
+    "titulo": "Azkorri al microscopio", 
+    "fecha": "2025-10-25", 
+    "hora": "17:00", 
+    "color": "orange" 
+  },
+  { 
+    "titulo": "Árboles de Getxo", 
+    "fecha": "2025-04-05", 
+    "hora": "17:00", 
+    "color": "green" 
+  },
+  { 
+    "titulo": "Árboles de Getxo", 
+    "fecha": "2025-04-18", 
+    "hora": "17:00", 
+    "color": "green" 
+  },
+  { 
+    "titulo": "Árboles de Getxo", 
+    "fecha": "2025-05-03", 
+    "hora": "17:00", 
+    "color": "green" 
+  },
+  { 
+    "titulo": "Árboles de Getxo", 
+    "fecha": "2025-06-01", 
+    "hora": "17:00", 
+    "color": "green" 
+  },
+  { 
+    "titulo": "Árboles de Getxo", 
+    "fecha": "2025-06-14", 
+    "hora": "17:00", 
+    "color": "green" 
+  },
+  { 
+    "titulo": "Árboles de Getxo", 
+    "fecha": "2025-07-20", 
+    "hora": "17:00", 
+    "color": "green" 
+  },
+  { 
+    "titulo": "Árboles de Getxo", 
+    "fecha": "2025-08-02", 
+    "hora": "17:00", 
+    "color": "green" 
+  },
+  { 
+    "titulo": "Árboles de Getxo", 
+    "fecha": "2025-09-06", 
+    "hora": "17:00", 
+    "color": "green" 
+  },
+  { 
+    "titulo": "Árboles de Getxo", 
+    "fecha": "2025-09-27", 
+    "hora": "17:00", 
+    "color": "green" 
+  },
+  { 
+    "titulo": "Árboles de Getxo", 
+    "fecha": "2025-10-11", 
+    "hora": "17:00", 
+    "color": "green" 
+  },
+  {
+    "titulo": "Zalla Natura", 
+    "fecha": "2025-03-07", 
+    "hora": "18:00", 
+    "color": "blue" 
+  }
+]

@@ -26,6 +26,7 @@ import DetalleInstituciones from '../components/servicios/DetalleInstituciones.v
 import DetalleDigital from '../components/servicios/DetalleDigital.vue';
 import DetalleProyectos from '../components/servicios/DetalleProyectos.vue';
 import DetalleGeneral from '../components/servicios/DetalleGeneral.vue';
+import Calendario from '@/components/calendario/CalendarioActividades2025.vue';
 
 const routes = [
     {
@@ -167,6 +168,11 @@ const routes = [
         path: '/detalle-general',
         name: 'DetalleGeneral',
         component: DetalleGeneral
+      },
+      {
+        path: '/calendario',
+        name: 'Calendario',
+        component: Calendario
       }
 
 ];
