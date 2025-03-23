@@ -15,7 +15,7 @@
 
       <div class="card-servicios">
         <div class="imagen-servicios">
-          <img class="img" src="/imagenes/servicios/detalle/1.png" alt="Formación para instituciones"/>
+          <img class="img" src="/imagenes/servicios/detalle/jepazkorri.jpg" alt="Formación para instituciones"/>
         </div>
         <div class="lista-servicios">
           <h3>Formación para las empresas y el pueblo</h3>
@@ -29,7 +29,7 @@
 
       <div class="card-servicios">
         <div class="imagen-servicios">
-          <img class="img" src="/imagenes/servicios/detalle/7.png" alt="Rutas para instituciones"/>
+          <img class="img" src="/imagenes/servicios/detalle/eguzkilores.jpg" alt="Rutas para instituciones"/>
         </div>
         <div class="lista-servicios">
           <h3>Rutas Guiadas y talleres</h3>
@@ -45,7 +45,7 @@
 
       <div class="card-servicios">
         <div class="imagen-servicios">
-          <img class="img" src="/imagenes/servicios/detalle/31.png" alt="Proyectos de Bio-regeneración"/>
+          <img class="img" src="/imagenes/servicios/detalle/jepplaya.jpg" alt="Proyectos de Bio-regeneración"/>
         </div>
         <div class="lista-servicios">
           <h3>Proyectos de Bio-regeneración colaborativos</h3>

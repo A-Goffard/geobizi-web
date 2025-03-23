@@ -3,11 +3,13 @@
     <Nav />
     <router-view></router-view>
     <Footer />
+    <CookiesConsent />
   </div>
 </template>
 <script setup>
 import Nav from './components/NavBar.vue';
 import Footer from './components/FooterComponent.vue';
+import CookiesConsent from './components/CookiesConsent.vue';
 
 </script>
 
