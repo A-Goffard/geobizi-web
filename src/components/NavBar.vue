@@ -32,7 +32,7 @@
         </ul>
         <div class="icon">
             <button @click="toggleMobileNav" v-show="mobile">
-                <img :class="{ 'icon-active': mobileNav }" src="@/assets/logoBurguer.png" class="hojitas" alt="">
+                <img :class="{ 'icon-active': mobileNav }" src="@/assets/Hojitas.png" class="hojitas" alt="">
             </button>
         </div>
         <transition name="mobile-nav">
@@ -153,14 +153,14 @@ const closeMobileNav = () => {
     display: flex;
     align-items: center;
     flex: 1;
-    justify-content: center
+    justify-content: center;
   }
   
   header nav .icon {
     display: flex;
     align-items: center;
     position: absolute;
-    top: 0;
+    top: 0.1rem;
     right: 0.5rem;
   }
   
@@ -250,6 +250,11 @@ const closeMobileNav = () => {
     padding: 0.5rem 0.5rem;
     margin-top: 0.2rem;
   }
+
+  .logo {
+    position: absolute;
+    height: 3rem;
+  }
   @media (min-width: 1024px) {
     li {
       padding: 0.5rem 1.5rem;
@@ -260,8 +265,6 @@ const closeMobileNav = () => {
       padding: 0.5rem 1rem;
     }
   }
-  
 
-  
   </style>
   
