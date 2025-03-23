@@ -1,8 +1,12 @@
 <template>
   <div class="calendario">
-    <div v-for="(mes, index) in meses" :key="index" class="mes">
-      <h3>{{ mes.nombre }}</h3>
+    <div class="navegacion">
+      <button class="elegir" @click="mesAnterior">&lt;</button>
+      <h3>{{ meses[mesActual].nombre }}</h3>
+      <button class="elegir" @click="mesSiguiente">&gt;</button>
+    </div>
 
+    <div class="mes">
       <!-- Días de la semana -->
       <div class="grid">
         <div v-for="dia in diasSemana" :key="dia" class="dia-semana">
@@ -10,16 +14,18 @@
         </div>
 
         <!-- Días del mes -->
-        <div v-for="dia in getDiasDelMes(index)" :key="dia.fecha || 'vacio-' + index" 
+        <div v-for="dia in getDiasDelMes(mesActual)" :key="dia.fecha || 'vacio-' + mesActual" 
              class="dia" :class="{ vacio: !dia.numero }">
           <span v-if="dia.numero" class="numero">{{ dia.numero }}</span>
 
-          <div v-for="actividad in dia.actividades" 
-               :key="actividad.titulo" 
-               class="punto" 
-               :style="{ backgroundColor: actividad.color }"
-               @mouseover="mostrarTooltip(actividad, $event)"
-               @mouseleave="ocultarTooltip">
+          <div class="puntos">
+            <div v-for="actividad in dia.actividades" 
+                 :key="actividad.titulo" 
+                 class="punto" 
+                 :style="{ backgroundColor: actividad.color }"
+                 @mouseover="mostrarTooltip(actividad, $event)"
+                 @mouseleave="ocultarTooltip">
+            </div>
           </div>
         </div>
       </div>
@@ -33,72 +39,94 @@
   </div>
 </template>
 
-  
-  <script setup>
-  
-  import { ref, onMounted } from "vue";
-  import actividadesData from "@/assets/json/actividades.json";
-  
-  // Lista de meses
-  const meses = ref([
-    { nombre: "Enero" }, { nombre: "Febrero" }, { nombre: "Marzo" },
-    { nombre: "Abril" }, { nombre: "Mayo" }, { nombre: "Junio" },
-    { nombre: "Julio" }, { nombre: "Agosto" }, { nombre: "Septiembre" },
-    { nombre: "Octubre" }, { nombre: "Noviembre" }, { nombre: "Diciembre" }
-  ]);
-  
-  // Días de la semana
-  const diasSemana = ref(["Lun", "Mar", "Mié", "Jue", "Vie", "Sáb", "Dom"]);
-  
-  // Tooltip
-  const tooltip = ref({ visible: false, titulo: "", hora: "", x: 0, y: 0 });
-  
-  // Función para obtener los días del mes con sus actividades
-  const getDiasDelMes = (mesIndex) => {
-    const year = 2025;
-    const primerDiaSemana = new Date(year, mesIndex, 1).getDay(); // 0 = Domingo, 1 = Lunes, etc.
-    const diasEnMes = new Date(year, mesIndex + 1, 0).getDate();
-    let dias = [];
-  
-    // Ajustar para que la semana empiece en Lunes
-    const primerDiaIndex = primerDiaSemana === 0 ? 6 : primerDiaSemana - 1;
-  
-    // Añadir espacios vacíos antes del primer día del mes
-    for (let i = 0; i < primerDiaIndex; i++) {
-      dias.push({ numero: null, fecha: null, actividades: [] });
-    }
-  
-    // Añadir los días del mes con actividades
-    for (let i = 1; i <= diasEnMes; i++) {
-      const fecha = `${year}-${(mesIndex + 1).toString().padStart(2, "0")}-${i.toString().padStart(2, "0")}`;
-      const actividades = actividadesData.filter(a => a.fecha === fecha);
-      dias.push({ numero: i, fecha, actividades });
-    }
-  
-    return dias;
-  };
-  
-  // Mostrar tooltip
-  const mostrarTooltip = (actividad, event) => {
-    tooltip.value = { visible: true, titulo: actividad.titulo, hora: actividad.hora, x: event.pageX + 10, y: event.pageY + 10 };
-  };
-  
-  // Ocultar tooltip
-  const ocultarTooltip = () => {
-    tooltip.value.visible = false;
-  };
-  
-  onMounted(() => {
-    console.log("Calendario cargado");
-  });
-  
-  </script>
-  
-  <style scoped>
-  .calendario {
+<script setup>
+import { ref, onMounted } from "vue";
+import actividadesData from "@/assets/json/actividades.json";
+
+// Lista de meses
+const meses = ref([
+  { nombre: "Enero" }, { nombre: "Febrero" }, { nombre: "Marzo" },
+  { nombre: "Abril" }, { nombre: "Mayo" }, { nombre: "Junio" },
+  { nombre: "Julio" }, { nombre: "Agosto" }, { nombre: "Septiembre" },
+  { nombre: "Octubre" }, { nombre: "Noviembre" }, { nombre: "Diciembre" }
+]);
+
+// Días de la semana
+const diasSemana = ref(["Lun", "Mar", "Mié", "Jue", "Vie", "Sáb", "Dom"]);
+
+// Tooltip
+const tooltip = ref({ visible: false, titulo: "", hora: "", x: 0, y: 0 });
+
+// Mes actual
+const mesActual = ref(new Date().getMonth());
+
+// Función para obtener los días del mes con sus actividades
+const getDiasDelMes = (mesIndex) => {
+  const year = 2025;
+  const primerDiaSemana = new Date(year, mesIndex, 1).getDay(); // 0 = Domingo, 1 = Lunes, etc.
+  const diasEnMes = new Date(year, mesIndex + 1, 0).getDate();
+  let dias = [];
+
+  // Ajustar para que la semana empiece en Lunes
+  const primerDiaIndex = primerDiaSemana === 0 ? 6 : primerDiaSemana - 1;
+
+  // Añadir espacios vacíos antes del primer día del mes
+  for (let i = 0; i < primerDiaIndex; i++) {
+    dias.push({ numero: null, fecha: null, actividades: [] });
+  }
+
+  // Añadir los días del mes con actividades
+  for (let i = 1; i <= diasEnMes; i++) {
+    const fecha = `${year}-${(mesIndex + 1).toString().padStart(2, "0")}-${i.toString().padStart(2, "0")}`;
+    const actividades = actividadesData.filter(a => a.fecha === fecha);
+    dias.push({ numero: i, fecha, actividades });
+  }
+
+  return dias;
+};
+
+// Mostrar tooltip
+const mostrarTooltip = (actividad, event) => {
+  tooltip.value = { visible: true, titulo: actividad.titulo, hora: actividad.hora, x: event.pageX + 10, y: event.pageY + 10 };
+};
+
+// Ocultar tooltip
+const ocultarTooltip = () => {
+  tooltip.value.visible = false;
+};
+
+// Cambiar al mes anterior
+const mesAnterior = () => {
+  if (mesActual.value > 0) {
+    mesActual.value--;
+  }
+};
+
+// Cambiar al mes siguiente
+const mesSiguiente = () => {
+  if (mesActual.value < 11) {
+    mesActual.value++;
+  }
+};
+
+onMounted(() => {
+  console.log("Calendario cargado");
+});
+</script>
+
+<style scoped>
+.calendario {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.navegacion {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 20.65rem;
+  margin-bottom: 1rem;
 }
 
 .mes {
@@ -149,13 +177,20 @@
   font-weight: bold;
 }
 
+/* Contenedor de puntos */
+.puntos {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 5px;
+}
+
 /* Puntos de colores */
 .punto {
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  position: absolute;
-  bottom: 5px;
+  margin: 1px;
 }
 
 /* Tooltip */
@@ -169,5 +204,14 @@
   pointer-events: none;
 }
 
-  </style>
-  
+.elegir {
+  background-color: var(--shoftgreen);
+  color: var(--black);
+  font-size: 1rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 4px;
+  padding: 0.5rem;
+  cursor: pointer;
+}
+</style>

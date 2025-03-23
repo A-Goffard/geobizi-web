@@ -1,128 +1,242 @@
 [
-  { 
-    "titulo": "Azkorri al microscopio", 
-    "fecha": "2025-03-22", 
-    "hora": "17:00", 
-    "color": "orange" 
-  },
-  { 
-    "titulo": "Azkorri al microscopio", 
-    "fecha": "2025-04-17", 
-    "hora": "17:00", 
-    "color": "orange" 
-  },
-  { 
-    "titulo": "Azkorri al microscopio", 
-    "fecha": "2025-04-19", 
-    "hora": "17:00", 
-    "color": "orange" 
-  },
-  { 
-    "titulo": "Azkorri al microscopio", 
-    "fecha": "2025-05-04", 
-    "hora": "17:00", 
-    "color": "orange" 
-  },
-  { 
-    "titulo": "Azkorri al microscopio", 
-    "fecha": "2025-06-15", 
-    "hora": "17:00", 
-    "color": "orange" 
-  },
-  { 
-    "titulo": "Azkorri al microscopio", 
-    "fecha": "2025-07-25", 
-    "hora": "17:00", 
-    "color": "orange" 
-  },
-  { 
-    "titulo": "Azkorri al microscopio", 
-    "fecha": "2025-08-09", 
-    "hora": "17:00", 
-    "color": "orange" 
-  },
-  { 
-    "titulo": "Azkorri al microscopio", 
-    "fecha": "2025-10-04", 
-    "hora": "17:00", 
-    "color": "orange" 
-  },
-  { 
-    "titulo": "Azkorri al microscopio", 
-    "fecha": "2025-10-05", 
-    "hora": "17:00", 
-    "color": "orange" 
-  },
-  { 
-    "titulo": "Azkorri al microscopio", 
-    "fecha": "2025-10-25", 
-    "hora": "17:00", 
-    "color": "orange" 
-  },
-  { 
-    "titulo": "Árboles de Getxo", 
-    "fecha": "2025-04-05", 
-    "hora": "17:00", 
-    "color": "green" 
-  },
-  { 
-    "titulo": "Árboles de Getxo", 
-    "fecha": "2025-04-18", 
-    "hora": "17:00", 
-    "color": "green" 
-  },
-  { 
-    "titulo": "Árboles de Getxo", 
-    "fecha": "2025-05-03", 
-    "hora": "17:00", 
-    "color": "green" 
-  },
-  { 
-    "titulo": "Árboles de Getxo", 
-    "fecha": "2025-06-01", 
-    "hora": "17:00", 
-    "color": "green" 
-  },
-  { 
-    "titulo": "Árboles de Getxo", 
-    "fecha": "2025-06-14", 
-    "hora": "17:00", 
-    "color": "green" 
-  },
-  { 
-    "titulo": "Árboles de Getxo", 
-    "fecha": "2025-07-20", 
-    "hora": "17:00", 
-    "color": "green" 
-  },
-  { 
-    "titulo": "Árboles de Getxo", 
-    "fecha": "2025-08-02", 
-    "hora": "17:00", 
-    "color": "green" 
-  },
-  { 
-    "titulo": "Árboles de Getxo", 
-    "fecha": "2025-09-06", 
-    "hora": "17:00", 
-    "color": "green" 
-  },
-  { 
-    "titulo": "Árboles de Getxo", 
-    "fecha": "2025-09-27", 
-    "hora": "17:00", 
-    "color": "green" 
-  },
-  { 
-    "titulo": "Árboles de Getxo", 
-    "fecha": "2025-10-11", 
-    "hora": "17:00", 
-    "color": "green" 
+  {
+    "titulo": "Networking",
+    "fecha": "2025-01-24",
+    "hora": "18:00",
+    "color": "blue"
   },
   {
-    "titulo": "Zalla Natura", 
-    "fecha": "2025-03-07", 
-    "hora": "18:00", 
-    "color": "blue" 
+    "titulo": "Deba Natura",
+    "fecha": "2025-02-02",
+    "hora": "10:00",
+    "color": "purple"
+  },
+  {
+    "titulo": "Sopela",
+    "fecha": "2025-02-27",
+    "hora": "10:00",
+    "color": "purple"
+  },
+  {
+    "titulo": "Presentación del proyecto Zalla Natura",
+    "fecha": "2025-03-07",
+    "hora": "17:30",
+    "color": "blue"
+  },
+  {
+    "titulo": "Lanzamiento de bombas de semillas",
+    "fecha": "2025-03-14",
+    "hora": "13:00",
+    "color": "blue"
+  },
+  {
+    "titulo": "Taller ola de Mundaka",
+    "fecha": "2025-03-15",
+    "hora": "17:00",
+    "color": "purple"
+  },
+  {
+    "titulo": "Taller tablas de surf",
+    "fecha": "2025-03-15",
+    "hora": "18:00",
+    "color": "purple"
+  },
+  {
+    "titulo": "Ruta entre árboles",
+    "fecha": "2025-03-22",
+    "hora": "11:00",
+    "color": "blue"
+  },
+  {
+    "titulo": "Pintando mariposas",
+    "fecha": "2025-03-22",
+    "hora": "12:00",
+    "color": "blue"
+  },  
+  {
+    "titulo": "Azkorri al microscopio",
+    "fecha": "2025-03-22",
+    "hora": "17:00",
+    "color": "orange"
+  },
+  {
+    "titulo": "Zonas de no poda",
+    "fecha": "2025-03-28",
+    "hora": "15:00",
+    "color": "blue"
+  },
+  {
+    "titulo": "Taller de eguzkilores",
+    "fecha": "2025-04-05",
+    "hora": "11:00",
+    "color": "purple"
+  },
+  {
+    "titulo": "Árboles de Getxo",
+    "fecha": "2025-04-05",
+    "hora": "17:00",
+    "color": "green"
+  },
+  {
+    "titulo": "Oasis de mariposas",
+    "fecha": "2025-04-06",
+    "hora": "11:00",
+    "color": "blue"
+  },
+  {
+    "titulo": "No poda y bombas de semillas",
+    "fecha": "2025-04-12",
+    "hora": "11:00",
+    "color": "blue"
+  },
+  {
+    "titulo": "Azkorri al microscopio",
+    "fecha": "2025-04-17",
+    "hora": "17:00",
+    "color": "orange"
+  },
+  {
+    "titulo": "Árboles de Getxo",
+    "fecha": "2025-04-18",
+    "hora": "17:00",
+    "color": "green"
+  },
+  {
+    "titulo": "Azkorri al microscopio",
+    "fecha": "2025-04-19",
+    "hora": "17:00",
+    "color": "orange"
+  },
+  {
+    "titulo": "Árboles de Getxo",
+    "fecha": "2025-05-03",
+    "hora": "17:00",
+    "color": "green"
+  },
+  {
+    "titulo": "Azkorri al microscopio",
+    "fecha": "2025-05-04",
+    "hora": "17:00",
+    "color": "orange"
+  },
+  {
+    "titulo": "Huerto urbano",
+    "fecha": "2025-05-06",
+    "hora": "13:00",
+    "color": "blue"
+  },
+  {
+    "titulo": "Casas de insectos",
+    "fecha": "2025-05-17",
+    "hora": "11:00",
+    "color": "blue"
+  },
+  {
+    "titulo": "Árboles de Getxo",
+    "fecha": "2025-06-01",
+    "hora": "17:00",
+    "color": "green"
+  },
+  {
+    "titulo": "Árboles de Getxo",
+    "fecha": "2025-06-14",
+    "hora": "17:00",
+    "color": "green"
+  },
+  {
+    "titulo": "Azkorri al microscopio",
+    "fecha": "2025-06-15",
+    "hora": "17:00",
+    "color": "orange"
+  },
+  {
+    "titulo": "Ruta final",
+    "fecha": "2025-06-21",
+    "hora": "11:00",
+    "color": "blue"
+  },
+  {
+    "titulo": "Exposición",
+    "fecha": "2025-06-21",
+    "hora": "15:00",
+    "color": "blue"
+  },
+  {
+    "titulo": "Árboles de Getxo",
+    "fecha": "2025-07-20",
+    "hora": "17:00",
+    "color": "green"
+  },
+  {
+    "titulo": "Azkorri al microscopio",
+    "fecha": "2025-07-25",
+    "hora": "17:00",
+    "color": "orange"
+  },
+  {
+    "titulo": "Árboles de Getxo",
+    "fecha": "2025-08-01",
+    "hora": "17:00",
+    "color": "green"
+  },
+  {
+    "titulo": "Árboles de Getxo",
+    "fecha": "2025-08-02",
+    "hora": "17:00",
+    "color": "green"
+  },
+  {
+    "titulo": "Azkorri al microscopio",
+    "fecha": "2025-08-08",
+    "hora": "17:00",
+    "color": "orange"
+  },  
+  {
+    "titulo": "Azkorri al microscopio",
+    "fecha": "2025-08-09",
+    "hora": "17:00",
+    "color": "orange"
+  },
+  {
+    "titulo": "Árboles de Getxo",
+    "fecha": "2025-09-06",
+    "hora": "17:00",
+    "color": "green"
+  },
+  {
+    "titulo": "Árboles de Getxo",
+    "fecha": "2025-09-07",
+    "hora": "17:00",
+    "color": "green"
+  },
+  {
+    "titulo": "Árboles de Getxo",
+    "fecha": "2025-09-27",
+    "hora": "17:00",
+    "color": "green"
+  },
+  {
+    "titulo": "Azkorri al microscopio",
+    "fecha": "2025-10-04",
+    "hora": "17:00",
+    "color": "orange"
+  },
+  {
+    "titulo": "Azkorri al microscopio",
+    "fecha": "2025-10-05",
+    "hora": "17:00",
+    "color": "orange"
+  },
+  {
+    "titulo": "Árboles de Getxo",
+    "fecha": "2025-10-11",
+    "hora": "17:00",
+    "color": "green"
+  },
+  {
+    "titulo": "Azkorri al microscopio",
+    "fecha": "2025-10-25",
+    "hora": "17:00",
+    "color": "orange"
   }
 ]

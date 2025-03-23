@@ -12,6 +12,14 @@
           <span class="punto leyenda-punto" style="background-color: green;"></span>
           <span>Árboles de Getxo</span>
         </div>
+        <div class="leyenda-item">
+          <span class="punto leyenda-punto" style="background-color: blue;"></span>
+          <span>Actividad de Zalla Natura</span>
+        </div>
+        <div class="leyenda-item">
+          <span class="punto leyenda-punto" style="background-color: purple;"></span>
+          <span>Otras actividades</span>
+        </div>
       </div>
 
       <div class="definicionActividad">
