@@ -132,6 +132,7 @@ const closeMobileNav = () => {
     z-index: 99;
     width: 100%;
     position: fixed;
+    height: 3.5rem;
     transition: 0.5s ease all;
   }
 
@@ -253,7 +254,7 @@ const closeMobileNav = () => {
 
   .logo {
     position: absolute;
-    height: 3rem;
+    height: 2.8rem;
   }
   @media (min-width: 1024px) {
     li {
