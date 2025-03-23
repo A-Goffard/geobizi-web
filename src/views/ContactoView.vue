@@ -150,4 +150,11 @@ a{
   justify-content: center;
 
 }
+
+@media (max-width: 613px) {
+  .contact-container {
+    padding: 1rem;
+    margin: 0.5rem;
+  }
+}
 </style>
