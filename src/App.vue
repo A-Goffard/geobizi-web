@@ -118,6 +118,15 @@ margin: 2rem;
   gap: 1rem;
 
   }
+
+  .horizontal { 
+  margin: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  gap: 1rem;
+}
+
 }
 
 

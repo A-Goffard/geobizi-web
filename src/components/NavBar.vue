@@ -17,10 +17,10 @@
           <li>
             <router-link class="NavButton link" :to="{name: 'calendario'}" @click="closeMobileNav">Calendario</router-link>
           </li>
-<!--           <li>
+          <li>
             <router-link class="NavButton link" :to="{name: 'reservas'}" @click="closeMobileNav">Reservas</router-link>
-          </li> -->
- <!--          <li>
+          </li>
+<!--          <li>
             <router-link class="NavButton link" :to="{name: 'geotienda'}" @click="closeMobileNav">Geotienda</router-link>
           </li> -->
           <li>
@@ -46,13 +46,13 @@
             <li>
               <router-link class="NavButton link" :to="{name: 'servicios'}" @click="closeMobileNav">Servicios</router-link>
             </li>
-<li>
+            <li>
               <router-link class="NavButton link" :to="{name: 'calendario'}" @click="closeMobileNav">Calendario</router-link>
             </li>
-                      <!--   <li>
+            <li>
               <router-link class="NavButton link" :to="{name: 'reservas'}" @click="closeMobileNav">Reservas</router-link>
             </li>
-            <li>
+           <!--  <li>
               <router-link class="NavButton link" :to="{name: 'geotienda'}" @click="closeMobileNav">Geotienda</router-link>
             </li> -->
             <li>
@@ -269,3 +269,5 @@ const closeMobileNav = () => {
 
   </style>
   
+
+

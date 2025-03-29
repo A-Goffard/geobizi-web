@@ -115,11 +115,6 @@ const routes = [
         component: DiaTierraView,
     },
     {
-        path: '/blog/detalle-mariquitas',
-        name: 'mariquitas',
-        component: MariquitasView,
-    },
-    {
         path: '/contacto',
         name: 'contacto',
         component: ContactoView,
