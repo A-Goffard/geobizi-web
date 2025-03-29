@@ -68,6 +68,7 @@
 
 <script setup>
 import { ref, computed } from 'vue'
+import emailjs from '@emailjs/browser'
 import actividades from '@/assets/json/actividades.json'
 
 const formData = ref({
@@ -78,7 +79,7 @@ const formData = ref({
   actividad: '',
   message: '',
   privacyAccepted: false,
-  numPersonas: 1 // Nuevo campo para el número de personas
+  numPersonas: 1
 })
 
 const tituloSeleccionado = ref('')
@@ -105,41 +106,48 @@ const submitForm = () => {
     return
   }
 
-  // Crear el mensaje de reserva
-  const messageData = {
-    nombre: formData.value.nombre,
-    apellidos: formData.value.apellidos,
-    email: formData.value.email,
-    phone: formData.value.phone,
-    actividad: formData.value.actividad,
-    numPersonas: formData.value.numPersonas, // Incluir el número de personas
-    message: formData.value.message
+  // Crear el contenido del mensaje con todos los datos
+  const messageContent = `
+    Nombre: ${formData.value.nombre}\n
+    Apellidos: ${formData.value.apellidos}\n
+    Correo Electrónico: ${formData.value.email}\n
+    Teléfono: ${formData.value.phone}\n
+    Actividad: ${formData.value.actividad}\n
+    Número de personas: ${formData.value.numPersonas}\n
+    Mensaje adicional: ${formData.value.message}
+  `
+
+  // Configurar los datos para enviar con EmailJS
+  const templateParams = {
+    from_name: formData.value.nombre + ' ' + formData.value.apellidos,
+    message: messageContent
   }
 
-  const emailRecipient = 'geobizi@hotmail.com'
-  const emailBody = `
-    Nombre: ${messageData.nombre}\n
-    Apellidos: ${messageData.apellidos}\n
-    Correo Electrónico: ${messageData.email}\n
-    Teléfono: ${messageData.phone}\n
-    Actividad: ${messageData.actividad}\n
-    Número de personas: ${messageData.numPersonas}\n
-    Mensaje: ${messageData.message}
-  `
-  console.log('Enviando correo electrónico a', emailRecipient, 'con el siguiente contenido:')
-  console.log(emailBody)
-
-  // Reiniciar el formulario después de enviar
-  formData.value.nombre = ''
-  formData.value.apellidos = ''
-  formData.value.email = ''
-  formData.value.phone = ''
-  formData.value.actividad = ''
-  formData.value.message = ''
-  formData.value.privacyAccepted = false
-  formData.value.numPersonas = 1
-
-  alert('Mensaje enviado correctamente.')
+  emailjs
+    .send(
+      import.meta.env.VUE_APP_EMAILJS_SERVICE_ID,
+      import.meta.env.VUE_APP_EMAILJS_TEMPLATE_ID,
+      templateParams,
+      import.meta.env.VUE_APP_EMAILJS_PUBLIC_KEY
+    )
+    .then(
+      () => {
+        alert('Mensaje enviado correctamente.')
+        // Reiniciar el formulario después de enviar
+        formData.value.nombre = ''
+        formData.value.apellidos = ''
+        formData.value.email = ''
+        formData.value.phone = ''
+        formData.value.actividad = ''
+        formData.value.message = ''
+        formData.value.privacyAccepted = false
+        formData.value.numPersonas = 1
+      },
+      (error) => {
+        console.error('Error al enviar el mensaje:', error)
+        alert('Hubo un error al enviar el mensaje. Por favor, inténtalo de nuevo.')
+      }
+    )
 }
 </script>
 

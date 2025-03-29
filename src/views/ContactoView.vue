@@ -37,6 +37,7 @@
 
 <script setup>
 import { ref } from 'vue'
+import emailjs from '@emailjs/browser'
 
 const formData = ref({
   name: '',
@@ -52,35 +53,42 @@ const submitForm = () => {
     return
   }
 
-  // Aquí puedes implementar el código para enviar el formulario
-  // Por ejemplo, utilizando un servicio de backend o enviando un correo electrónico
-  const messageData = {
-    name: formData.value.name,
-    email: formData.value.email,
-    phone: formData.value.phone,
-    message: formData.value.message
+  // Crear el contenido del mensaje con todos los datos
+  const messageContent = `
+    Nombre: ${formData.value.name}\n
+    Correo Electrónico: ${formData.value.email}\n
+    Teléfono: ${formData.value.phone}\n
+    Mensaje: ${formData.value.message}
+  `
+
+  // Configurar los datos para enviar con EmailJS
+  const templateParams = {
+    from_name: formData.value.name,
+    message: messageContent
   }
 
-  // Simulación de envío de correo electrónico
-  const emailRecipient = 'geobizi@hotmail.com'
-  const emailBody = `
-    Nombre: ${messageData.name}\n
-    Correo Electrónico: ${messageData.email}\n
-    Teléfono: ${messageData.phone}\n
-    Mensaje: ${messageData.message}
-  `
-  // Aquí podrías realizar el envío del correo electrónico utilizando tu backend o servicio apropiado
-  console.log('Enviando correo electrónico a', emailRecipient, 'con el siguiente contenido:')
-  console.log(emailBody)
-
-  // Reiniciar el formulario después de enviar
-  formData.value.name = ''
-  formData.value.email = ''
-  formData.value.phone = ''
-  formData.value.message = ''
-  formData.value.privacyAccepted = false
-
-  alert('Mensaje enviado correctamente.')
+  emailjs
+    .send(
+      import.meta.env.VUE_APP_EMAILJS_SERVICE_ID,
+      import.meta.env.VUE_APP_EMAILJS_TEMPLATE_ID,
+      templateParams,
+      import.meta.env.VUE_APP_EMAILJS_PUBLIC_KEY
+    )
+    .then(
+      () => {
+        alert('Mensaje enviado correctamente.')
+        // Reiniciar el formulario después de enviar
+        formData.value.name = ''
+        formData.value.email = ''
+        formData.value.phone = ''
+        formData.value.message = ''
+        formData.value.privacyAccepted = false
+      },
+      (error) => {
+        console.error('Error al enviar el mensaje:', error)
+        alert('Hubo un error al enviar el mensaje. Por favor, inténtalo de nuevo.')
+      }
+    )
 }
 </script>
 
