@@ -38,6 +38,7 @@
 <script setup>
 import { ref } from 'vue'
 import emailjs from '@emailjs/browser'
+import.meta.env.VITE_EMAILJS_PUBLIC_KEY
 
 const formData = ref({
   name: '',

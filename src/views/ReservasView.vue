@@ -70,6 +70,7 @@
 import { ref, computed } from 'vue'
 import emailjs from '@emailjs/browser'
 import actividades from '@/assets/json/actividades.json'
+import.meta.env.VITE_EMAILJS_PUBLIC_KEY
 
 const formData = ref({
   nombre: '',
@@ -126,9 +127,9 @@ const submitForm = () => {
   emailjs
     .send(
       import.meta.env.VUE_APP_EMAILJS_SERVICE_ID,
-      import.meta.env.VUE_APP_EMAILJS_TEMPLATE_ID,
+      import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
       templateParams,
-      import.meta.env.VUE_APP_EMAILJS_PUBLIC_KEY
+      import.meta.env.VITE_EMAILJS_PUBLIC_KEY
     )
     .then(
       () => {
