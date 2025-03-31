@@ -53,24 +53,24 @@
           </label>
         </div>
         <div class="horizontalC">
-          <input type="checkbox" id="privacy" v-model="formData.privacyAccepted" required>
-          <label for="privacy">
+          <input type="checkbox" id="privacyAviso" v-model="formData.privacyAcceptedAviso" required>
+          <label for="privacyAviso">
             Es una petición de reserva, no una reserva confirmada. Nos pondremos en contacto contigo para confirmar la disponibilidad.
           </label>
         </div>
         <div class="center">
           <button type="submit">Pedir reserva</button>
         </div>
+        <p v-if="successMessage" class="success-message">{{ successMessage }}</p>
+        <p v-if="errorMessage" class="error-message">{{ errorMessage }}</p>
       </form>
     </div>
   </div>
 </template>
 
 <script setup>
-import { ref, computed } from 'vue'
-import emailjs from '@emailjs/browser'
-import actividades from '@/assets/json/actividades.json'
-import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+import { ref, computed } from 'vue';
+import actividades from '@/assets/json/actividades.json';
 
 const formData = ref({
   nombre: '',
@@ -81,75 +81,59 @@ const formData = ref({
   message: '',
   privacyAccepted: false,
   numPersonas: 1
-})
+});
 
-const tituloSeleccionado = ref('')
-const fechasDisponibles = ref([])
+const tituloSeleccionado = ref('');
+const fechasDisponibles = ref([]);
+const successMessage = ref('');
+const errorMessage = ref('');
 
 // Obtener títulos únicos
 const titulosUnicos = computed(() => {
-  const hoy = new Date()
-  const actividadesFiltradas = actividades.filter(actividad => new Date(actividad.fecha) >= hoy)
-  return [...new Set(actividadesFiltradas.map(actividad => actividad.titulo))]
-})
+  const hoy = new Date();
+  const actividadesFiltradas = actividades.filter(actividad => new Date(actividad.fecha) >= hoy);
+  return [...new Set(actividadesFiltradas.map(actividad => actividad.titulo))];
+});
 
 // Actualizar las fechas disponibles según el título seleccionado
 const actualizarFechas = () => {
-  const hoy = new Date()
+  const hoy = new Date();
   fechasDisponibles.value = actividades.filter(
     actividad => actividad.titulo === tituloSeleccionado.value && new Date(actividad.fecha) >= hoy
-  )
-}
+  );
+};
 
 const submitForm = () => {
-  if (!formData.value.privacyAccepted) {
-    alert('Debes aceptar la política de privacidad para enviar el mensaje.')
-    return
-  }
+  successMessage.value = '';
+  errorMessage.value = '';
 
-  // Crear el contenido del mensaje con todos los datos
-  const messageContent = `
-    Nombre: ${formData.value.nombre}\n
-    Apellidos: ${formData.value.apellidos}\n
-    Correo Electrónico: ${formData.value.email}\n
-    Teléfono: ${formData.value.phone}\n
-    Actividad: ${formData.value.actividad}\n
-    Número de personas: ${formData.value.numPersonas}\n
-    Mensaje adicional: ${formData.value.message}
-  `
-
-  // Configurar los datos para enviar con EmailJS
-  const templateParams = {
-    from_name: formData.value.nombre + ' ' + formData.value.apellidos,
-    message: messageContent
-  }
-
-  emailjs
-    .send(
-      import.meta.env.VUE_APP_EMAILJS_SERVICE_ID,
-      import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
-      templateParams,
-      import.meta.env.VITE_EMAILJS_PUBLIC_KEY
-    )
-    .then(
-      () => {
-        alert('Mensaje enviado correctamente.')
-        // Reiniciar el formulario después de enviar
-        formData.value.nombre = ''
-        formData.value.apellidos = ''
-        formData.value.email = ''
-        formData.value.phone = ''
-        formData.value.actividad = ''
-        formData.value.message = ''
-        formData.value.privacyAccepted = false
-        formData.value.numPersonas = 1
-      },
-      (error) => {
-        console.error('Error al enviar el mensaje:', error)
-        alert('Hubo un error al enviar el mensaje. Por favor, inténtalo de nuevo.')
+  fetch('https://formspree.io/f/xanedzed', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(formData.value)
+  })
+    .then(response => {
+      if (response.ok) {
+        successMessage.value = 'Reserva enviada correctamente.';
+        formData.value = {
+          nombre: '',
+          apellidos: '',
+          email: '',
+          phone: '',
+          actividad: '',
+          message: '',
+          privacyAccepted: false,
+          numPersonas: 1
+        };
+      } else {
+        throw new Error('Error al enviar la reserva.');
       }
-    )
-}
+    })
+    .catch(error => {
+      errorMessage.value = 'Hubo un error al enviar la reserva. Por favor, inténtalo de nuevo.';
+      console.error('Error:', error);
+    });
+};
 </script>
 
 <style scoped>
@@ -226,5 +210,17 @@ a{
     padding: 1rem;
     margin: 0.5rem;
   }
+}
+
+.success-message {
+  color: var(--green);
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.error-message {
+  color: red;
+  text-align: center;
+  margin-top: 1rem;
 }
 </style>
