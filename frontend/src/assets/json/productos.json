@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "nombre": "Brújula básica",
+    "descripcion": "Brújula ideal para principiantes en orientación.",
+    "precio": 10,
+    "imagen": "brujula_basica.jpg",
+    "stock": 50,
+    "stripeId": "price_brujula_basica",
+    "publicar": true
+  },
+  {
+    "id": 2,
+    "nombre": "Brújula profesional",
+    "descripcion": "Brújula de alta precisión para expertos en orientación.",
+    "precio": 25,
+    "imagen": "brujula_profesional.jpg",
+    "stock": 20,
+    "stripeId": "price_brujula_profesional",
+    "publicar": false
+  },
+  {
+    "id": 3,
+    "nombre": "Mapa topográfico",
+    "descripcion": "Mapa detallado para explorar rutas y senderos.",
+    "precio": 5,
+    "imagen": "mapa_topografico.jpg",
+    "stock": 100,
+    "stripeId": "price_mapa_topografico",
+    "publicar": true
+  }
+]

@@ -3,31 +3,66 @@
     "titulo": "Networking",
     "fecha": "2025-01-24",
     "hora": "18:00",
-    "color": "blue"
+    "color": "blue",
+    "descripcion1": "Evento de networking para profesionales.",
+    "descripcion2": "Conecta con otros profesionales en un ambiente relajado.",
+    "precio": 0,
+    "imagen1": "networking_img1.jpg",
+    "imagen2": "networking_img2.jpg",
+    "tipo": "actividad",
+    "publicar": false
   },
   {
     "titulo": "Deba Natura",
     "fecha": "2025-02-02",
     "hora": "10:00",
-    "color": "purple"
+    "color": "purple",
+    "descripcion1": "Explora la biodiversidad de Deba.",
+    "descripcion2": "Actividad educativa para aprender sobre la naturaleza en Deba.",
+    "precio": 0,
+    "imagen1": "deba_natura_img1.jpg",
+    "imagen2": "deba_natura_img2.jpg",
+    "tipo": "actividad",
+    "publicar": false
   },
   {
     "titulo": "Sopela",
     "fecha": "2025-02-27",
     "hora": "10:00",
-    "color": "purple"
+    "color": "purple",
+    "descripcion1": "Descubre los paisajes de Sopela.",
+    "descripcion2": "Ruta guiada para conocer la flora y fauna local.",
+    "precio": 20,
+    "imagen1": "sopela_img1.jpg",
+    "imagen2": "sopela_img2.jpg",
+    "tipo": "actividad",
+    "publicar": false
   },
   {
     "titulo": "Presentación del proyecto Zalla Natura",
     "fecha": "2025-03-07",
     "hora": "17:30",
-    "color": "blue"
+    "color": "blue",
+    "descripcion1": "Conoce el proyecto Zalla Natura.",
+    "descripcion2": "Presentación sobre la conservación y sostenibilidad en Zalla.",
+    "precio": 0,
+    "imagen1": "zalla_natura_img1.jpg",
+    "imagen2": "zalla_natura_img2.jpg",
+    "tipo": "actividad",
+    "publicar": false
   },
   {
     "titulo": "Lanzamiento de bombas de semillas",
     "fecha": "2025-03-14",
     "hora": "13:00",
-    "color": "blue"
+    "color": "blue",
+    "descripcion1": "Participa en el lanzamiento de bombas de semillas.",
+    "descripcion2": "Actividad para fomentar la reforestación y la biodiversidad.",
+    "precio": 0,
+    "imagen1": "bombas_semillas_img1.jpg",
+    "imagen2": "bombas_semillas_img2.jpg",
+    "tipo": "actividad",
+    "publicar": false
   },
   {
     "titulo": "Taller ola de Mundaka",
@@ -51,19 +86,48 @@
     "titulo": "Pintando mariposas",
     "fecha": "2025-03-22",
     "hora": "12:00",
-    "color": "blue"
-  },  
+    "color": "blue",
+    "descripcion1": "Taller de pintura para aprender sobre mariposas.",
+    "descripcion2": "Actividad creativa para todas las edades.",
+    "precio": 0,
+    "imagen1": "pintando_mariposas_img1.jpg",
+    "imagen2": "pintando_mariposas_img2.jpg",
+    "tipo": "actividad",
+    "publicar": false
+  },
   {
     "titulo": "Azkorri al microscopio",
     "fecha": "2025-03-22",
     "hora": "17:00",
-    "color": "orange"
+    "color": "orange",
+    "descripcion1": "Explora Azkorri al detalle con un microscopio.",
+    "descripcion2": "Actividad educativa para aprender sobre la biodiversidad de Azkorri.",
+    "precio": 10,
+    "imagen1": "azkorri_img1.jpg",
+    "imagen2": "azkorri_img2.jpg",
+    "tipo": "actividad",
+    "publicar": true,
+    "stripeId": "price_base_azkorri",
+    "opciones": [
+      {
+        "nombre": "Añadir microscopio",
+        "precio": 5,
+        "stripeId": "price_plus_microscopio"
+      }
+    ]
   },
   {
     "titulo": "Zonas de no poda",
     "fecha": "2025-03-28",
     "hora": "15:00",
-    "color": "blue"
+    "color": "blue",
+    "descripcion1": "Aprende sobre la importancia de las zonas de no poda.",
+    "descripcion2": "Actividad educativa para fomentar la biodiversidad.",
+    "precio": 0,
+    "imagen1": "zonas_no_poda_img1.jpg",
+    "imagen2": "zonas_no_poda_img2.jpg",
+    "tipo": "actividad",
+    "publicar": false
   },
   {
     "titulo": "Taller de eguzkilores",
@@ -75,13 +139,35 @@
     "titulo": "Árboles de Getxo",
     "fecha": "2025-04-05",
     "hora": "17:00",
-    "color": "green"
+    "color": "green",
+    "descripcion1": "Descubre los árboles más emblemáticos de Getxo.",
+    "descripcion2": "Ruta guiada para conocer la flora local y su importancia ecológica.",
+    "precio": 10,
+    "imagen1": "arboles_getxo_img1.jpg",
+    "imagen2": "arboles_getxo_img2.jpg",
+    "tipo": "actividad",
+    "publicar": true,
+    "stripeId": "price_base_arboles_getxo",
+    "opciones": [
+      {
+        "nombre": "Añadir guía especializado",
+        "precio": 5,
+        "stripeId": "price_plus_guia_especializado"
+      }
+    ]
   },
   {
     "titulo": "Oasis de mariposas",
     "fecha": "2025-04-06",
     "hora": "11:00",
-    "color": "blue"
+    "color": "blue",
+    "descripcion1": "Crea un oasis para mariposas en tu jardín.",
+    "descripcion2": "Taller práctico para aprender sobre la conservación de mariposas.",
+    "precio": 0,
+    "imagen1": "oasis_mariposas_img1.jpg",
+    "imagen2": "oasis_mariposas_img2.jpg",
+    "tipo": "actividad",
+    "publicar": false
   },
   {
     "titulo": "No poda y bombas de semillas",
@@ -123,13 +209,31 @@
     "titulo": "Huerto urbano",
     "fecha": "2025-05-06",
     "hora": "13:00",
-    "color": "blue"
+    "color": "blue",
+    "descripcion1": "Aprende a crear y mantener un huerto urbano.",
+    "descripcion2": "Taller educativo para fomentar la sostenibilidad en espacios pequeños.",
+    "precio": 0,
+    "imagen1": "huerto_urbano_img1.jpg",
+    "imagen2": "huerto_urbano_img2.jpg",
+    "tipo": "actividad",
+    "publicar": false,
+    "stripeId": "price_base_huerto_urbano",
+    "opciones": []
   },
   {
     "titulo": "Casas de insectos",
     "fecha": "2025-05-17",
     "hora": "11:00",
-    "color": "blue"
+    "color": "blue",
+    "descripcion1": "Construye casas para insectos y aprende sobre su importancia.",
+    "descripcion2": "Taller práctico para fomentar la biodiversidad en tu jardín.",
+    "precio": 0,
+    "imagen1": "casas_insectos_img1.jpg",
+    "imagen2": "casas_insectos_img2.jpg",
+    "tipo": "actividad",
+    "publicar": false,
+    "stripeId": "price_base_casas_insectos",
+    "opciones": []
   },
   {
     "titulo": "Árboles de Getxo",
@@ -190,7 +294,7 @@
     "fecha": "2025-08-08",
     "hora": "17:00",
     "color": "orange"
-  },  
+  },
   {
     "titulo": "Azkorri al microscopio",
     "fecha": "2025-08-09",
