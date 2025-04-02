@@ -20,9 +20,9 @@
           <li>
             <router-link class="NavButton link" :to="{name: 'reservas'}" @click="closeMobileNav">Reservas</router-link>
           </li>
-<!--          <li>
-            <router-link class="NavButton link" :to="{name: 'geotienda'}" @click="closeMobileNav">Geotienda</router-link>
-          </li> -->
+          <li>
+            <router-link class="NavButton link" :to="{name: 'tienda'}" @click="closeMobileNav">Tienda</router-link>
+          </li>
           <li>
             <router-link class="NavButton link" :to="{name: 'blog'}" @click="closeMobileNav">Blog</router-link>
           </li>
@@ -52,9 +52,9 @@
             <li>
               <router-link class="NavButton link" :to="{name: 'reservas'}" @click="closeMobileNav">Reservas</router-link>
             </li>
-           <!--  <li>
-              <router-link class="NavButton link" :to="{name: 'geotienda'}" @click="closeMobileNav">Geotienda</router-link>
-            </li> -->
+            <li>
+              <router-link class="NavButton link" :to="{name: 'tienda'}" @click="closeMobileNav">Tienda</router-link>
+            </li>
             <li>
               <router-link class="NavButton link" :to="{name: 'blog'}" @click="closeMobileNav">Blog</router-link>
             </li>
