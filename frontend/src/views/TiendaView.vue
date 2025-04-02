@@ -4,7 +4,10 @@
     <div class="productos">
       <div v-for="producto in productos" :key="producto.id" class="producto">
         <h2>{{ producto.nombre }}</h2>
-        <p>{{ producto.descripcion }}</p>
+        <p>{{ producto.descripcion1 }}</p>
+        <h3>Información del producto</h3>
+        <p>{{ producto.descripcion2 }}</p>
+        <p class="gastos-envio">{{ producto.gastos_envio }}</p>
         <p class="precio">{{ producto.precio }} €</p>
         <button @click="comprarProducto(producto.id)">Comprar</button>
       </div>
@@ -14,16 +17,46 @@
 
 <script setup>
 import { ref } from 'vue';
-import { loadStripe } from '@stripe/stripe-js'; // Importar el SDK de Stripe
+import { loadStripe } from '@stripe/stripe-js';
+
+const stripePublicKey = process.env.VUE_APP_STRIPE_PUBLIC_KEY;
+
+console.log('Stripe Public Key:', stripePublicKey); // Verificar si la clave está disponible
+
+if (!stripePublicKey) {
+  console.error('La clave pública de Stripe no está configurada. Verifica el archivo .env.');
+  throw new Error('VUE_APP_STRIPE_PUBLIC_KEY no está definida.');
+}
+
+const stripePromise = loadStripe(stripePublicKey);
 
 const productos = ref([
-  { id: 1, nombre: 'Actividad 1', descripcion: 'Descripción de la actividad 1', precio: 20 },
-  { id: 2, nombre: 'Artículo 1', descripcion: 'Descripción del artículo 1', precio: 15 },
-  // ...agregar más productos si es necesario
+  {
+    id: 1,
+    nombre: 'Actividad 1',
+    descripcion1: 'Descripción breve de la actividad 1.',
+    descripcion2: 'Detalles adicionales sobre la actividad 1.',
+    gastos_envio: 'Sin gastos de envío.',
+    precio: 20
+  },
+  {
+    id: 2,
+    nombre: 'Artículo 1',
+    descripcion1: 'Descripción breve del artículo 1.',
+    descripcion2: 'Detalles adicionales sobre el artículo 1.',
+    gastos_envio: 'Gastos de envío: 5 €.',
+    precio: 15
+  },
+  {
+    id: 3,
+    nombre: 'Brújula de geólogo',
+    descripcion1: 'Brújula de geólogo, con clinómetro y burbuja.',
+    descripcion2: `Información del producto:
+    Brújula de campo con espejo, clinómetro y burbuja. La circunferencia es giratoria para facilitar las medidas de dirección. Tiene clavija de ajuste y cuerda para colgar.`,
+    gastos_envio: '¡Envío gratis!',
+    precio: 30
+  }
 ]);
-
-const stripePublicKey = 'tu-clave-publica-de-stripe'; // Reemplaza con tu clave pública de Stripe
-const stripePromise = loadStripe(stripePublicKey); // Cargar Stripe de forma asíncrona
 
 const comprarProducto = async (productoId) => {
   const producto = productos.value.find(p => p.id === productoId);
@@ -93,5 +126,11 @@ const comprarProducto = async (productoId) => {
 
 .producto button:hover {
   background-color: var(--darkgreen);
+}
+
+.gastos-envio {
+  font-style: italic;
+  color: var(--darkgrey);
+  margin: 0.5rem 0;
 }
 </style>
