@@ -8,9 +8,6 @@
           <li>
             <router-link class="NavButton link" :to="{name: 'inicio'}" @click="closeMobileNav">Inicio</router-link>
           </li>
-<!--           <li>
-            <router-link class="NavButton link" :to="{name: 'filosofia'}" @click="closeMobileNav">Filosofía</router-link>
-          </li> -->
           <li>
             <router-link class="NavButton link" :to="{name: 'servicios'}" @click="closeMobileNav">Servicios</router-link>
           </li>
@@ -27,6 +24,9 @@
             <router-link class="NavButton link" :to="{name: 'blog'}" @click="closeMobileNav">Blog</router-link>
           </li>
           <li>
+            <router-link class="NavButton link" :to="{name: 'projectos'}" @click="closeMobileNav">Proyectos</router-link>
+          </li>
+          <li>
             <router-link class="NavButton link" :to="{name: 'contacto'}" @click="closeMobileNav">Contacto</router-link>
           </li>
         </ul>
@@ -40,9 +40,6 @@
             <li>
               <router-link class="NavButton link" :to="{name: 'inicio'}" @click="closeMobileNav">Inicio</router-link>
             </li>
-<!--             <li>
-              <router-link class="NavButton link" :to="{name: 'filosofia'}" @click="closeMobileNav">Filosofía</router-link>
-            </li> -->
             <li>
               <router-link class="NavButton link" :to="{name: 'servicios'}" @click="closeMobileNav">Servicios</router-link>
             </li>
@@ -59,8 +56,12 @@
               <router-link class="NavButton link" :to="{name: 'blog'}" @click="closeMobileNav">Blog</router-link>
             </li>
             <li>
+              <router-link class="NavButton link" :to="{name: 'projectos'}" @click="closeMobileNav">Proyectos</router-link>
+            </li>
+            <li>
               <router-link class="NavButton link" :to="{name: 'contacto'}" @click="closeMobileNav">Contacto</router-link>
             </li>
+
           </ul>
         </transition>
       </nav>
@@ -268,6 +269,6 @@ const closeMobileNav = () => {
   }
 
   </style>
-  
+
 
 

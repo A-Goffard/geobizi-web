@@ -1,14 +1,18 @@
 import { createRouter, createWebHistory } from "vue-router";
+
 import InicioView from "../views/InicioView.vue";
 import ServiciosView from "../views/ServiciosView.vue";
 import CalendarioView from "../views/CalendarioView.vue";
 import ReservasView from "../views/ReservasView.vue";
 import TiendaView from "../views/TiendaView.vue";
+
+import ProjectosView from '../views/ProjectosView.vue';
+
+import DetalleFlyschView from "@/views/proyectos/DetalleFlyschView.vue";
+import DetalleZallaNaturaView from "@/views/proyectos/DetalleZallaNaturaView.vue";
+
 import BlogView from "../views/BlogView.vue";
-import ContactoView from "../views/ContactoView.vue";
-import PoliticadecancelacionesView from "../views/PoliticadecancelacionesView.vue";
-import AvisolegalView from "../views/AvisolegalView.vue";
-import PoliticadeprivacidadView from "../views/PoliticadeprivacidadView.vue";
+
 import PatrimonioEuropeo2023View from "../views/blog/PatrimonioEuropeo2023View.vue";
 import FreeToursView from "@/views/blog/FreeToursView.vue";
 import ValerianaRojaView from "@/views/blog/ValerianaRojaView.vue";
@@ -20,6 +24,15 @@ import CarpobrotusView from "@/views/blog/CarpobrotusView.vue";
 import FloraAutoctonaView from "@/views/blog/FloraAutoctonaView.vue";
 import FosilesView from "@/views/blog/FosilesView.vue";
 import DiaTierraView from "@/views/blog/DiaTierraView.vue";
+
+import ContactoView from "../views/ContactoView.vue";
+
+import PoliticadecancelacionesView from "../views/PoliticadecancelacionesView.vue";
+import AvisolegalView from "../views/AvisolegalView.vue";
+import PoliticadeprivacidadView from "../views/PoliticadeprivacidadView.vue";
+
+
+
 import DetalleColegios from "../components/servicios/DetalleColegios.vue";
 import DetalleAsociaciones from "../components/servicios/DetalleAsociaciones.vue";
 import DetalleInstituciones from "../components/servicios/DetalleInstituciones.vue";
@@ -27,6 +40,7 @@ import DetalleDigital from "../components/servicios/DetalleDigital.vue";
 import DetalleProyectos from "../components/servicios/DetalleProyectos.vue";
 import DetalleGeneral from "../components/servicios/DetalleGeneral.vue";
 import Calendario from "@/components/calendario/CalendarioActividades2025.vue";
+
 
 const routes = [
     {
@@ -54,6 +68,23 @@ const routes = [
         name: "tienda",
         component: TiendaView,
     },
+    
+    {
+        path: "/projectos",
+        name: "projectos",
+        component: ProjectosView,
+    },
+    {
+        path: "/detalle-flysch",
+        name: "detalle-flysch",
+        component: DetalleFlyschView,
+    },
+    {
+        path: "/detalle-zalla-natura",
+        name: "detalle-zalla-natura",
+        component: DetalleZallaNaturaView,
+    },
+
     {
         path: "/blog",
         name: "blog",
@@ -119,6 +150,8 @@ const routes = [
         name: "contacto",
         component: ContactoView,
     },
+
+
     {
         path: "/politicadecancelaciones",
         name: "cancelaciones",
@@ -134,6 +167,8 @@ const routes = [
         name: "privacidad",
         component: PoliticadeprivacidadView,
     },
+
+
     {
         path: "/detalle-colegios",
         name: "DetalleColegios",
@@ -168,7 +203,7 @@ const routes = [
         path: "/calendario",
         name: "Calendario",
         component: Calendario,
-    },
+    }
 ];
 
 const router = createRouter({
