@@ -100,19 +100,19 @@
     "fecha": "2025-03-22",
     "hora": "17:00",
     "color": "orange",
-    "descripcion1": "Explora Azkorri al detalle con un microscopio.",
-    "descripcion2": "Actividad educativa para aprender sobre la biodiversidad de Azkorri.",
+    "descripcion1": "Explora el entorno al detalle con un microscopio de campo. Actividad educativa para aprender sobre la biodiversidad geológica y biológica de Azkorri.",
+    "descripcion2": "Es ideal para familias y grupos escolares.",
     "precio": 10,
     "imagen1": "azkorri_img1.jpg",
     "imagen2": "azkorri_img2.jpg",
     "tipo": "actividad",
     "publicar": true,
-    "stripeId": "price_base_azkorri",
+    "stripeId": "prod_S3t6jXiSCmLWXg",
     "opciones": [
       {
         "nombre": "Añadir microscopio",
         "precio": 5,
-        "stripeId": "price_plus_microscopio"
+        "stripeId": "prod_S3tVPQLORmpz0s"
       }
     ]
   },
@@ -140,19 +140,19 @@
     "fecha": "2025-04-05",
     "hora": "17:00",
     "color": "green",
-    "descripcion1": "Descubre los árboles más emblemáticos de Getxo.",
-    "descripcion2": "Ruta guiada para conocer la flora local y su importancia ecológica.",
+    "descripcion1": "Descubre la variedad de árboles que podemos encontrar en Getxo. Obsérbalos con un microscopio de campo. Ruta guiada para conocer la flora local y su importancia ecológica. ¿Sabes calcular la edad de un árbol din dañarlo?",
+    "descripcion2": "Es ideal para familias y grupos escolares.",
     "precio": 10,
     "imagen1": "arboles_getxo_img1.jpg",
     "imagen2": "arboles_getxo_img2.jpg",
     "tipo": "actividad",
     "publicar": true,
-    "stripeId": "price_base_arboles_getxo",
+    "stripeId": "prod_S3tFx6yhLB8UWB",
     "opciones": [
       {
         "nombre": "Añadir guía especializado",
         "precio": 5,
-        "stripeId": "price_plus_guia_especializado"
+        "stripeId": "prod_S3tVPQLORmpz0s"
       }
     ]
   },

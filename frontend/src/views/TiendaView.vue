@@ -10,7 +10,6 @@
       <div v-for="producto in actividadesPublicadas" :key="producto.id" class="producto">
         <h2>{{ producto.titulo }}</h2>
         <p>{{ producto.descripcion1 }}</p>
-        <h3>Información del producto</h3>
         <p>{{ producto.descripcion2 }}</p>
         <p class="precio">{{ producto.precio }} €</p>
         <div v-if="fechasDisponibles[producto.titulo] && fechasDisponibles[producto.titulo].length > 0">
@@ -44,6 +43,7 @@
         <h2>{{ producto.nombre }}</h2>
         <p>{{ producto.descripcion }}</p>
         <p class="precio">{{ producto.precio }} €</p>
+        <p>¡Gastos de envío gratis!</p>
         <button @click="agregarAlCarrito(producto, 'producto')">Agregar al carrito</button>
       </div>
     </div>
@@ -247,24 +247,24 @@ const pagarCarrito = async () => {
 }
 
 .producto select {
-  margin: 0.5rem 0; /* Añadir margen alrededor del selector de fechas */
+  margin: 0.5rem 0;
   padding: 0.5rem;
   font-size: 1rem;
 }
 
 .producto label {
-  display: inline-flex; /* Asegurar que el checkbox y el texto estén en la misma línea */
-  align-items: center; /* Alinear verticalmente el checkbox y el texto */
-  margin-bottom: 0.5rem; /* Añadir margen inferior entre las opciones */
+  display: inline-flex;
+  align-items: center; 
+  margin-bottom: 0.5rem; 
 }
 
 .producto input[type="checkbox"] {
-  margin-right: 0.5rem; /* Añadir margen entre el checkbox y el texto */
-  accent-color: var(--darkgreen); /* Cambiar el color del checkbox cuando está seleccionado */
+  margin-right: 0.5rem; 
+  accent-color: var(--darkgreen); 
 }
 
 .producto .extras {
-  margin-top: 1rem; /* Añadir margen superior para separar los extras del resto */
+  margin-top: 1rem; 
 }
 
 .producto button {
