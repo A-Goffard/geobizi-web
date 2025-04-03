@@ -9,7 +9,7 @@
       <meta property="og:url" content="https://geobizi.com/articulo-flora-autoctona">
       <meta property="og:image" content="https://geobizi.com/img/flora-autoctona.jpg">
     </head>
-    <div class="contenedor-principal margen">
+    <div class="contenedor-principal">
       <h1>Flora autóctona: la importancia de cuidarla</h1>
       
 

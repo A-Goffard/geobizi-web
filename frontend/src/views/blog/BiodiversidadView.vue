@@ -29,7 +29,7 @@
       content="https://geobizi.com/img/biodiversidad-cambio-climatico.jpg"
     />
   </head>
-  <div class="contenedor-principal margen">
+  <div class="contenedor-principal">
     <h1>
       La Importancia de la Biodiversidad en Relación con el Cambio Climático
     </h1>

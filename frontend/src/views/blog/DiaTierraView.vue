@@ -9,7 +9,7 @@
       <meta property="og:url" content="https://geobizi.com/articulo-dia-mundial-de-la-tierra">
       <meta property="og:image" content="https://geobizi.com/img/dia-mundial-de-la-tierra.jpg">
     </head>
-    <div class="contenedor-principal margen">
+    <div class="contenedor-principal">
       <h1>DÍA MUNDIAL DE LA TIERRA</h1>
       
       <p>En el año 1968, el Servicio de Salud Pública de Estados Unidos organizó una conferencia sobre medio ambiente llamada <strong>Simposio de Ecología Humana</strong>, que se enfocaba en los efectos del deterioro de la <strong>biodiversidad</strong> en la salud humana. El evento fue un éxito y esto llevó a que el profesor Morton Hilbert y ciertos grupos de estudiantes desarrollaran la idea de un <strong>Día de la Tierra</strong>. En esa misma época, otras iniciativas similares también surgieron para concienciar sobre la importancia del medio ambiente.</p>

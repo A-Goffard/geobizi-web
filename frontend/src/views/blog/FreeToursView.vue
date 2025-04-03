@@ -1,5 +1,5 @@
 <template>
-    <div class="contenedor-principal margen">
+    <div class="contenedor-principal">
         <h1><strong>Free Tours</strong>: Descubriendo el Mundo a tu Ritmo y Estilo</h1>
     <h2>Introducción</h2>
     <p>Para aquellos que aman la libertad de planificar sus viajes a su manera, las visitas turísticas predeterminadas pueden resultar restrictivas. Sin embargo, en ciertos lugares con aforo limitado o requisitos de reserva, como la <strong>Alhambra de Granada</strong> o el <strong>Burj Khalifa</strong> en Dubái, es necesario adaptarse a un horario específico. Afortunadamente, en los últimos años ha surgido una alternativa en el mundo del turismo: los <strong>free tours</strong> o <strong>tours gratuitos</strong>. En este artículo, exploraremos qué son los free tours, cómo funcionan y responderemos algunas preguntas frecuentes para que puedas decidir si esta opción encaja con tu estilo de viaje.</p>

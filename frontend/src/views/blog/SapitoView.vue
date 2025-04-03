@@ -9,7 +9,7 @@
       <meta property="og:url" content="https://geobizi.com/articulo-sapito-corredor">
       <meta property="og:image" content="https://geobizi.com/img/sapito-corredor.jpg">
     </head>
-    <div class="contenedor-principal margen">
+    <div class="contenedor-principal">
       <h1>El Sapito Corredor o Buffo Calamita: Un Tesoro Ecológico en Peligro</h1>
       <h2>El Sapito corredor o Buffo Calamita: Un Anfibio Encantador y Vulnerable</h2>
       

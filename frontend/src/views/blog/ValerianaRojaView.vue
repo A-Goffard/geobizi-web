@@ -1,5 +1,5 @@
 <template>
-    <div class="contenedor-principal margen">
+    <div class="contenedor-principal">
         <h1><strong>Centranthus Ruber</strong> (Valeriana Roja): Una Belleza Invasora en los Jardines</h1>
     
         <p>En los últimos años, la preocupación por la propagación de <strong>especies invasoras</strong> ha crecido considerablemente. Una de las plantas que ha comenzado a destacar en este sentido es el <strong>Centranthus ruber</strong>, comúnmente conocido como <strong>valeriana roja</strong> o valeriana roja espinosa. Aunque su apariencia encantadora y sus vivos colores la han convertido en una elección popular en jardinería, esta planta también ha demostrado tener un impacto negativo en los ecosistemas locales al convertirse en una <strong>especie invasora</strong>.</p>

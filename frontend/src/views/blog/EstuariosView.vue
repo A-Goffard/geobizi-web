@@ -1,5 +1,5 @@
 <template>
-    <div class="contenedor-principal margen">
+    <div class="contenedor-principal">
 
         <h1>La formación de los estuarios: donde el mar y el río se encuentran</h1>
 

@@ -1,5 +1,5 @@
 <template>
-    <div class="contenedor-principal margen">
+    <div class="contenedor-principal">
         <h1>La Importancia de las <strong>mariquitas</strong> en el <strong>medioambiente</strong></h1>
 
     <p>Las mariquitas, también conocidas como catarinas, vaquitas de San Antonio o marigorringo (en Euskadi) son pequeños insectos que han capturado la atención y el cariño de muchas personas en todo el mundo. Sin embargo, su importancia no se limita solo a su apariencia encantadora, ya que estas diminutas criaturas desempeñan un papel fundamental en el <strong>equilibrio ecológico y la biodiversidad</strong> de nuestros ecosistemas. En este artículo, exploraremos la importancia de las mariquitas para el medioambiente y la biodiversidad.</p>

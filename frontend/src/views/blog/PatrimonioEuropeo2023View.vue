@@ -1,5 +1,5 @@
 <template>
-    <div class="contenedor-principal margen">
+    <div class="contenedor-principal">
 
         <h1>Jornadas de Patrimonio Europeo 2023</h1>
         

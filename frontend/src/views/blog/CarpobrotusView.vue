@@ -9,7 +9,7 @@
       <meta property="og:url" content="https://geobizi.com/articulo-carpobrotus-edulis">
       <meta property="og:image" content="https://geobizi.com/img/carpobrotus-edulis.jpg">
     </head>
-    <div class="contenedor-principal margen">
+    <div class="contenedor-principal">
       <h1>Carpobrotus edulis, planta invasora muy perjudicial</h1>
       <h2>Carpobrotus edulis, una especie originaria de Sudáfrica que resulta ser invasora en muchas partes de nuestro planeta.</h2>
       

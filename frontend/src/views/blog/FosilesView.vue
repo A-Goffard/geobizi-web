@@ -9,7 +9,7 @@
       <meta property="og:url" content="https://geobizi.com/articulo-fosiles">
       <meta property="og:image" content="https://geobizi.com/img/fosiles.jpg">
     </head>
-    <div class="contenedor-principal margen">
+    <div class="contenedor-principal">
       <h1>¿Qué son los fósiles y cómo se forman?</h1>
 
       <p>Los <strong>fósiles</strong> son restos o huellas de organismos que vivieron en la Tierra en el pasado. Estos restos son importantes para comprender la <strong>evolución</strong> de la vida en nuestro planeta y cómo han cambiado los ecosistemas a lo largo del tiempo.</p>
