@@ -1,0 +1,22 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+
+}
+
+#app {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Cambiado a 100vh para garantizar que ocupe toda la altura de la ventana */
+}
+
+main {
+    flex: 1; /* Se asegura de que el contenido principal ocupe el espacio restante */
+}
+
+footer {
+    margin-top: auto; /* Empuja el footer hacia la parte inferior */
+}

@@ -1,9 +1,15 @@
 <template>
-  <div>
-    <Nav />
-    <router-view></router-view>
-    <Footer />
-    <CookiesConsent />
+  <div id="app">
+    <header>
+      <Nav />
+    </header>
+    <main>
+      <router-view></router-view>
+    </main>
+    <footer>
+      <Footer />
+      <CookiesConsent />
+    </footer>
   </div>
 </template>
 <script setup>
@@ -39,6 +45,27 @@ box-sizing: border-box;
   --green: #498536;
   --darkgreen: #2c770f;
 
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+#app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Asegura que el contenedor ocupe toda la altura de la ventana */
+}
+
+main {
+  flex: 1; /* Permite que el contenido principal ocupe el espacio restante */
+}
+
+footer {
+  margin-top: auto; /* Empuja el footer hacia la parte inferior */
 }
 
 h1 {
