@@ -1,26 +1,27 @@
 <template>
-  <div class="contenedor-principal">
-    <div class="contact-container">
-      <h1>Reserva de actividades</h1>
+  <div class="container">
+    <div v-if="!actividadSeleccionada" class="general-container">
+      <h1>Actividades disponibles</h1>
+      <div class="container">
+        <div 
+          v-for="actividad in actividadesFiltradas" 
+          :key="actividad.id" 
+          class="card" 
+          @click="seleccionarActividad(actividad)"
+        >
+
+          <h2>{{ actividad.titulo }}</h2>
+          <img :src="actividad.imagen1" alt="Imagen de la actividad" />
+          <p>{{ actividad.descripcion1 }}</p>
+          <p><strong>Fecha:</strong> {{ actividad.fecha }}</p>
+          <p><strong>Hora:</strong> {{ actividad.hora }}</p>
+        </div>
+      </div>
+    </div>
+
+    <div v-else class="contact-container">
+      <h1>Reserva de {{ actividadSeleccionada.titulo }}</h1>
       <form @submit.prevent="submitForm">
-        <div class="form-group">
-          <label for="titulo">Título de la actividad:</label>
-          <select id="titulo" v-model="tituloSeleccionado" @change="actualizarFechas" required>
-            <option value="" disabled>Selecciona una actividad</option>
-            <option v-for="titulo in titulosUnicos" :key="titulo" :value="titulo">
-              {{ titulo }}
-            </option>
-          </select>
-        </div>
-        <div class="form-group" v-if="fechasDisponibles.length > 0">
-          <label for="fecha">Fecha y hora:</label>
-          <select id="fecha" v-model="formData.actividad" required>
-            <option value="" disabled>Selecciona una fecha y hora</option>
-            <option v-for="fecha in fechasDisponibles" :key="fecha.id" :value="`${fecha.fecha} - ${fecha.hora}`">
-              {{ fecha.fecha }} - {{ fecha.hora }}
-            </option>
-          </select>
-        </div>
         <div class="form-group">
           <label for="nombre">Nombre:</label>
           <input type="text" id="nombre" v-model="formData.nombre" required>
@@ -64,6 +65,9 @@
         <p v-if="successMessage" class="success-message">{{ successMessage }}</p>
         <p v-if="errorMessage" class="error-message">{{ errorMessage }}</p>
       </form>
+      <div class="center">
+        <button @click="volverALista" class="volver-btn">Volver a la lista de actividades</button>
+      </div>
     </div>
   </div>
 </template>
@@ -72,6 +76,7 @@
 import { ref, computed } from 'vue';
 import actividades from '@/assets/json/actividades.json';
 
+const actividadSeleccionada = ref(null);
 const formData = ref({
   nombre: '',
   apellidos: '',
@@ -80,27 +85,27 @@ const formData = ref({
   actividad: '',
   message: '',
   privacyAccepted: false,
+  privacyAcceptedAviso: false,
   numPersonas: 1
 });
-
-const tituloSeleccionado = ref('');
-const fechasDisponibles = ref([]);
 const successMessage = ref('');
 const errorMessage = ref('');
 
-// Obtener títulos únicos
-const titulosUnicos = computed(() => {
+// Filtrar actividades futuras con reservas habilitadas
+const actividadesFiltradas = computed(() => {
   const hoy = new Date();
-  const actividadesFiltradas = actividades.filter(actividad => new Date(actividad.fecha) >= hoy);
-  return [...new Set(actividadesFiltradas.map(actividad => actividad.titulo))];
+  return actividades.filter(
+    actividad => new Date(actividad.fecha) >= hoy && actividad.reservas
+  );
 });
 
-// Actualizar las fechas disponibles según el título seleccionado
-const actualizarFechas = () => {
-  const hoy = new Date();
-  fechasDisponibles.value = actividades.filter(
-    actividad => actividad.titulo === tituloSeleccionado.value && new Date(actividad.fecha) >= hoy
-  );
+const seleccionarActividad = (actividad) => {
+  actividadSeleccionada.value = actividad;
+  formData.value.actividad = `${actividad.fecha} - ${actividad.hora}`;
+};
+
+const volverALista = () => {
+  actividadSeleccionada.value = null;
 };
 
 const submitForm = () => {
@@ -123,6 +128,7 @@ const submitForm = () => {
           actividad: '',
           message: '',
           privacyAccepted: false,
+          privacyAcceptedAviso: false,
           numPersonas: 1
         };
       } else {
@@ -137,9 +143,20 @@ const submitForm = () => {
 </script>
 
 <style scoped>
-.contenedor-principal {
+  .container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
+  }
+.general-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
   padding-top: 7rem;
-  background-color: rgb(255, 255, 255);
+  padding-left: 2rem;
+  padding-right: 2rem;
   padding-bottom: 2rem;
 }
 .contact-container {
@@ -150,6 +167,32 @@ const submitForm = () => {
   border-radius: 8px;
   box-shadow: 0px 0px 10px rgba(49, 49, 49, 0.7);
   padding-bottom: 2rem;
+  margin-top: 7rem;
+
+}
+.card {
+  width: 300px;
+  padding: 20px;
+  background-color: var(--megashoftgreen);
+  border: 1px solid var(--shoftgreen);
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+  cursor: pointer;
+}
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+.card h2 {
+  margin-top: 0;
+}
+.card p {
+  color: var(--darkgrey);
+}
+img {
+  width: 100%;
+  border-radius: 0.5rem;
 }
 .horizontalC { 
   margin: 1rem;
@@ -202,13 +245,35 @@ a{
 .center {
   display: flex;
   justify-content: center;
+  margin-top: 1rem;
+}
 
+.volver-btn {
+  margin-top: 1rem;
+  padding: 0.75rem 1rem;
+  background-color: var(--green);
+  color: var(--white);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.volver-btn:hover {
+  background-color: var(--lightgreen);
 }
 
 @media (max-width: 613px) {
   .contact-container {
     padding: 1rem;
     margin: 0.5rem;
+    margin-top: 5rem; /* Ajuste adicional para evitar que quede debajo del menú en móvil */
+  }
+  .general-container {
+    padding: 1rem;
+    margin: 0.5rem;
+    margin-top: 2rem;
   }
 }
 
