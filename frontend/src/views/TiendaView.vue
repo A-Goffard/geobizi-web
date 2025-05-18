@@ -20,6 +20,16 @@
             </option>
           </select>
         </div>
+        <div>
+          <label for="numPersonas">Nº de personas:</label>
+          <input
+            type="number"
+            min="1"
+            v-model.number="productoSeleccionado[producto.id].numPersonas"
+            :id="'numPersonas-' + producto.id"
+            style="width: 60px; margin-left: 0.5rem; height: 2rem;"
+          />
+        </div>
         <div v-if="producto.opciones && producto.opciones.length > 0">
           <label>Opciones adicionales:</label>
           <div v-for="opcion in producto.opciones" :key="opcion.nombre">
@@ -51,20 +61,36 @@
     <div class="carrito">
       <h2>Carrito de compras</h2>
       <div v-if="carrito.length > 0">
-        <div v-for="item in carrito" :key="item.id" class="carrito-item">
-          <p>{{ item.nombre }} - {{ item.precioTotal }} €</p>
-          <p v-if="item.fecha">Fecha seleccionada: {{ item.fecha }}</p>
-          <p v-if="item.opciones && item.opciones.length > 0">
-            Opciones adicionales:
-            <ul>
-              <li v-for="opcion in item.opciones" :key="opcion.nombre">
-                {{ opcion.nombre }} (+{{ opcion.precio }} €)
-              </li>
-            </ul>
+        <div v-for="item in carrito" :key="item.id + '-' + item.fecha" class="carrito-item">
+          <p>
+            {{ item.nombre }}<br>
+            <span v-if="item.fecha">Fecha: {{ item.fecha }}</span>
           </p>
-          <button @click="eliminarDelCarrito(item.id)">Eliminar</button>
+          <div>
+            <p>
+              Nº personas: {{ item.numPersonas }}<br>
+              Precio unitario: {{ item.precioUnitario.toFixed(2) }} €<br>
+              <span v-if="item.opciones && item.opciones.length > 0">
+                Opciones adicionales:<br>
+                <ul>
+                  <li v-for="opcion in item.opciones" :key="opcion.nombre">
+                    {{ opcion.nombre }} (+{{ opcion.precio }} €)
+                  </li>
+                </ul>
+              </span>
+              <strong>Total: {{ item.precioTotal.toFixed(2) }} €</strong><br>
+              <span class="iva-desglose">
+                (IVA 21%: {{ calcularIVA(item.precioTotal).toFixed(2) }} € | Base: {{ (item.precioTotal - calcularIVA(item.precioTotal)).toFixed(2) }} €)
+              </span>
+            </p>
+            <button @click="eliminarDelCarrito(item.id, item.fecha)">Eliminar</button>
+          </div>
         </div>
-        <p class="total">Total: {{ totalCarrito }} €</p>
+        <p class="total">
+          Total: {{ totalCarrito.toFixed(2) }} €<br>
+          Base imponible: {{ (totalCarrito - calcularIVA(totalCarrito)).toFixed(2) }} €<br>
+          IVA (21%): {{ calcularIVA(totalCarrito).toFixed(2) }} €
+        </p>
         <button @click="pagarCarrito">Pagar todo</button>
       </div>
       <p v-else>El carrito está vacío.</p>
@@ -90,30 +116,56 @@ const stripePromise = loadStripe(stripePublicKey);
 const activeTab = ref('actividades'); // Controlar la pestaña activa
 
 // Filtrar actividades y productos que tienen "publicar" como true
-const actividadesPublicadas = computed(() => actividades.filter(producto => producto.publicar));
+// Mostrar solo una actividad por título (la más próxima en fecha)
+const actividadesPublicadas = computed(() => {
+  const map = new Map();
+  actividades
+    .filter(producto => producto.publicar)
+    .forEach(producto => {
+      if (
+        !map.has(producto.titulo) ||
+        new Date(producto.fecha) < new Date(map.get(producto.titulo).fecha)
+      ) {
+        map.set(producto.titulo, producto);
+      }
+    });
+  return Array.from(map.values());
+});
 const productosPublicados = computed(() => productos.filter(producto => producto.publicar));
 
-// Obtener las fechas disponibles para cada actividad
+// Obtener las fechas disponibles para cada actividad (solo futuras)
 const fechasDisponibles = computed(() => {
   const fechas = {};
+  const hoy = new Date();
   actividades.forEach((actividad) => {
     if (!fechas[actividad.titulo]) {
       fechas[actividad.titulo] = [];
     }
-    if (actividad.fecha) {
+    if (
+      actividad.fecha &&
+      new Date(actividad.fecha) >= new Date(hoy.getFullYear(), hoy.getMonth(), hoy.getDate())
+    ) {
       fechas[actividad.titulo].push(actividad.fecha);
     }
   });
   return fechas;
 });
 
-// Almacenar la fecha seleccionada y opciones adicionales para cada actividad
+// Almacenar la fecha seleccionada, opciones y número de personas para cada actividad
 const productoSeleccionado = reactive(
-  Object.fromEntries(actividadesPublicadas.value.map(producto => [producto.id, { fecha: '', opciones: [] }]))
+  Object.fromEntries(
+    actividadesPublicadas.value.map(producto => [
+      producto.id,
+      { fecha: '', opciones: [], numPersonas: 1 }
+    ])
+  )
 );
 
 // Carrito de compras
 const carrito = reactive([]);
+
+// Calcular IVA (21%)
+const calcularIVA = (total) => total * 0.21;
 
 // Agregar producto o actividad al carrito
 const agregarAlCarrito = (producto, tipo) => {
@@ -123,36 +175,44 @@ const agregarAlCarrito = (producto, tipo) => {
       alert('Por favor, selecciona una fecha para la actividad.');
       return;
     }
-
+    const numPersonas = seleccion.numPersonas > 0 ? seleccion.numPersonas : 1;
     const opcionesSeleccionadas = seleccion.opciones || [];
     const precioOpciones = opcionesSeleccionadas.reduce((total, opcion) => total + opcion.precio, 0);
+    const precioUnitario = producto.precio + precioOpciones;
+    const precioTotal = precioUnitario * numPersonas;
 
     carrito.push({
       id: producto.id,
       nombre: producto.titulo,
+      precioUnitario,
       precioBase: producto.precio,
-      precioTotal: producto.precio + precioOpciones,
-      fecha: seleccion.fecha, // Mantener la fecha seleccionada
+      precioTotal,
+      numPersonas,
+      fecha: seleccion.fecha,
       opciones: opcionesSeleccionadas,
-      stripeIds: [producto.stripeId, ...opcionesSeleccionadas.map(opcion => opcion.stripeId)]
+      stripeIds: Array(numPersonas).fill(producto.stripeId).concat(
+        opcionesSeleccionadas.flatMap(opcion => Array(numPersonas).fill(opcion.stripeId))
+      )
     });
 
-    // Reiniciar solo las opciones seleccionadas, pero mantener la fecha
+    // Reiniciar solo las opciones seleccionadas, pero mantener la fecha y número de personas
     productoSeleccionado[producto.id].opciones = [];
   } else if (tipo === 'producto') {
     carrito.push({
       id: producto.id,
       nombre: producto.nombre,
+      precioUnitario: producto.precio,
       precioBase: producto.precio,
       precioTotal: producto.precio,
+      numPersonas: 1,
       stripeIds: [producto.stripeId]
     });
   }
 };
 
-// Eliminar producto o actividad del carrito
-const eliminarDelCarrito = (productoId) => {
-  const index = carrito.findIndex(item => item.id === productoId);
+// Eliminar producto o actividad del carrito (por id y fecha)
+const eliminarDelCarrito = (productoId, fecha) => {
+  const index = carrito.findIndex(item => item.id === productoId && item.fecha === fecha);
   if (index !== -1) {
     carrito.splice(index, 1);
   }
@@ -330,5 +390,10 @@ const pagarCarrito = async () => {
 
 .carrito button:hover {
   background-color: var(--darkgreen);
+}
+
+.iva-desglose {
+  font-size: 0.95em;
+  color: var(--darkgrey);
 }
 </style>
