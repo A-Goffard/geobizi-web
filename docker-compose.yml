@@ -1,0 +1,8 @@
+# filepath: c:\Users\geotx\Desktop\Aintzane\Programacion\geobizi-web\docker-compose.yml
+version: '3'
+services:
+  frontend:
+    build: ./frontend
+    ports:
+      - "80:80"
+    restart: always
