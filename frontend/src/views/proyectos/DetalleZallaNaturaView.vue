@@ -8,7 +8,7 @@
     </p>
 
     <section class="presentation">
-      <img src="images/zalla-natura-main.jpg" alt="Imagen destacada del proyecto Zalla Natura" class="img-principal" />
+      <img src="imagenes/proyectos/zallanatura/zallanatura1.png" alt="Imagen destacada del proyecto Zalla Natura" class="img" />
       <div>
         <h2>Sobre el Proyecto</h2>
         <p>
@@ -24,27 +24,18 @@
       <h2>Actividades Realizadas</h2>
       <div class="contenido-seccion">
         <ul>
-          <li>Networking inicial</li>
-          <li>Presentación del proyecto</li>
-          <li>Plantación y lanzamiento de bombas de semillas en Landabaso eskola</li>
-          <li>Ruta para conocer los árboles de Zalla</li>
-          <li>Creación de un oasis de mariposas en el parque de Lusa</li>
-          <li>Taller de pintar mariposas</li>
+          <li><img src="imagenes/iconos/color/maripositaV.png" alt="Mariposita" class="icono" />Networking inicial</li>
+          <li><img src="imagenes/iconos/color/maripositaV.png" alt="Mariposita" class="icono" />Presentación del proyecto</li>
+          <li><img src="imagenes/iconos/color/maripositaV.png" alt="Mariposita" class="icono" />Plantación y lanzamiento de bombas de semillas en Landabaso eskola</li>
+          <li><img src="imagenes/iconos/color/maripositaV.png" alt="Mariposita" class="icono" />Ruta para conocer los árboles de Zalla</li>
+          <li><img src="imagenes/iconos/color/maripositaV.png" alt="Mariposita" class="icono" />Taller de pintar mariposas</li>
+          <li><img src="imagenes/iconos/color/maripositaV.png" alt="Mariposita" class="icono" />Creación de un oasis de mariposas en el parque de Lusa, taller de bombas de semillas y pintado de mariposas de madera</li>
+          <li><img src="imagenes/iconos/color/maripositaV.png" alt="Mariposita" class="icono" />Lanzamiendo de bombas de semillas y creación de zonas de NO siega en la zona de Tepeyac</li>
+          <li><img src="imagenes/iconos/color/maripositaV.png" alt="Mariposita" class="icono" />Huerto urbano con Mimetiz eskola en la residencia</li>
+          <li><img src="imagenes/iconos/color/maripositaV.png" alt="Mariposita" class="icono" />Creación de hotel y casas de insectos y plantación de banda floral en Ibarra</li>
+          <li><img src="imagenes/iconos/color/maripositaV.png" alt="Mariposita" class="icono" />Colocación de hotel de insectos y cartel en el osasis de mariposas Tximeleku y manualidades infantiles</li>
         </ul>
-        <img src="images/actividades-realizadas.jpg" alt="Imagen de actividades realizadas" class="img-seccion" />
-      </div>
-    </section>
-
-    <section class="secciones">
-      <h2>Actividades Pendientes</h2>
-      <div class="contenido-seccion">
-        <ul>
-          <li>Lanzamiendo de bombas de semillas y creación de zonas de NO siega en la zona de Tepeyac</li>
-          <li>Huerto urbano con Mimetiz eskola y la residencia</li>
-          <li>Ruta de reconocimiento de la evolución del impacto</li>
-          <li>Exposición final y cierre</li>
-        </ul>
-        <img src="images/actividades-pendientes.jpg" alt="Imagen de actividades pendientes" class="img-seccion" />
+        <img src="imagenes/proyectos/zallanatura/zallanatura2.png" alt="Imagen de actividades realizadas" class="img" />
       </div>
     </section>
 
@@ -52,42 +43,41 @@
       <div class="contenido-seccion">
         <div>
           <h2>Resultados Obtenidos</h2>
-          <p>Hasta ahora, hemos plantado o lanzado miles de semillas de más de 20 especies de plantas.</p>
+          <p>Hemos plantado o lanzado miles de semillas de más de 20 especies de plantas.</p>
           <p>Hemos preparado un oasis de mariposas sembrando diferentes plantas adecuadas para las mariposas adultas y orugas.</p>
-          <p>xxx</p>
+          <p>Hemos involucrado a más de 150 personas en el proyecto.</p>
+          <p>Hemos creado dos hoteles de insectos y 16 casitas.</p>
         </div>
-        <img src="images/resultados-obtenidos.jpg" alt="Imagen de resultados obtenidos" class="img-seccion" />
-      </div>
-    </section>
-
-    <div class="imagen-trio">
+        <div class="imagen-trio">
       <div>
         <img
           class="img"
-          src="/imagenes/proyectos/zallanatura2.png"
+          src="imagenes/proyectos/zallanatura/zallanatura3.png"
           alt="Imagen del proyecto Zalla Natura"
         />
       </div>
       <div>
         <img
           class="img"
-          src="/imagenes/proyectos/zallanatura.png"
+          src="imagenes/proyectos/zallanatura/zallanatura4.png"
           alt="Imagen del proyecto Zalla Natura"
         />
       </div>
       <div>
         <img
           class="img"
-          src="/imagenes/proyectos/zallanatura1.png"
+          src="imagenes/proyectos/zallanatura/zallanatura5.png"
           alt="Imagen del proyecto Zalla Natura"
         />
       </div>
     </div>
+      </div>
+    </section>
+
   </div>
 </template>
 
 <script setup>
-// No hay lógica adicional para este artículo
 </script>
 
 <style scoped>
@@ -105,11 +95,12 @@
   margin: 2rem 0;
 }
 
-.img-principal {
+.img {
   max-width: 350px;
   width: 100%;
   border-radius: 0.5rem;
   box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  margin: 0 0.5rem ;
 }
 
 .presentation > div {
@@ -134,47 +125,39 @@
   margin: 0;
   padding-left: 1.2rem;
 }
-
-.img-seccion {
-  max-width: 250px;
-  width: 100%;
-  border-radius: 0.5rem;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-}
-
-/* .imagen-trio {
-  display: flex;
-  gap: 1.5rem;
-  justify-content: center;
-  margin-top: 2.5rem;
-  flex-wrap: wrap;
-} */
-/* 
-.img {
-  max-width: 180px;
-  width: 100%;
-  border-radius: 0.5rem;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-} */
-
-/* @media (max-width: 900px) {
-  .presentation,
-  .contenido-seccion,
-  .imagen-trio {
-    flex-direction: column;
-    align-items: center;
-    gap: 1.2rem;
-  }
-  .img-principal,
-  .img-seccion,
-  .img {
-    max-width: 100%;
-  }
-} */
 .icono {
   width: 20px;
   height: 20px;
   margin-right: 8px;
   vertical-align: middle;
+}
+@media (max-width: 1021px) {
+
+  .imagen-trio {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 1.2rem !important;
+    width: 100%;
+  }
+  .imagen-trio > div {
+    width: 100%;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+  }
+}
+@media (max-width: 900px) {
+  .presentation {
+    flex-direction: column;
+    align-items: center;
+    gap: 1.2rem;
+  }
+  .img {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+  }
+
 }
 </style>
