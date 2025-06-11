@@ -2,91 +2,63 @@
   <div class="contenedor-principal">
     <h1>Zalla Natura</h1>
     <h2>Bio-Regeneración Comunitaria</h2>
-    
     <h3>Revitalizando ecosistemas, conectando personas</h3>
-    <p>En un mundo donde la naturaleza clama por ayuda, Zalla Natura surge como un proyecto innovador que une sostenibilidad, educación ambiental y acción comunitaria. No solo buscamos restaurar espacios naturales, sino también crear vínculos entre las personas y su entorno, fomentando un futuro más verde y consciente.</p>
-
-    <h3>¿Por qué Bio-Regeneración?</h3>
     <p>
-      <img src="/imagenes/iconos/color/estrellitas.png" alt="Acción" class="icono" />
-      <strong>Porque cada acción cuenta</strong> – Pequeños gestos pueden transformar un ecosistema.
-    </p>
-    <p>
-      <img src="/imagenes/iconos/color/familia.png" alt="Comunidad" class="icono" />
-      <strong>Porque la comunidad es clave</strong> – Juntos, logramos un impacto mayor.
-    </p>
-    <p>
-      <img src="/imagenes/iconos/color/arbol.png" alt="Biodiversidad" class="icono" />
-      <strong>Porque la biodiversidad nos necesita</strong> – Recuperar especies autóctonas es esencial para el equilibrio natural.
+      En un mundo donde la naturaleza clama por ayuda, Zalla Natura surge como un proyecto innovador que une sostenibilidad, educación ambiental y acción comunitaria. No solo buscamos restaurar espacios naturales, sino también crear vínculos entre las personas y su entorno, fomentando un futuro más verde y consciente.
     </p>
 
-    <h3>Objetivos del Proyecto</h3>
-    <ul>
-      <li>
-        <img src="/imagenes/iconos/color/hojas.png" alt="Biodiversidad" class="icono" />
-        <strong>Promover la biodiversidad</strong> – Recuperación de flora y fauna autóctonas.</li>
-      <li>
-        <img src="/imagenes/iconos/color/estrellitas.png" alt="Acción" class="icono" />
-        <strong>Regeneración natural asistida</strong> – Ayudar a que el ecosistema se recupere con técnicas sostenibles.</li>
-      <li>
-        <img src="/imagenes/iconos/color/adaptable.png" alt="Educación" class="icono" />
-        <strong>Educación ambiental activa</strong> – Talleres prácticos para todas las edades.</li>
-      <li>
-        <img src="/imagenes/iconos/color/manos.png" alt="Manos" class="icono" />
-        <strong>Crear redes comunitarias</strong> – Conectar vecinos, escuelas y empresas en un mismo propósito.</li>
-    </ul>
+    <section class="presentation">
+      <img src="images/zalla-natura-main.jpg" alt="Imagen destacada del proyecto Zalla Natura" class="img-principal" />
+      <div>
+        <h2>Sobre el Proyecto</h2>
+        <p>
+          Zalla Natura es una iniciativa impulsada por el ayuntamiento de Zalla en colaboración con Geobizi para fomentar la sostenibilidad, promover la biodiversidad y la conservación del medio ambiente en la región de Zalla. A través de actividades comunitarias, buscamos crear un impacto positivo en nuestro entorno natural.
+        </p>
+        <p>
+          En las actividades participan personas comprometidas con el medioambiente, centros escolares, la residencia y otras asociaciones como Enkarnatura, TxikiLur, o Zerynthia.
+        </p>
+      </div>
+    </section>
 
-    <h3>Actividades Clave</h3>
-    <ul>
-      <li>
-        <img src="/imagenes/iconos/color/hojas.png" alt="Hojas" class="icono" />
-        <strong>Explosión de Vida</strong> – Creación de bombas de semillas (nendo dango) para reforestar zonas degradadas de forma natural y divertida.</li>
-      <li>
-        <img src="/imagenes/iconos/color/mariposita.png" alt="Mariposita" class="icono" />
-        <strong>Oasis de Mariposas</strong> – Diseño de jardines polinizadores y refugios para mariposas, esenciales para la biodiversidad.</li>
-      <li>
-        <img src="/imagenes/iconos/color/abeja.png" alt="Abeja" class="icono" />
-        <strong>Casas de Insectos</strong> – Talleres para construir hoteles de insectos, refugios para abejas solitarias y otros polinizadores.</li>
-      <li>
-        <img src="/imagenes/iconos/color/arbol.png" alt="Árbol" class="icono" />
-        <strong>Conociendo Nuestro Entorno</strong> – Rutas guiadas para identificar especies nativas, analizar el suelo y entender los ecosistemas locales.</li>
-      <li>
-        <img src="/imagenes/iconos/color/manos.png" alt="Colaboración" class="icono" />
-        <strong>Networking Ambiental</strong> – Encuentros entre participantes, expertos y asociaciones para generar alianzas verdes.</li>
-      <li>
-        <img src="/imagenes/iconos/color/graficos.png" alt="Evolución" class="icono" />
-        <strong>Seguimiento y Evolución</strong> – Evaluación del impacto del proyecto con visitas periódicas y medición de resultados.</li>
-    </ul>
+    <section class="secciones">
+      <h2>Actividades Realizadas</h2>
+      <div class="contenido-seccion">
+        <ul>
+          <li>Networking inicial</li>
+          <li>Presentación del proyecto</li>
+          <li>Plantación y lanzamiento de bombas de semillas en Landabaso eskola</li>
+          <li>Ruta para conocer los árboles de Zalla</li>
+          <li>Creación de un oasis de mariposas en el parque de Lusa</li>
+          <li>Taller de pintar mariposas</li>
+        </ul>
+        <img src="images/actividades-realizadas.jpg" alt="Imagen de actividades realizadas" class="img-seccion" />
+      </div>
+    </section>
 
-    <h3>¿A quién va dirigido?</h3>
-    <ul>
-      <li>
-        <img src="/imagenes/iconos/color/familia.png" alt="Familia" class="icono" />
-        <strong>Familias</strong> – Actividades didácticas para niños y adultos.</li>
-      <li>
-        <img src="/imagenes/iconos/color/cole.png" alt="Colegio" class="icono" />
-        <strong>Colegios y universidades</strong> – Proyectos educativos de concienciación ecológica.</li>
-      <li>
-        <img src="/imagenes/iconos/color/empresa.png" alt="Empresa" class="icono" />
-        <strong>Empresas</strong> – Team buildings con impacto ambiental positivo (RSC).</li>
-      <li>
-        <img src="/imagenes/iconos/color/ayuntamiento.png" alt="Ayuntamiento" class="icono" />
-        <strong>Ayuntamientos y asociaciones</strong> – Planes de regeneración urbana y participación ciudadana.</li>
-    </ul>
+    <section class="secciones">
+      <h2>Actividades Pendientes</h2>
+      <div class="contenido-seccion">
+        <ul>
+          <li>Lanzamiendo de bombas de semillas y creación de zonas de NO siega en la zona de Tepeyac</li>
+          <li>Huerto urbano con Mimetiz eskola y la residencia</li>
+          <li>Ruta de reconocimiento de la evolución del impacto</li>
+          <li>Exposición final y cierre</li>
+        </ul>
+        <img src="images/actividades-pendientes.jpg" alt="Imagen de actividades pendientes" class="img-seccion" />
+      </div>
+    </section>
 
-    <h3>¿Por qué Zalla Natura?</h3>
-    <p>        
-      <img src="/imagenes/iconos/color/adaptable.png" alt="Adaptable" class="icono" />
-      <strong>Proyecto adaptable</strong> – Puede implementarse en parques, riberas, zonas urbanas o rurales.</p>
-    <p>        
-      <img src="/imagenes/iconos/color/graficos.png" alt="Evolución" class="icono" />
-      <strong>Metodología probada</strong> – Combinamos ciencia ciudadana y técnicas de permacultura.</p>
-    <p>
-      <img src="/imagenes/iconos/color/planeta.png" alt="Planeta" class="icono" />
-      <strong>Impacto medible</strong> – Seguimiento continuo para garantizar resultados.</p>
-
-    <h3>¿Quieres llevar Zalla Natura a tu municipio o espacio?</h3>
-    <p>¡Diseñamos proyectos a medida! Desde un jardín polinizador hasta un plan de regeneración a gran escala, adaptamos las actividades a tus necesidades.</p>
+    <section class="secciones">
+      <div class="contenido-seccion">
+        <div>
+          <h2>Resultados Obtenidos</h2>
+          <p>Hasta ahora, hemos plantado o lanzado miles de semillas de más de 20 especies de plantas.</p>
+          <p>Hemos preparado un oasis de mariposas sembrando diferentes plantas adecuadas para las mariposas adultas y orugas.</p>
+          <p>xxx</p>
+        </div>
+        <img src="images/resultados-obtenidos.jpg" alt="Imagen de resultados obtenidos" class="img-seccion" />
+      </div>
+    </section>
 
     <div class="imagen-trio">
       <div>
@@ -119,11 +91,86 @@
 </script>
 
 <style scoped>
-  .contenedor-principal {
-    padding-top: 7rem;
-    background-color: rgb(255, 255, 255);
-    padding-bottom: 2rem;
+.contenedor-principal {
+  padding-top: 7rem;
+  background-color: rgb(255, 255, 255);
+  padding-bottom: 2rem;
+}
+
+.presentation {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 2rem;
+  margin: 2rem 0;
+}
+
+.img-principal {
+  max-width: 350px;
+  width: 100%;
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.presentation > div {
+  flex: 1;
+  min-width: 220px;
+}
+
+.secciones {
+  margin: 2.5rem 0;
+}
+
+.contenido-seccion {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 2rem;
+}
+
+.contenido-seccion ul {
+  flex: 1;
+  min-width: 220px;
+  margin: 0;
+  padding-left: 1.2rem;
+}
+
+.img-seccion {
+  max-width: 250px;
+  width: 100%;
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+/* .imagen-trio {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  margin-top: 2.5rem;
+  flex-wrap: wrap;
+} */
+/* 
+.img {
+  max-width: 180px;
+  width: 100%;
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+} */
+
+/* @media (max-width: 900px) {
+  .presentation,
+  .contenido-seccion,
+  .imagen-trio {
+    flex-direction: column;
+    align-items: center;
+    gap: 1.2rem;
   }
+  .img-principal,
+  .img-seccion,
+  .img {
+    max-width: 100%;
+  }
+} */
 .icono {
   width: 20px;
   height: 20px;

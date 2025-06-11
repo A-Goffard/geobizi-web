@@ -21,6 +21,9 @@
 
     <div v-else class="contact-container">
       <h1>Reserva de {{ actividadSeleccionada.titulo }}</h1>
+      <p class="fecha-reserva">
+        <strong>Fecha:</strong> {{ actividadSeleccionada.fecha }} &nbsp; <strong>Hora:</strong> {{ actividadSeleccionada.hora }}
+      </p>
       <form @submit.prevent="submitForm">
         <div class="form-group">
           <label for="nombre">Nombre:</label>
@@ -73,8 +76,12 @@
 </template>
 
 <script setup>
-import { ref, computed } from 'vue';
+import { ref, computed, watch } from 'vue';
+import { useRoute, useRouter } from 'vue-router';
 import actividades from '@/assets/json/actividades.json';
+
+const route = useRoute();
+const router = useRouter();
 
 const actividadSeleccionada = ref(null);
 const formData = ref({
@@ -99,13 +106,28 @@ const actividadesFiltradas = computed(() => {
   );
 });
 
+// Selección por URL
+watch(
+  () => route.params.id,
+  (id) => {
+    if (id) {
+      actividadSeleccionada.value = actividadesFiltradas.value.find(a => String(a.id) === String(id));
+      if (actividadSeleccionada.value) {
+        formData.value.actividad = `${actividadSeleccionada.value.fecha} - ${actividadSeleccionada.value.hora}`;
+      }
+    } else {
+      actividadSeleccionada.value = null;
+    }
+  },
+  { immediate: true }
+);
+
 const seleccionarActividad = (actividad) => {
-  actividadSeleccionada.value = actividad;
-  formData.value.actividad = `${actividad.fecha} - ${actividad.hora}`;
+  router.push({ name: 'reservaActividad', params: { id: actividad.id } });
 };
 
 const volverALista = () => {
-  actividadSeleccionada.value = null;
+  router.push('/reservas');
 };
 
 const submitForm = () => {
@@ -168,7 +190,7 @@ const submitForm = () => {
   box-shadow: 0px 0px 10px rgba(49, 49, 49, 0.7);
   padding-bottom: 2rem;
   margin-top: 7rem;
-
+  margin-bottom: 3rem;
 }
 .card {
   width: 300px;
@@ -288,4 +310,11 @@ a{
   text-align: center;
   margin-top: 1rem;
 }
+
+.fecha-reserva {
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+    color: var(--darkgrey);
+    text-align: center;
+  }
 </style>

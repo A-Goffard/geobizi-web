@@ -3,7 +3,7 @@ import { createRouter, createWebHistory } from "vue-router";
 import InicioView from "../views/InicioView.vue";
 import ServiciosView from "../views/ServiciosView.vue";
 import CalendarioView from "../views/CalendarioView.vue";
-import ReservasView from "../views/ReservasView.vue";
+// import ReservasView from "@/views/ReservasView.vue";
 import TiendaView from "../views/TiendaView.vue";
 
 import ProjectosView from '../views/ProjectosView.vue';
@@ -59,9 +59,14 @@ const routes = [
         component: CalendarioView,
     },
     {
-        path: "/reservas",
-        name: "reservas",
-        component: ReservasView,
+    path: '/reservas',
+    name: 'reservas',
+    component: () => import('@/views/ReservasView.vue')
+    },
+    {
+    path: '/reservas/:id',
+    name: 'reservaActividad',
+    component: () => import('@/views/ReservasView.vue')
     },
     {
         path: "/tienda",

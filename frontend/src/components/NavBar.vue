@@ -2,7 +2,9 @@
     <header :class="{ 'scrolled-nav': scrolledNav }">
       <nav>
         <div class="branding">
-          <img src="@/assets/GeobiziLogo.png" class="logo" alt="">
+          <router-link :to="{name: 'inicio'}">
+            <img src="@/assets/GeobiziLogo.png" class="logo" alt="">
+          </router-link>
         </div>
         <ul v-show="!mobile" class="navigation">
           <li>
@@ -96,7 +98,7 @@ const closeMobileNav = () => {
   };
   
   const checkScreen = () => {
-    mobile.value = window.innerWidth <= 990;
+    mobile.value = window.innerWidth <= 940;
     if (mobile.value) {
       mobileNav.value = false;
     }

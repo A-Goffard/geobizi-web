@@ -1,9 +1,16 @@
 <template>
   <div class="calendario">
     <div class="navegacion">
-      <button class="elegir" @click="mesAnterior">&lt;</button>
-      <h3>{{ meses[mesActual].nombre }}</h3>
-      <button class="elegir" @click="mesSiguiente">&gt;</button>
+      <div class="anio-selector">
+        <button class="elegir" @click="anioAnterior">&lt;</button>
+        <span class="anio">{{ anioActual }}</span>
+        <button class="elegir" @click="anioSiguiente">&gt;</button>
+      </div>
+      <div class="mes-selector">
+        <button class="elegir" @click="mesAnterior">&lt;</button>
+        <h3>{{ meses[mesActual].nombre }}</h3>
+        <button class="elegir" @click="mesSiguiente">&gt;</button>
+      </div>
     </div>
 
     <div class="mes">
@@ -19,13 +26,16 @@
           <span v-if="dia.numero" class="numero">{{ dia.numero }}</span>
 
           <div class="puntos">
-            <div v-for="actividad in dia.actividades" 
-                 :key="actividad.titulo" 
-                 class="punto" 
-                 :style="{ backgroundColor: actividad.color }"
-                 @mouseover="mostrarTooltip(actividad, $event)"
-                 @mouseleave="ocultarTooltip">
-            </div>
+            <div
+              v-for="actividad in dia.actividades"
+              :key="actividad.titulo"
+              class="punto"
+              :style="{ backgroundColor: actividad.color, cursor: 'pointer' }"
+              @mouseover="mostrarTooltip(actividad, $event)"
+              @mouseleave="ocultarTooltip"
+              @click="irAReserva(actividad)"
+              title="Reservar esta actividad"
+            ></div>
           </div>
         </div>
       </div>
@@ -41,6 +51,7 @@
 
 <script setup>
 import { ref, onMounted } from "vue";
+import { useRouter } from "vue-router";
 import actividadesData from "@/assets/json/actividades.json";
 
 // Lista de meses
@@ -57,12 +68,23 @@ const diasSemana = ref(["Lun", "Mar", "Mié", "Jue", "Vie", "Sáb", "Dom"]);
 // Tooltip
 const tooltip = ref({ visible: false, titulo: "", hora: "", x: 0, y: 0 });
 
-// Mes actual
+// Año y mes actual
+const anioActual = ref(new Date().getFullYear());
 const mesActual = ref(new Date().getMonth());
+
+const router = useRouter();
+
+const irAReserva = (actividad) => {
+  const hoy = new Date();
+  const fechaActividad = new Date(actividad.fecha + 'T' + (actividad.hora || '00:00'));
+  if (fechaActividad >= hoy) {
+    router.push({ name: 'reservaActividad', params: { id: actividad.id } });
+  }
+};
 
 // Función para obtener los días del mes con sus actividades
 const getDiasDelMes = (mesIndex) => {
-  const year = 2025;
+  const year = anioActual.value;
   const primerDiaSemana = new Date(year, mesIndex, 1).getDay(); // 0 = Domingo, 1 = Lunes, etc.
   const diasEnMes = new Date(year, mesIndex + 1, 0).getDate();
   let dias = [];
@@ -99,6 +121,9 @@ const ocultarTooltip = () => {
 const mesAnterior = () => {
   if (mesActual.value > 0) {
     mesActual.value--;
+  } else {
+    mesActual.value = 11;
+    anioActual.value--;
   }
 };
 
@@ -106,7 +131,20 @@ const mesAnterior = () => {
 const mesSiguiente = () => {
   if (mesActual.value < 11) {
     mesActual.value++;
+  } else {
+    mesActual.value = 0;
+    anioActual.value++;
   }
+};
+
+// Cambiar al año anterior
+const anioAnterior = () => {
+  anioActual.value--;
+};
+
+// Cambiar al año siguiente
+const anioSiguiente = () => {
+  anioActual.value++;
 };
 
 onMounted(() => {
@@ -124,9 +162,44 @@ onMounted(() => {
 .navegacion {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  width: 20.65rem;
+  justify-content: center;
+  width: 22rem;
   margin-bottom: 1rem;
+  gap: 1.2rem;
+}
+
+.anio-selector {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 7.5rem;
+  max-width: 7.5rem;
+  gap: 0.5rem;
+}
+
+.mes-selector {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 11rem;
+  max-width: 11rem;
+  gap: 0.5rem;
+}
+
+.anio {
+  font-size: 1.2rem;
+  margin: 0 0.5rem;
+  display: inline-block;
+  width: 3rem;
+  text-align: center;
+}
+
+.mes-selector h3 {
+  margin: 0 0.5rem;
+  min-width: 6rem;
+  text-align: center;
+  font-size: 1.1rem;
+  font-weight: bold;
 }
 
 .mes {
@@ -202,6 +275,7 @@ onMounted(() => {
   border-radius: 4px;
   font-size: 12px;
   pointer-events: none;
+  z-index: 10;
 }
 
 .elegir {
