@@ -157,7 +157,7 @@ const closeMobileNav = () => {
     display: flex;
     align-items: center;
     flex: 1;
-    justify-content: center;
+    justify-content: right;
   }
   
   header nav .icon {
