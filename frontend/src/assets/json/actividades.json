@@ -61,21 +61,6 @@
   },
   {
     "id": 5,
-    "titulo": "Lanzamiento de bombas de semillas",
-    "fecha": "2025-03-14",
-    "hora": "13:00",
-    "color": "blue",
-    "descripcion1": "Participa en el lanzamiento de bombas de semillas.",
-    "descripcion2": "Actividad para fomentar la reforestación y la biodiversidad.",
-    "precio": 0,
-    "imagen1": "bombas_semillas_img1.jpg",
-    "imagen2": "bombas_semillas_img2.jpg",
-    "tipo": "actividad",
-    "publicar": false,
-    "reservas": false
-  },
-  {
-    "id": 6,
     "titulo": "Taller ola de Mundaka",
     "fecha": "2025-03-15",
     "hora": "17:00",
@@ -92,7 +77,7 @@
     "reservas": false
   },
   {
-    "id": 7,
+    "id": 6,
     "titulo": "Taller tablas de surf",
     "fecha": "2025-03-15",
     "hora": "18:00",
@@ -106,6 +91,21 @@
     "publicar": false,
     "stripeId": "price_base_tablas_surf",
     "opciones": [],
+    "reservas": false
+  },
+  {
+    "id": 7,
+    "titulo": "Lanzamiento de bombas de semillas",
+    "fecha": "2025-03-21",
+    "hora": "13:00",
+    "color": "blue",
+    "descripcion1": "Participa en el lanzamiento de bombas de semillas.",
+    "descripcion2": "Actividad para fomentar la reforestación y la biodiversidad.",
+    "precio": 0,
+    "imagen1": "bombas_semillas_img1.jpg",
+    "imagen2": "bombas_semillas_img2.jpg",
+    "tipo": "actividad",
+    "publicar": false,
     "reservas": false
   },
   {
@@ -166,7 +166,7 @@
   {
     "id": 11,
     "titulo": "Zonas de no poda",
-    "fecha": "2025-03-28",
+    "fecha": "2025-03-30",
     "hora": "15:00",
     "color": "blue",
     "descripcion1": "Aprende sobre la importancia de las zonas de no poda.",
@@ -235,23 +235,6 @@
   },
   {
     "id": 15,
-    "titulo": "No poda y bombas de semillas",
-    "fecha": "2025-04-12",
-    "hora": "11:00",
-    "color": "blue",
-    "descripcion1": "Descubre la importancia de las zonas de no poda y participa en el lanzamiento de bombas de semillas.",
-    "descripcion2": "Actividad educativa y práctica para fomentar la biodiversidad.",
-    "precio": 0,
-    "imagen1": "no_poda_bombas_img1.jpg",
-    "imagen2": "no_poda_bombas_img2.jpg",
-    "tipo": "actividad",
-    "publicar": false,
-    "stripeId": "price_base_no_poda_bombas",
-    "opciones": [],
-    "reservas": false
-  },
-  {
-    "id": 16,
     "titulo": "Azkorri al microscopio",
     "fecha": "2025-04-17",
     "hora": "17:00",
@@ -274,7 +257,7 @@
     "reservas": true
   },
   {
-    "id": 17,
+    "id": 16,
     "titulo": "Árboles de Getxo",
     "fecha": "2025-04-18",
     "hora": "17:00",
@@ -297,7 +280,7 @@
     "reservas": true
   },
   {
-    "id": 18,
+    "id": 17,
     "titulo": "Azkorri al microscopio",
     "fecha": "2025-04-19",
     "hora": "17:00",
@@ -320,12 +303,29 @@
     "reservas": true
   },
   {
+    "id": 18,
+    "titulo": "No poda y bombas de semillas",
+    "fecha": "2025-05-01",
+    "hora": "11:00",
+    "color": "blue",
+    "descripcion1": "Descubre la importancia de las zonas de no poda y participa en el lanzamiento de bombas de semillas.",
+    "descripcion2": "Actividad educativa y práctica para fomentar la biodiversidad.",
+    "precio": 0,
+    "imagen1": "no_poda_bombas_img1.jpg",
+    "imagen2": "no_poda_bombas_img2.jpg",
+    "tipo": "actividad",
+    "publicar": false,
+    "stripeId": "price_base_no_poda_bombas",
+    "opciones": [],
+    "reservas": false
+  },
+  {
     "id": 19,
     "titulo": "Árboles de Getxo",
     "fecha": "2025-05-03",
     "hora": "17:00",
     "color": "green",
-    "descripcion1": "Descubre la variedad de árboles que podemos encontrar en Getxo. Obsérvalos con un microscopio de campo. Ruta guiada para conocer la flora local y su importancia ecológica.",
+    "descripcion1": "Descubre la variedad de árboles que podemos encontrar en Getxo. Obsérbalos con un microscopio de campo. Ruta guiada para conocer la flora local y su importancia ecológica.",
     "descripcion2": "Es ideal para familias y grupos escolares.",
     "precio": 10,
     "imagen1": "imagenes/actividades/arbolesgetxo1.png",
@@ -369,7 +369,7 @@
     "id": 21,
     "titulo": "Huerto urbano",
     "fecha": "2025-05-06",
-    "hora": "13:00",
+    "hora": "15:00",
     "color": "blue",
     "descripcion1": "Aprende a crear y mantener un huerto urbano.",
     "descripcion2": "Taller educativo para fomentar la sostenibilidad en espacios pequeños.",
@@ -424,6 +424,57 @@
   },
   {
     "id": 24,
+    "titulo": "Casas de insectos",
+    "fecha": "2025-06-07",
+    "hora": "10:30",
+    "color": "purple",
+    "descripcion1": "Construye casas para insectos y aprende sobre su importancia.",
+    "descripcion2": "Taller práctico para fomentar la biodiversidad en tu jardín.",
+    "precio": 0,
+    "imagen1": "casas_insectos_img1.jpg",
+    "imagen2": "casas_insectos_img2.jpg",
+    "tipo": "actividad",
+    "publicar": false,
+    "stripeId": "price_base_casas_insectos",
+    "opciones": [],
+    "reservas": false
+  },
+  {
+    "id": 25,
+    "titulo": "NaturGaua",
+    "fecha": "2025-06-07",
+    "hora": "22:00",
+    "color": "purple",
+    "descripcion1": "Una ventura nocturna en familia para descubrir la fauna y flora de Getxo desde una perspectiva diferente.",
+    "descripcion2": "Actividad nocturna para observar la naturaleza en su máximo esplendor.",
+    "precio": 0,
+    "imagen1": "imagenes/actividades/naturgaua1.png",
+    "imagen2": "imagenes/actividades/naturgaua2.png",
+    "tipo": "actividad",
+    "publicar": false,
+    "stripeId": "price_base_casas_insectos",
+    "opciones": [],
+    "reservas": false
+  },
+  {
+    "id": 26,
+    "titulo": "Árboles de Getxo",
+    "fecha": "2025-06-08",
+    "hora": "22:00",
+    "color": "purple",
+    "descripcion1": "Descubre la variedad de árboles que podemos encontrar en Getxo. Obsérbalos con un microscopio de campo. Ruta guiada para conocer la flora local y su importancia ecológica.",
+    "descripcion2": "Es ideal para familias y grupos escolares.",
+    "precio": 0,
+    "imagen1": "imagenes/actividades/arbolesgetxo1.png",
+    "imagen2": "imagenes/actividades/arbolesgetxo2.png",
+    "tipo": "actividad",
+    "publicar": false,
+    "stripeId": "price_base_casas_insectos",
+    "opciones": [],
+    "reservas": false
+  },
+  {
+    "id": 27,
     "titulo": "Árboles de Getxo",
     "fecha": "2025-06-14",
     "hora": "17:00",
@@ -446,7 +497,7 @@
     "reservas": true
   },
   {
-    "id": 25,
+    "id": 28,
     "titulo": "Azkorri al microscopio",
     "fecha": "2025-06-15",
     "hora": "17:00",
@@ -469,16 +520,16 @@
     "reservas": true
   },
   {
-    "id": 26,
-    "titulo": "Ruta final",
+    "id": 29,
+    "titulo": "Arreglando el oasis",
     "fecha": "2025-06-21",
-    "hora": "11:00",
+    "hora": "10:30",
     "color": "blue",
-    "descripcion1": "Participa en la ruta final del programa.",
-    "descripcion2": "Actividad para cerrar el ciclo de eventos con una ruta especial.",
+    "descripcion1": "Una actividad en la que arreglaremos el oasis de mariposas que creamos en la actividad anterior, colocaremos el hotel de insectos y el cartel oficial.",
+    "descripcion2": "Actividad para terminar e inaugurar el oasis de mariposas.",
     "precio": 0,
-    "imagen1": "ruta_final_img1.jpg",
-    "imagen2": "ruta_final_img2.jpg",
+    "imagen1": "imagenes/actividades/oasis1.png",
+    "imagen2": "imagenes/actividades/hotelinsectos1.png",
     "tipo": "actividad",
     "publicar": false,
     "stripeId": "price_base_ruta_final",
@@ -486,16 +537,16 @@
     "reservas": false
   },
   {
-    "id": 27,
-    "titulo": "Exposición",
+    "id": 30,
+    "titulo": "Manualidades",
     "fecha": "2025-06-21",
-    "hora": "15:00",
+    "hora": "11:00",
     "color": "blue",
-    "descripcion1": "Explora la exposición de los proyectos realizados.",
-    "descripcion2": "Actividad para conocer los resultados y logros del programa.",
+    "descripcion1": "Actividades de manualidades para todas las edades relacionadas con la naturaleza y el medio ambiente.",
+    "descripcion2": "Actividad de manualidades medioambientales.",
     "precio": 0,
-    "imagen1": "exposicion_img1.jpg",
-    "imagen2": "exposicion_img2.jpg",
+    "imagen1": "imagenes/actividades/oasis1.png",
+    "imagen2": "imagenes/actividades/oasis1.png",
     "tipo": "actividad",
     "publicar": false,
     "stripeId": "price_base_exposicion",
@@ -503,7 +554,7 @@
     "reservas": false
   },
   {
-    "id": 28,
+    "id": 31,
     "titulo": "Árboles de Getxo",
     "fecha": "2025-07-20",
     "hora": "17:00",
@@ -526,7 +577,7 @@
     "reservas": true
   },
   {
-    "id": 29,
+    "id": 32,
     "titulo": "Azkorri al microscopio",
     "fecha": "2025-07-25",
     "hora": "17:00",
@@ -549,7 +600,7 @@
     "reservas": true
   },
   {
-    "id": 30,
+    "id": 33,
     "titulo": "Árboles de Getxo",
     "fecha": "2025-08-01",
     "hora": "17:00",
@@ -572,7 +623,7 @@
     "reservas": true
   },
   {
-    "id": 31,
+    "id": 34,
     "titulo": "Árboles de Getxo",
     "fecha": "2025-08-02",
     "hora": "17:00",
@@ -595,7 +646,7 @@
     "reservas": true
   },
   {
-    "id": 32,
+    "id": 35,
     "titulo": "Azkorri al microscopio",
     "fecha": "2025-08-08",
     "hora": "17:00",
@@ -618,7 +669,7 @@
     "reservas": true
   },
   {
-    "id": 33,
+    "id": 36,
     "titulo": "Azkorri al microscopio",
     "fecha": "2025-08-09",
     "hora": "17:00",
@@ -641,7 +692,7 @@
     "reservas": true
   },
   {
-    "id": 34,
+    "id": 37,
     "titulo": "Árboles de Getxo",
     "fecha": "2025-09-06",
     "hora": "17:00",
@@ -664,7 +715,7 @@
     "reservas": true
   },
   {
-    "id": 35,
+    "id": 38,
     "titulo": "Árboles de Getxo",
     "fecha": "2025-09-07",
     "hora": "17:00",
@@ -687,7 +738,7 @@
     "reservas": true
   },
   {
-    "id": 36,
+    "id": 39,
     "titulo": "Árboles de Getxo",
     "fecha": "2025-09-27",
     "hora": "17:00",
@@ -710,7 +761,7 @@
     "reservas": true
   },
   {
-    "id": 37,
+    "id": 40,
     "titulo": "Azkorri al microscopio",
     "fecha": "2025-10-04",
     "hora": "17:00",
@@ -733,7 +784,7 @@
     "reservas": true
   },
   {
-    "id": 38,
+    "id": 41,
     "titulo": "Azkorri al microscopio",
     "fecha": "2025-10-05",
     "hora": "17:00",
@@ -756,7 +807,7 @@
     "reservas": true
   },
   {
-    "id": 39,
+    "id": 42,
     "titulo": "Árboles de Getxo",
     "fecha": "2025-10-11",
     "hora": "17:00",
@@ -779,7 +830,7 @@
     "reservas": true
   },
   {
-    "id": 40,
+    "id": 43,
     "titulo": "Azkorri al microscopio",
     "fecha": "2025-10-25",
     "hora": "17:00",
