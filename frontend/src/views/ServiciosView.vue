@@ -26,7 +26,7 @@
     },
     {
       title: 'Asociaciones y empresas',
-      content: 'Si lo necesitas, te preparamos una actividad temática en el campo o en tu local. Para trabajar los grupos y forjar vínculos, para aprender, para entretener.',
+      content: 'Si lo necesitas, preparamos una actividad temática en el campo o en tu local. Para trabajar los grupos y forjar vínculos, para aprender, para entretener.',
       link: '/detalle-asociaciones',
       image: '/imagenes/servicios/asociaciones.png',
     },
