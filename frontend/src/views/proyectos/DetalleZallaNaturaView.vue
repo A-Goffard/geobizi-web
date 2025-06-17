@@ -43,10 +43,11 @@
       <div class="contenido-seccion">
         <div>
           <h2>Resultados Obtenidos</h2>
-          <p>Hemos plantado o lanzado miles de semillas de más de 20 especies de plantas.</p>
+          <p>Hemos sembrado y lanzado miles de semillas de más de 20 especies de plantas.</p>
           <p>Hemos preparado un oasis de mariposas sembrando diferentes plantas adecuadas para las mariposas adultas y orugas.</p>
+          <p>Hemos plantado pimientos, piparras, tomates, acelgas y lechugas variadas en la residencia "Zalla'Ko Eguzki"</p>
           <p>Hemos involucrado a más de 150 personas en el proyecto.</p>
-          <p>Hemos creado dos hoteles de insectos y 16 casitas.</p>
+          <p>Hemos creado y colocado dos hoteles de insectos y 16 casitas.</p>
         </div>
         <div class="imagen-trio">
       <div>
