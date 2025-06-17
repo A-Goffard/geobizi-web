@@ -2,14 +2,12 @@ version: '3'
 
 services:
   frontend:
-    build: .
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
     container_name: vue_frontend
     ports:
       - "80:80"
-      - "443:443"
-    volumes:
-      - ./certbot/www:/var/www/certbot
-      - ./certbot/conf:/etc/letsencrypt
     restart: always
 
   certbot:
@@ -20,5 +18,4 @@ services:
       - ./certbot/conf:/etc/letsencrypt
     restart: always
       - ./certbot/conf:/etc/letsencrypt
-    restart: always
 
