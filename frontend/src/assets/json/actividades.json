@@ -555,6 +555,29 @@
   },
   {
     "id": 31,
+    "titulo": "Sopela Flysch y fósiles",
+    "fecha": "2025-07-20",
+    "hora": "10:30",
+    "color": "purple",
+    "descripcion1": "Aprende sobre el flysch de Sopela, la geología y busca fósiles en la playa.",
+    "descripcion2": "Es ideal para familias y grupos escolares.",
+    "precio": 10,
+    "imagen1": "imagenes/actividades/sopela1.png",
+    "imagen2": "imagenes/actividades/sopela2.png",
+    "tipo": "actividad",
+    "publicar": true,
+    "stripeId": "prod_S3t6jXiSCmLWXg",
+    "opciones": [
+      {
+        "nombre": "Añadir microscopio",
+        "precio": 5,
+        "stripeId": "prod_S3tVPQLORmpz0s"
+      }
+    ],
+    "reservas": true
+  },
+  {
+    "id": 32,
     "titulo": "Árboles de Getxo",
     "fecha": "2025-07-20",
     "hora": "17:00",
@@ -577,7 +600,30 @@
     "reservas": true
   },
   {
-    "id": 32,
+    "id": 33,
+    "titulo": "Sopela Flysch y fósiles",
+    "fecha": "2025-07-25",
+    "hora": "10:30",
+    "color": "purple",
+    "descripcion1": "Aprende sobre el flysch de Sopela, la geología y busca fósiles en la playa.",
+    "descripcion2": "Es ideal para familias y grupos escolares.",
+    "precio": 10,
+    "imagen1": "imagenes/actividades/sopela1.png",
+    "imagen2": "imagenes/actividades/sopela2.png",
+    "tipo": "actividad",
+    "publicar": true,
+    "stripeId": "prod_S3t6jXiSCmLWXg",
+    "opciones": [
+      {
+        "nombre": "Añadir microscopio",
+        "precio": 5,
+        "stripeId": "prod_S3tVPQLORmpz0s"
+      }
+    ],
+    "reservas": true
+  },
+  {
+    "id": 34,
     "titulo": "Azkorri al microscopio",
     "fecha": "2025-07-25",
     "hora": "17:00",
@@ -600,7 +646,7 @@
     "reservas": true
   },
   {
-    "id": 33,
+    "id": 35,
     "titulo": "Árboles de Getxo",
     "fecha": "2025-08-01",
     "hora": "17:00",
@@ -623,7 +669,30 @@
     "reservas": true
   },
   {
-    "id": 34,
+    "id": 36,
+    "titulo": "Sopela Flysch y fósiles",
+    "fecha": "2025-08-02",
+    "hora": "10:30",
+    "color": "purple",
+    "descripcion1": "Aprende sobre el flysch de Sopela, la geología y busca fósiles en la playa.",
+    "descripcion2": "Es ideal para familias y grupos escolares.",
+    "precio": 10,
+    "imagen1": "imagenes/actividades/sopela1.png",
+    "imagen2": "imagenes/actividades/sopela2.png",
+    "tipo": "actividad",
+    "publicar": true,
+    "stripeId": "prod_S3t6jXiSCmLWXg",
+    "opciones": [
+      {
+        "nombre": "Añadir microscopio",
+        "precio": 5,
+        "stripeId": "prod_S3tVPQLORmpz0s"
+      }
+    ],
+    "reservas": true
+  },
+  {
+    "id": 37,
     "titulo": "Árboles de Getxo",
     "fecha": "2025-08-02",
     "hora": "17:00",
@@ -646,7 +715,7 @@
     "reservas": true
   },
   {
-    "id": 35,
+    "id": 38,
     "titulo": "Azkorri al microscopio",
     "fecha": "2025-08-08",
     "hora": "17:00",
@@ -669,7 +738,30 @@
     "reservas": true
   },
   {
-    "id": 36,
+    "id": 39,
+    "titulo": "Sopela Flysch y fósiles",
+    "fecha": "2025-08-09",
+    "hora": "10:30",
+    "color": "purple",
+    "descripcion1": "Aprende sobre el flysch de Sopela, la geología y busca fósiles en la playa.",
+    "descripcion2": "Es ideal para familias y grupos escolares.",
+    "precio": 10,
+    "imagen1": "imagenes/actividades/sopela1.png",
+    "imagen2": "imagenes/actividades/sopela2.png",
+    "tipo": "actividad",
+    "publicar": true,
+    "stripeId": "prod_S3t6jXiSCmLWXg",
+    "opciones": [
+      {
+        "nombre": "Añadir microscopio",
+        "precio": 5,
+        "stripeId": "prod_S3tVPQLORmpz0s"
+      }
+    ],
+    "reservas": true
+  },
+  {
+    "id": 40,
     "titulo": "Azkorri al microscopio",
     "fecha": "2025-08-09",
     "hora": "17:00",
@@ -692,7 +784,7 @@
     "reservas": true
   },
   {
-    "id": 37,
+    "id": 41,
     "titulo": "Árboles de Getxo",
     "fecha": "2025-09-06",
     "hora": "17:00",
@@ -715,7 +807,7 @@
     "reservas": true
   },
   {
-    "id": 38,
+    "id": 42,
     "titulo": "Árboles de Getxo",
     "fecha": "2025-09-07",
     "hora": "17:00",
@@ -738,7 +830,7 @@
     "reservas": true
   },
   {
-    "id": 39,
+    "id": 43,
     "titulo": "Árboles de Getxo",
     "fecha": "2025-09-27",
     "hora": "17:00",
@@ -761,7 +853,7 @@
     "reservas": true
   },
   {
-    "id": 40,
+    "id": 44,
     "titulo": "Azkorri al microscopio",
     "fecha": "2025-10-04",
     "hora": "17:00",
@@ -784,7 +876,7 @@
     "reservas": true
   },
   {
-    "id": 41,
+    "id": 45,
     "titulo": "Azkorri al microscopio",
     "fecha": "2025-10-05",
     "hora": "17:00",
@@ -807,7 +899,7 @@
     "reservas": true
   },
   {
-    "id": 42,
+    "id": 46,
     "titulo": "Árboles de Getxo",
     "fecha": "2025-10-11",
     "hora": "17:00",
@@ -830,7 +922,7 @@
     "reservas": true
   },
   {
-    "id": 43,
+    "id": 47,
     "titulo": "Azkorri al microscopio",
     "fecha": "2025-10-25",
     "hora": "17:00",

@@ -11,7 +11,18 @@
         >
 
           <h2>{{ actividad.titulo }}</h2>
-          <img :src="actividad.imagen1" alt="Imagen de la actividad" />
+          <div class="img-hover-container">
+            <img
+              :src="actividad.imagen1"
+              alt="Imagen de la actividad"
+              class="img-base"
+            />
+            <img
+              :src="actividad.imagen2"
+              alt="Imagen secundaria de la actividad"
+              class="img-hover"
+            />
+          </div>
           <p>{{ actividad.descripcion1 }}</p>
           <p><strong>Fecha:</strong> {{ actividad.fecha }}</p>
           <p><strong>Hora:</strong> {{ actividad.hora }}</p>
@@ -317,4 +328,42 @@ a{
     color: var(--darkgrey);
     text-align: center;
   }
+
+.img-hover-container {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4/3;
+  overflow: hidden;
+  border-radius: 0.5rem;
+}
+
+.img-hover-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 0.5rem;
+  transition: opacity 0.5s ease;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.img-hover-container .img-base {
+  z-index: 1;
+  opacity: 1;
+  position: relative;
+}
+
+.img-hover-container .img-hover {
+  z-index: 2;
+  opacity: 0;
+}
+
+.card:hover .img-hover-container .img-hover {
+  opacity: 1;
+}
+
+.card:hover .img-hover-container .img-base {
+  opacity: 0;
+}
 </style>
