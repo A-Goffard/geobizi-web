@@ -31,9 +31,10 @@
               :key="actividad.titulo"
               class="punto"
               :style="{ backgroundColor: actividad.color, cursor: 'pointer' }"
-              @mouseover="mostrarTooltip(actividad, $event)"
-              @mouseleave="ocultarTooltip"
-              @click="irAReserva(actividad)"
+              @mouseover="!isMobile && mostrarTooltip(actividad, $event)"
+              @mouseleave="!isMobile && ocultarTooltip()"
+              @touchstart.prevent="isMobile && mostrarTooltip(actividad, $event)"
+              @click="irAReserva(actividad, $event)"
               title="Reservar esta actividad"
             ></div>
           </div>
@@ -42,9 +43,15 @@
     </div>
 
     <!-- Tooltip -->
-    <div v-if="tooltip.visible" class="tooltip" :style="{ top: tooltip.y + 'px', left: tooltip.x + 'px' }">
+    <div
+      v-if="tooltip.visible"
+      class="tooltip"
+      :style="{ top: tooltip.y + 'px', left: tooltip.x + 'px', maxWidth: '180px', zIndex: 1000 }"
+      @click="isMobile && irAReserva(tooltip.actividad, $event)"
+    >
       <strong>{{ tooltip.titulo }}</strong><br>
       <span>{{ tooltip.hora }}</span>
+      <div v-if="isMobile" style="font-size:11px; margin-top:4px; color:#ccc;">Toca de nuevo para reservar</div>
     </div>
   </div>
 </template>
@@ -66,7 +73,7 @@ const meses = ref([
 const diasSemana = ref(["Lun", "Mar", "Mié", "Jue", "Vie", "Sáb", "Dom"]);
 
 // Tooltip
-const tooltip = ref({ visible: false, titulo: "", hora: "", x: 0, y: 0 });
+const tooltip = ref({ visible: false, titulo: "", hora: "", x: 0, y: 0, actividad: null });
 
 // Año y mes actual
 const anioActual = ref(new Date().getFullYear());
@@ -74,14 +81,34 @@ const mesActual = ref(new Date().getMonth());
 
 const router = useRouter();
 
-const irAReserva = (actividad) => {
-  const hoy = new Date();
-  const fechaActividad = new Date(actividad.fecha + 'T' + (actividad.hora || '00:00'));
-  if (fechaActividad >= hoy) {
-    if (actividad.reservas) {
-      router.push({ name: 'reservaActividad', params: { id: actividad.id } });
-    } else {
-      router.push({ name: 'reservas' });
+const irAReserva = (actividad, event) => {
+  if (isMobile.value) {
+    // Si el tooltip no está visible o es de otra actividad, solo muestra el tooltip
+    if (!tooltip.value.visible || tooltip.value.actividad !== actividad) {
+      mostrarTooltip(actividad, event);
+      return;
+    }
+    // Si el tooltip ya está visible para esta actividad, navega
+    ocultarTooltip();
+    const hoy = new Date();
+    const fechaActividad = new Date(actividad.fecha + 'T' + (actividad.hora || '00:00'));
+    if (fechaActividad >= hoy) {
+      if (actividad.reservas) {
+        router.push({ name: 'reservaActividad', params: { id: actividad.id } });
+      } else {
+        router.push({ name: 'reservas' });
+      }
+    }
+  } else {
+    // Desktop: navega directamente
+    const hoy = new Date();
+    const fechaActividad = new Date(actividad.fecha + 'T' + (actividad.hora || '00:00'));
+    if (fechaActividad >= hoy) {
+      if (actividad.reservas) {
+        router.push({ name: 'reservaActividad', params: { id: actividad.id } });
+      } else {
+        router.push({ name: 'reservas' });
+      }
     }
   }
 };
@@ -111,14 +138,46 @@ const getDiasDelMes = (mesIndex) => {
   return dias;
 };
 
+// Detecta móvil por tamaño de pantalla o touch
+const isMobile = ref(false);
+
+onMounted(() => {
+  isMobile.value = window.innerWidth <= 600 || 'ontouchstart' in window;
+  window.addEventListener('resize', () => {
+    isMobile.value = window.innerWidth <= 600 || 'ontouchstart' in window;
+  });
+  console.log("Calendario cargado");
+});
+
 // Mostrar tooltip
 const mostrarTooltip = (actividad, event) => {
-  tooltip.value = { visible: true, titulo: actividad.titulo, hora: actividad.hora, x: event.pageX + 10, y: event.pageY + 10 };
+  if (isMobile.value) {
+    // Centra el tooltip en móvil y ajusta para que no se salga
+    let x = event.touches ? event.touches[0].clientX : event.clientX;
+    let y = event.touches ? event.touches[0].clientY : event.clientY;
+    // Ajuste para que no se salga de la pantalla
+    const tooltipWidth = 180;
+    const tooltipHeight = 60;
+    const padding = 10;
+    if (x + tooltipWidth > window.innerWidth) x = window.innerWidth - tooltipWidth - padding;
+    if (y + tooltipHeight > window.innerHeight) y = window.innerHeight - tooltipHeight - padding;
+    tooltip.value = { visible: true, titulo: actividad.titulo, hora: actividad.hora, x, y, actividad };
+  } else {
+    // Desktop: igual que antes, pero ajusta si se sale
+    let x = event.pageX + 10;
+    let y = event.pageY + 10;
+    const tooltipWidth = 180;
+    const tooltipHeight = 60;
+    if (x + tooltipWidth > window.innerWidth) x = window.innerWidth - tooltipWidth - 10;
+    if (y + tooltipHeight > window.innerHeight) y = window.innerHeight - tooltipHeight - 10;
+    tooltip.value = { visible: true, titulo: actividad.titulo, hora: actividad.hora, x, y, actividad };
+  }
 };
 
 // Ocultar tooltip
 const ocultarTooltip = () => {
   tooltip.value.visible = false;
+  tooltip.value.actividad = null;
 };
 
 // Cambiar al mes anterior
@@ -150,10 +209,6 @@ const anioAnterior = () => {
 const anioSiguiente = () => {
   anioActual.value++;
 };
-
-onMounted(() => {
-  console.log("Calendario cargado");
-});
 </script>
 
 <style scoped>
@@ -272,14 +327,24 @@ onMounted(() => {
 
 /* Tooltip */
 .tooltip {
-  position: absolute;
-  background: rgba(0, 0, 0, 0.7);
+  position: fixed;
+  background: rgba(0, 0, 0, 0.85);
   color: white;
-  padding: 5px;
+  padding: 7px 12px;
   border-radius: 4px;
-  font-size: 12px;
-  pointer-events: none;
-  z-index: 10;
+  font-size: 13px;
+  pointer-events: auto;
+  z-index: 1000;
+  max-width: 180px;
+  word-break: break-word;
+  box-sizing: border-box;
+}
+@media (max-width: 600px) {
+  .tooltip {
+    font-size: 14px;
+    padding: 10px 14px;
+    max-width: 90vw;
+  }
 }
 
 .elegir {
