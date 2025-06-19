@@ -78,7 +78,11 @@ const irAReserva = (actividad) => {
   const hoy = new Date();
   const fechaActividad = new Date(actividad.fecha + 'T' + (actividad.hora || '00:00'));
   if (fechaActividad >= hoy) {
-    router.push({ name: 'reservaActividad', params: { id: actividad.id } });
+    if (actividad.reservas) {
+      router.push({ name: 'reservaActividad', params: { id: actividad.id } });
+    } else {
+      router.push({ name: 'reservas' });
+    }
   }
 };
 
