@@ -1,0 +1,28 @@
+# --- ENTORNO DE PRODUCCIÓN (VPS) ---
+
+# 1. Sube los cambios del código fuente al VPS (git pull, etc.)
+# 2. Accede al VPS por SSH: ssh root@194.164.166.99
+# 3. Ve al directorio del proyecto: cd ~/geobizi-web
+
+# 4. Reconstruye y levanta los contenedores de producción:
+docker-compose build --no-cache
+docker-compose up -d
+# (Esto usa docker-compose.yml por defecto)
+
+# --- ENTORNO DE DESARROLLO (EN TU PC) ---
+
+# 0. Asegúrate de que Docker Desktop está corriendo en tu PC.
+# 1. Ve al directorio del proyecto en tu PC.
+# 2. Reconstruye y levanta los contenedores de desarrollo:
+docker-compose -f docker-compose.dev.yml up --build
+
+# 3. Accede al frontend en http://localhost:8080
+#    Accede al backend en http://localhost:5000
+
+# 4. Para parar el entorno de desarrollo:
+#    - Pulsa Ctrl+C en la terminal.
+#    - O desde otra terminal: docker-compose -f docker-compose.dev.yml down
+
+# --- NOTAS GENERALES ---
+# El Nginx del host (VPS) hace de proxy inverso y sirve la web por HTTPS.
+# No necesitas copiar archivos manualmente ni tocar la configuración de Nginx del host.

@@ -12,3 +12,6 @@ __pycache__
 *.egg
 *.whl
 *.zip
+.DS_Store
+/frontend/node_modules
+/backend/__pycache__

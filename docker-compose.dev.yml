@@ -1,0 +1,44 @@
+version: '3.8'
+
+services:
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile # Usa el Dockerfile base
+      target: build      # Apunta a la etapa 'build' que tiene Node.js
+    container_name: vue_frontend_dev
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    command: npm run serve
+    depends_on:
+      - backend
+
+  backend:
+    build:
+      context: ./backend
+    container_name: python_backend_dev
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./backend:/app
+    command: uvicorn main:app --host 0.0.0.0 --port 5000 --reload
+    env_file:
+      - ./.env
+    depends_on:
+      - db
+
+  db:
+    image: postgres:15-alpine
+    container_name: postgres_db_dev
+    ports:
+      - "5432:5432" # Exponemos el puerto para poder conectarnos desde el PC si es necesario
+    env_file:
+      - ./.env
+    volumes:
+      - postgres_data_dev:/var/lib/postgresql/data
+
+volumes:
+  postgres_data_dev:

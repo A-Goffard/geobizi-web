@@ -1,0 +1,9 @@
+# Hereda de la etapa de build del Dockerfile base
+FROM build AS builder
+# Ejecuta el comando de build para generar la carpeta /dist
+RUN npm run build
+
+# Hereda de la etapa de producción del Dockerfile base
+FROM final
+# Copia los archivos generados desde la etapa 'builder'
+COPY --from=builder /app/dist /usr/share/nginx/html
