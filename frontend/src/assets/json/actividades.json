@@ -784,29 +784,6 @@
     "reservas": true
   },
   {
-    "id": 41,
-    "titulo": "Árboles de Getxo",
-    "fecha": "2025-09-06",
-    "hora": "17:00",
-    "color": "green",
-    "descripcion1": "Descubre la variedad de árboles que podemos encontrar en Getxo. Obsérbalos con un microscopio de campo. Ruta guiada para conocer la flora local y su importancia ecológica.",
-    "descripcion2": "Es ideal para familias y grupos escolares.",
-    "precio": 10,
-    "imagen1": "imagenes/actividades/arbolesgetxo1.png",
-    "imagen2": "imagenes/actividades/arbolesgetxo2.png",
-    "tipo": "actividad",
-    "publicar": true,
-    "stripeId": "prod_S3tFx6yhLB8UWB",
-    "opciones": [
-      {
-        "nombre": "Añadir microscopio",
-        "precio": 5,
-        "stripeId": "prod_S3tVPQLORmpz0s"
-      }
-    ],
-    "reservas": true
-  },
-  {
     "id": 42,
     "titulo": "Árboles de Getxo",
     "fecha": "2025-09-07",

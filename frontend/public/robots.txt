@@ -1,0 +1,6 @@
+# Permite a todos los robots rastrear todo el sitio
+User-agent: *
+Disallow: /tienda
+
+# Opcional: indica la ubicación del sitemap
+Sitemap: https://www.geobizi.com/sitemap.xml

@@ -34,3 +34,39 @@ services:
 
 volumes:
   postgres_data:
+
+# En el VPS/servidor online debes usar:
+#   docker-compose -f docker-compose.yml up -d
+# Para desarrollo local puedes usar:
+#   docker-compose -f docker-compose.dev.yml up -d
+
+# RESUMEN DE PASOS Y COMANDOS HABITUALES PARA ACTUALIZAR Y VERIFICAR TU PROYECTO ONLINE CON DOCKER COMPOSE
+
+# 1. Accede al VPS por SSH:
+#    ssh usuario@IP_DEL_VPS
+
+# 2. Ve al directorio del proyecto:
+#    cd /ruta/a/geobizi-web
+
+# 3. Actualiza el código fuente:
+#    - Si usas git:
+#      git pull origin main
+#    - O sube los archivos actualizados por SFTP/rsync
+
+# 4. Reconstruye las imágenes de los servicios:
+#    docker-compose -f docker-compose.yml build
+
+# 5. Reinicia los servicios con el nuevo código:
+#    docker-compose -f docker-compose.yml up -d
+
+# 6. Comprueba que los contenedores están corriendo:
+#    docker ps
+
+# 7. Para ver los logs de un servicio (por ejemplo, frontend):
+#    docker-compose -f docker-compose.yml logs frontend
+
+# 8. Para parar todos los servicios:
+#    docker-compose -f docker-compose.yml down
+
+# 9. Accede a la web desde tu navegador usando la IP del VPS o el dominio:
+#    http://IP_DEL_VPS:8080

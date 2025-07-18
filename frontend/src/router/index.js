@@ -4,7 +4,7 @@ import InicioView from "../views/InicioView.vue";
 import ServiciosView from "../views/ServiciosView.vue";
 import CalendarioView from "../views/CalendarioView.vue";
 // import ReservasView from "@/views/ReservasView.vue";
-import TiendaView from "../views/TiendaView.vue";
+// import TiendaView from "../views/TiendaView.vue";
 
 import ProjectosView from '../views/ProjectosView.vue';
 
@@ -68,11 +68,11 @@ const routes = [
     name: 'reservaActividad',
     component: () => import('@/views/ReservasView.vue')
     },
-    {
-        path: "/tienda",
-        name: "tienda",
-        component: TiendaView,
-    },
+    // {
+    //     path: "/tienda",
+    //     name: "tienda",
+    //     component: TiendaView,
+    // },
     
     {
         path: "/projectos",
@@ -208,6 +208,12 @@ const routes = [
         path: "/calendario",
         name: "Calendario",
         component: Calendario,
+    },
+    // Redirige cualquier ruta no existente a una página de error personalizada
+    {
+        path: '/:pathMatch(.*)*',
+        name: 'NotFound',
+        component: () => import('@/views/NotFoundView.vue')
     }
 ];
 
