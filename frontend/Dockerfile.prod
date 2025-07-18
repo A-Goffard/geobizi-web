@@ -1,5 +1,5 @@
 # Hereda de la etapa de build del Dockerfile base
-FROM build AS builder
+FROM node:18 AS builder
 # Ejecuta el comando de build para generar la carpeta /dist
 RUN npm run build
 
