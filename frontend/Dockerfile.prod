@@ -1,9 +1,13 @@
 # Hereda de la etapa de build del Dockerfile base
 FROM node:18 AS builder
-# Ejecuta el comando de build para generar la carpeta /dist
+WORKDIR /app
+COPY package*.json ./
+RUN npm install
+COPY . .
 RUN npm run build
 
 # Hereda de la etapa de producción del Dockerfile base
-FROM final
-# Copia los archivos generados desde la etapa 'builder'
+FROM nginx:alpine AS final
 COPY --from=builder /app/dist /usr/share/nginx/html
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]
