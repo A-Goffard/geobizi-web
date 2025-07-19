@@ -1,10 +1,17 @@
+# Ignorar dependencias de Node (se instalan dentro del contenedor)
 node_modules
+
+# Ignorar la carpeta de build (se genera dentro del contenedor)
 dist
+
+# Ignorar archivos de entorno
+.env*
+
+# Ignorar logs de npm
+npm-debug.log*
+yarn-error.log
+
+# Ignorar la configuración de Git y otros archivos de desarrollo
 .git
 .gitignore
-npm-debug.log
-yarn-error.log
-*.md
-*.env.local
-.vscode
-.dokerignore
+README.md

@@ -209,6 +209,36 @@ const routes = [
         name: "Calendario",
         component: Calendario,
     },
+    {
+        path: "/admin/panel",
+        name: "admin-panel",
+        component: () => import("../views/administracion/AdminPanelView.vue"),
+    },
+    {
+        path: "/admin/usuarios",
+        name: "admin-usuarios",
+        component: () => import("../views/administracion/AdminUsuariosView.vue"),
+    },
+    {
+        path: "/admin/actividades",
+        name: "admin-actividades",
+        component: () => import("../views/administracion/AdminActividadesView.vue"),
+    },
+    {
+        path: "/admin/empresas",
+        name: "admin-empresas",
+        component: () => import("../views/administracion/AdminEmpresasView.vue"),
+    },
+    {
+        path: "/admin/reservas",
+        name: "admin-reservas",
+        component: () => import("../views/administracion/AdminReservasView.vue"),
+    },
+    {
+        path: "/admin/personas",
+        name: "admin-personas",
+        component: () => import("../views/administracion/AdminPersonasView.vue"),
+    },
     // Redirige cualquier ruta no existente a una página de error personalizada
     {
         path: '/:pathMatch(.*)*',

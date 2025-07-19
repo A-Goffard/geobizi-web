@@ -1,0 +1,189 @@
+/* Estilos compartidos para todas las vistas de administración */
+
+.contenedor-principal {
+  padding-top: 7rem;
+  padding-bottom: 2rem;
+  max-width: 900px;
+  margin: 0 auto;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.creation-form {
+  width: 100%;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+}
+
+.full-width {
+  grid-column: 1 / -1;
+}
+
+.form-group {
+  margin-bottom: 1rem;
+  width: 100%;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+}
+
+th, td {
+  border: 1px solid #ccc;
+  padding: 0.5rem;
+  text-align: left;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="number"],
+input[type="date"],
+input[type="time"],
+textarea,
+select {
+  width: 100%;
+  padding: 0.5rem;
+  font-size: 1rem;
+  border: 1px solid var(--shoftgreen);
+  background-color: var(--megashoftgreen);
+  border-radius: 4px;
+}
+
+button {
+  padding: 0.75rem 1rem;
+  background-color: var(--green);
+  color: var(--white);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+}
+
+button:hover {
+  background-color: var(--lightgreen);
+}
+
+.btn-eliminar {
+  background-color: rgb(201, 55, 55);
+  color: var(--white);
+}
+.btn-editar {
+  background-color: rgb(62, 181, 228);
+  color: var(--white);
+}
+.btn-detalles {
+  background-color: rgb(255, 228, 171);
+  color: var(--black);
+}
+.btn-reactivar {
+  background-color: #28a745;
+  color: white;
+}
+.btn-cancelar {
+  background-color: rgb(201, 55, 55);
+}
+
+.btn-eliminar:hover {
+  background-color: darkred;
+}
+.btn-editar:hover {
+  background-color: darkblue;
+}
+.btn-detalles:hover {
+  background-color: darkgoldenrod;
+}
+.btn-reactivar:hover {
+  background-color: #218838;
+}
+.btn-cancelar:hover {
+  background-color: darkred;
+}
+
+.error-message {
+  color: #c93737;
+  background-color: #f8d7da;
+  border: 1px solid #f5c6cb;
+  padding: 1rem;
+  border-radius: 4px;
+  margin-top: 1rem;
+  width: 100%;
+  text-align: center;
+}
+
+.detalles-card {
+  width: 100%;
+  margin-top: 2rem;
+  padding: 1.5rem;
+  border: 1px solid var(--shoftgreen);
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.detalles-card h3 {
+  margin-top: 0;
+  color: var(--green);
+}
+
+.detalles-card ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.detalles-card li {
+  margin-bottom: 0.5rem;
+}
+
+/* Estilos para los modales */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background-color: white;
+  padding: 2rem;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 700px;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.modal-actions {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+}
+
+.checkbox-group {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.checkbox-group input {
+  width: auto;
+}

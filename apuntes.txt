@@ -26,3 +26,107 @@ docker-compose -f docker-compose.dev.yml up --build
 # --- NOTAS GENERALES ---
 # El Nginx del host (VPS) hace de proxy inverso y sirve la web por HTTPS.
 # No necesitas copiar archivos manualmente ni tocar la configuración de Nginx del host.
+
+
+
+
+
+✅ ¿Cómo evitar este tipo de conflictos?
+Opción A: Usar siempre el mismo archivo docker-compose (dev o prod)
+Si estás en desarrollo, quédate siempre con:
+
+bash
+Copiar
+Editar
+docker-compose -f docker-compose.dev.yml up -d --build
+docker-compose -f docker-compose.dev.yml down
+Si estás desplegando:
+
+bash
+Copiar
+Editar
+docker-compose -f docker-compose.yml up -d --build
+docker-compose -f docker-compose.yml down
+Opción B: Limpiar todos los contenedores manualmente cuando cambies de modo
+bash
+Copiar
+Editar
+docker-compose -f docker-compose.dev.yml down
+docker-compose -f docker-compose.yml down
+docker container prune -f
+docker volume prune -f
+Opción C: Unifica los entornos con perfiles (solo si lo necesitas)
+Puedes fusionar ambos en un solo docker-compose.yml y usar profiles: [dev] para lo que quieras ejecutar solo en desarrollo.
+
+✅ Recomendación actual para tu caso:
+Elimina los contenedores dev huérfanos:
+
+bash
+Copiar
+Editar
+docker-compose -f docker-compose.dev.yml down
+Limpia los contenedores y redes sobrantes si quieres empezar desde cero:
+
+bash
+Copiar
+Editar
+docker system prune -a --volumes
+⚠️ Esto borra todos los contenedores, imágenes y volúmenes no utilizados. Asegúrate de no tener datos importantes.
+
+
+
+
+Pasos recomendados para trabajar en desarrollo local:
+
+1. Abre Visual Studio Code en la carpeta raíz de tu proyecto.
+
+2. Instala las extensiones útiles:
+   - Python
+   - Docker
+   - Remote - Containers (si quieres usar dev containers)
+   - ESLint (para Vue)
+
+3. Para el backend (Python/FastAPI):
+   - Crea y activa un entorno virtual:
+     ```
+     cd backend
+     python -m venv venv
+     venv\Scripts\activate
+     ```
+   - Instala dependencias:
+     ```
+     pip install -r requirements.txt
+     ```
+   - Ejecuta el backend localmente:
+     ```
+     uvicorn main:app --reload
+     ```
+
+4. Para el frontend (Vue):
+   - Instala dependencias:
+     ```
+     cd frontend
+     npm install
+     ```
+   - Ejecuta el frontend localmente:
+     ```
+     npm run serve
+     ```
+
+5. Para la base de datos:
+   - Puedes usar Docker para levantar solo la base de datos:
+     ```
+     docker-compose -f docker-compose.dev.yml up db
+     ```
+   - O instalar PostgreSQL localmente si lo prefieres.
+
+6. Configura el archivo `.env` en la raíz del proyecto con los datos de tu base de datos local.
+
+7. Accede a la web en tu navegador:
+   - Frontend: http://localhost:8080
+   - Backend: http://localhost:5000
+
+**Resumen:**  
+- Usa entornos virtuales para Python y npm para Vue.
+- Ejecuta los servicios por separado en desarrollo.
+- Usa Docker solo si quieres simular el entorno completo localmente.

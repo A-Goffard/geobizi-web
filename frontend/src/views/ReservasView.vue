@@ -34,7 +34,7 @@
     <div v-else class="contact-container">
       <h1>Reserva de {{ actividadSeleccionada.titulo }}</h1>
       <p class="fecha-reserva">
-        <strong>Fecha:</strong> {{ actividadSeleccionada.fecha }} &nbsp; <strong>Hora:</strong> {{ actividadSeleccionada.hora }}
+        <strong>Fecha:</strong> {{ actividadSeleccionada.fecha }} &nbsp; <strong>Hora:</strong> {{ actividadSeleccionada.hora }} &nbsp; <strong>Precio:</strong> {{ actividadSeleccionada.precio }} € por persona
       </p>
       <form @submit.prevent="submitForm">
         <div class="form-group">
@@ -56,6 +56,15 @@
         <div class="form-group">
           <label for="numPersonas">Número de personas:</label>
           <input type="number" id="numPersonas" v-model="formData.numPersonas" min="1" required>
+        </div>
+        <div class="form-group">
+          <label for="formaPago">Forma de pago:</label>
+          <select id="formaPago" v-model="formData.formaPago" required>
+            <option value="" disabled>Selecciona una opción</option>
+            <option value="tarjeta">Tarjeta de crédito</option>
+            <option value="paypal">Bizum</option>
+            <option value="transferencia">Efectivo</option>
+          </select>
         </div>
         <div class="form-group">
           <label for="message">Mensaje:</label>
