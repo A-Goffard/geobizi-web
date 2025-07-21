@@ -4,11 +4,11 @@
     <form @submit.prevent="crearUsuario">
       <div class="form-group">
         <label for="email">Correo Electrónico:</label>
-        <input type="email" id="email" v-model="form.email" required>
+        <input type="email" id="email" v-model="form.email" required maxlength="100">
       </div>
       <div class="form-group">
         <label for="password">Contraseña:</label>
-        <input type="password" id="password" v-model="form.password" required>
+        <input type="password" id="password" v-model="form.password" required minlength="8" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Debe contener al menos un número, una mayúscula, una minúscula y 8 o más caracteres.">
       </div>
       <div class="form-group">
         <label for="id_rol">Rol:</label>

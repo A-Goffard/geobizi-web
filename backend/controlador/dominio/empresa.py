@@ -1,5 +1,5 @@
 class Empresa:
-    def __init__(self, nombre: str, razon_social: str, id_persona: int = None, nif: str = None, direccion: str = None, provincia: str = None, cp: str = None, sector: str = None, logo: str = None, ubicacion: str = None):
+    def __init__(self, nombre: str, razon_social: str, id_persona: int = None, nif: str = None, direccion: str = None, provincia: str = None, cp: str = None, sector: str = None, logo: str = None, ubicacion: str = None, nombre_contacto: str = None, telefono_empresa: str = None, email_empresa: str = None, observaciones: str = None):
         self._nombre = nombre
         self._id_persona = id_persona
         self._razon_social = razon_social
@@ -7,6 +7,10 @@ class Empresa:
         self._direccion = direccion
         self._provincia = provincia
         self._cp = cp
+        self._nombre_contacto = nombre_contacto
+        self._telefono_empresa = telefono_empresa
+        self._email_empresa = email_empresa
+        self._observaciones = observaciones
         self._sector = sector
         self._logo = logo
         self._ubicacion = ubicacion
@@ -69,6 +73,38 @@ class Empresa:
         self._cp = value
 
     @property
+    def nombre_contacto(self):
+        return self._nombre_contacto
+
+    @nombre_contacto.setter
+    def nombre_contacto(self, value):
+        self._nombre_contacto = value
+
+    @property
+    def telefono_empresa(self):
+        return self._telefono_empresa
+
+    @telefono_empresa.setter
+    def telefono_empresa(self, value):
+        self._telefono_empresa = value
+
+    @property
+    def email_empresa(self):
+        return self._email_empresa
+
+    @email_empresa.setter
+    def email_empresa(self, value):
+        self._email_empresa = value
+
+    @property
+    def observaciones(self):
+        return self._observaciones
+
+    @observaciones.setter
+    def observaciones(self, value):
+        self._observaciones = value
+
+    @property
     def sector(self):
         return self._sector
     
@@ -110,6 +146,10 @@ class Empresa:
             "direccion": self._direccion,
             "provincia": self._provincia,
             "cp": self._cp,
+            "nombre_contacto": self._nombre_contacto,
+            "telefono_empresa": self._telefono_empresa,
+            "email_empresa": self._email_empresa,
+            "observaciones": self._observaciones,
             "sector": self._sector,
             "logo": self._logo,
             "ubicacion": self._ubicacion,

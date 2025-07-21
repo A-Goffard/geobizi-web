@@ -3,6 +3,7 @@ from sqlalchemy.orm import Session
 from database.database import SessionLocal
 from database.models import Actividad as ActividadModel
 from schemas.actividad import ActividadCreate, ActividadUpdate, ActividadOut
+from controlador.validaciones.validador_actividad import validar_actividad_create, validar_actividad_update
 from typing import List
 from datetime import datetime
 
@@ -17,6 +18,11 @@ def get_db():
 
 @router.post("/admin/actividades", response_model=ActividadOut)
 def crear_actividad(actividad: ActividadCreate, db: Session = Depends(get_db)):
+    try:
+        validar_actividad_create(actividad)
+    except ValueError as e:
+        raise HTTPException(status_code=400, detail=str(e))
+
     nueva_actividad = ActividadModel(**actividad.model_dump(), created_at=datetime.utcnow(), updated_at=datetime.utcnow())
     db.add(nueva_actividad)
     db.commit()
@@ -37,6 +43,11 @@ def modificar_actividad(id_actividad: int, actividad: ActividadUpdate, db: Sessi
     if not actividad_db:
         raise HTTPException(status_code=404, detail="Actividad no encontrada")
     
+    try:
+        validar_actividad_update(actividad)
+    except ValueError as e:
+        raise HTTPException(status_code=400, detail=str(e))
+
     update_data = actividad.model_dump(exclude_unset=True)
     for key, value in update_data.items():
         setattr(actividad_db, key, value)

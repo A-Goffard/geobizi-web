@@ -7,15 +7,15 @@
       <div class="form-grid">
         <div class="form-group">
           <label for="nombre">Nombre:</label>
-          <input type="text" id="nombre" v-model="form.nombre" required>
+          <input type="text" id="nombre" v-model="form.nombre" required maxlength="100">
         </div>
         <div class="form-group">
           <label for="tipo">Tipo:</label>
-          <input type="text" id="tipo" v-model="form.tipo">
+          <input type="text" id="tipo" v-model="form.tipo" maxlength="50">
         </div>
         <div class="form-group">
           <label for="lugar">Lugar:</label>
-          <input type="text" id="lugar" v-model="form.lugar">
+          <input type="text" id="lugar" v-model="form.lugar" maxlength="100">
         </div>
         <div class="form-group">
           <label for="fecha">Fecha:</label>
@@ -36,11 +36,11 @@
         </div>
         <div class="form-group">
           <label for="precio">Precio por persona (€):</label>
-          <input type="number" step="0.01" id="precio" v-model.number="form.precio">
+          <input type="number" step="0.01" id="precio" v-model.number="form.precio" min="0">
         </div>
         <div class="form-group full-width">
           <label for="descripcion">Descripción:</label>
-          <textarea id="descripcion" v-model="form.descripcion"></textarea>
+          <textarea id="descripcion" v-model="form.descripcion" maxlength="500"></textarea>
         </div>
       </div>
       <button type="submit">Crear Actividad</button>

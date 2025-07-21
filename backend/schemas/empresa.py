@@ -1,4 +1,4 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, field_validator
 from typing import Optional
 from .persona import PersonaOut
 
@@ -10,9 +10,20 @@ class EmpresaBase(BaseModel):
     direccion: Optional[str] = None
     provincia: Optional[str] = None
     cp: Optional[str] = None
+    nombre_contacto: Optional[str] = None
+    telefono_empresa: Optional[str] = None
+    email_empresa: Optional[str] = None
+    observaciones: Optional[str] = None
     sector: Optional[str] = None
     logo: Optional[str] = None
     ubicacion: Optional[str] = None
+
+    @field_validator('nif')
+    @classmethod
+    def nif_to_uppercase(cls, v: str) -> str:
+        if v:
+            return v.upper()
+        return v
 
 class EmpresaCreate(EmpresaBase):
     # Hacemos que los campos de dirección sean obligatorios solo en la creación
@@ -30,6 +41,10 @@ class EmpresaUpdate(BaseModel):
     direccion: Optional[str] = None
     provincia: Optional[str] = None
     cp: Optional[str] = None
+    nombre_contacto: Optional[str] = None
+    telefono_empresa: Optional[str] = None
+    email_empresa: Optional[str] = None
+    observaciones: Optional[str] = None
     sector: Optional[str] = None
     logo: Optional[str] = None
     ubicacion: Optional[str] = None

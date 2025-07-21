@@ -1,7 +1,7 @@
 from datetime import datetime
 
 class Persona:
-    def __init__(self, nombre: str, email: str, apellido: str = None, telefono: str = None, dni: str = None, direccion: str = None, cp: str = None, poblacion: str = None, pais: str = None, observaciones: str = None, fecha_nacimiento: datetime = None, genero: str = None):
+    def __init__(self, nombre: str, apellido: str, email: str, telefono: str, dni: str = None, direccion: str = None, cp: str = None, poblacion: str = None, pais: str = None, observaciones: str = None, fecha_nacimiento: datetime = None, genero: str = None):
         self._nombre = nombre
         self._apellido = apellido
         self._email = email
@@ -26,29 +26,29 @@ class Persona:
         self._nombre = value
 
     @property
+    def apellido(self):
+        return self._apellido
+
+    @apellido.setter
+    def apellido(self, value):
+        self._apellido = value
+
+    @property
     def email(self):
         return self._email
 
     @email.setter
     def email(self, value):
         self._email = value
-        
-    @property
-    def apellido(self):
-        return self._apellido
-    
-    @apellido.setter
-    def apellido(self, value):
-        self._apellido = value
-    
+
     @property
     def telefono(self):
         return self._telefono
-    
+
     @telefono.setter
     def telefono(self, value):
         self._telefono = value
-        
+
     @property
     def dni(self):
         return self._dni
@@ -127,9 +127,9 @@ class Persona:
     def to_dict(self):
         return {
             "nombre": self.nombre,
-            "apellido": self._apellido,
+            "apellido": self.apellido,
             "email": self.email,
-            "telefono": self._telefono,
+            "telefono": self.telefono,
             "dni": self._dni,
             "direccion": self._direccion,
             "cp": self._cp,
