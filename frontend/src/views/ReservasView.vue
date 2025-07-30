@@ -26,7 +26,7 @@
           <p>{{ actividad.descripcion1 }}</p>
           <p><strong>Fecha:</strong> {{ actividad.fecha }}</p>
           <p><strong>Hora:</strong> {{ actividad.hora }}</p>
-          <p><strong>Precio:</strong> {{ actividad.precio }} €</p>
+          <p><strong>Precio:</strong> {{ actividad.precio }} € por persona</p>
         </div>
       </div>
     </div>

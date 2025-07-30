@@ -9,31 +9,9 @@ services:
     ports:
       - "8080:80"
     restart: always
-    depends_on:
-      - backend
 
-  backend:
-    build:
-      context: ./backend
-    container_name: python_backend
-    restart: always
-    env_file:
-      - ./.env
-    depends_on:
-      - db
-    # No se exponen puertos directamente en producción, el proxy inverso se encarga
-
-  db:
-    image: postgres:15-alpine
-    container_name: postgres_db
-    restart: always
-    env_file:
-      - ./.env
-    volumes:
-      - postgres_data:/var/lib/postgresql/data
-
-volumes:
-  postgres_data:
+# Ya no se necesitan los servicios 'backend' ni 'db' para producción.
+# Tampoco se necesitan los 'volumes' para postgres.
 
 # En el VPS/servidor online debes usar:
 #   docker-compose -f docker-compose.yml up -d
@@ -48,6 +26,28 @@ volumes:
 # 2. Ve al directorio del proyecto:
 #    cd /ruta/a/geobizi-web
 
+# 3. Actualiza el código fuente:
+#    - Si usas git:
+#      git pull origin main
+#    - O sube los archivos actualizados por SFTP/rsync
+
+# 4. Reconstruye las imágenes de los servicios:
+#    docker-compose -f docker-compose.yml build
+
+# 5. Reinicia los servicios con el nuevo código:
+#    docker-compose -f docker-compose.yml up -d
+
+# 6. Comprueba que los contenedores están corriendo:
+#    docker ps
+
+# 7. Para ver los logs de un servicio (por ejemplo, frontend):
+#    docker-compose -f docker-compose.yml logs frontend
+
+# 8. Para parar todos los servicios:
+#    docker-compose -f docker-compose.yml down
+
+# 9. Accede a la web desde tu navegador usando la IP del VPS o el dominio:
+#    http://IP_DEL_VPS:8080
 # 3. Actualiza el código fuente:
 #    - Si usas git:
 #      git pull origin main
