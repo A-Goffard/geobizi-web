@@ -68,7 +68,7 @@
           <td>{{ empresa.nif }}</td>
           <td>{{ empresa.persona ? empresa.persona.nombre : 'N/A' }}</td>
           <td>
-            <button class="btn-eliminar" @click="desactivarEmpresa(empresa.id_empresa)">Eliminar</button>
+            <button class="btn-eliminar" @click="desactivarEmpresa(empresa.id_empresa)">Desactivar</button>
             <button class="btn-editar" @click="abrirModalEditar(empresa)">Editar</button>
             <button class="btn-detalles" @click="verDetalles(empresa)">Ver Detalles</button>
           </td>
