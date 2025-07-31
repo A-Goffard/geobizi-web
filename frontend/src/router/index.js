@@ -209,7 +209,6 @@ const routes = [
         name: "Calendario",
         component: Calendario,
     },
-    /*
     {
         path: "/admin/panel",
         name: "admin-panel",
@@ -240,7 +239,6 @@ const routes = [
         name: "admin-personas",
         component: () => import("../views/administracion/AdminPersonasView.vue"),
     },
-    */
     // Redirige cualquier ruta no existente a una página de error personalizada
     {
         path: '/:pathMatch(.*)*',

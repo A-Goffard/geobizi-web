@@ -24,6 +24,7 @@ class ReservaOut(ReservaBase):
     fecha_reserva: datetime
     aprobada: bool
     confirmacion_enviada: bool
+    activo: int
     persona: Optional[PersonaOut] = None
     actividad: Optional[ActividadOut] = None
 

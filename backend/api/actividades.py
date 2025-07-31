@@ -4,10 +4,17 @@ from database.database import SessionLocal
 from database.models import Actividad as ActividadModel
 from schemas.actividad import ActividadCreate, ActividadUpdate, ActividadOut
 from controlador.validaciones.validador_actividad import validar_actividad_create, validar_actividad_update
+from controlador.gestores.actividad_gestor import ActividadGestor
 from typing import List
 from datetime import datetime
+import logging
+
+# Configurar logging
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 
 router = APIRouter()
+actividad_gestor = ActividadGestor()
 
 def get_db():
     db = SessionLocal()
@@ -16,31 +23,47 @@ def get_db():
     finally:
         db.close()
 
-@router.post("/admin/actividades", response_model=ActividadOut)
+@router.post("/api/admin/actividades", response_model=ActividadOut)
 def crear_actividad(actividad: ActividadCreate, db: Session = Depends(get_db)):
     try:
         validar_actividad_create(actividad)
     except ValueError as e:
         raise HTTPException(status_code=400, detail=str(e))
 
-    nueva_actividad = ActividadModel(**actividad.model_dump(), created_at=datetime.utcnow(), updated_at=datetime.utcnow())
-    db.add(nueva_actividad)
-    db.commit()
-    db.refresh(nueva_actividad)
-    return nueva_actividad
+    return actividad_gestor.crear(db, actividad)
 
-@router.get("/admin/actividades", response_model=List[ActividadOut])
-def listar_actividades(db: Session = Depends(get_db)):
-    return db.query(ActividadModel).filter(ActividadModel.activo == 1).all()
+@router.get("/api/admin/actividades")
+def listar_actividades_admin(db: Session = Depends(get_db)):
+    try:
+        actividades = db.query(ActividadModel).filter(ActividadModel.activo == 1).all()
+        
+        result = []
+        for actividad in actividades:
+            result.append({
+                "id_actividad": actividad.id_actividad,
+                "nombre": actividad.nombre,
+                "tipo": actividad.tipo,
+                "lugar": actividad.lugar,
+                "fecha": actividad.fecha.isoformat() if actividad.fecha else None,
+                "hora": actividad.hora,
+                "precio": actividad.precio,
+                "activo": actividad.activo
+            })
+        
+        return result
+        
+    except Exception as e:
+        logger.error(f"Error al listar actividades: {str(e)}")
+        raise HTTPException(status_code=500, detail=f"Error interno del servidor: {str(e)}")
 
-@router.get("/admin/actividades/inactivas", response_model=List[ActividadOut])
+@router.get("/api/admin/actividades/inactivas", response_model=List[ActividadOut])
 def listar_actividades_inactivas(db: Session = Depends(get_db)):
     return db.query(ActividadModel).filter(ActividadModel.activo == 0).all()
 
-@router.put("/admin/actividades/{id_actividad}", response_model=ActividadOut)
+@router.put("/api/admin/actividades/{id_actividad}", response_model=ActividadOut)
 def modificar_actividad(id_actividad: int, actividad: ActividadUpdate, db: Session = Depends(get_db)):
-    actividad_db = db.query(ActividadModel).filter(ActividadModel.id_actividad == id_actividad, ActividadModel.activo == 1).first()
-    if not actividad_db:
+    actividad_db = actividad_gestor.obtener(db, id_actividad)
+    if not actividad_db or actividad_db.activo == 0:
         raise HTTPException(status_code=404, detail="Actividad no encontrada")
     
     try:
@@ -48,30 +71,46 @@ def modificar_actividad(id_actividad: int, actividad: ActividadUpdate, db: Sessi
     except ValueError as e:
         raise HTTPException(status_code=400, detail=str(e))
 
-    update_data = actividad.model_dump(exclude_unset=True)
-    for key, value in update_data.items():
-        setattr(actividad_db, key, value)
-    
-    actividad_db.updated_at = datetime.utcnow()
-    db.commit()
-    db.refresh(actividad_db)
-    return actividad_db
+    return actividad_gestor.actualizar(db, id_actividad, actividad)
 
-@router.delete("/admin/actividades/{id_actividad}")
+@router.delete("/api/admin/actividades/{id_actividad}")
 def desactivar_actividad(id_actividad: int, db: Session = Depends(get_db)):
-    actividad_db = db.query(ActividadModel).filter(ActividadModel.id_actividad == id_actividad, ActividadModel.activo == 1).first()
-    if not actividad_db:
+    actividad_db = actividad_gestor.obtener(db, id_actividad)
+    if not actividad_db or actividad_db.activo == 0:
         raise HTTPException(status_code=404, detail="Actividad no encontrada")
-    actividad_db.activo = 0
-    db.commit()
+    
+    actividad_gestor.eliminar(db, id_actividad)
     return {"msg": "Actividad desactivada"}
 
-@router.put("/admin/actividades/{id_actividad}/reactivar", response_model=ActividadOut)
+@router.put("/api/admin/actividades/{id_actividad}/reactivar", response_model=ActividadOut)
 def reactivar_actividad(id_actividad: int, db: Session = Depends(get_db)):
-    actividad_db = db.query(ActividadModel).filter(ActividadModel.id_actividad == id_actividad).first()
+    actividad_db = actividad_gestor.obtener(db, id_actividad)
     if not actividad_db:
         raise HTTPException(status_code=404, detail="Actividad no encontrada")
-    actividad_db.activo = 1
-    db.commit()
-    db.refresh(actividad_db)
-    return actividad_db
+    
+    return actividad_gestor.reactivar(db, id_actividad)
+
+@router.get("/api/admin/actividades")
+def listar_actividades_admin(db: Session = Depends(get_db)):
+    """Listar todas las actividades para administración"""
+    try:
+        actividades = db.query(ActividadModel).filter(ActividadModel.activo == 1).all()
+        
+        result = []
+        for actividad in actividades:
+            result.append({
+                "id_actividad": actividad.id_actividad,
+                "nombre": actividad.nombre,
+                "tipo": actividad.tipo,
+                "lugar": actividad.lugar,
+                "fecha": actividad.fecha.isoformat() if actividad.fecha else None,
+                "hora": actividad.hora,
+                "precio": actividad.precio,
+                "activo": actividad.activo
+            })
+        
+        return result
+        
+    except Exception as e:
+        logger.error(f"Error al listar actividades: {str(e)}")
+        raise HTTPException(status_code=500, detail=f"Error interno del servidor: {str(e)}")

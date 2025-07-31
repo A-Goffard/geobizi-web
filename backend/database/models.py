@@ -1,6 +1,10 @@
 from sqlalchemy import Column, Integer, String, DateTime, Float, Boolean, ForeignKey
 from sqlalchemy.orm import relationship
-from .database import Base
+
+try:
+    from .database import Base
+except ImportError:
+    from database import Base
 
 class Actividad(Base):
     __tablename__ = "actividades"
@@ -35,6 +39,7 @@ class Rol(Base):
     __tablename__ = "roles"
     id_rol = Column(Integer, primary_key=True, index=True)
     nombre = Column(String, unique=True, index=True)
+    activo = Column(Integer, default=1)
 
     usuarios = relationship("Usuario", back_populates="rol")
 
@@ -104,6 +109,7 @@ class Mensaje(Base):
     id_persona = Column(Integer, ForeignKey("personas.id_persona"), index=True)
     contenido = Column(String)
     fecha_envio = Column(DateTime)
+    activo = Column(Integer, default=1)
 
     persona = relationship("Persona", back_populates="mensajes")
 
@@ -116,6 +122,9 @@ class Reserva(Base):
     aprobada = Column(Boolean, default=False)
     numero_personas = Column(Integer)
     confirmacion_enviada = Column(Boolean, default=False)
+    mensaje = Column(String, nullable=True)  # Nuevo campo
+    forma_pago = Column(String, nullable=True)  # Nuevo campo
+    activo = Column(Integer, default=1)
 
     persona = relationship("Persona", back_populates="reservas")
     actividad = relationship("Actividad", back_populates="reservas")
@@ -129,6 +138,7 @@ class LogSistema(Base):
     descripcion = Column(String)
     actividad_modificada = Column(String)
     actividad_agregada = Column(String)
+    activo = Column(Integer, default=1)
 
     usuario = relationship("Usuario", back_populates="logs")
 

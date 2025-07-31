@@ -15,6 +15,7 @@ class LogSistemaCreate(LogSistemaBase):
 class LogSistemaOut(LogSistemaBase):
     id_log_sistema: int
     fecha: datetime
+    activo: Optional[int] = None
 
     class Config:
         from_attributes = True

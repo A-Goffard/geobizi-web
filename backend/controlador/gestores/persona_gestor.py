@@ -1,3 +1,4 @@
+# backend/controlador/gestores/persona_gestor.py
 from .base import GestorBase
 from database.models import Persona
 
@@ -49,3 +50,5 @@ class PersonaGestor(GestorBase):
         db.delete(persona)
         db.commit()
         return persona
+
+persona_gestor = PersonaGestor() 

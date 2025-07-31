@@ -94,6 +94,8 @@
       @update="actualizarUsuario"
     />
   </div>
+    <!-- Botón para volver al panel de administración -->
+    <div class="contenedor-principal"><button class="btn-editar" @click="volverAlPanel">Volver al panel</button></div>
 </template>
 
 <script setup>
@@ -195,6 +197,11 @@ const verDetalles = (usuario) => {
 
 const cerrarDetalles = () => {
   usuarioSeleccionado.value = null
+}
+
+const volverAlPanel = () => {
+  // Redirige al panel de administración
+  window.location.href = '/admin/panel';
 }
 
 onMounted(fetchUsuarios)

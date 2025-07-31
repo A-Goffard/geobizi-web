@@ -127,7 +127,10 @@
       @close="cerrarModalEditar"
       @update="actualizarActividad"
     />
+    <!-- Botón para volver al panel de administración -->
+    <div class="contenedor-principal"><button class="btn-editar" @click="volverAlPanel">Volver al panel</button></div>
   </div>
+
 </template>
 
 <script setup>
@@ -144,7 +147,8 @@ const form = ref({
   descripcion: '',
   estado: 'pendiente',
   categoria: 'educativa',
-  precio: 0
+  precio: 0,
+  coste_economico: 0 // Campo añadido
 })
 const actividades = ref([])
 const actividadesInactivas = ref([])
@@ -185,7 +189,7 @@ const crearActividad = async () => {
       const errData = await res.json()
       throw new Error(errData.detail || 'Error al crear actividad')
     }
-    form.value = { nombre: '', tipo: '', lugar: '', fecha: null, hora: '', descripcion: '', estado: 'pendiente', categoria: 'educativa', precio: 0 }
+    form.value = { nombre: '', tipo: '', lugar: '', fecha: null, hora: '', descripcion: '', estado: 'pendiente', categoria: 'educativa', precio: 0, coste_economico: 0 }
     fetchActividades()
   } catch (e) {
     error.value = e.message
@@ -230,6 +234,11 @@ const verDetalles = (actividad) => {
 
 const cerrarDetalles = () => {
   actividadSeleccionada.value = null
+}
+
+const volverAlPanel = () => {
+  // Redirige al panel de administración
+  window.location.href = '/admin/panel';
 }
 
 onMounted(fetchActividades)

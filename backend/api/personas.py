@@ -2,10 +2,12 @@ from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 from database.database import SessionLocal
 from database.models import Persona as PersonaModel
-from schemas.persona import PersonaCreate, PersonaUpdate, PersonaOut
-from controlador.validaciones.validador_persona import validar_persona_create, validar_persona_update
-from typing import List
+import logging
+from controlador.gestores.persona_gestor import persona_gestor 
+from schemas.persona import PersonaOut, PersonaUpdate
+from controlador.validaciones.validador_persona import validar_persona_update
 
+logger = logging.getLogger(__name__)
 router = APIRouter()
 
 def get_db():
@@ -15,35 +17,58 @@ def get_db():
     finally:
         db.close()
 
-@router.post("/admin/personas", response_model=PersonaOut)
-def crear_persona(persona: PersonaCreate, db: Session = Depends(get_db)):
+@router.get("/api/admin/personas")
+def listar_personas_admin(db: Session = Depends(get_db)):
     try:
-        validar_persona_create(persona)
-    except ValueError as e:
-        raise HTTPException(status_code=400, detail=str(e))
-    
-    db_persona = db.query(PersonaModel).filter(PersonaModel.email == persona.email).first()
-    if db_persona:
-        raise HTTPException(status_code=400, detail="El email ya está registrado.")
+        personas = db.query(PersonaModel).filter(PersonaModel.activo == 1).all()
         
-    nueva_persona = PersonaModel(**persona.model_dump())
-    db.add(nueva_persona)
-    db.commit()
-    db.refresh(nueva_persona)
-    return nueva_persona
-
-@router.get("/admin/personas", response_model=List[PersonaOut])
-def listar_personas(db: Session = Depends(get_db)):
-    return db.query(PersonaModel).filter(PersonaModel.activo == 1).all()
-
-@router.get("/admin/personas/inactivas", response_model=List[PersonaOut])
-def listar_personas_inactivas(db: Session = Depends(get_db)):
+        result = []
+        for persona in personas:
+            result.append({
+                "id_persona": persona.id_persona,
+                "nombre": persona.nombre,
+                "apellido": persona.apellido,
+                "email": persona.email,
+                "telefono": persona.telefono,
+                "dni": persona.dni,
+                "activo": persona.activo
+            })
+        
+        return result
+        
+    except Exception as e:
+        logger.error(f"Error al listar personas: {str(e)}")
+        raise HTTPException(status_code=500, detail=f"Error: {str(e)}")
+        
+    except Exception as e:
+        logger.error(f"Error al listar personas: {str(e)}")
+        raise HTTPException(status_code=500, detail=f"Error: {str(e)}")
     return db.query(PersonaModel).filter(PersonaModel.activo == 0).all()
 
-@router.put("/admin/personas/{id_persona}", response_model=PersonaOut)
+@router.get("/api/admin/personas/inactivas")
+def listar_personas_inactivas(db: Session = Depends(get_db)):
+    try:
+        personas = db.query(PersonaModel).filter(PersonaModel.activo == 0).all()
+        result = []
+        for persona in personas:
+            result.append({
+                "id_persona": persona.id_persona,
+                "nombre": persona.nombre,
+                "apellido": persona.apellido,
+                "email": persona.email,
+                "telefono": persona.telefono,
+                "dni": persona.dni,
+                "activo": persona.activo
+            })
+        return result
+    except Exception as e:
+        logger.error(f"Error al listar personas inactivas: {str(e)}")
+        raise HTTPException(status_code=500, detail=f"Error: {str(e)}")
+
+@router.put("/api/admin/personas/{id_persona}", response_model=PersonaOut)
 def modificar_persona(id_persona: int, persona: PersonaUpdate, db: Session = Depends(get_db)):
-    persona_db = db.query(PersonaModel).filter(PersonaModel.id_persona == id_persona, PersonaModel.activo == 1).first()
-    if not persona_db:
+    persona_db = persona_gestor.obtener(db, id_persona)
+    if not persona_db or persona_db.activo == 0:
         raise HTTPException(status_code=404, detail="Persona no encontrada")
     
     try:
@@ -51,29 +76,21 @@ def modificar_persona(id_persona: int, persona: PersonaUpdate, db: Session = Dep
     except ValueError as e:
         raise HTTPException(status_code=400, detail=str(e))
 
-    update_data = persona.model_dump(exclude_unset=True)
-    for key, value in update_data.items():
-        setattr(persona_db, key, value)
-    
-    db.commit()
-    db.refresh(persona_db)
-    return persona_db
+    return persona_gestor.actualizar(db, id_persona, persona)
 
-@router.delete("/admin/personas/{id_persona}")
+@router.delete("/api/admin/personas/{id_persona}")
 def desactivar_persona(id_persona: int, db: Session = Depends(get_db)):
-    persona_db = db.query(PersonaModel).filter(PersonaModel.id_persona == id_persona, PersonaModel.activo == 1).first()
-    if not persona_db:
+    persona_db = persona_gestor.obtener(db, id_persona)
+    if not persona_db or persona_db.activo == 0:
         raise HTTPException(status_code=404, detail="Persona no encontrada")
-    persona_db.activo = 0
-    db.commit()
+    
+    persona_gestor.eliminar(db, id_persona)
     return {"msg": "Persona desactivada"}
 
-@router.put("/admin/personas/{id_persona}/reactivar", response_model=PersonaOut)
+@router.put("/api/admin/personas/{id_persona}/reactivar", response_model=PersonaOut)
 def reactivar_persona(id_persona: int, db: Session = Depends(get_db)):
-    persona_db = db.query(PersonaModel).filter(PersonaModel.id_persona == id_persona).first()
+    persona_db = persona_gestor.obtener(db, id_persona)
     if not persona_db:
         raise HTTPException(status_code=404, detail="Persona no encontrada")
-    persona_db.activo = 1
-    db.commit()
-    db.refresh(persona_db)
-    return persona_db
+    
+    return persona_gestor.reactivar(db, id_persona)

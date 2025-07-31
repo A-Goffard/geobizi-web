@@ -25,13 +25,18 @@ except Exception as e:
 
 app = FastAPI()
 
-# Eliminamos el prefijo /api. El proxy se encargará de la reescritura de la ruta.
+# Incluye los routers con y sin el prefijo /api
 app.include_router(admin_router)
-app.include_router(usuarios_router)
-app.include_router(actividades_router)
-app.include_router(empresas_router)
-app.include_router(personas_router)
-app.include_router(reservas_router)
+app.include_router(usuarios_router, prefix="/api")
+app.include_router(usuarios_router)  # <-- Añadido sin prefix
+app.include_router(actividades_router, prefix="/api")
+app.include_router(actividades_router)  # <-- Añadido sin prefix
+app.include_router(empresas_router, prefix="/api")
+app.include_router(empresas_router)  # <-- Añadido sin prefix
+app.include_router(personas_router, prefix="/api")
+app.include_router(personas_router)  # <-- Añadido sin prefix
+app.include_router(reservas_router, prefix="/api")
+app.include_router(reservas_router)  # <-- Añadido sin prefix
 
 def get_db():
     db = SessionLocal()
@@ -48,4 +53,5 @@ def get_current_superuser(db: Session = Depends(get_db), email: str = None):
 
 @app.get("/")
 def read_root():
+    return {"Hello": "Database is set up!"}
     return {"Hello": "Database is set up!"}

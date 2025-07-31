@@ -12,7 +12,6 @@ module.exports = defineConfig({
         changeOrigin: true,
         logLevel: 'debug', // Muestra logs detallados del proxy en la terminal
         // Reescribimos la ruta para quitar /api antes de enviarla al backend
-        pathRewrite: { '^/api': '' },
       },
     }
   }

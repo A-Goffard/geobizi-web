@@ -12,6 +12,7 @@ class MensajeCreate(MensajeBase):
 class MensajeOut(MensajeBase):
     id_mensaje: int
     fecha_envio: datetime
+    activo: Optional[int] = None
 
     class Config:
         from_attributes = True

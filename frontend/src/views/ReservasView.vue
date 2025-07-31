@@ -151,37 +151,54 @@ const volverALista = () => {
   router.push('/reservas');
 };
 
-const submitForm = () => {
+const submitForm = async () => {
   successMessage.value = '';
   errorMessage.value = '';
 
-  fetch('https://formspree.io/f/xanedzed', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(formData.value)
-  })
-    .then(response => {
-      if (response.ok) {
-        successMessage.value = 'Reserva enviada correctamente.';
-        formData.value = {
-          nombre: '',
-          apellidos: '',
-          email: '',
-          phone: '',
-          actividad: '',
-          message: '',
-          privacyAccepted: false,
-          privacyAcceptedAviso: false,
-          numPersonas: 1
-        };
-      } else {
-        throw new Error('Error al enviar la reserva.');
-      }
-    })
-    .catch(error => {
-      errorMessage.value = 'Hubo un error al enviar la reserva. Por favor, inténtalo de nuevo.';
-      console.error('Error:', error);
+  // Preparar datos para la API
+  const reservaData = {
+    nombre: formData.value.nombre,
+    apellidos: formData.value.apellidos,
+    email: formData.value.email,
+    telefono: formData.value.phone,
+    actividad_id: actividadSeleccionada.value.id,
+    numero_personas: formData.value.numPersonas,
+    mensaje: formData.value.message,
+    forma_pago: formData.value.formaPago  // Nuevo campo
+  };
+
+  try {
+    const response = await fetch('/api/reservas/publica', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(reservaData)
     });
+
+    if (response.ok) {
+      const result = await response.json();
+      successMessage.value = `Reserva enviada correctamente. Número de reserva: ${result.id_reserva}. Recibirá confirmación por email.`;
+      
+      // Resetear formulario
+      formData.value = {
+        nombre: '',
+        apellidos: '',
+        email: '',
+        phone: '',
+        actividad: '',
+        message: '',
+        privacyAccepted: false,
+        privacyAcceptedAviso: false,
+        numPersonas: 1,
+        formaPago: ''
+      };
+    } else {
+      const errorData = await response.json();
+      throw new Error(errorData.detail || 'Error al enviar la reserva');
+    }
+  } catch (error) {
+    errorMessage.value = 'Hubo un error al enviar la reserva. Por favor, inténtalo de nuevo.';
+    console.error('Error:', error);
+  }
 };
 </script>
 

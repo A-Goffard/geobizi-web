@@ -7,7 +7,9 @@ from schemas.usuario import UsuarioCreate, UsuarioUpdate, UsuarioOut
 from controlador.validaciones.validador_usuario import validar_usuario_create, validar_usuario_update
 from typing import List
 from utils.security import hash_password
+import logging
 
+logger = logging.getLogger(__name__)
 router = APIRouter()
 
 def get_db():
@@ -17,7 +19,7 @@ def get_db():
     finally:
         db.close()
 
-@router.post("/admin/usuarios", response_model=UsuarioOut)
+@router.post("/api/admin/usuarios", response_model=UsuarioOut)
 def crear_usuario(usuario: UsuarioCreate, db: Session = Depends(get_db)):
     # Comprobamos si el email ya existe
     db_user = db.query(UsuarioModel).filter(UsuarioModel.email == usuario.email).first()
@@ -50,16 +52,16 @@ def crear_usuario(usuario: UsuarioCreate, db: Session = Depends(get_db)):
     db.refresh(nuevo_usuario)
     return nuevo_usuario
 
-@router.get("/admin/usuarios", response_model=List[UsuarioOut])
+@router.get("/api/admin/usuarios", response_model=List[UsuarioOut])
 def listar_usuarios(db: Session = Depends(get_db)):
     return db.query(UsuarioModel).options(selectinload(UsuarioModel.rol)).filter(UsuarioModel.activo == 1).all()
 
-@router.get("/admin/usuarios/inactivos", response_model=List[UsuarioOut])
+@router.get("/api/admin/usuarios/inactivos", response_model=List[UsuarioOut])
 def listar_usuarios_inactivos(db: Session = Depends(get_db)):
     """Devuelve una lista de usuarios que han sido desactivados."""
     return db.query(UsuarioModel).options(selectinload(UsuarioModel.rol)).filter(UsuarioModel.activo == 0).all()
 
-@router.put("/admin/usuarios/{id_usuario}/reactivar", response_model=UsuarioOut)
+@router.put("/api/admin/usuarios/{id_usuario}/reactivar", response_model=UsuarioOut)
 def reactivar_usuario(id_usuario: int, db: Session = Depends(get_db)):
     """Reactiva un usuario que estaba inactivo."""
     usuario_db = db.query(UsuarioModel).filter(UsuarioModel.id_usuario == id_usuario).first()
@@ -71,7 +73,7 @@ def reactivar_usuario(id_usuario: int, db: Session = Depends(get_db)):
     db.refresh(usuario_db)
     return usuario_db
 
-@router.put("/admin/usuarios/{id_usuario}", response_model=UsuarioOut)
+@router.put("/api/admin/usuarios/{id_usuario}", response_model=UsuarioOut)
 def modificar_usuario(id_usuario: int, usuario: UsuarioUpdate, db: Session = Depends(get_db)):
     usuario_db = db.query(UsuarioModel).filter(UsuarioModel.id_usuario == id_usuario, UsuarioModel.activo == 1).first()
     if not usuario_db:
@@ -101,7 +103,7 @@ def modificar_usuario(id_usuario: int, usuario: UsuarioUpdate, db: Session = Dep
     db.refresh(usuario_db)
     return usuario_db
 
-@router.delete("/admin/usuarios/{id_usuario}")
+@router.delete("/api/admin/usuarios/{id_usuario}")
 def eliminar_usuario(id_usuario: int, db: Session = Depends(get_db)):
     usuario_db = db.query(UsuarioModel).filter(UsuarioModel.id_usuario == id_usuario, UsuarioModel.activo == 1).first()
     if not usuario_db:
@@ -109,3 +111,25 @@ def eliminar_usuario(id_usuario: int, db: Session = Depends(get_db)):
     usuario_db.activo = 0
     db.commit()
     return {"msg": "Usuario desactivado"}
+
+@router.get("/api/admin/usuarios")
+def listar_usuarios_admin(db: Session = Depends(get_db)):
+    try:
+        usuarios = db.query(UsuarioModel).filter(UsuarioModel.activo == 1).all()
+        
+        result = []
+        for usuario in usuarios:
+            result.append({
+                "id_usuario": usuario.id_usuario,
+                "email": usuario.email,
+                "is_superuser": usuario.is_superuser,
+                "activo": usuario.activo,
+                "id_persona": usuario.id_persona,
+                "id_rol": usuario.id_rol
+            })
+        
+        return result
+        
+    except Exception as e:
+        logger.error(f"Error al listar usuarios: {str(e)}")
+        raise HTTPException(status_code=500, detail=f"Error: {str(e)}")
