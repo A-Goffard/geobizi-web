@@ -1,4 +1,4 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, EmailStr
 from typing import Optional
 from .rol import RolOut
 
@@ -12,6 +12,7 @@ class UsuarioCreate(UsuarioBase):
 
 class UsuarioUpdate(UsuarioBase):
     password: Optional[str] = None
+    is_superuser: Optional[bool] = None  # Campo añadido
 
 class UsuarioOut(BaseModel):
     id_usuario: int

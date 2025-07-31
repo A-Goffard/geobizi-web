@@ -23,35 +23,51 @@ def get_db():
     finally:
         db.close()
 
-@router.post("/api/admin/actividades", response_model=ActividadOut)
+@router.post("/api/admin/actividades")
 def crear_actividad(actividad: ActividadCreate, db: Session = Depends(get_db)):
+    print("Datos recibidos para crear actividad:", actividad)
+    # Comprobación de duplicados
+    existente = db.query(ActividadModel).filter(
+        ActividadModel.nombre == actividad.nombre,
+        ActividadModel.lugar == actividad.lugar,
+        ActividadModel.fecha == actividad.fecha,
+        ActividadModel.hora == actividad.hora,
+        ActividadModel.activo == 1
+    ).first()
+    if existente:
+        raise HTTPException(
+            status_code=400,
+            detail="Ya existe una actividad con el mismo nombre, lugar, fecha y hora."
+        )
     try:
         validar_actividad_create(actividad)
     except ValueError as e:
         raise HTTPException(status_code=400, detail=str(e))
 
-    return actividad_gestor.crear(db, actividad)
+    nueva_actividad = actividad_gestor.crear(db, actividad)
+    return {
+        "msg": "Actividad creada correctamente.",
+        "actividad": ActividadOut.model_validate(nueva_actividad)
+    }
 
 @router.get("/api/admin/actividades")
 def listar_actividades_admin(db: Session = Depends(get_db)):
     try:
         actividades = db.query(ActividadModel).filter(ActividadModel.activo == 1).all()
-        
         result = []
         for actividad in actividades:
             result.append({
                 "id_actividad": actividad.id_actividad,
                 "nombre": actividad.nombre,
-                "tipo": actividad.tipo,
-                "lugar": actividad.lugar,
-                "fecha": actividad.fecha.isoformat() if actividad.fecha else None,
-                "hora": actividad.hora,
-                "precio": actividad.precio,
-                "activo": actividad.activo
+                "tipo": getattr(actividad, "tipo", None),
+                "lugar": getattr(actividad, "lugar", None),
+                "fecha": actividad.fecha.isoformat() if getattr(actividad, "fecha", None) else None,
+                "hora": getattr(actividad, "hora", None),
+                "precio": getattr(actividad, "precio", None),
+                "estado": getattr(actividad, "estado", None),  # Asegúrate que existe en el modelo
+                "activo": getattr(actividad, "activo", None)
             })
-        
         return result
-        
     except Exception as e:
         logger.error(f"Error al listar actividades: {str(e)}")
         raise HTTPException(status_code=500, detail=f"Error interno del servidor: {str(e)}")
@@ -89,28 +105,3 @@ def reactivar_actividad(id_actividad: int, db: Session = Depends(get_db)):
         raise HTTPException(status_code=404, detail="Actividad no encontrada")
     
     return actividad_gestor.reactivar(db, id_actividad)
-
-@router.get("/api/admin/actividades")
-def listar_actividades_admin(db: Session = Depends(get_db)):
-    """Listar todas las actividades para administración"""
-    try:
-        actividades = db.query(ActividadModel).filter(ActividadModel.activo == 1).all()
-        
-        result = []
-        for actividad in actividades:
-            result.append({
-                "id_actividad": actividad.id_actividad,
-                "nombre": actividad.nombre,
-                "tipo": actividad.tipo,
-                "lugar": actividad.lugar,
-                "fecha": actividad.fecha.isoformat() if actividad.fecha else None,
-                "hora": actividad.hora,
-                "precio": actividad.precio,
-                "activo": actividad.activo
-            })
-        
-        return result
-        
-    except Exception as e:
-        logger.error(f"Error al listar actividades: {str(e)}")
-        raise HTTPException(status_code=500, detail=f"Error interno del servidor: {str(e)}")

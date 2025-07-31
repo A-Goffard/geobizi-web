@@ -6,4 +6,7 @@ email-validator
 python-jose[cryptography]
 passlib[bcrypt]
 httpx
+requests
+sendgrid
+mailjet-rest
 

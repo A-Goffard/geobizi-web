@@ -1,22 +1,46 @@
 <template>
   <div class="contenedor-principal">
     <h1>Gestión de Reservas</h1>
-    
-    <form @submit.prevent="crearReserva">
+
+    <!-- Formulario de Reserva Rápida -->
+    <form @submit.prevent="crearReservaRapida" class="form-grid">
       <div class="form-group">
-        <label for="id_persona">ID Persona:</label>
-        <input type="number" id="id_persona" v-model.number="form.id_persona" required>
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" v-model="formRapida.nombre" required>
       </div>
       <div class="form-group">
-        <label for="id_actividad">ID Actividad:</label>
-        <input type="number" id="id_actividad" v-model.number="form.id_actividad" required>
+        <label for="apellido">Apellido:</label>
+        <input type="text" id="apellido" v-model="formRapida.apellido" required>
       </div>
       <div class="form-group">
-        <label for="numero_personas">Nº Personas:</label>
-        <input type="number" id="numero_personas" v-model.number="form.numero_personas" required>
+        <label for="email">Email:</label>
+        <input type="email" id="email" v-model="formRapida.email" required>
       </div>
-      <button type="submit">Crear Reserva</button>
+      <div class="form-group">
+        <label for="telefono">Teléfono:</label>
+        <input type="tel" id="telefono" v-model="formRapida.telefono" required>
+      </div>
+      <div class="form-group">
+        <label for="actividad">Actividad:</label>
+        <select id="actividad" v-model="formRapida.id_actividad" required>
+          <option value="">Selecciona una actividad</option>
+          <option v-for="actividad in actividadesDisponibles" :key="actividad.id_actividad" :value="actividad.id_actividad">
+            {{ actividad.nombre }} - {{ formatearFecha(actividad.fecha) }} {{ actividad.hora }}
+          </option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="numPersonas">Número de personas:</label>
+        <input type="number" id="numPersonas" v-model.number="formRapida.numero_personas" min="1" required>
+      </div>
+      <div class="form-group full-width">
+        <button type="submit" class="btn-crear-rapida">Crear Reserva Rápida</button>
+      </div>
+      <p v-if="successMessage" class="success-message">{{ successMessage }}</p>
+      <p v-if="errorMessage" class="error-message">{{ errorMessage }}</p>
     </form>
+
+
     <p v-if="error" class="error-message">{{ error }}</p>
     
     <hr>
@@ -38,14 +62,21 @@
         <tr v-for="reserva in reservas" :key="reserva.id_reserva">
           <td>{{ reserva.id_reserva }}</td>
           <td>
-            <div>{{ reserva.persona ? `${reserva.persona.nombre} ${reserva.persona.apellido}` : 'N/A' }}</div>
-            <div><small>{{ reserva.persona ? reserva.persona.email : '' }}</small></div>
-            <div><small>{{ reserva.persona ? reserva.persona.telefono : '' }}</small></div>
+            <div>
+              <template v-if="reserva.persona && typeof reserva.persona.nombre !== 'undefined'">
+                {{ reserva.persona.nombre }} {{ reserva.persona.apellido || '' }}
+              </template>
+              <template v-else>
+                N/A
+              </template>
+            </div>
+            <div><small>{{ reserva.persona && reserva.persona.email ? reserva.persona.email : '' }}</small></div>
+            <div><small>{{ reserva.persona && reserva.persona.telefono ? reserva.persona.telefono : '' }}</small></div>
           </td>
           <td>
-            <div>{{ reserva.actividad ? reserva.actividad.nombre : 'N/A' }}</div>
-            <div><small>{{ reserva.actividad ? formatearFecha(reserva.actividad.fecha) : '' }}</small></div>
-            <div><small>{{ reserva.actividad ? reserva.actividad.hora : '' }}</small></div>
+            <div>{{ reserva.actividad?.nombre || 'N/A' }}</div>
+            <div><small>{{ reserva.actividad?.fecha ? formatearFecha(reserva.actividad.fecha) : '' }}</small></div>
+            <div><small>{{ reserva.actividad?.hora || '' }}</small></div>
           </td>
           <td>{{ reserva.numero_personas }}</td>
           <td>{{ calcularTotal(reserva) }} €</td>
@@ -145,9 +176,19 @@ import '@/assets/styles/admin.css'
 import okIcon from '@/assets/icons/ok.png'
 import noIcon from '@/assets/icons/no.png'
 
-const form = ref({ id_persona: null, id_actividad: null, numero_personas: 1 })
+const formRapida = ref({
+  nombre: '',
+  apellido: '',
+  email: '',
+  telefono: '',
+  id_actividad: '',
+  numero_personas: 1
+})
+const actividadesDisponibles = ref([])
 const reservas = ref([])
 const error = ref(null)
+const errorMessage = ref('')
+const successMessage = ref('')
 const isEditModalVisible = ref(false)
 const reservaAEditar = ref(null)
 
@@ -161,22 +202,95 @@ const fetchReservas = async () => {
   }
 }
 
-const crearReserva = async () => {
-  error.value = null
+const fetchActividades = async () => {
   try {
+    const res = await fetch('/api/admin/actividades')
+    if (!res.ok) throw new Error('Error al cargar actividades')
+    const actividades = await res.json()
+    const hoy = new Date()
+    actividadesDisponibles.value = actividades.filter(act => 
+      act.activo === 1 && new Date(act.fecha) >= hoy
+    )
+  } catch (e) {
+    error.value = 'Error cargando actividades'
+  }
+}
+
+function formatearFecha(fechaStr) {
+  if (!fechaStr) return ''
+  const fecha = new Date(fechaStr)
+  return fecha.toISOString().slice(0, 10) // yyyy-mm-dd
+}
+
+const crearReservaRapida = async () => {
+  errorMessage.value = ''
+  successMessage.value = ''
+  // Validación básica
+  if (!formRapida.value.nombre || !formRapida.value.apellido || !formRapida.value.email || !formRapida.value.telefono || !formRapida.value.id_actividad || !formRapida.value.numero_personas) {
+    errorMessage.value = 'Rellena todos los campos obligatorios'
+    return
+  }
+  try {
+    // 1. Buscar persona por teléfono
+    let personaRes = await fetch(`/api/admin/personas?telefono=${encodeURIComponent(formRapida.value.telefono)}`)
+    let persona = null
+    if (personaRes.ok) {
+      const personasEncontradas = await personaRes.json()
+      if (personasEncontradas.length > 0) {
+        persona = personasEncontradas[0]
+        // Actualiza todos los datos si son diferentes
+        await fetch(`/api/admin/personas/${persona.id_persona}`, {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            nombre: formRapida.value.nombre,
+            apellido: formRapida.value.apellido || persona.apellido,
+            email: formRapida.value.email || persona.email,
+            telefono: formRapida.value.telefono,
+            // ...otros campos si los tienes en el formulario...
+          })
+        })
+      }
+    }
+    // 2. Si no existe, crear persona
+    if (!persona) {
+      const nuevaPersona = {
+        nombre: formRapida.value.nombre,
+        apellido: formRapida.value.apellido,
+        email: formRapida.value.email,
+        telefono: formRapida.value.telefono
+      }
+      const crearRes = await fetch('/api/admin/personas', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(nuevaPersona)
+      })
+      if (!crearRes.ok) {
+        const errData = await crearRes.json()
+        throw new Error(errData.detail || 'Error al crear persona')
+      }
+      persona = await crearRes.json()
+    }
+    // 3. Crear reserva
+    const reservaData = {
+      id_persona: persona.id_persona,
+      id_actividad: formRapida.value.id_actividad,
+      numero_personas: formRapida.value.numero_personas
+    }
     const res = await fetch('/api/admin/reservas', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(form.value)
+      body: JSON.stringify(reservaData)
     })
     if (!res.ok) {
       const errData = await res.json()
       throw new Error(errData.detail || 'Error al crear reserva')
     }
-    form.value = { id_persona: null, id_actividad: null, numero_personas: 1 }
+    successMessage.value = 'Reserva rápida creada correctamente'
+    formRapida.value = { nombre: '', apellido: '', email: '', telefono: '', id_actividad: '', numero_personas: 1 }
     fetchReservas()
   } catch (e) {
-    error.value = e.message
+    errorMessage.value = e.message
   }
 }
 
@@ -257,13 +371,10 @@ function calcularTotal(reserva) {
   return 'N/A'
 }
 
-function formatearFecha(fechaStr) {
-  if (!fechaStr) return ''
-  const fecha = new Date(fechaStr)
-  return fecha.toISOString().slice(0, 10) // yyyy-mm-dd
-}
-
-onMounted(fetchReservas)
+onMounted(() => {
+  fetchReservas()
+  fetchActividades()
+})
 </script>
 
 <style scoped>
@@ -381,6 +492,29 @@ onMounted(fetchReservas)
   min-width: 100px;
 }
 
+/* Formulario de Reserva Rápida */
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.btn-crear-rapida {
+  background-color: #007bff;
+  color: white;
+  padding: 0.5rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: background-color 0.2s ease;
+}
+
+.btn-crear-rapida:hover {
+  background-color: #0069d9;
+}
+
 /* Responsive */
 @media (max-width: 768px) {
   table {
@@ -402,8 +536,10 @@ onMounted(fetchReservas)
     width: 16px;
     height: 16px;
   }
+  
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
-
 </style>
-

@@ -45,6 +45,7 @@
       </div>
       <button type="submit">Crear Actividad</button>
     </form>
+    <p v-if="successMessage" class="success-message">{{ successMessage }}</p>
     <p v-if="error" class="error-message">{{ error }}</p>
     
     <hr>
@@ -52,20 +53,23 @@
     <table>
       <thead>
         <tr>
-          <th>ID</th>
           <th>Nombre</th>
           <th>Fecha</th>
           <th>Lugar</th>
+          <th>Precio</th>
           <th>Estado</th>
           <th>Acciones</th>
         </tr>
       </thead>
       <tbody>
         <tr v-for="actividad in actividades" :key="actividad.id_actividad">
-          <td>{{ actividad.id_actividad }}</td>
           <td>{{ actividad.nombre }}</td>
-          <td>{{ formatDate(actividad.fecha) }}</td>
+          <td>
+            <div>{{ formatDate(actividad.fecha) }}</div>
+            <div>{{ actividad.hora }}</div>
+          </td>
           <td>{{ actividad.lugar }}</td>
+          <td>{{ actividad.precio }} €</td>
           <td>{{ actividad.estado }}</td>
           <td>
             <button class="btn-eliminar" @click="desactivarActividad(actividad.id_actividad)">Eliminar</button>
@@ -114,7 +118,7 @@
         <li><strong>Categoría:</strong> {{ actividadSeleccionada.categoria }}</li>
         <li><strong>Estado:</strong> {{ actividadSeleccionada.estado }}</li>
         <li><strong>Precio por persona:</strong> {{ actividadSeleccionada.precio }} €</li>
-        <li><strong>Coste total:</strong> {{ actividadSeleccionada.coste_economico }} €</li>
+        <li><strong>Coste para la empresa:</strong> {{ actividadSeleccionada.coste_economico }} €</li>
         <li><strong>Descripción:</strong> {{ actividadSeleccionada.descripcion }}</li>
       </ul>
       <button @click="cerrarDetalles">Cerrar</button>
@@ -153,6 +157,7 @@ const form = ref({
 const actividades = ref([])
 const actividadesInactivas = ref([])
 const error = ref(null)
+const successMessage = ref('')
 const isEditModalVisible = ref(false)
 const actividadAEditar = ref(null)
 const actividadSeleccionada = ref(null)
@@ -179,17 +184,38 @@ const fetchActividades = async () => {
 
 const crearActividad = async () => {
   error.value = null
+  successMessage.value = ''
   try {
+    // Combina fecha y hora solo para el envío
+    let actividadPayload = { ...form.value }
+    if (form.value.fecha && form.value.hora) {
+      actividadPayload.fecha = new Date(form.value.fecha + 'T' + form.value.hora).toISOString()
+    }
+    // Elimina campos que puedan ser null o vacíos si no son obligatorios
+    Object.keys(actividadPayload).forEach(key => {
+      if (actividadPayload[key] === null || actividadPayload[key] === '') {
+        delete actividadPayload[key]
+      }
+    })
     const res = await fetch('/api/admin/actividades', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(form.value)
+      body: JSON.stringify(actividadPayload)
     })
     if (!res.ok) {
-      const errData = await res.json()
-      throw new Error(errData.detail || 'Error al crear actividad')
+      let errMsg = 'Error al crear actividad'
+      let errorBody = null
+      try {
+        errorBody = await res.clone().json()
+        errMsg = errorBody.detail || errMsg
+      } catch {
+        errMsg = await res.text()
+      }
+      throw new Error(errMsg)
     }
-    form.value = { nombre: '', tipo: '', lugar: '', fecha: null, hora: '', descripcion: '', estado: 'pendiente', categoria: 'educativa', precio: 0, coste_economico: 0 }
+    const result = await res.json()
+    successMessage.value = result.msg || 'Actividad creada correctamente.'
+    form.value = { nombre: '', tipo: '', lugar: '', fecha: '', hora: '', descripcion: '', estado: 'pendiente', categoria: 'educativa', precio: 0, coste_economico: 0 }
     fetchActividades()
   } catch (e) {
     error.value = e.message
@@ -243,3 +269,4 @@ const volverAlPanel = () => {
 
 onMounted(fetchActividades)
 </script>
+

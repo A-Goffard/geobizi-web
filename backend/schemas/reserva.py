@@ -10,7 +10,11 @@ class ReservaBase(BaseModel):
     numero_personas: int
 
 class ReservaCreate(ReservaBase):
-    pass
+    fecha_reserva: Optional[datetime] = None
+    mensaje: Optional[str] = None
+    forma_pago: Optional[str] = None
+    aprobada: Optional[bool] = True
+    confirmacion_enviada: Optional[bool] = False
 
 class ReservaUpdate(BaseModel):
     id_persona: Optional[int] = None

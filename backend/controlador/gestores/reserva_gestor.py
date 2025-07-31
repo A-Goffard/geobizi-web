@@ -1,15 +1,19 @@
 from .base import GestorBase
 from database.models import Reserva
+from datetime import datetime
 
 class ReservaGestor(GestorBase):
     def crear(self, db, obj):
         reserva = Reserva(
             id_persona=obj.id_persona,
             id_actividad=obj.id_actividad,
-            fecha_reserva=obj.fecha_reserva,
-            aprobada=obj.aprobada,
             numero_personas=obj.numero_personas,
-            confirmacion_enviada=obj.confirmacion_enviada
+            fecha_reserva=obj.fecha_reserva if obj.fecha_reserva else datetime.now(),
+            mensaje=getattr(obj, "mensaje", None),
+            forma_pago=getattr(obj, "forma_pago", None),
+            aprobada=True,
+            confirmacion_enviada=False,
+            activo=1
         )
         db.add(reserva)
         db.commit()

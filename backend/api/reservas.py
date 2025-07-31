@@ -3,8 +3,13 @@ from sqlalchemy.orm import Session, selectinload
 from database.database import SessionLocal
 from database.models import Reserva as ReservaModel, Persona as PersonaModel, Actividad as ActividadModel
 from datetime import datetime
+from schemas.reserva import ReservaCreate, ReservaOut
+from controlador.validaciones.validador_reserva import validar_reserva_create
+from controlador.gestores.reserva_gestor import ReservaGestor
+from utils.email_service import enviar_confirmacion_reserva
 
 router = APIRouter()
+reserva_gestor = ReservaGestor()
 
 def get_db():
     db = SessionLocal()
@@ -15,10 +20,41 @@ def get_db():
 
 @router.get("/api/admin/reservas")
 def listar_reservas(db: Session = Depends(get_db)):
-    return db.query(ReservaModel).options(
-        selectinload(ReservaModel.persona),
-        selectinload(ReservaModel.actividad)
-    ).all()
+    try:
+        reservas = db.query(ReservaModel).options(
+            selectinload(ReservaModel.persona),
+            selectinload(ReservaModel.actividad)
+        ).all()
+        result = []
+        for reserva in reservas:
+            result.append({
+                "id_reserva": getattr(reserva, "id_reserva", None),
+                "numero_personas": getattr(reserva, "numero_personas", None),
+                "aprobada": getattr(reserva, "aprobada", None),
+                "confirmacion_enviada": getattr(reserva, "confirmacion_enviada", None),
+                "mensaje": getattr(reserva, "mensaje", None),
+                "forma_pago": getattr(reserva, "forma_pago", None),
+                "persona": {
+                    "id_persona": getattr(reserva.persona, "id_persona", None) if reserva.persona else None,
+                    "nombre": getattr(reserva.persona, "nombre", None) if reserva.persona else None,
+                    "apellido": getattr(reserva.persona, "apellido", None) if reserva.persona else None,
+                    "email": getattr(reserva.persona, "email", None) if reserva.persona else None,
+                    "telefono": getattr(reserva.persona, "telefono", None) if reserva.persona else None
+                } if reserva.persona else None,
+                "actividad": {
+                    "id_actividad": getattr(reserva.actividad, "id_actividad", None) if reserva.actividad else None,
+                    "nombre": getattr(reserva.actividad, "nombre", None) if reserva.actividad else None,
+                    "fecha": reserva.actividad.fecha.isoformat() if reserva.actividad and getattr(reserva.actividad, "fecha", None) else None,
+                    "hora": getattr(reserva.actividad, "hora", None) if reserva.actividad else None,
+                    "precio": getattr(reserva.actividad, "precio", None) if reserva.actividad else None
+                } if reserva.actividad else None
+            })
+        return result
+    except Exception as e:
+        import traceback
+        print("Error en listar_reservas:", e)
+        traceback.print_exc()
+        raise HTTPException(status_code=500, detail=f"Error interno del servidor: {str(e)}")
 
 @router.delete("/api/admin/reservas/{id_reserva}")
 def eliminar_reserva(id_reserva: int, db: Session = Depends(get_db)):
@@ -57,4 +93,32 @@ def enviar_confirmacion(id_reserva: int, db: Session = Depends(get_db)):
     
     reserva_db.confirmacion_enviada = True
     db.commit()
+    # Enviar email de confirmación al cliente
+    if reserva_db.persona and reserva_db.actividad:
+        reserva_data = {
+            "id_reserva": reserva_db.id_reserva,
+            "nombre_cliente": reserva_db.persona.nombre + " " + (reserva_db.persona.apellido or ""),
+            "email_cliente": reserva_db.persona.email,
+            "telefono": reserva_db.persona.telefono,
+            "actividad_nombre": reserva_db.actividad.nombre,
+            "actividad_fecha": reserva_db.actividad.fecha.strftime("%Y-%m-%d") if reserva_db.actividad.fecha else "",
+            "actividad_hora": reserva_db.actividad.hora,
+            "numero_personas": reserva_db.numero_personas,
+            "precio_total": (reserva_db.actividad.precio or 0) * (reserva_db.numero_personas or 1)
+        }
+        enviar_confirmacion_reserva(reserva_db.persona.email, reserva_data)
     return {"msg": "Confirmación enviada"}
+
+@router.post("/api/admin/reservas", response_model=ReservaOut)
+def crear_reserva(reserva: ReservaCreate, db: Session = Depends(get_db)):
+    try:
+        validar_reserva_create(reserva)
+        nueva_reserva = reserva_gestor.crear(db, reserva)
+        return nueva_reserva
+    except ValueError as e:
+        raise HTTPException(status_code=400, detail=str(e))
+    except Exception as e:
+        import traceback
+        print("Error en crear_reserva:", e)
+        traceback.print_exc()
+        raise HTTPException(status_code=500, detail=f"Error interno del servidor: {str(e)}")

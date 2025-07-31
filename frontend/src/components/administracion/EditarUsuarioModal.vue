@@ -14,9 +14,23 @@
         <div class="form-group">
           <label for="edit-id_rol">Rol:</label>
           <select id="edit-id_rol" v-model="form.id_rol">
-            <option :value="1">Superusuario</option>
-            <option :value="2">Empleado</option>
-            <option :value="3">Visitante</option>
+            <option :value="null">
+              (Mantener: {{ getRolNombre(props.usuario.id_rol) }})
+            </option>
+            <option v-for="rol in roles" :key="rol.id" :value="rol.id">
+              {{ rol.nombre }}
+            </option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="edit-id_persona">ID Persona:</label>
+          <input type="number" id="edit-id_persona" v-model="form.id_persona" min="1">
+        </div>
+        <div class="form-group">
+          <label for="edit-superuser">¿Superusuario?</label>
+          <select id="edit-superuser" v-model="form.is_superuser">
+            <option :value="false">No</option>
+            <option :value="true">Sí</option>
           </select>
         </div>
         <div class="modal-actions">
@@ -32,10 +46,8 @@
 import { ref, watch } from 'vue'
 
 const props = defineProps({
-  usuario: {
-    type: Object,
-    required: true
-  }
+  usuario: Object,
+  roles: Array
 })
 
 const emit = defineEmits(['close', 'update'])
@@ -43,23 +55,36 @@ const emit = defineEmits(['close', 'update'])
 const form = ref({
   email: '',
   password: '',
-  id_rol: 3,
-  id_persona: null
+  id_rol: null,
+  id_persona: null,
+  is_superuser: false // Por defecto siempre "No"
 })
 
-// Cuando el prop 'usuario' cambia, actualizamos el formulario con sus datos
+function getRolNombre(id) {
+  const rol = props.roles.find(r => r.id === id)
+  return rol ? rol.nombre : 'Sin rol'
+}
+
+// Actualiza el formulario cuando cambia el usuario
 watch(() => props.usuario, (newVal) => {
   if (newVal) {
     form.value.email = newVal.email
     form.value.id_rol = newVal.id_rol
     form.value.id_persona = newVal.id_persona
+    form.value.is_superuser = newVal.is_superuser ?? false
     form.value.password = '' // La contraseña siempre empieza vacía por seguridad
   }
 }, { immediate: true })
 
 const guardarCambios = () => {
-  emit('update', { id: props.usuario.id_usuario, data: form.value })
+  let payload = { ...form.value }
+  if (payload.id_rol === null) {
+    // No enviar id_rol si no se selecciona nada
+    delete payload.id_rol
+  }
+  emit('update', { id: props.usuario.id_usuario, data: payload })
 }
 </script>
+
 
 

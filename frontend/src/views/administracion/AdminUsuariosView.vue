@@ -13,9 +13,7 @@
       <div class="form-group">
         <label for="id_rol">Rol:</label>
         <select id="id_rol" v-model="form.id_rol">
-          <option :value="1">Superusuario</option>
-          <option :value="2">Empleado</option>
-          <option :value="3">Visitante</option>
+          <option v-for="rol in roles" :key="rol.id" :value="rol.id">{{ rol.nombre }}</option>
         </select>
       </div>
       <button type="submit">Crear usuario</button>
@@ -90,6 +88,7 @@
     <EditarUsuarioModal
       v-if="isEditModalVisible"
       :usuario="usuarioAEditar"
+      :roles="roles"
       @close="cerrarModalEditar"
       @update="actualizarUsuario"
     />
@@ -103,10 +102,18 @@ import { ref, onMounted } from 'vue'
 import EditarUsuarioModal from '@/components/administracion/EditarUsuarioModal.vue'
 import '@/assets/styles/admin.css'
 
+// Define los roles reales (deben coincidir con los de la BD)
+const roles = [
+  { id: 1, nombre: 'Administrador' },
+  { id: 2, nombre: 'Gestor' },
+  { id: 3, nombre: 'Cliente' },
+  { id: 4, nombre: 'Empresa' }
+]
+
 const form = ref({
   email: '',
   password: '',
-  id_rol: 3, // Por defecto, el rol es 'visitante' (ID 3)
+  id_rol: 3, // Cliente por defecto
   id_persona: null
 })
 
@@ -176,19 +183,27 @@ const cerrarModalEditar = () => {
 }
 
 const actualizarUsuario = async ({ id, data }) => {
-  // Filtramos la contraseña si está vacía para no enviarla al backend
   const payload = { ...data }
   if (!payload.password) {
     delete payload.password
   }
 
-  await fetch(`/api/admin/usuarios/${id}`, {
-    method: 'PUT',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(payload)
-  })
-  cerrarModalEditar()
-  fetchUsuarios()
+  try {
+    const response = await fetch(`/api/admin/usuarios/${id}`, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    })
+    if (!response.ok) {
+      const errorData = await response.json()
+      error.value = errorData.detail || 'Error al actualizar usuario'
+      return
+    }
+    cerrarModalEditar()
+    fetchUsuarios()
+  } catch (e) {
+    error.value = e.message
+  }
 }
 
 const verDetalles = (usuario) => {

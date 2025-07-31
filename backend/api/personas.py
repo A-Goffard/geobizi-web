@@ -4,7 +4,7 @@ from database.database import SessionLocal
 from database.models import Persona as PersonaModel
 import logging
 from controlador.gestores.persona_gestor import persona_gestor 
-from schemas.persona import PersonaOut, PersonaUpdate
+from schemas.persona import PersonaOut, PersonaUpdate, PersonaCreate
 from controlador.validaciones.validador_persona import validar_persona_update
 
 logger = logging.getLogger(__name__)
@@ -18,7 +18,22 @@ def get_db():
         db.close()
 
 @router.get("/api/admin/personas")
-def listar_personas_admin(db: Session = Depends(get_db)):
+def buscar_personas(telefono: str = None, db: Session = Depends(get_db)):
+    if telefono:
+        personas = db.query(PersonaModel).filter(PersonaModel.telefono == telefono, PersonaModel.activo == 1).all()
+        return [
+            {
+                "id_persona": p.id_persona,
+                "nombre": p.nombre,
+                "apellido": p.apellido,
+                "email": p.email,
+                "telefono": p.telefono,
+                "dni": p.dni,
+                "activo": p.activo
+            }
+            for p in personas
+        ]
+    
     try:
         personas = db.query(PersonaModel).filter(PersonaModel.activo == 1).all()
         
@@ -94,3 +109,28 @@ def reactivar_persona(id_persona: int, db: Session = Depends(get_db)):
         raise HTTPException(status_code=404, detail="Persona no encontrada")
     
     return persona_gestor.reactivar(db, id_persona)
+
+@router.post("/api/admin/personas", response_model=PersonaOut)
+def crear_persona(persona: PersonaCreate, db: Session = Depends(get_db)):
+    # Validación básica
+    if not persona.nombre or not persona.telefono or not persona.email or not persona.apellido:
+        raise HTTPException(status_code=400, detail="Faltan campos obligatorios")
+    nueva_persona = PersonaModel(
+        nombre=persona.nombre,
+        apellido=persona.apellido,
+        email=persona.email,
+        telefono=persona.telefono,
+        dni=persona.dni,
+        direccion=persona.direccion,
+        cp=persona.cp,
+        poblacion=persona.poblacion,
+        pais=persona.pais,
+        observaciones=persona.observaciones,
+        fecha_nacimiento=persona.fecha_nacimiento,
+        genero=persona.genero,
+        activo=1
+    )
+    db.add(nueva_persona)
+    db.commit()
+    db.refresh(nueva_persona)
+    return nueva_persona
