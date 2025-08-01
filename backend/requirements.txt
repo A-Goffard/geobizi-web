@@ -5,8 +5,4 @@ passlib[bcrypt]>=1.7.4
 python-jose[cryptography]
 python-multipart
 email-validator
-# ... otras dependencias que tengas
-requests
-sendgrid
-mailjet-rest
-
+sendgrid>=6.9.7

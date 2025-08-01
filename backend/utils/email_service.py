@@ -1,108 +1,40 @@
-import smtplib
-from email.mime.text import MIMEText
-from email.mime.multipart import MIMEMultipart
 import os
-from typing import Dict
-import logging
-import requests
-import sendgrid
+from sendgrid import SendGridAPIClient
 from sendgrid.helpers.mail import Mail
-from mailjet_rest import Client
-import os
+import logging
+from typing import Dict
 
+# Configurar logging
+logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
-# Configuración del servidor de email para Gmail
-SMTP_SERVER = "localhost"
-SMTP_PORT = 25
-EMAIL_USER = "tucorreo@tudominio.com"  # Puede ser vacío si no usas autenticación
-EMAIL_PASSWORD = ""  # Puede ser vacío si no usas autenticación
+def enviar_email(destinatario: str, asunto: str, cuerpo_html: str):
+    """Función base para enviar emails usando SendGrid."""
+    sendgrid_api_key = os.getenv("SENDGRID_API_KEY")
+    from_email = os.getenv("SENDER_EMAIL")  
 
-def enviar_email(destinatario: str, asunto: str, cuerpo_html: str, cuerpo_texto: str = None):
-    """Función base para enviar emails usando Mailjet"""
-    return enviar_email_mailjet(destinatario, asunto, cuerpo_html)
-
-def enviar_email_mailgun(destinatario, asunto, cuerpo_html):
-    """Función para enviar emails usando Mailgun"""
-    try:
-        MAILGUN_DOMAIN = "TU_DOMINIO_MAILGUN"
-        MAILGUN_API_KEY = "TU_API_KEY_MAILGUN"
-        response = requests.post(
-            f"https://api.mailgun.net/v3/{MAILGUN_DOMAIN}/messages",
-            auth=("api", MAILGUN_API_KEY),
-            data={
-                "from": f"GeoBizi <mail@{MAILGUN_DOMAIN}>",
-                "to": [destinatario],
-                "subject": asunto,
-                "html": cuerpo_html
-            }
-        )
-        
-        if response.status_code == 200:
-            logger.info(f"Email enviado correctamente a {destinatario} a través de Mailgun")
-            return True
-        else:
-            logger.error(f"Error enviando email a {destinatario} a través de Mailgun: {response.text}")
-            return False
-        
-    except Exception as e:
-        logger.error(f"Error enviando email a {destinatario} a través de Mailgun: {e}")
+    if not sendgrid_api_key or not from_email:
+        logger.error("SENDGRID_API_KEY o SENDER_EMAIL no están configurados en las variables de entorno.")
         return False
 
-def enviar_email_sendgrid(destinatario, asunto, cuerpo_html):
-    """Función para enviar emails usando SendGrid"""
+    message = Mail(
+        from_email=from_email,
+        to_emails=destinatario,
+        subject=asunto,
+        html_content=cuerpo_html
+    )
+
     try:
-        SENDGRID_API_KEY = "TU_API_KEY_SENDGRID"
-        sg = sendgrid.SendGridAPIClient(api_key=SENDGRID_API_KEY)
-        message = Mail(
-            from_email='no-reply@tudominio.com',
-            to_emails=destinatario,
-            subject=asunto,
-            html_content=cuerpo_html
-        )
+        sg = SendGridAPIClient(sendgrid_api_key)
         response = sg.send(message)
-        
-        if response.status_code == 202:
-            logger.info(f"Email enviado correctamente a {destinatario} a través de SendGrid")
+        if 200 <= response.status_code < 300:
+            logger.info(f"Email enviado correctamente a {destinatario} a través de SendGrid. Status Code: {response.status_code}")
             return True
         else:
             logger.error(f"Error enviando email a {destinatario} a través de SendGrid: {response.body}")
             return False
-        
     except Exception as e:
-        logger.error(f"Error enviando email a {destinatario} a través de SendGrid: {e}")
-        return False
-
-def enviar_email_mailjet(destinatario, asunto, cuerpo_html):
-    """Función para enviar emails usando Mailjet"""
-    MAILJET_API_KEY = os.getenv("MAILJET_API_KEY")
-    MAILJET_API_SECRET = os.getenv("MAILJET_API_SECRET")
-    mailjet = Client(auth=(MAILJET_API_KEY, MAILJET_API_SECRET), version='v3.1')
-    data = {
-      'Messages': [
-        {
-          "From": {
-            "Email": "geobizi@hotmail.com", 
-            "Name": "GeoBizi"
-          },
-          "To": [
-            {
-              "Email": destinatario,
-              "Name": destinatario
-            }
-          ],
-          "Subject": asunto,
-          "TextPart": "Este es el texto plano del mensaje.",
-          "HTMLPart": cuerpo_html
-        }
-      ]
-    }
-    result = mailjet.send.create(data=data)
-    if result.status_code == 200:
-        logger.info(f"Email enviado correctamente a {destinatario} a través de Mailjet")
-        return True
-    else:
-        logger.error(f"Error enviando email a {destinatario} a través de Mailjet: {result.json()}")
+        logger.error(f"Error al enviar email con SendGrid: {e}")
         return False
 
 def enviar_email_nueva_reserva(admin_email: str, reserva_data: Dict):
@@ -167,9 +99,6 @@ def enviar_confirmacion_reserva(cliente_email: str, reserva_data: Dict):
                     Si tiene alguna pregunta, no dude en contactarnos en cualquier momento.
                 </p>
                 <p style="margin: 0;">
-                    <a href="mailto:{EMAIL_USER}">{EMAIL_USER}</a>
-                </p>
-                <p style="margin: 0;">
                     El equipo de GeoBizi<br>
                 </p>
                 <p style="margin: 0;"><strong>Saludos cordiales,</strong><br></p>
@@ -182,3 +111,5 @@ def enviar_confirmacion_reserva(cliente_email: str, reserva_data: Dict):
         </body>
         </html>
     """
+    
+    return enviar_email(cliente_email, asunto, cuerpo_html)
