@@ -154,11 +154,13 @@ def crear_datos_ejemplo():
         # 4. Crear Empresas
         empresas = [
             Empresa(
-                id_persona=5, nombre="EcoTurismo Euskadi",
+                nombre="EcoTurismo Euskadi",
                 razon_social="EcoTurismo Euskadi S.L.",
                 nif="B48123456", direccion="Polígono Industrial 123",
                 provincia="Bizkaia", cp="48940",
-                nombre_contacto="Laura Pérez", telefono_empresa="944123456",
+                nombre_contacto="Laura Pérez",
+                email_contacto="laura.perez@email.com",
+                telefono_empresa="944123456",
                 email_empresa="info@ecoturismo.com",
                 sector="Turismo Sostenible", ubicacion="Leioa"
             ),
@@ -167,7 +169,9 @@ def crear_datos_ejemplo():
                 razon_social="Aventuras Cantábricas S.A.",
                 nif="A39654321", direccion="Puerto Deportivo 45",
                 provincia="Cantabria", cp="39004",
-                nombre_contacto="Roberto Silva", telefono_empresa="942987654",
+                nombre_contacto="Roberto Silva",
+                email_contacto="roberto.silva@email.com",
+                telefono_empresa="942987654",
                 email_empresa="contacto@aventurascantabricas.com",
                 sector="Deportes de Aventura", ubicacion="Santander"
             )

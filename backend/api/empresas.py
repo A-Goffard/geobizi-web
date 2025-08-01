@@ -1,5 +1,5 @@
 from fastapi import APIRouter, Depends, HTTPException
-from sqlalchemy.orm import Session, selectinload
+from sqlalchemy.orm import Session
 from database.database import SessionLocal
 from database.models import Empresa as EmpresaModel
 from schemas.empresa import EmpresaCreate, EmpresaUpdate, EmpresaOut
@@ -22,26 +22,14 @@ def get_db():
     finally:
         db.close()
 
-@router.post("/api/admin/empresas", response_model=EmpresaOut)
-def crear_empresa(empresa: EmpresaCreate, db: Session = Depends(get_db)):
-    try:
-        validar_empresa_create(empresa)
-    except ValueError as e:
-        raise HTTPException(status_code=400, detail=str(e))
-
-    db_empresa = db.query(EmpresaModel).filter(EmpresaModel.nif == empresa.nif).first()
-    if db_empresa:
-        raise HTTPException(status_code=400, detail="El NIF ya está registrado para otra empresa.")
-    
-    return empresa_gestor.crear(db, empresa)
-
-@router.get("/api/admin/empresas", response_model=List[EmpresaOut])
-def listar_empresas(db: Session = Depends(get_db)):
-    return db.query(EmpresaModel).options(selectinload(EmpresaModel.persona)).filter(EmpresaModel.activo == 1).all()
-
 @router.get("/api/admin/empresas/inactivas", response_model=List[EmpresaOut])
-def listar_empresas_inactivas(db: Session = Depends(get_db)):
-    return db.query(EmpresaModel).options(selectinload(EmpresaModel.persona)).filter(EmpresaModel.activo == 0).all()
+def listar_empresas_inactivas_admin(db: Session = Depends(get_db)):
+    try:
+        empresas = db.query(EmpresaModel).filter(EmpresaModel.activo == 0).all()
+        return empresas
+    except Exception as e:
+        logger.error(f"Error al listar empresas inactivas: {str(e)}")
+        raise HTTPException(status_code=500, detail=f"Error interno del servidor: {str(e)}")
 
 @router.put("/api/admin/empresas/{id_empresa}", response_model=EmpresaOut)
 def modificar_empresa(id_empresa: int, empresa: EmpresaUpdate, db: Session = Depends(get_db)):
@@ -73,26 +61,31 @@ def reactivar_empresa(id_empresa: int, db: Session = Depends(get_db)):
     
     return empresa_gestor.reactivar(db, id_empresa)
 
-@router.get("/api/admin/empresas")
+@router.post("/api/admin/empresas")
+def crear_empresa(empresa: EmpresaCreate, db: Session = Depends(get_db)):
+    """Crear una nueva empresa"""
+    try:
+        # Validar los datos de la empresa
+        validar_empresa_create(empresa)
+        
+        # Crear la empresa a través del gestor
+        nueva_empresa = empresa_gestor.crear(db, empresa)
+        
+        return {"msg": "Empresa creada", "id_empresa": nueva_empresa.id_empresa}
+    except ValueError as e:
+        raise HTTPException(status_code=400, detail=str(e))
+    except Exception as e:
+        logger.error(f"Error al crear empresa: {str(e)}")
+        raise HTTPException(status_code=500, detail=f"Error interno del servidor: {str(e)}")
+
+@router.get("/api/admin/empresas", response_model=List[EmpresaOut])
 def listar_empresas_admin(db: Session = Depends(get_db)):
     """Listar todas las empresas para administración"""
     try:
         empresas = db.query(EmpresaModel).filter(EmpresaModel.activo == 1).all()
-        
-        result = []
-        for empresa in empresas:
-            result.append({
-                "id_empresa": empresa.id_empresa,
-                "nombre": empresa.nombre,
-                "razon_social": empresa.razon_social,
-                "nif": empresa.nif,
-                "telefono_empresa": empresa.telefono_empresa,
-                "email_empresa": empresa.email_empresa,
-                "activo": empresa.activo
-            })
-        
-        return result
-        
+        return empresas
     except Exception as e:
         logger.error(f"Error al listar empresas: {str(e)}")
+        import traceback; traceback.print_exc()
         raise HTTPException(status_code=500, detail=f"Error interno del servidor: {str(e)}")
+

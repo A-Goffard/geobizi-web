@@ -5,7 +5,7 @@
     <form @submit.prevent="crearEmpresa" class="creation-form">
       <div class="form-grid">
         <div class="form-group">
-          <label for="nombre">Nombre:</label>
+          <label for="nombre">Nombre de la empresa:</label>
           <input type="text" id="nombre" v-model="form.nombre" required minlength="2" maxlength="100">
         </div>
         <div class="form-group">
@@ -29,15 +29,19 @@
           <input type="text" id="cp" v-model="form.cp" required pattern="\d{5}" title="El código postal debe tener 5 dígitos.">
         </div>
         <div class="form-group">
-          <label for="nombre_contacto">Nombre de Contacto:</label>
+          <label for="nombre_contacto">Nombre de contacto:</label>
           <input type="text" id="nombre_contacto" v-model="form.nombre_contacto">
+        </div>
+        <div class="form-group">
+          <label for="email_contacto">Email de contacto:</label>
+          <input type="email" id="email_contacto" v-model="form.email_contacto">
         </div>
         <div class="form-group">
           <label for="telefono_empresa">Teléfono:</label>
           <input type="tel" id="telefono_empresa" v-model="form.telefono_empresa">
         </div>
         <div class="form-group">
-          <label for="email_empresa">Email:</label>
+          <label for="email_empresa">Email de empresa:</label>
           <input type="email" id="email_empresa" v-model="form.email_empresa">
         </div>
         <div class="form-group full-width">
@@ -66,7 +70,20 @@
           <td>{{ empresa.id_empresa }}</td>
           <td>{{ empresa.nombre }}</td>
           <td>{{ empresa.nif }}</td>
-          <td>{{ empresa.persona ? empresa.persona.nombre : 'N/A' }}</td>
+          <td>
+            <div>
+              <span v-if="empresa.nombre_contacto">
+                {{ empresa.nombre_contacto }}
+                <span v-if="empresa.email_contacto">({{ empresa.email_contacto }})</span>
+              </span>
+              <span v-else-if="empresa.email_contacto">
+                {{ empresa.email_contacto }}
+              </span>
+              <span v-else>
+                No asignado
+              </span>
+            </div>
+          </td>
           <td>
             <button class="btn-eliminar" @click="desactivarEmpresa(empresa.id_empresa)">Desactivar</button>
             <button class="btn-editar" @click="abrirModalEditar(empresa)">Editar</button>
@@ -108,10 +125,19 @@
       <ul>
         <li><strong>ID:</strong> {{ empresaSeleccionada.id_empresa }}</li>
         <li><strong>NIF:</strong> {{ empresaSeleccionada.nif }}</li>
-        <li><strong>Contacto Principal:</strong> {{ empresaSeleccionada.persona ? `${empresaSeleccionada.persona.nombre} (${empresaSeleccionada.persona.email})` : 'No asignado' }}</li>
+        <li>
+          <strong>Contacto Principal:</strong>
+          <span v-if="empresaSeleccionada.nombre_contacto">
+            {{ empresaSeleccionada.nombre_contacto }}
+            <span v-if="empresaSeleccionada.email_contacto">({{ empresaSeleccionada.email_contacto }})</span>
+          </span>
+          <span v-else-if="empresaSeleccionada.email_contacto">
+            {{ empresaSeleccionada.email_contacto }}
+          </span>
+          <span v-else>No asignado</span>
+        </li>
         <li><strong>Dirección:</strong> {{ empresaSeleccionada.direccion }}, {{ empresaSeleccionada.cp }}, {{ empresaSeleccionada.provincia }}</li>
         <hr>
-        <li><strong>Contacto Empresa:</strong> {{ empresaSeleccionada.nombre_contacto }}</li>
         <li><strong>Teléfono Empresa:</strong> {{ empresaSeleccionada.telefono_empresa }}</li>
         <li><strong>Email Empresa:</strong> {{ empresaSeleccionada.email_empresa }}</li>
         <hr>
@@ -135,10 +161,13 @@
 
 <script setup>
 import { ref, onMounted } from 'vue'
+import { useRouter } from 'vue-router'
 import EditarEmpresaModal from '@/components/administracion/EditarEmpresaModal.vue'
 import '@/assets/styles/admin.css'
 
-const form = ref({ nombre: '', nif: '', razon_social: '', direccion: '', provincia: '', cp: '', nombre_contacto: '', telefono_empresa: '', email_empresa: '', observaciones: '' })
+const router = useRouter()
+
+const form = ref({ nombre: '', nif: '', razon_social: '', direccion: '', provincia: '', cp: '', nombre_contacto: '', email_contacto: '', telefono_empresa: '', email_empresa: '', observaciones: '' })
 const empresas = ref([])
 const empresasInactivas = ref([])
 const error = ref(null)
@@ -173,7 +202,7 @@ const crearEmpresa = async () => {
       const errData = await res.json()
       throw new Error(errData.detail || 'Error al crear empresa')
     }
-    form.value = { nombre: '', nif: '', razon_social: '', direccion: '', provincia: '', cp: '', nombre_contacto: '', telefono_empresa: '', email_empresa: '', observaciones: '' }
+    form.value = { nombre: '', nif: '', razon_social: '', direccion: '', provincia: '', cp: '', nombre_contacto: '', email_contacto: '', telefono_empresa: '', email_empresa: '', observaciones: '' }
     fetchEmpresas()
   } catch (e) {
     error.value = e.message
@@ -220,18 +249,11 @@ const cerrarDetalles = () => {
   empresaSeleccionada.value = null
 }
 
-const volverAlPanel = () => {
-  // Redirige al panel de administración
-  window.location.href = '/admin/panel';
-}
-
 onMounted(fetchEmpresas)
+
+const volverAlPanel = () => {
+  router.push('/admin/panel')
+}
 </script>
 
-<style>
-hr {
-    border: none;
-    border-top: 1px solid var(--shoftgreen);
-    margin: 1rem 0;
-}
-</style>
+

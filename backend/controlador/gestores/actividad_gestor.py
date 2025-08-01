@@ -36,32 +36,24 @@ class ActividadGestor(GestorBase):
     def actualizar(self, db, id, obj):
         actividad = db.query(Actividad).filter(Actividad.id_actividad == id).first()
         if actividad:
-            actividad.tipo = obj.tipo
-            actividad.nombre = obj.nombre
-            actividad.lugar = obj.lugar
-            actividad.fecha = obj.fecha
-            actividad.hora = obj.hora
-            actividad.descripcion = obj.descripcion
-            actividad.responsable = obj.responsable
-            actividad.duracion = obj.duracion
-            actividad.coste_economico = obj.coste_economico
-            actividad.coste_horas = obj.coste_horas
-            actividad.facturacion = obj.facturacion
-            actividad.resultados = obj.resultados
-            actividad.valoracion = obj.valoracion
-            actividad.observaciones = obj.observaciones
-            actividad.estado = obj.estado
-            actividad.num_participantes = obj.num_participantes
-            actividad.categoria = obj.categoria
-            actividad.visible_publico = obj.visible_publico
-            actividad.created_at = obj.created_at
-            actividad.updated_at = obj.updated_at
+            update_data = obj.model_dump(exclude_unset=True)
+            for key, value in update_data.items():
+                setattr(actividad, key, value)
             db.commit()
             db.refresh(actividad)
         return actividad
 
     def eliminar(self, db, id):
         actividad = db.query(Actividad).filter(Actividad.id_actividad == id).first()
-        db.delete(actividad)
-        db.commit()
+        if actividad:
+            actividad.activo = 0
+            db.commit()
+        return actividad
+
+    def reactivar(self, db, id):
+        actividad = db.query(Actividad).filter(Actividad.id_actividad == id).first()
+        if actividad:
+            actividad.activo = 1
+            db.commit()
+            db.refresh(actividad)
         return actividad

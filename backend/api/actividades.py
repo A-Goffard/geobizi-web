@@ -50,24 +50,11 @@ def crear_actividad(actividad: ActividadCreate, db: Session = Depends(get_db)):
         "actividad": ActividadOut.model_validate(nueva_actividad)
     }
 
-@router.get("/api/admin/actividades")
+@router.get("/api/admin/actividades", response_model=List[ActividadOut])
 def listar_actividades_admin(db: Session = Depends(get_db)):
     try:
         actividades = db.query(ActividadModel).filter(ActividadModel.activo == 1).all()
-        result = []
-        for actividad in actividades:
-            result.append({
-                "id_actividad": actividad.id_actividad,
-                "nombre": actividad.nombre,
-                "tipo": getattr(actividad, "tipo", None),
-                "lugar": getattr(actividad, "lugar", None),
-                "fecha": actividad.fecha.isoformat() if getattr(actividad, "fecha", None) else None,
-                "hora": getattr(actividad, "hora", None),
-                "precio": getattr(actividad, "precio", None),
-                "estado": getattr(actividad, "estado", None),  # Asegúrate que existe en el modelo
-                "activo": getattr(actividad, "activo", None)
-            })
-        return result
+        return actividades
     except Exception as e:
         logger.error(f"Error al listar actividades: {str(e)}")
         raise HTTPException(status_code=500, detail=f"Error interno del servidor: {str(e)}")

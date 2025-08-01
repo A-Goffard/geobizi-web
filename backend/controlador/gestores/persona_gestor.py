@@ -29,26 +29,26 @@ class PersonaGestor(GestorBase):
     def actualizar(self, db, id, obj):
         persona = db.query(Persona).filter(Persona.id_persona == id).first()
         if persona:
-            persona.nombre = obj.nombre
-            persona.apellido = obj.apellido
-            persona.email = obj.email
-            persona.telefono = obj.telefono
-            persona.dni = obj.dni
-            persona.direccion = obj.direccion
-            persona.cp = obj.cp
-            persona.poblacion = obj.poblacion
-            persona.pais = obj.pais
-            persona.observaciones = obj.observaciones
-            persona.fecha_nacimiento = obj.fecha_nacimiento
-            persona.genero = obj.genero
+            update_data = obj.model_dump(exclude_unset=True)
+            for key, value in update_data.items():
+                setattr(persona, key, value)
             db.commit()
             db.refresh(persona)
         return persona
 
     def eliminar(self, db, id):
         persona = db.query(Persona).filter(Persona.id_persona == id).first()
-        db.delete(persona)
-        db.commit()
+        if persona:
+            persona.activo = 0
+            db.commit()
         return persona
 
-persona_gestor = PersonaGestor() 
+    def reactivar(self, db, id):
+        persona = db.query(Persona).filter(Persona.id_persona == id).first()
+        if persona:
+            persona.activo = 1
+            db.commit()
+            db.refresh(persona)
+        return persona
+
+persona_gestor = PersonaGestor()

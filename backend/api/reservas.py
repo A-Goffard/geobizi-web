@@ -1,12 +1,12 @@
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session, selectinload
 from database.database import SessionLocal
-from database.models import Reserva as ReservaModel, Persona as PersonaModel, Actividad as ActividadModel
-from datetime import datetime
-from schemas.reserva import ReservaCreate, ReservaOut
+from database.models import Reserva as ReservaModel
+from schemas.reserva import ReservaCreate, ReservaOut, ReservaUpdate
 from controlador.validaciones.validador_reserva import validar_reserva_create
 from controlador.gestores.reserva_gestor import ReservaGestor
 from utils.email_service import enviar_confirmacion_reserva
+from typing import List
 
 router = APIRouter()
 reserva_gestor = ReservaGestor()
@@ -18,38 +18,14 @@ def get_db():
     finally:
         db.close()
 
-@router.get("/api/admin/reservas")
+@router.get("/api/admin/reservas", response_model=List[ReservaOut])
 def listar_reservas(db: Session = Depends(get_db)):
     try:
         reservas = db.query(ReservaModel).options(
             selectinload(ReservaModel.persona),
             selectinload(ReservaModel.actividad)
         ).all()
-        result = []
-        for reserva in reservas:
-            result.append({
-                "id_reserva": getattr(reserva, "id_reserva", None),
-                "numero_personas": getattr(reserva, "numero_personas", None),
-                "aprobada": getattr(reserva, "aprobada", None),
-                "confirmacion_enviada": getattr(reserva, "confirmacion_enviada", None),
-                "mensaje": getattr(reserva, "mensaje", None),
-                "forma_pago": getattr(reserva, "forma_pago", None),
-                "persona": {
-                    "id_persona": getattr(reserva.persona, "id_persona", None) if reserva.persona else None,
-                    "nombre": getattr(reserva.persona, "nombre", None) if reserva.persona else None,
-                    "apellido": getattr(reserva.persona, "apellido", None) if reserva.persona else None,
-                    "email": getattr(reserva.persona, "email", None) if reserva.persona else None,
-                    "telefono": getattr(reserva.persona, "telefono", None) if reserva.persona else None
-                } if reserva.persona else None,
-                "actividad": {
-                    "id_actividad": getattr(reserva.actividad, "id_actividad", None) if reserva.actividad else None,
-                    "nombre": getattr(reserva.actividad, "nombre", None) if reserva.actividad else None,
-                    "fecha": reserva.actividad.fecha.isoformat() if reserva.actividad and getattr(reserva.actividad, "fecha", None) else None,
-                    "hora": getattr(reserva.actividad, "hora", None) if reserva.actividad else None,
-                    "precio": getattr(reserva.actividad, "precio", None) if reserva.actividad else None
-                } if reserva.actividad else None
-            })
-        return result
+        return reservas
     except Exception as e:
         import traceback
         print("Error en listar_reservas:", e)

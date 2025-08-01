@@ -88,9 +88,12 @@
         <li><strong>Código Postal:</strong> {{ personaSeleccionada.cp || 'N/A' }}</li>
         <li><strong>Población:</strong> {{ personaSeleccionada.poblacion || 'N/A' }}</li>
         <li><strong>País:</strong> {{ personaSeleccionada.pais || 'N/A' }}</li>
-        <li><strong>Fecha de Nacimiento:</strong> {{ personaSeleccionada.fecha_nacimiento ? new Date(personaSeleccionada.fecha_nacimiento).toLocaleDateString() : 'N/A' }}</li>
+        <li><strong>Fecha de Nacimiento:</strong> 
+          {{ personaSeleccionada.fecha_nacimiento ? new Date(personaSeleccionada.fecha_nacimiento).toLocaleDateString() : 'N/A' }}
+        </li>
         <li><strong>Género:</strong> {{ personaSeleccionada.genero || 'N/A' }}</li>
         <li><strong>Observaciones:</strong> {{ personaSeleccionada.observaciones || 'N/A' }}</li>
+        <li><strong>Activo:</strong> {{ personaSeleccionada.activo === 1 ? 'Sí' : 'No' }}</li>
       </ul>
       <button @click="cerrarDetalles">Cerrar</button>
     </div>
@@ -182,7 +185,14 @@ const actualizarPersona = async ({ id, data }) => {
     body: JSON.stringify(data)
   })
   cerrarModalEditar()
-  fetchPersonas()
+  await fetchPersonas()
+  // Si la persona editada está seleccionada en detalles, actualiza los datos mostrados
+  if (personaSeleccionada.value && personaSeleccionada.value.id_persona === id) {
+    const actualizada = personas.value.find(p => p.id_persona === id)
+    if (actualizada) {
+      personaSeleccionada.value = { ...actualizada }
+    }
+  }
 }
 
 const verDetalles = (persona) => {

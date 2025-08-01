@@ -77,7 +77,6 @@ class Persona(Base):
     activo = Column(Integer, default=1)
 
     usuarios = relationship("Usuario", back_populates="persona")
-    empresas = relationship("Empresa", back_populates="persona")
     mensajes = relationship("Mensaje", back_populates="persona")
     reservas = relationship("Reserva", back_populates="persona")
 
@@ -85,7 +84,6 @@ class Empresa(Base):
     __tablename__ = "empresas"
 
     id_empresa = Column(Integer, primary_key=True, index=True, autoincrement=True)
-    id_persona = Column(Integer, ForeignKey("personas.id_persona"), index=True)
     nombre = Column(String, index=True)
     razon_social = Column(String)
     nif = Column(String, unique=True)
@@ -93,6 +91,7 @@ class Empresa(Base):
     provincia = Column(String)
     cp = Column(String)
     nombre_contacto = Column(String, nullable=True)
+    email_contacto = Column(String, nullable=True)
     telefono_empresa = Column(String, nullable=True)
     email_empresa = Column(String, nullable=True)
     observaciones = Column(String, nullable=True)
@@ -100,8 +99,6 @@ class Empresa(Base):
     logo = Column(String)
     ubicacion = Column(String)
     activo = Column(Integer, default=1)
-
-    persona = relationship("Persona", back_populates="empresas")
 
 class Mensaje(Base):
     __tablename__ = "mensajes"

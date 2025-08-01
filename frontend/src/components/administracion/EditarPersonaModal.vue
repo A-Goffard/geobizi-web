@@ -106,6 +106,6 @@ watch(() => props.persona, (newVal) => {
 }, { immediate: true })
 
 const guardarCambios = () => {
-  emit('update', { id: props.persona.id_persona, data: form.value })
+  emit('update', { id: props.persona.id_persona, data: { ...form.value } })
 }
 </script>

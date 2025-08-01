@@ -89,24 +89,23 @@ def modificar_usuario(id_usuario: int, usuario: UsuarioUpdate, db: Session = Dep
         id_rol=usuario.id_rol, 
         id_persona=usuario.id_persona
     )
-    print("Datos recibidos para modificar usuario:", usuario_dominio.__dict__)  # <-- Añade este log
 
     try:
         # Usamos el validador específico para la actualización
         validar_usuario_update(usuario_dominio)
     except ValueError as e:
-        print(f"Error de validación al modificar usuario: {e}")
         raise HTTPException(status_code=400, detail=str(e))
 
     # Vincular usuario a persona por email
-    persona = db.query(PersonaModel).filter(PersonaModel.email == usuario.email, PersonaModel.activo == 1).first()
-    usuario_db.id_persona = persona.id_persona if persona else None
+    if usuario.email:
+        persona = db.query(PersonaModel).filter(PersonaModel.email == usuario.email, PersonaModel.activo == 1).first()
+        usuario_db.id_persona = persona.id_persona if persona else None
+        usuario_db.email = usuario.email
 
     if usuario.id_rol is not None:
         usuario_db.id_rol = usuario.id_rol
-    usuario_db.email = usuario.email
     if usuario.is_superuser is not None:
-        usuario_db.is_superuser = usuario.is_superuser  # <-- Actualiza correctamente
+        usuario_db.is_superuser = usuario.is_superuser
     if usuario.password:
         usuario_db.password = hash_password(usuario.password)
     db.commit()

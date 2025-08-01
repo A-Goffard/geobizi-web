@@ -1,11 +1,11 @@
 fastapi
 uvicorn[standard]
-SQLAlchemy
-pydantic[email]
-email-validator
+sqlalchemy
+passlib[bcrypt]>=1.7.4
 python-jose[cryptography]
-passlib[bcrypt]
-httpx
+python-multipart
+email-validator
+# ... otras dependencias que tengas
 requests
 sendgrid
 mailjet-rest

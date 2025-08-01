@@ -3,7 +3,6 @@ from typing import Optional
 from .persona import PersonaOut
 
 class EmpresaBase(BaseModel):
-    id_persona: Optional[int] = None
     nombre: str
     razon_social: str
     nif: Optional[str] = None
@@ -11,6 +10,7 @@ class EmpresaBase(BaseModel):
     provincia: Optional[str] = None
     cp: Optional[str] = None
     nombre_contacto: Optional[str] = None
+    email_contacto: Optional[str] = None
     telefono_empresa: Optional[str] = None
     email_empresa: Optional[str] = None
     observaciones: Optional[str] = None
@@ -34,7 +34,6 @@ class EmpresaCreate(EmpresaBase):
     cp: str
 
 class EmpresaUpdate(BaseModel):
-    id_persona: Optional[int] = None
     nombre: Optional[str] = None
     razon_social: Optional[str] = None
     nif: Optional[str] = None
@@ -42,6 +41,7 @@ class EmpresaUpdate(BaseModel):
     provincia: Optional[str] = None
     cp: Optional[str] = None
     nombre_contacto: Optional[str] = None
+    email_contacto: Optional[str] = None
     telefono_empresa: Optional[str] = None
     email_empresa: Optional[str] = None
     observaciones: Optional[str] = None
@@ -52,7 +52,6 @@ class EmpresaUpdate(BaseModel):
 class EmpresaOut(EmpresaBase):
     id_empresa: int
     activo: Optional[int] = None
-    persona: Optional[PersonaOut] = None
 
     class Config:
         from_attributes = True
