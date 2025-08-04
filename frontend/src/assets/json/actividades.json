@@ -749,7 +749,7 @@
     "imagen1": "imagenes/actividades/sopela1.png",
     "imagen2": "imagenes/actividades/sopela2.png",
     "tipo": "actividad",
-    "publicar": true,
+    "publicar": false,
     "stripeId": "prod_S3t6jXiSCmLWXg",
     "opciones": [
       {
