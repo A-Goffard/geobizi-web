@@ -8,6 +8,8 @@ services:
     container_name: vue_frontend
     ports:
       - "8080:80"
+    volumes:
+      - ./frontend/default.conf:/etc/nginx/conf.d/geobizi.conf
     restart: always
 
 # Ya no se necesitan los servicios 'backend' ni 'db' para producción.
