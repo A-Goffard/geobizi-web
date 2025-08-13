@@ -1,6 +1,5 @@
 name: Deploy to VPS
 
-# Se ejecuta cuando hay push a main
 on:
   push:
     branches:
@@ -11,11 +10,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # 1️⃣ Clonar el repositorio en el runner de GitHub Actions
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      # 2️⃣ Conectar al VPS por SSH y ejecutar despliegue
       - name: Deploy to VPS via SSH
         uses: appleboy/ssh-action@v0.1.10
         with:
@@ -27,8 +24,8 @@ jobs:
             cd /root/geobizi-web || exit 1
             git fetch origin main
             git reset --hard origin/main
-            docker compose down -v
+            docker compose -f docker-compose.yml down -v
             docker system prune -af --volumes
-            docker compose build --no-cache
-            docker compose up -d
+            docker compose -f docker-compose.yml build
+            docker compose -f docker-compose.yml up -d
             echo "✅ Despliegue completado"
