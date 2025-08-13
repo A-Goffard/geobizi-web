@@ -4,7 +4,7 @@
       <div class="container">
         <div class="card" v-for="section in sections" :key="section.title" @click="goToDetail(section.link)">
           <h2>{{ section.title }}</h2>
-          <img :src="section.image" alt="Servicios Geobizi">
+          <img :src="section.image" alt="Servicios Geobizi" loading="lazy">
           <p>{{ section.content }}</p>
         </div>
       </div>
@@ -22,37 +22,37 @@
       title: 'Para colegios y centros de enseñanza',
       content: 'Rutas geológicas, medioambientales, talleres, actividades mixtas, proyectos medioambientales para el colegios...',
       link: '/detalle-colegios',
-      image: '/imagenes/servicios/coles.png',
+      image: '/imagenes/servicios/coles.avif',
     },
     {
       title: 'Asociaciones y empresas',
       content: 'Si lo necesitas, preparamos una actividad temática en el campo o en tu local. Para trabajar en grupo y forjar vínculos, para aprender, para entretener.',
       link: '/detalle-asociaciones',
-      image: '/imagenes/servicios/asociaciones.png',
+      image: '/imagenes/servicios/asociaciones.avif',
     },
     {
       title: 'Instituciones',
       content: 'Si perteneces a un ayuntamiento, o cualquier otro tipo de institución, también tenemos algo para ti. ¿Quieres poner en valor el medio natural de tu entorno?¿Quieres una formación para tus ciudadanos o empresas?',
       link: '/detalle-instituciones',
-      image: '/imagenes/servicios/ayuntas.png',
+      image: '/imagenes/servicios/ayuntas.avif',
     },
     {
       title: 'Proyectos Digitales',
       content: 'El mundo digital y el natural pueden estar unidos y por ese camino ofrecemos yincanas digitales, o material didáctico digital relacionado con la naturaleza y el medioambiente.',
       link: '/detalle-digital',
-      image: '/imagenes/servicios/digital.png',
+      image: '/imagenes/servicios/digital.avif',
     },
     {
       title: 'Proyectos Natura',
       content: 'También diseñamos proyectos relacionados con la naturaleza, para tu barrio o escuela. ¿Quieres un poryecto para mejorar el medioambiente de tu zona? ¿O participar cuidando la naturaleza?',
       link: '/detalle-proyectos',
-      image: '/imagenes/servicios/general.png',
+      image: '/imagenes/servicios/general.avif',
     },
     {
       title: 'Población general',
       content: 'Siempre tenemos disponibles rutas y talleres para la población general. ¿Quieres contratar una ruta o un taller? Cuéntanos lo que quieres.',
       link: '/detalle-general',
-      image: '/imagenes/servicios/familias.png',
+      image: '/imagenes/servicios/familias.avif',
     }
   ])
   
@@ -108,4 +108,3 @@
     border-radius: 0.5rem;
   }
   </style>
-  

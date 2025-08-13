@@ -27,22 +27,25 @@
       <div>
               <img
         class="img"
-        src="/imagenes/blog/detalle/valeriana1.png"
+        src="/imagenes/blog/detalle/valeriana1.avif"
         alt="Para cambiar por lo que corresponda"
+        loading="lazy"
       />
       </div>
       <div>
               <img
         class="img"
-        src="/imagenes/blog/detalle/valeriana2.png"
+        src="/imagenes/blog/detalle/valeriana2.avif"
         alt="Para cambiar por lo que corresponda"
+        loading="lazy"
       />
       </div>
       <div>
               <img
         class="img"
-        src="/imagenes/blog/detalle/valeriana3.png"
+        src="/imagenes/blog/detalle/valeriana3.avif"
         alt="Para cambiar por lo que corresponda"
+        loading="lazy"
       />
       </div>
 

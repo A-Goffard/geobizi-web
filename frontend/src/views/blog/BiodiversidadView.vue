@@ -85,7 +85,7 @@
       La biodiversidad proporciona
       <strong>servicios ecosistémicos</strong> vitales que sustentan nuestra
       calidad de vida. Los <strong>polinizadores</strong>, como las abejas,
-      juegan un papel crucial en la producción de alimentos al polinizar las
+      juegan un papel crucial in la producción de alimentos al polinizar las
       plantas. Los ecosistemas costeros, como los arrecifes de coral y los
       manglares, brindan protección contra las tormentas y las inundaciones. Los
       bosques, además de capturar carbono, son hogar de innumerables especies y
@@ -130,22 +130,25 @@
       <div>
               <img
         class="img"
-        src="/imagenes/blog/detalle/mariposas.png"
+        src="/imagenes/blog/detalle/mariposas.avif"
         alt="Proyecto de Bio-regeneración"
+        loading="lazy"
       />
       </div>
       <div>
               <img
         class="img"
-        src="/imagenes/blog/detalle/ajenuz.png"
+        src="/imagenes/blog/detalle/ajenuz.avif"
         alt="Proyecto de Bio-regeneración"
+        loading="lazy"
       />
       </div>
       <div>
               <img
         class="img"
-        src="/imagenes/blog/detalle/plantando.png"
+        src="/imagenes/blog/detalle/plantando.avif"
         alt="Proyecto de Bio-regeneración"
+        loading="lazy"
       />
       </div>
 

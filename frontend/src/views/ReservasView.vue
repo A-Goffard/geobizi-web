@@ -16,11 +16,13 @@
               :src="actividad.imagen1"
               alt="Imagen de la actividad"
               class="img-base"
+              loading="lazy"
             />
             <img
               :src="actividad.imagen2"
               alt="Imagen secundaria de la actividad"
               class="img-hover"
+              loading="lazy"
             />
           </div>
           <p>{{ actividad.descripcion1 }}</p>

@@ -16,7 +16,7 @@
 
       <div class="card-servicios">
         <div class="imagen-servicios">
-          <img class="img" src="/imagenes/servicios/detalle/actividades.jpg" alt="Talleres para empresas"/>
+          <img class="img" src="/imagenes/servicios/detalle/actividades.jpg" alt="Talleres para empresas" loading="lazy"/>
         </div>
         <div class="lista-servicios">
           <h3>Talleres</h3>
@@ -32,7 +32,7 @@
 
       <div class="card-servicios">
         <div class="imagen-servicios">
-          <img class="img" src="/imagenes/servicios/detalle/rutas2.jpg" alt="Rutas para empresas"/>
+          <img class="img" src="/imagenes/servicios/detalle/rutas2.jpg" alt="Rutas para empresas" loading="lazy"/>
         </div>
         <div class="lista-servicios">
           <h3>Rutas guiadas</h3>
@@ -46,7 +46,7 @@
 
       <div class="card-servicios">
         <div class="imagen-servicios">
-          <img class="img" src="/imagenes/servicios/detalle/experiencias2.jpg" alt="Experiencias para empresas"/>
+          <img class="img" src="/imagenes/servicios/detalle/experiencias2.jpg" alt="Experiencias para empresas" loading="lazy"/>
         </div>
         <div class="lista-servicios">
           <h3>Experiencias</h3>

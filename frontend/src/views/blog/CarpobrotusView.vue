@@ -37,6 +37,7 @@
         class="img"
         src="/imagenes/blog/detalle/carpobrotus1.jpeg"
         alt="Para cambiar por lo que corresponda"
+        loading="lazy"
       />
       </div>
       <div>
@@ -44,6 +45,7 @@
         class="img"
         src="/imagenes/blog/detalle/carpobrotus2.jpg"
         alt="Para cambiar por lo que corresponda"
+        loading="lazy"
       />
       </div>
       <div>
@@ -51,6 +53,7 @@
         class="img"
         src="/imagenes/blog/detalle/carpobrotus3.jpg"
         alt="Para cambiar por lo que corresponda"
+        loading="lazy"
       />
       </div>
 

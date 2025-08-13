@@ -28,13 +28,13 @@
       </div>
 
       <div>
-        <img class="imagendiv" src="imagenes/inicio/mision.png" alt="">
+        <img class="imagendiv" src="/imagenes/inicio/mision.avif" alt="Persona observando un paisaje montañoso" loading="lazy">
       </div>
     </div>
 
     <div class="contenedor-historia">
       <div>
-      <img class="imagendiv" src="imagenes/inicio/esencia.png" alt="">
+      <img class="imagendiv" src="/imagenes/inicio/esencia.avif" alt="Manos sosteniendo brotes de plantas" loading="lazy">
       </div>
       <div class="cont-texto">
         <h2>Esencia</h2>
@@ -57,7 +57,7 @@
       </div>
 
       <div>
-        <img class="imagendiv" src="imagenes/inicio/equipo.png" alt="">
+        <img class="imagendiv" src="/imagenes/inicio/equipo.avif" alt="Grupo de personas colaborando en la naturaleza" loading="lazy">
       </div>
     </div>
   </div>
@@ -87,7 +87,7 @@ h1 {
 }
 .contenedor-cabecero {
   padding: 5rem;
-  background-image: url('/public/imagenes/background/6.png');
+  background-image: url('@/../public/imagenes/background/6.avif');
   background-size: cover; 
   background-position: center; 
   background-color: var(--darkgreen); 

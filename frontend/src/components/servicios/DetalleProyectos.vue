@@ -12,81 +12,81 @@
           </p>
     <h3>¿Por qué Bio-Regeneración?</h3>
     <p>
-      <img src="/imagenes/iconos/color/estrellitas.png" alt="Acción" class="icono" />
+      <img src="/imagenes/iconos/color/estrellitas.png" alt="Acción" class="icono" loading="lazy" />
       <strong>Porque cada acción cuenta</strong> – Pequeños gestos pueden transformar un ecosistema.
     </p>
     <p>
-      <img src="/imagenes/iconos/color/familia.png" alt="Comunidad" class="icono" />
+      <img src="/imagenes/iconos/color/familia.png" alt="Comunidad" class="icono" loading="lazy" />
       <strong>Porque la comunidad es clave</strong> – Juntos, logramos un impacto mayor.
     </p>
     <p>
-      <img src="/imagenes/iconos/color/arbol.png" alt="Biodiversidad" class="icono" />
+      <img src="/imagenes/iconos/color/arbol.png" alt="Biodiversidad" class="icono" loading="lazy" />
       <strong>Porque la biodiversidad nos necesita</strong> – Recuperar especies autóctonas es esencial para el equilibrio natural.
     </p>
 
     <h3>Objetivos del Proyecto</h3>
     <ul>
       <li>
-        <img src="/imagenes/iconos/color/hojas.png" alt="Biodiversidad" class="icono" />
+        <img src="/imagenes/iconos/color/hojas.png" alt="Biodiversidad" class="icono" loading="lazy" />
         <strong>Promover la biodiversidad</strong> – Recuperación de flora y fauna autóctonas.</li>
       <li>
-        <img src="/imagenes/iconos/color/estrellitas.png" alt="Acción" class="icono" />
+        <img src="/imagenes/iconos/color/estrellitas.png" alt="Acción" class="icono" loading="lazy" />
         <strong>Regeneración natural asistida</strong> – Ayudar a que el ecosistema se recupere con técnicas sostenibles.</li>
       <li>
-        <img src="/imagenes/iconos/color/adaptable.png" alt="Educación" class="icono" />
+        <img src="/imagenes/iconos/color/adaptable.png" alt="Educación" class="icono" loading="lazy" />
         <strong>Educación ambiental activa</strong> – Talleres prácticos para todas las edades.</li>
       <li>
-        <img src="/imagenes/iconos/color/manos.png" alt="Manos" class="icono" />
+        <img src="/imagenes/iconos/color/manos.png" alt="Manos" class="icono" loading="lazy" />
         <strong>Crear redes comunitarias</strong> – Conectar vecinos, escuelas y empresas en un mismo propósito.</li>
     </ul>
 
     <h3>Actividades Clave</h3>
     <ul>
       <li>
-        <img src="/imagenes/iconos/color/hojas.png" alt="Hojas" class="icono" />
+        <img src="/imagenes/iconos/color/hojas.png" alt="Hojas" class="icono" loading="lazy" />
         <strong>Explosión de Vida</strong> – Creación de bombas de semillas (nendo dango) para regenerar zonas degradadas de forma natural y divertida.</li>
       <li>
-        <img src="/imagenes/iconos/color/mariposita.png" alt="Mariposita" class="icono" />
+        <img src="/imagenes/iconos/color/mariposita.png" alt="Mariposita" class="icono" loading="lazy" />
         <strong>Oasis de Mariposas</strong> – Diseño de jardines polinizadores y refugios para mariposas, esenciales para la biodiversidad.</li>
       <li>
-        <img src="/imagenes/iconos/color/abeja.png" alt="Abeja" class="icono" />
+        <img src="/imagenes/iconos/color/abeja.png" alt="Abeja" class="icono" loading="lazy" />
         <strong>Casas de Insectos</strong> – Talleres para construir hoteles de insectos, refugios para abejas solitarias y otros polinizadores.</li>
       <li>
-        <img src="/imagenes/iconos/color/arbol.png" alt="Árbol" class="icono" />
+        <img src="/imagenes/iconos/color/arbol.png" alt="Árbol" class="icono" loading="lazy" />
         <strong>Conociendo Nuestro Entorno</strong> – Rutas guiadas para identificar especies nativas, analizar y entender el medio local.</li>
       <li>
-        <img src="/imagenes/iconos/color/manos.png" alt="Colaboración" class="icono" />
+        <img src="/imagenes/iconos/color/manos.png" alt="Colaboración" class="icono" loading="lazy" />
         <strong>Networking Ambiental</strong> – Encuentros entre participantes, expertos y asociaciones para generar alianzas verdes.</li>
       <li>
-        <img src="/imagenes/iconos/color/graficos.png" alt="Evolución" class="icono" />
+        <img src="/imagenes/iconos/color/graficos.png" alt="Evolución" class="icono" loading="lazy" />
         <strong>Seguimiento y Evolución</strong> – Evaluación y seguimiento del impacto durante el proyecto.</li>
     </ul>
 
     <h3>¿A quién va dirigido?</h3>
     <ul>
       <li>
-        <img src="/imagenes/iconos/color/familia.png" alt="Familia" class="icono" />
+        <img src="/imagenes/iconos/color/familia.png" alt="Familia" class="icono" loading="lazy" />
         <strong>Familias</strong> – Actividades didácticas para niños y adultos.</li>
       <li>
-        <img src="/imagenes/iconos/color/cole.png" alt="Colegio" class="icono" />
+        <img src="/imagenes/iconos/color/cole.png" alt="Colegio" class="icono" loading="lazy" />
         <strong>Colegios y otros centros de estudio</strong> – Proyectos educativos de concienciación ecológica.</li>
       <li>
-        <img src="/imagenes/iconos/color/empresa.png" alt="Empresa" class="icono" />
+        <img src="/imagenes/iconos/color/empresa.png" alt="Empresa" class="icono" loading="lazy" />
         <strong>Empresas</strong> – Team buildings con impacto ambiental positivo.</li>
       <li>
-        <img src="/imagenes/iconos/color/ayuntamiento.png" alt="Ayuntamiento" class="icono" />
+        <img src="/imagenes/iconos/color/ayuntamiento.png" alt="Ayuntamiento" class="icono" loading="lazy" />
         <strong>Ayuntamientos y asociaciones</strong> – Planes de biorregeneración urbana y participación ciudadana.</li>
     </ul>
 
     <h3>¿Por qué Zalla Natura?</h3>
     <p>        
-      <img src="/imagenes/iconos/color/adaptable.png" alt="Adaptable" class="icono" />
+      <img src="/imagenes/iconos/color/adaptable.png" alt="Adaptable" class="icono" loading="lazy" />
       <strong>Proyecto adaptable</strong> – Puede implementarse en parques, riberas, zonas urbanas o rurales.</p>
     <p>        
-      <img src="/imagenes/iconos/color/graficos.png" alt="Evolución" class="icono" />
+      <img src="/imagenes/iconos/color/graficos.png" alt="Evolución" class="icono" loading="lazy" />
       <strong>Metodología probada</strong> – Combinamos ciencia y socidad de manera efectiva.</p>
     <p>
-      <img src="/imagenes/iconos/color/planeta.png" alt="Planeta" class="icono" />
+      <img src="/imagenes/iconos/color/planeta.png" alt="Planeta" class="icono" loading="lazy" />
       <strong>Impacto medible</strong> – Seguimiento del proyecto para garantizar su desarrollo.</p>
 
     <h3>¿Quieres llevar un proyecto de Geobizi Natura a tu municipio o espacio?</h3>
@@ -96,22 +96,25 @@
       <div>
         <img
           class="img"
-          src="/imagenes/proyectos/zallanatura2.png"
+          src="/imagenes/proyectos/zallanatura/zallanatura2.avif"
           alt="Imagen del proyecto Zalla Natura"
+          loading="lazy"
         />
       </div>
       <div>
         <img
           class="img"
-          src="/imagenes/proyectos/zallanatura.png"
+          src="/imagenes/proyectos/zallanatura/zallanatura1.avif"
           alt="Imagen del proyecto Zalla Natura"
+          loading="lazy"
         />
       </div>
       <div>
         <img
           class="img"
-          src="/imagenes/proyectos/zallanatura1.png"
+          src="/imagenes/proyectos/zallanatura/zallanatura3.avif"
           alt="Imagen del proyecto Zalla Natura"
+          loading="lazy"
         />
       </div>
     </div>

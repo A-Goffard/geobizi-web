@@ -41,31 +41,34 @@
     <p class="social-media"><b>¡Anímate a seguirnos en redes sociales para no perderte nuestras actividades!</b></p>
 
     <a href="https://www.instagram.com/geotxiki/" target="_blank">
-        <img src="@/assets/icons/instagram.png" alt="Instagram" class="social-icon" />
+        <img src="@/assets/icons/instagram.png" alt="Instagram" class="social-icon" loading="lazy" />
     </a>
     <a href="https://www.facebook.com/geobizirik/" target="_blank">
-        <img src="@/assets/icons/facebook.png" alt="Facebook" class="social-icon" />
+        <img src="@/assets/icons/facebook.png" alt="Facebook" class="social-icon" loading="lazy" />
     </a>
     <div class="imagen-trio">
       <div>
               <img
         class="img"
-        src="/imagenes/blog/detalle/mariquita1.png"
+        src="/imagenes/blog/detalle/mariquita1.avif"
         alt="Para cambiar por lo que corresponda"
+        loading="lazy"
       />
       </div>
       <div>
               <img
         class="img"
-        src="/imagenes/blog/detalle/mariquita2.png"
+        src="/imagenes/blog/detalle/mariquita2.avif"
         alt="Para cambiar por lo que corresponda"
+        loading="lazy"
       />
       </div>
       <div>
               <img
         class="img"
-        src="/imagenes/blog/detalle/mariquita3.png"
+        src="/imagenes/blog/detalle/mariquita3.avif"
         alt="Para cambiar por lo que corresponda"
+        loading="lazy"
       />
       </div>
 

@@ -18,7 +18,7 @@
 
       <div class="card-servicios">
         <div class="imagen-servicios">
-          <img class="img" src="/imagenes/servicios/detalle/bombas.jpg" alt="Talleres para público general"/>
+          <img class="img" src="/imagenes/servicios/detalle/bombas.jpg" alt="Talleres para público general" loading="lazy"/>
         </div>
         <div class="lista-servicios">
           <h3>Talleres</h3>
@@ -36,7 +36,7 @@
 
       <div class="card-servicios">
         <div class="imagen-servicios">
-          <img class="img" src="/imagenes/servicios/detalle/sopela.jpg" alt="Rutas para público general"/>
+          <img class="img" src="/imagenes/servicios/detalle/sopela.jpg" alt="Rutas para público general" loading="lazy"/>
         </div>
         <div class="lista-servicios">
           <h3>Rutas Guiadas</h3>
@@ -50,7 +50,7 @@
 
       <div class="card-servicios">
         <div class="imagen-servicios">
-          <img class="img" src="/imagenes/servicios/detalle/micro.jpg" alt="Experiencias para público general"/>
+          <img class="img" src="/imagenes/servicios/detalle/micro.jpg" alt="Experiencias para público general" loading="lazy"/>
         </div>
         <div class="lista-servicios">
           <h3>Experiencias</h3>

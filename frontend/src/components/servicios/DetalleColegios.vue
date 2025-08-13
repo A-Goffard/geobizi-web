@@ -23,7 +23,7 @@
 
       <div class="card-servicios">
         <div class="imagen-servicios">
-          <img class="img" src="/imagenes/servicios/detalle/talleres.jpg" alt="Talleres"/>
+          <img class="img" src="/imagenes/servicios/detalle/talleres.jpg" alt="Talleres" loading="lazy"/>
         </div>
         <div class="lista-servicios">
           <h3>Talleres</h3>
@@ -42,7 +42,7 @@
 
       <div class="card-servicios">
         <div class="imagen-servicios">
-          <img class="img" src="/imagenes/servicios/detalle/rutas.jpg" alt="Talleres"/>
+          <img class="img" src="/imagenes/servicios/detalle/rutas.jpg" alt="Talleres" loading="lazy"/>
         </div>
         <div class="lista-servicios">
           <h3>Rutas guiadas</h3>
@@ -59,7 +59,7 @@
 
       <div class="card-servicios">
         <div class="imagen-servicios">
-          <img class="img" src="/imagenes/servicios/detalle/experiencias.jpg" alt="Talleres"/>
+          <img class="img" src="/imagenes/servicios/detalle/experiencias.jpg" alt="Talleres" loading="lazy"/>
         </div>
         <div class="lista-servicios">
           <h3>Experiencias</h3>

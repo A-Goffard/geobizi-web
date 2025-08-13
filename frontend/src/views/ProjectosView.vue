@@ -4,7 +4,7 @@
     <div class="container">
       <div class="card" v-for="project in projects" :key="project.title" @click="goToDetail(project.link)">
         <h2>{{ project.title }}</h2>
-        <img :src="project.image" alt="Imagen del proyecto">
+        <img :src="project.image" alt="Imagen del proyecto" loading="lazy">
         <p>{{ project.description }}</p>
       </div>
     </div>
@@ -22,13 +22,13 @@ const projects = ref([
     title: 'Ginkana del Flysch de Bizkaia',
     description: 'Una experiencia digital para explorar el Flysch de Bizkaia de manera interactiva.',
     link: '/detalle-flysch',
-    image: '/imagenes/proyectos/flyschdigital.png',
+    image: '/imagenes/proyectos/flyschdigital.avif',
   },
   {
     title: 'Zalla Natura',
     description: 'Un proyecto de biorregeneración colaborativa para mejorar el medioambiente en Zalla.',
     link: '/detalle-zalla-natura',
-    image: '/imagenes/proyectos/plantacion4.png',
+    image: '/imagenes/proyectos/plantacion4.avif',
   },
 ])
 

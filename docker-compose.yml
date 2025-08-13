@@ -9,7 +9,8 @@ services:
     ports:
       - "8080:80"
     volumes:
-      - ./frontend/geobizi.conf:/etc/nginx/conf.d/geobizi.conf
+      - ./frontend/dist:/usr/share/nginx/html
+      - ./nginx/geobizi.conf:/etc/nginx/conf.d/default.conf
     restart: always
 
 # Ya no se necesitan los servicios 'backend' ni 'db' para producción.
@@ -50,7 +51,6 @@ services:
 
 # 9. Accede a la web desde tu navegador usando la IP del VPS o el dominio:
 #    http://IP_DEL_VPS:8080
-# 3. Actualiza el código fuente:
 #    - Si usas git:
 #      git pull origin main
 #    - O sube los archivos actualizados por SFTP/rsync

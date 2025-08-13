@@ -8,7 +8,7 @@
     </p>
 
     <section class="presentation">
-      <img src="imagenes/proyectos/zallanatura/zallanatura1.png" alt="Imagen destacada del proyecto Zalla Natura" class="img" />
+      <img src="imagenes/proyectos/zallanatura/zallanatura1.avif" alt="Imagen destacada del proyecto Zalla Natura" class="img" loading="lazy" />
       <div>
         <h2>Sobre el Proyecto</h2>
         <p>
@@ -24,18 +24,18 @@
       <h2>Actividades Realizadas</h2>
       <div class="contenido-seccion">
         <ul>
-          <li><img src="imagenes/iconos/color/maripositaV.png" alt="Mariposita" class="icono" />Networking inicial</li>
-          <li><img src="imagenes/iconos/color/maripositaV.png" alt="Mariposita" class="icono" />Presentación del proyecto</li>
-          <li><img src="imagenes/iconos/color/maripositaV.png" alt="Mariposita" class="icono" />Plantación y lanzamiento de bombas de semillas en Landabaso eskola</li>
-          <li><img src="imagenes/iconos/color/maripositaV.png" alt="Mariposita" class="icono" />Ruta para conocer los árboles de Zalla</li>
-          <li><img src="imagenes/iconos/color/maripositaV.png" alt="Mariposita" class="icono" />Taller de pintar mariposas</li>
-          <li><img src="imagenes/iconos/color/maripositaV.png" alt="Mariposita" class="icono" />Creación de un oasis de mariposas en el parque de Lusa, taller de bombas de semillas y pintado de mariposas de madera</li>
-          <li><img src="imagenes/iconos/color/maripositaV.png" alt="Mariposita" class="icono" />Lanzamiendo de bombas de semillas y creación de zonas de NO siega en la zona de Tepeyac</li>
-          <li><img src="imagenes/iconos/color/maripositaV.png" alt="Mariposita" class="icono" />Huerto urbano con Mimetiz eskola en la residencia</li>
-          <li><img src="imagenes/iconos/color/maripositaV.png" alt="Mariposita" class="icono" />Creación de hotel y casas de insectos y plantación de banda floral en Ibarra</li>
-          <li><img src="imagenes/iconos/color/maripositaV.png" alt="Mariposita" class="icono" />Colocación de hotel de insectos y cartel en el osasis de mariposas Tximeleku y manualidades infantiles</li>
+          <li><img src="imagenes/iconos/color/maripositaV.png" alt="Mariposita" class="icono" loading="lazy" />Networking inicial</li>
+          <li><img src="imagenes/iconos/color/maripositaV.png" alt="Mariposita" class="icono" loading="lazy" />Presentación del proyecto</li>
+          <li><img src="imagenes/iconos/color/maripositaV.png" alt="Mariposita" class="icono" loading="lazy" />Plantación y lanzamiento de bombas de semillas en Landabaso eskola</li>
+          <li><img src="imagenes/iconos/color/maripositaV.png" alt="Mariposita" class="icono" loading="lazy" />Ruta para conocer los árboles de Zalla</li>
+          <li><img src="imagenes/iconos/color/maripositaV.png" alt="Mariposita" class="icono" loading="lazy" />Taller de pintar mariposas</li>
+          <li><img src="imagenes/iconos/color/maripositaV.png" alt="Mariposita" class="icono" loading="lazy" />Creación de un oasis de mariposas en el parque de Lusa, taller de bombas de semillas y pintado de mariposas de madera</li>
+          <li><img src="imagenes/iconos/color/maripositaV.png" alt="Mariposita" class="icono" loading="lazy" />Lanzamiendo de bombas de semillas y creación de zonas de NO siega en la zona de Tepeyac</li>
+          <li><img src="imagenes/iconos/color/maripositaV.png" alt="Mariposita" class="icono" loading="lazy" />Huerto urbano con Mimetiz eskola en la residencia</li>
+          <li><img src="imagenes/iconos/color/maripositaV.png" alt="Mariposita" class="icono" loading="lazy" />Creación de hotel y casas de insectos y plantación de banda floral en Ibarra</li>
+          <li><img src="imagenes/iconos/color/maripositaV.png" alt="Mariposita" class="icono" loading="lazy" />Colocación de hotel de insectos y cartel en el osasis de mariposas Tximeleku y manualidades infantiles</li>
         </ul>
-        <img src="imagenes/proyectos/zallanatura/zallanatura2.png" alt="Imagen de actividades realizadas" class="img" />
+        <img src="imagenes/proyectos/zallanatura/zallanatura2.avif" alt="Imagen de actividades realizadas" class="img" loading="lazy" />
       </div>
     </section>
 
@@ -53,22 +53,25 @@
       <div>
         <img
           class="img"
-          src="imagenes/proyectos/zallanatura/zallanatura3.png"
+          src="imagenes/proyectos/zallanatura/zallanatura3.avif"
           alt="Imagen del proyecto Zalla Natura"
+          loading="lazy"
         />
       </div>
       <div>
         <img
           class="img"
-          src="imagenes/proyectos/zallanatura/zallanatura4.png"
+          src="imagenes/proyectos/zallanatura/zallanatura4.avif"
           alt="Imagen del proyecto Zalla Natura"
+          loading="lazy"
         />
       </div>
       <div>
         <img
           class="img"
-          src="imagenes/proyectos/zallanatura/zallanatura5.png"
+          src="imagenes/proyectos/zallanatura/zallanatura5.avif"
           alt="Imagen del proyecto Zalla Natura"
+          loading="lazy"
         />
       </div>
     </div>

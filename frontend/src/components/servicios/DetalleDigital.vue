@@ -28,30 +28,30 @@
       
       <h3>¿Por qué elegir una actividad Digital?</h3>
       <p>
-        <img src="/imagenes/iconos/color/estrellitas.png" alt="Original" class="icono" />
+        <img src="/imagenes/iconos/color/estrellitas.png" alt="Original" class="icono" loading="lazy" />
         <strong>Actividad original</strong> – No es solo un paseo, es una experiencia interactiva.
       </p>      
       <p>
-        <img src="/imagenes/iconos/color/adaptable.png" alt="Adaptable" class="icono" />
+        <img src="/imagenes/iconos/color/adaptable.png" alt="Adaptable" class="icono" loading="lazy" />
         <strong>Adaptable</strong> – Podemos personalizarla para otros entornos (montañas, ciudades, parques naturales…).</p>
       <p>
-        <img src="/imagenes/iconos/color/multilingue.png" alt="Multilingüe" class="icono" />
+        <img src="/imagenes/iconos/color/multilingue.png" alt="Multilingüe" class="icono" loading="lazy" />
         <strong>Multilingüe</strong> – Disponible en euskera y castellano (otros idiomas bajo consulta).</p>
       <p>
-        <img src="/imagenes/iconos/color/libro.png" alt="Educativo" class="icono" />
+        <img src="/imagenes/iconos/color/libro.png" alt="Educativo" class="icono" loading="lazy" />
         <strong>Educativo y entretenido</strong> – Perfecto para colegios, empresas, ayuntamientos o grupos de ocio.</p>
 
     <div class="horizontal">
       <div class="card-servicios">
         <div class="imagen-trio">
           <div>
-            <img class="img" src="/imagenes/servicios/detalle/digital1.jpg" alt="Yincana Digital"/>
+            <img class="img" src="/imagenes/servicios/detalle/digital1.jpg" alt="Yincana Digital" loading="lazy"/>
           </div>
           <div>
-          <img class="img" src="/imagenes/servicios/detalle/digital2.jpg" alt="Yincana Digital"/>
+          <img class="img" src="/imagenes/servicios/detalle/digital2.jpg" alt="Yincana Digital" loading="lazy"/>
           </div>
           <div>
-          <img class="img" src="/imagenes/servicios/detalle/digital3.jpg" alt="Yincana Digital"/>
+          <img class="img" src="/imagenes/servicios/detalle/digital3.jpg" alt="Yincana Digital" loading="lazy"/>
           </div>
         </div>
       </div>

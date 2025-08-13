@@ -26,7 +26,7 @@
         </div>
   
         <div>
-          <img src="imagenes/imagenes-genericas/g1.jpg" alt="Mano de bebé sujetando una hoja">
+          <img src="imagenes/imagenes-genericas/g1.jpg" alt="Mano de bebé sujetando una hoja" loading="lazy">
         </div>
 
       </div>
@@ -43,7 +43,7 @@
         </div>
   
         <div>
-          <img src="imagenes/imagenes-genericas/g2.jpg" alt="manos de familia sujetando el mundo">
+          <img src="imagenes/imagenes-genericas/g2.jpg" alt="manos de familia sujetando el mundo" loading="lazy">
         </div>
 
       </div>
@@ -59,7 +59,7 @@
         </div>
   
         <div>
-          <img src="imagenes/imagenes-genericas/g3.jpg" alt="manos en la naturaleza">
+          <img src="imagenes/imagenes-genericas/g3.jpg" alt="manos en la naturaleza" loading="lazy">
         </div>
 
       </div>
@@ -85,7 +85,7 @@
   }
   .contenedor-cabecero {
     padding: 5rem;
-    background-image: url('/public/imagenes/background/6.png');
+    background-image: url('@/../public/imagenes/background/6.avif');
     background-size: cover; 
     background-position: center; 
     background-color: rgb(44, 119, 15); 

@@ -20,39 +20,42 @@
       
       <h3>¿Por qué elegir Flysch Digital?</h3>
       <p>
-        <img src="/imagenes/iconos/color/estrellitas.png" alt="Original" class="icono" />
+        <img src="/imagenes/iconos/color/estrellitas.png" alt="Original" class="icono" loading="lazy" />
         <strong>Actividad original</strong> – No es solo un paseo, es una experiencia interactiva.
       </p>      
       <p>
-        <img src="/imagenes/iconos/color/adaptable.png" alt="Adaptable" class="icono" />
+        <img src="/imagenes/iconos/color/adaptable.png" alt="Adaptable" class="icono" loading="lazy" />
         <strong>Adaptable</strong> – Podemos personalizarla para otros entornos (montañas, ciudades, parques naturales…).</p>
       <p>
-        <img src="/imagenes/iconos/color/multilingue.png" alt="Multilingüe" class="icono" />
+        <img src="/imagenes/iconos/color/multilingue.png" alt="Multilingüe" class="icono" loading="lazy" />
         <strong>Multilingüe</strong> – Disponible en euskera y castellano (otros idiomas bajo consulta).</p>
       <p>
-        <img src="/imagenes/iconos/color/libro.png" alt="Educativo" class="icono" />
+        <img src="/imagenes/iconos/color/libro.png" alt="Educativo" class="icono" loading="lazy" />
         <strong>Educativo y entretenido</strong> – Perfecto para colegios, empresas o grupos de ocio.</p>
 
       <div class="imagen-trio">
       <div>
               <img
         class="img"
-        src="/imagenes/proyectos/flyschdigital1.png"
+        src="/imagenes/proyectos/flyschdigital1.avif"
         alt="Imagen del proyecto Flysch Digital"
+        loading="lazy"
       />
       </div>
       <div>
               <img
         class="img"
-        src="/imagenes/proyectos/flyschdigital2.png"
+        src="/imagenes/proyectos/flyschdigital2.avif"
         alt="Imagen del proyecto Flysch Digital"
+        loading="lazy"
       />
       </div>
       <div>
               <img
         class="img"
-        src="/imagenes/proyectos/flyschdigital3.png"
+        src="/imagenes/proyectos/flyschdigital3.avif"
         alt="Imagen del proyecto Flysch Digital"
+        loading="lazy"
       />
       </div>
 

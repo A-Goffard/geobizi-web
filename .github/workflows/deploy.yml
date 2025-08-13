@@ -1,5 +1,6 @@
 name: Deploy to VPS
 
+# Se ejecuta cada vez que haces un push a la rama 'main'
 on:
   push:
     branches:
@@ -8,18 +9,24 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Deploy via SSH
-        uses: appleboy/ssh-action@v1.0.3
+      # 1. Se conecta al VPS por SSH y ejecuta los comandos de despliegue
+      - name: Deploy to VPS
+        uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.VPS_HOST }}
-          username: ${{ secrets.VPS_USER }}
-          key: ${{ secrets.VPS_SSH_KEY }}
+          username: ${{ secrets.VPS_USERNAME }}
+          key: ${{ secrets.VPS_SSH_PRIVATE_KEY }}
           script: |
-            cd /root/geobizi-web
+            # Navega al directorio del proyecto en el VPS
+            cd /geobizi-web
+            
+            # Descarga los últimos cambios de la rama main
             git pull origin main
-            docker-compose build --no-cache
-            docker-compose up -d
-            git pull
-            docker-compose build --no-cache
-            docker-compose up -d
+            
+            # Reconstruye y reinicia los contenedores de producción
+            docker-compose -f docker-compose.yml up -d --build
+            
+            # (Opcional) Limpia imágenes de Docker antiguas para ahorrar espacio
+            docker image prune -f

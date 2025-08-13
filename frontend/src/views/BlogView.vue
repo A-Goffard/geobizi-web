@@ -6,7 +6,7 @@
       <div class="container">
         <div class="card" v-for="article in articles" :key="article.title" @click="goToDetail(article.link)">
           <h2>{{ article.title }}</h2>
-          <img :src="article.image" alt="Artículo del blog">
+          <img :src="article.image" alt="Artículo del blog" loading="lazy">
           <p>{{ article.summary }}</p>
           <button @click.stop="goToDetail(article.link)">Leer +</button>
         </div>
@@ -25,67 +25,67 @@
       title: 'Jornadas de Patrimonio Europeo 2023',
       summary: 'Llega octubre y con él las Jornadas de Patrimonio Europeas. Una oportunidad única para disfrutar de un montón de actividades relacionadas con el patrimonio en diferentes puntos de la comunidad...',
       link: 'blog/detalle-patrimonio',
-      image: '/imagenes/blog/patrimonio.png',
+      image: '/imagenes/blog/patrimonio.avif',
     },
     {
       title: 'Free Tours: Definición, Funcionamiento y preguntas frecuentes',
       summary: 'Un Free Tour, también conocido como Tour Gratis, es un recorrido turístico guiado por los puntos más destacados de una ciudad...',
       link: 'blog/detalle-free-tours',
-      image: '/imagenes/blog/free-tours.png',
+      image: '/imagenes/blog/free-tours.avif',
     },
     {
       title: 'Centranthus Ruber (Valeriana Roja): Una Belleza Invasora en los Jardines',
       summary: 'En los últimos años, la preocupación por la propagación de especies invasoras ha crecido considerablemente. Una de las plantas que ha comenzado a destacar en este sentido es el Centranthus ruber...',
       link: 'blog/detalle-valeriana-roja',
-      image: '/imagenes/blog/valeriana-roja.png',
+      image: '/imagenes/blog/valeriana-roja.avif',
     },
     {
       title: 'La formación de los estuarios: donde el mar y el río se encuentran',
       summary: 'Los estuarios son ecosistemas únicos y fascinantes que se forman en las desembocaduras de los ríos...',
       link: 'blog/detalle-estuarios',
-      image: '/imagenes/blog/estuarios.png',
+      image: '/imagenes/blog/estuarios.avif',
     },
     {
       title: 'La Importancia de las mariquitas en el medioambiente',
       summary: 'Las mariquitas pertenecen a la familia de los escarabajos, y existen miles de especies diferentes en todo el mundo...',
       link: 'blog/detalle-mariquitas',
-      image: '/imagenes/blog/mariquitas.png',
+      image: '/imagenes/blog/mariquitas.avif',
     },
     {
       title: 'La Importancia de la Biodiversidad en Relación con el Cambio Climático',
       summary: 'La biodiversidad es la variedad de formas de vida en nuestro planeta, desde las más pequeñas bacterias hasta las majestuosas especies de mamíferos...',
       link: 'blog/detalle-biodiversidad',
-      image: '/imagenes/blog/biodiversidad.png',
+      image: '/imagenes/blog/biodiversidad.avif',
     },
     {
       title: 'El Sapito Corredor o Buffo Calamita: Un Tesoro Ecológico en Peligro',
       summary: 'El sapito corredor, es una especie de sapo nativa de gran parte de Europa...',
       link: 'blog/detalle-sapito',
-      image: '/imagenes/blog/sapito.png',
+      image: '/imagenes/blog/sapito.avif',
     },
     {
       title: 'Carpobrotus edulis, invasora perjudicial',
       summary: 'La Carpobrotus edulis, una especie originaria de Sudáfrica que resulta ser invasora en muchas partes de nuestro planeta...',
       link: 'blog/detalle-carpobrotus',
-      image: '/imagenes/blog/carpobrotus.png',
+      image: '/imagenes/blog/carpobrotus.avif',
     },
     {
       title: 'Flora autóctona: la importancia de cuidarla',
       summary: 'Para conservar la biodiversidad de nuestro planeta y el equilibrio de los ecosistemas, es esencial proteger la flora autóctona...',
       link: 'blog/detalle-flora-autoctona',
-      image: '/imagenes/blog/flora-autoctona.png',
+      image: '/imagenes/blog/flora-autoctona.avif',
     },
     {
       title: '¿Qué son los fósiles y cómo se forman?',
       summary: 'Los fósiles son restos o huellas de organismos que vivieron en la Tierra en el pasado...',
       link: 'blog/detalle-fosiles',
-      image: '/imagenes/blog/fosiles.png',
+      image: '/imagenes/blog/fosiles.avif',
     },
     {
       title: 'Día mundial de la Tierra',
       summary: 'Este año 2023, el Día de la Tierra se celebra bajo el lema “Invertir en nuestro planeta”...',
       link: 'blog/detalle-dia-tierra',
-      image: '/imagenes/blog/dia-tierra.png',
+      image: '/imagenes/blog/dia-tierra.avif',
     }
   ])
   
@@ -162,4 +162,3 @@
     background-color: var(--lightgreen);
   }
   </style>
-  
