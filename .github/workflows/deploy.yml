@@ -26,9 +26,9 @@ jobs:
             git fetch origin main
             git reset --hard origin/main
             
-            # Bajar contenedores y borrar volúmenes antiguos
+            # Bajar contenedores, borrar volúmenes e imágenes antiguas
             docker-compose -f docker-compose.yml down -v
             docker system prune -af --volumes
             
-            # Reconstruir sin usar caché
-            docker-compose -f docker-compose.yml up -d --build --no-cache
+            # Reconstruir forzando recreación de contenedores
+            docker-compose -f docker-compose.yml up -d --build --force-recreate --no-cache
