@@ -27,7 +27,7 @@ jobs:
             cd /root/geobizi-web || exit 1
             git fetch origin main
             git reset --hard origin/main
-            docker-compose -f docker-compose.yml down -v
+            docker compose -f docker-compose.yml down -v
             docker system prune -af --volumes
-            docker-compose -f docker-compose.yml up -d --build --no-cache
+            docker compose -f docker-compose.yml up -d --build --no-cache
             echo "✅ Despliegue completado"
