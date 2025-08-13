@@ -24,17 +24,10 @@ jobs:
           key: ${{ secrets.VPS_SSH_PRIVATE_KEY }}
           port: 22
           script: |
-            cd /geobizi-web || exit 1
-
-            # 1️⃣ Hacer pull del código más reciente
+            cd /root/geobizi-web || exit 1
             git fetch origin main
             git reset --hard origin/main
-
-            # 2️⃣ Parar contenedores antiguos y limpiar volúmenes cacheados
             docker-compose -f docker-compose.yml down -v
             docker system prune -af --volumes
-
-            # 3️⃣ Reconstruir y levantar los contenedores sin caché
             docker-compose -f docker-compose.yml up -d --build --no-cache
-
             echo "✅ Despliegue completado"
