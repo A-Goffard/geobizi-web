@@ -17,11 +17,11 @@ jobs:
           username: ${{ secrets.VPS_USERNAME }}
           key: ${{ secrets.VPS_SSH_PRIVATE_KEY }}
           script: |
-            cd /geobizi-web
+            cd /root/geobizi-web  # <- Poner la ruta real de tu proyecto en el VPS
             echo "📥 Haciendo pull de los últimos cambios..."
             git reset --hard
             git pull origin main
             echo "🔄 Reconstruyendo y reiniciando contenedores..."
-            docker compose down
-            docker compose up -d --build
+            docker-compose down
+            docker-compose up -d --build
             echo "✅ Despliegue completado"
