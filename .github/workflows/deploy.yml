@@ -17,25 +17,11 @@ jobs:
           username: ${{ secrets.VPS_USERNAME }}
           key: ${{ secrets.VPS_SSH_PRIVATE_KEY }}
           script: |
-            set -e
-
-            # Ruta del proyecto en el VPS
-            PROJECT_DIR=~/geobizi-web
-
-            # Si la carpeta no existe, clonar repo
-            if [ ! -d "$PROJECT_DIR/.git" ]; then
-              git clone git@github.com:A-Goffard/geobizi-web.git $PROJECT_DIR
-            fi
-
-            cd $PROJECT_DIR
-
-            # Asegurar que estamos en la rama main y actualizados
-            git fetch origin main
-            git reset --hard origin/main
-
-            # Bajar y borrar contenedores viejos
-            docker-compose down -v
-            docker system prune -af --volumes
-
-            # Reconstruir desde cero
-            docker-compose up -d --build --no-cache
+            cd /geobizi-web
+            echo "📥 Haciendo pull de los últimos cambios..."
+            git reset --hard
+            git pull origin main
+            echo "🔄 Reconstruyendo y reiniciando contenedores..."
+            docker compose down
+            docker compose up -d --build
+            echo "✅ Despliegue completado"
