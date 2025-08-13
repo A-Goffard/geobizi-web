@@ -26,7 +26,7 @@ jobs:
             git pull origin main
             
             # Reconstruye y reinicia los contenedores de producción
-            docker-compose -f docker-compose.yml up -d --build
+            docker-compose -f docker-compose.yml up -d --build --force-recreate
             
             # (Opcional) Limpia imágenes de Docker antiguas para ahorrar espacio
             docker image prune -f
