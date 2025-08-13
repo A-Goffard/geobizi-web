@@ -22,11 +22,15 @@ jobs:
             # Navega al directorio del proyecto en el VPS
             cd /geobizi-web
             
-            # Descarga los últimos cambios de la rama main
-            git pull origin main
+            # Asegurar que el código es exactamente el del repositorio remoto
+            git fetch origin main
+            git reset --hard origin/main
             
-            # Reconstruye y reinicia los contenedores de producción
-            docker-compose -f docker-compose.yml up -d --build --force-recreate --no-cache
+            # Bajar contenedores y borrar volúmenes antiguos
+            docker-compose down -v
             
-            # (Opcional) Limpia imágenes de Docker antiguas para ahorrar espacio
-            docker image prune -f
+            # Reconstruir sin usar caché
+            docker-compose up -d --build --no-cache
+            
+            # Limpiar imágenes y capas antiguas
+            docker builder prune -af
