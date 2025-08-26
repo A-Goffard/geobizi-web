@@ -3,7 +3,7 @@
       <nav>
         <div class="branding">
           <router-link :to="{name: 'inicio'}" title="Ir a Inicio">
-            <img src="@/assets/GeobiziLogo.png" class="logo" alt="GeoBizi - Logo" title="GeoBizi - Inicio" loading="lazy">
+            <img src="@/assets/GeobiziLogo.png" class="logo" alt="GeoBizi - Logo" title="GeoBizi - Inicio">
           </router-link>
         </div>
         <ul v-show="!mobile" class="navigation">
@@ -34,7 +34,7 @@
         </ul>
         <div class="icon">
             <button @click="toggleMobileNav" v-show="mobile" aria-label="Alternar menú" title="Abrir/cerrar menú">
-                <img :class="{ 'icon-active': mobileNav }" src="@/assets/Hojitas.png" class="hojitas" alt="Icono menú - GeoBizi" title="Abrir menú" loading="lazy">
+                <img :class="{ 'icon-active': mobileNav }" src="@/assets/Hojitas.png" class="hojitas" alt="Icono menú - GeoBizi" title="Abrir menú">
             </button>
         </div>
         <transition name="mobile-nav">
