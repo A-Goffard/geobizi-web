@@ -85,58 +85,71 @@
 </template>
 
 <script setup>
-import { useHead } from '@vueuse/head' // añadido
+import { useHead } from '@vueuse/head'
 
 const pageUrl = 'https://www.geobizi.com/detalle-zalla-natura'
 const ogImage = 'https://www.geobizi.com/imagenes/proyectos/zallanatura/zallanatura1.avif'
 
 useHead({
-  title: 'Zalla Natura — Proyecto de biorregeneración | GeoBizi',
+  title: 'Zalla Natura — Proyectos de Biorregeneración | GeoBizi',
   meta: [
-    { name: 'description', content: 'Zalla Natura: proyecto de biorregeneración colaborativa en Zalla. Plantaciones, creación de oasis de mariposas, talleres y participación comunitaria.' },
+    { name: 'description', content: 'Zalla Natura: proyectos de biorregeneración comunitaria, oasis de mariposas, bombas de semillas y seguimiento del impacto.' },
     { name: 'robots', content: 'index, follow' },
     { name: 'author', content: 'GeoBizi' },
-    { name: 'publisher', content: 'GeoBizi' },
-    { name: 'keywords', content: 'Zalla Natura, biorregeneración, plantación, oasis de mariposas, voluntariado ambiental, GeoBizi' },
+    { name: 'theme-color', content: '#0b8a4c' },
     { name: 'language', content: 'es' },
-    { property: 'og:title', content: 'Zalla Natura — Proyecto de biorregeneración | GeoBizi' },
-    { property: 'og:description', content: 'Proyecto comunitario de biorregeneración en Zalla: plantaciones, talleres y creación de hábitats para mariposas y biodiversidad local.' },
-    { property: 'og:type', content: 'website' },
+    { property: 'og:title', content: 'Zalla Natura — Proyectos de Biorregeneración | GeoBizi' },
+    { property: 'og:description', content: 'Proyectos de biorregeneración comunitaria: oasis de mariposas, bombas de semillas y actividades de voluntariado.' },
+    { property: 'og:type', content: 'article' },
     { property: 'og:url', content: pageUrl },
-    { property: 'og:image', content: ogImage },
-    { name: 'twitter:card', content: 'summary_large_image' },
-    { name: 'twitter:image', content: ogImage }
+    { property: 'og:image', content: ogImage }
   ],
   link: [
     { rel: 'canonical', href: pageUrl },
-    { rel: 'image_src', href: ogImage }
+    { rel: 'image_src', href: ogImage },
+    { rel: 'apple-touch-icon', href: '/apple-touch-icon.png', sizes: '180x180' }
   ],
   script: [
     {
       type: 'application/ld+json',
       children: JSON.stringify({
-        "@context": "https://schema.org",
-        "@graph": [
+        "@context":"https://schema.org",
+        "@graph":[
           {
-            "@type": "Organization",
-            "name": "GeoBizi",
-            "url": "https://www.geobizi.com",
-            "logo": "https://www.geobizi.com/imagenes/GeobiziLogo.7ae1d6ce.png",
-            "sameAs": [
+            "@type":"Organization",
+            "@id":"https://www.geobizi.com/#organization",
+            "name":"GeoBizi",
+            "url":"https://www.geobizi.com",
+            "logo": {
+              "@type":"ImageObject",
+              "url":"https://www.geobizi.com/imagenes/GeobiziLogo.7ae1d6ce.png",
+              "width":1417,
+              "height":313
+            },
+            "sameAs":[
               "https://www.facebook.com/geobizirik/",
               "https://www.instagram.com/geotxiki/",
               "https://www.youtube.com/channel/UCw-C_J0y-jKHp7Zx92lsKfg"
-            ],
-            "@id": "https://www.geobizi.com/#organization"
+            ]
           },
           {
-            "@type": "WebPage",
+            "@type":"WebPage",
             "url": pageUrl,
-            "name": "Zalla Natura — Proyecto de biorregeneración | GeoBizi",
-            "description": "Proyecto comunitario de biorregeneración en Zalla: plantaciones, talleres y creación de hábitats para mariposas y biodiversidad local.",
-            "inLanguage": "es",
+            "name":"Zalla Natura — Proyectos de Biorregeneración | GeoBizi",
+            "description":"Zalla Natura: proyectos de biorregeneración comunitaria, oasis de mariposas, bombas de semillas y seguimiento del impacto.",
+            "inLanguage":"es",
             "isPartOf": { "@id": "https://www.geobizi.com/#organization" },
-            "image": { "@type": "ImageObject", "url": ogImage }
+            "image": { "@type":"ImageObject","url":ogImage,"width":1080,"height":1080 }
+          },
+          {
+            "@type":"Service",
+            "serviceType":"Biorregeneración comunitaria",
+            "provider": { "@type":"Organization","@id":"https://www.geobizi.com/#organization" },
+            "name":"Zalla Natura — Proyectos de Biorregeneración | GeoBizi",
+            "description":"Proyectos de biorregeneración, oasis de mariposas, bombas de semillas y actividades de restauración participativa.",
+            "url": pageUrl,
+            "inLanguage":"es",
+            "image": { "@type":"ImageObject","url":ogImage,"width":1080,"height":1080 }
           }
         ]
       })

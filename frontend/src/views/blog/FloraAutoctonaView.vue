@@ -59,7 +59,7 @@ useHead({
     { name: 'description', content: 'Por qué proteger la flora autóctona es clave para la biodiversidad local y métodos para recuperarla en espacios degradados.' },
     { name: 'robots', content: 'index, follow' },
     { name: 'author', content: 'GeoBizi' },
-    { name: 'keywords', content: 'flora autóctona, biodiversidad, conservación, restauración, GeoBizi' },
+    { name: 'theme-color', content: '#0b8a4c' },
     { name: 'language', content: 'es' },
     { property: 'og:title', content: 'Flora autóctona: la importancia de cuidarla | GeoBizi' },
     { property: 'og:description', content: 'Protección y restauración de flora autóctona para conservar biodiversidad y servicios ecosistémicos.' },
@@ -71,25 +71,42 @@ useHead({
   ],
   link: [
     { rel: 'canonical', href: pageUrl },
-    { rel: 'image_src', href: ogImage }
+    { rel: 'image_src', href: ogImage },
+    { rel: 'apple-touch-icon', href: '/apple-touch-icon.png', sizes: '180x180' }
   ],
   script: [
     {
       type: 'application/ld+json',
       children: JSON.stringify({
-        "@context": "https://schema.org",
-        "@type": "Article",
-        "headline": "Flora autóctona: la importancia de cuidarla",
-        "description": "Por qué proteger la flora autóctona es clave para la biodiversidad local y métodos para recuperarla en espacios degradados.",
-        "author": { "@type": "Organization", "name": "GeoBizi" },
-        "mainEntityOfPage": { "@type": "WebPage", "@id": pageUrl },
-        "image": ogImage,
-        "inLanguage": "es"
+        "@context":"https://schema.org",
+        "@graph":[
+          {
+            "@type":"Organization",
+            "@id":"https://www.geobizi.com/#organization",
+            "name":"GeoBizi",
+            "url":"https://www.geobizi.com",
+            "logo": { "@type":"ImageObject","url":"https://www.geobizi.com/imagenes/GeobiziLogo.7ae1d6ce.png","width":1417,"height":313 },
+            "sameAs":[
+              "https://www.facebook.com/geobizirik/",
+              "https://www.instagram.com/geotxiki/",
+              "https://www.youtube.com/channel/UCw-C_J0y-jKHp7Zx92lsKfg"
+            ]
+          },
+          {
+            "@type":"Article",
+            "headline":"Flora autóctona: la importancia de cuidarla",
+            "description":"Por qué proteger la flora autóctona es clave para la biodiversidad local y métodos para recuperarla en espacios degradados.",
+            "author": { "@type":"Organization", "@id":"https://www.geobizi.com/#organization" },
+            "mainEntityOfPage": { "@type":"WebPage", "@id": pageUrl },
+            "image": { "@type":"ImageObject","url":ogImage,"width":1080,"height":1080 },
+            "inLanguage":"es"
+          }
+        ]
       })
     }
   ]
 })
-  </script>
+</script>
   
   <style scoped>
   

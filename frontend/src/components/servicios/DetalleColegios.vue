@@ -77,42 +77,59 @@
 </template>
 
 <script setup>
-import { useHead } from '@vueuse/head' // añadido
+import { useHead } from '@vueuse/head'
 
-const pageUrl = 'https://www.geobizi.com/detalle-colegios'
-const ogImage = 'https://www.geobizi.com/imagenes/servicios/detalle/talleres.avif'
+const pageUrl = 'https://www.geobizi.com/servicios/colegios'
+const ogImage = 'https://www.geobizi.com/imagenes/servicios/colegios.avif'
 
 useHead({
-  title: 'Servicios para colegios y centros de enseñanza | GeoBizi',
+  title: 'Servicios para Colegios | GeoBizi',
   meta: [
-    { name: 'description', content: 'Actividades educativas para colegios: rutas geológicas, talleres prácticos y proyectos medioambientales adaptados al currículo y a distintas edades.' },
+    { name: 'description', content: 'Actividades educativas para colegios: rutas, talleres y programas adaptados al curriculum.' },
     { name: 'robots', content: 'index, follow' },
-    { name: 'author', content: 'GeoBizi' },
-    { name: 'keywords', content: 'actividades colegios, talleres educativos, rutas escolares, GeoBizi, educación ambiental' },
+    { name: 'theme-color', content: '#0b8a4c' },
     { name: 'language', content: 'es' },
-    { property: 'og:title', content: 'Servicios para colegios y centros de enseñanza | GeoBizi' },
-    { property: 'og:description', content: 'Rutas, talleres y proyectos medioambientales para colegios. Actividades adaptadas por edad y currículo.' },
+    { property: 'og:title', content: 'Servicios para Colegios | GeoBizi' },
+    { property: 'og:description', content: 'Actividades educativas para colegios: rutas, talleres y programas adaptados al curriculum.' },
     { property: 'og:type', content: 'website' },
     { property: 'og:url', content: pageUrl },
-    { property: 'og:image', content: ogImage },
-    { name: 'twitter:card', content: 'summary_large_image' },
-    { name: 'twitter:image', content: ogImage }
+    { property: 'og:image', content: ogImage }
   ],
   link: [
     { rel: 'canonical', href: pageUrl },
-    { rel: 'image_src', href: ogImage }
+    { rel: 'image_src', href: ogImage },
+    { rel: 'apple-touch-icon', href: '/apple-touch-icon.png', sizes: '180x180' }
   ],
   script: [
     {
       type: 'application/ld+json',
       children: JSON.stringify({
-        "@context": "https://schema.org",
-        "@type": "WebPage",
-        "url": pageUrl,
-        "name": "Servicios para colegios y centros de enseñanza | GeoBizi",
-        "description": "Rutas, talleres y proyectos medioambientales para colegios. Actividades adaptadas por edad y currículo.",
-        "inLanguage": "es",
-        "image": ogImage
+        "@context":"https://schema.org",
+        "@graph":[
+          {
+            "@type":"Organization",
+            "@id":"https://www.geobizi.com/#organization",
+            "name":"GeoBizi",
+            "url":"https://www.geobizi.com",
+            "logo": { "@type":"ImageObject","url":"https://www.geobizi.com/imagenes/GeobiziLogo.7ae1d6ce.png","width":1417,"height":313 },
+            "sameAs":[
+              "https://www.facebook.com/geobizirik/",
+              "https://www.instagram.com/geotxiki/",
+              "https://www.youtube.com/channel/UCw-C_J0y-jKHp7Zx92lsKfg"
+            ]
+          },
+          {
+            "@type":"Service",
+            "serviceType":"Actividades educativas para colegios",
+            "provider": { "@type":"Organization", "@id":"https://www.geobizi.com/#organization" },
+            "name":"Servicios para Colegios | GeoBizi",
+            "description":"Actividades educativas para colegios: rutas, talleres y programas adaptados al curriculum.",
+            "url": pageUrl,
+            "areaServed": "Bizkaia, Euskadi, España",
+            "inLanguage":"es",
+            "image": { "@type":"ImageObject","url":ogImage,"width":1080,"height":1080 }
+          }
+        ]
       })
     }
   ]

@@ -108,6 +108,61 @@ useHead({
     }
   ]
 })
+
+const pageUrlGen = 'https://www.geobizi.com/servicios'
+const ogImageGen = 'https://www.geobizi.com/imagenes/servicios/servicios-hero.avif'
+
+useHead({
+  title: 'Servicios GeoBizi',
+  meta: [
+    { name: 'description', content: 'Servicios de GeoBizi: rutas, talleres, formaciones y proyectos medioambientales para todo tipo de colectivos.' },
+    { name: 'robots', content: 'index, follow' },
+    { name: 'theme-color', content: '#0b8a4c' },
+    { name: 'language', content: 'es' },
+    { property: 'og:title', content: 'Servicios GeoBizi' },
+    { property: 'og:description', content: 'Rutas, talleres, formaciones y proyectos medioambientales para colegios, empresas e instituciones.' },
+    { property: 'og:type', content: 'website' },
+    { property: 'og:url', content: pageUrlGen },
+    { property: 'og:image', content: ogImageGen }
+  ],
+  link: [
+    { rel: 'canonical', href: pageUrlGen },
+    { rel: 'image_src', href: ogImageGen },
+    { rel: 'apple-touch-icon', href: '/apple-touch-icon.png', sizes: '180x180' }
+  ],
+  script: [
+    {
+      type: 'application/ld+json',
+      children: JSON.stringify({
+        "@context":"https://schema.org",
+        "@graph":[
+          {
+            "@type":"Organization",
+            "@id":"https://www.geobizi.com/#organization",
+            "name":"GeoBizi",
+            "url":"https://www.geobizi.com",
+            "logo": { "@type":"ImageObject","url":"https://www.geobizi.com/imagenes/GeobiziLogo.7ae1d6ce.png","width":1417,"height":313 },
+            "sameAs":[
+              "https://www.facebook.com/geobizirik/",
+              "https://www.instagram.com/geotxiki/",
+              "https://www.youtube.com/channel/UCw-C_J0y-jKHp7Zx92lsKfg"
+            ]
+          },
+          {
+            "@type":"Service",
+            "serviceType":"Servicios medioambientales y educativos",
+            "provider": { "@type":"Organization","@id":"https://www.geobizi.com/#organization" },
+            "name":"Servicios GeoBizi",
+            "description":"Rutas, talleres, formaciones y proyectos medioambientales para colegios, empresas e instituciones.",
+            "url": pageUrlGen,
+            "inLanguage":"es",
+            "image": { "@type":"ImageObject","url":ogImageGen,"width":1080,"height":1080 }
+          }
+        ]
+      })
+    }
+  ]
+})
 </script>
 
 <style scoped>

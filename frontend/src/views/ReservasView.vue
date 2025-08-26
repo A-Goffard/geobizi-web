@@ -110,7 +110,7 @@ useHead({
     { name: 'robots', content: 'index, follow' },
     { name: 'author', content: 'GeoBizi' },
     { name: 'publisher', content: 'GeoBizi' },
-    { name: 'keywords', content: 'reservas actividades, rutas naturales, talleres medioambientales, GeoBizi' },
+    { name: 'theme-color', content: '#0b8a4c' },
     { name: 'language', content: 'es' },
     { property: 'og:title', content: 'Reservas y Actividades | GeoBizi' },
     { property: 'og:description', content: 'Reserva actividades y rutas de GeoBizi: talleres, rutas geológicas y proyectos ambientales.' },
@@ -122,7 +122,8 @@ useHead({
   ],
   link: [
     { rel: 'canonical', href: pageUrl },
-    { rel: 'image_src', href: ogImage }
+    { rel: 'image_src', href: ogImage },
+    { rel: 'apple-touch-icon', href: '/apple-touch-icon.png', sizes: '180x180' }
   ],
   script: [
     {
@@ -132,15 +133,20 @@ useHead({
         "@graph": [
           {
             "@type": "Organization",
+            "@id": "https://www.geobizi.com/#organization",
             "name": "GeoBizi",
             "url": "https://www.geobizi.com",
-            "logo": "https://www.geobizi.com/imagenes/GeobiziLogo.7ae1d6ce.png",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://www.geobizi.com/imagenes/GeobiziLogo.7ae1d6ce.png",
+              "width": 1417,
+              "height": 313
+            },
             "sameAs": [
               "https://www.facebook.com/geobizirik/",
               "https://www.instagram.com/geotxiki/",
               "https://www.youtube.com/channel/UCw-C_J0y-jKHp7Zx92lsKfg"
-            ],
-            "@id": "https://www.geobizi.com/#organization"
+            ]
           },
           {
             "@type": "WebPage",
@@ -149,7 +155,7 @@ useHead({
             "description": "Reserva actividades y rutas de GeoBizi: talleres, rutas geológicas y proyectos ambientales.",
             "inLanguage": "es",
             "isPartOf": { "@id": "https://www.geobizi.com/#organization" },
-            "image": { "@type": "ImageObject", "url": ogImage }
+            "image": { "@type": "ImageObject", "url": ogImage, "width": 1080, "height": 1080 }
           }
         ]
       })

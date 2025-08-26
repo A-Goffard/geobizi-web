@@ -70,7 +70,7 @@ useHead({
     { name: 'description', content: 'Qué son los estuarios, su formación, importancia ecológica y amenazas. Información para educar y conservar estos ecosistemas costeros.' },
     { name: 'robots', content: 'index, follow' },
     { name: 'author', content: 'GeoBizi' },
-    { name: 'keywords', content: 'estuarios, ecosistemas costeros, biodiversidad, conservación, marismas' },
+    { name: 'theme-color', content: '#0b8a4c' },
     { name: 'language', content: 'es' },
     { property: 'og:title', content: 'La formación de los estuarios | GeoBizi' },
     { property: 'og:description', content: 'Qué son los estuarios, su formación, importancia ecológica y amenazas. Aprende cómo conservar estos valiosos ecosistemas.' },
@@ -82,20 +82,37 @@ useHead({
   ],
   link: [
     { rel: 'canonical', href: pageUrl },
-    { rel: 'image_src', href: ogImage }
+    { rel: 'image_src', href: ogImage },
+    { rel: 'apple-touch-icon', href: '/apple-touch-icon.png', sizes: '180x180' }
   ],
   script: [
     {
       type: 'application/ld+json',
       children: JSON.stringify({
-        "@context": "https://schema.org",
-        "@type": "Article",
-        "headline": "La formación de los estuarios: donde el mar y el río se encuentran",
-        "description": "Qué son los estuarios, su formación, importancia ecológica y amenazas. Información para educar y conservar estos ecosistemas costeros.",
-        "author": { "@type": "Organization", "name": "GeoBizi" },
-        "mainEntityOfPage": { "@type": "WebPage", "@id": pageUrl },
-        "image": ogImage,
-        "inLanguage": "es"
+        "@context":"https://schema.org",
+        "@graph":[
+          {
+            "@type":"Organization",
+            "@id":"https://www.geobizi.com/#organization",
+            "name":"GeoBizi",
+            "url":"https://www.geobizi.com",
+            "logo": { "@type":"ImageObject","url":"https://www.geobizi.com/imagenes/GeobiziLogo.7ae1d6ce.png","width":1417,"height":313 },
+            "sameAs":[
+              "https://www.facebook.com/geobizirik/",
+              "https://www.instagram.com/geotxiki/",
+              "https://www.youtube.com/channel/UCw-C_J0y-jKHp7Zx92lsKfg"
+            ]
+          },
+          {
+            "@type":"Article",
+            "headline":"La formación de los estuarios: donde el mar y el río se encuentran",
+            "description":"Qué son los estuarios, su formación, importancia ecológica y amenazas. Información para educar y conservar estos ecosistemas costeros.",
+            "author": { "@type":"Organization", "@id":"https://www.geobizi.com/#organization" },
+            "mainEntityOfPage": { "@type":"WebPage", "@id": pageUrl },
+            "image": { "@type":"ImageObject","url":ogImage,"width":1080,"height":1080 },
+            "inLanguage":"es"
+          }
+        ]
       })
     }
   ]

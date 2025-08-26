@@ -74,7 +74,7 @@ useHead({
     { name: 'description', content: 'Proyectos digitales de GeoBizi: yincanas digitales, rutas interactivas y recursos educativos digitales para acercar la naturaleza a todos.' },
     { name: 'robots', content: 'index, follow' },
     { name: 'author', content: 'GeoBizi' },
-    { name: 'keywords', content: 'yincana digital, proyectos digitales, educación ambiental, GeoBizi' },
+    { name: 'theme-color', content: '#0b8a4c' },
     { name: 'language', content: 'es' },
     { property: 'og:title', content: 'Proyectos Digitales Medioambientales | GeoBizi' },
     { property: 'og:description', content: 'Yincanas digitales, rutas interactivas y proyectos educativos para colegios, ayuntamientos y empresas.' },
@@ -86,19 +86,42 @@ useHead({
   ],
   link: [
     { rel: 'canonical', href: pageUrl },
-    { rel: 'image_src', href: ogImage }
+    { rel: 'image_src', href: ogImage },
+    { rel: 'apple-touch-icon', href: '/apple-touch-icon.png', sizes: '180x180' }
   ],
   script: [
     {
       type: 'application/ld+json',
       children: JSON.stringify({
         "@context":"https://schema.org",
-        "@type":"WebPage",
-        "url": pageUrl,
-        "name": "Proyectos Digitales Medioambientales | GeoBizi",
-        "description": "Yincanas digitales, rutas interactivas y proyectos educativos para colegios, ayuntamientos y empresas.",
-        "inLanguage": "es",
-        "image": ogImage
+        "@graph":[
+          {
+            "@type":"Organization",
+            "@id":"https://www.geobizi.com/#organization",
+            "name":"GeoBizi",
+            "url":"https://www.geobizi.com",
+            "logo": {
+              "@type":"ImageObject",
+              "url":"https://www.geobizi.com/imagenes/GeobiziLogo.7ae1d6ce.png",
+              "width":1417,
+              "height":313
+            },
+            "sameAs":[
+              "https://www.facebook.com/geobizirik/",
+              "https://www.instagram.com/geotxiki/",
+              "https://www.youtube.com/channel/UCw-C_J0y-jKHp7Zx92lsKfg"
+            ]
+          },
+          {
+            "@type":"WebPage",
+            "url": pageUrl,
+            "name":"Proyectos Digitales Medioambientales | GeoBizi",
+            "description":"Yincanas digitales, rutas interactivas y proyectos educativos para colegios, ayuntamientos y empresas.",
+            "inLanguage":"es",
+            "isPartOf": { "@id": "https://www.geobizi.com/#organization" },
+            "image": { "@type":"ImageObject","url":ogImage,"width":1080,"height":1080 }
+          }
+        ]
       })
     }
   ]

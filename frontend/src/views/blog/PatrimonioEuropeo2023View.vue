@@ -101,7 +101,7 @@ useHead({
     { name: 'description', content: 'Resumen de la participación de GeoBizi en las Jornadas de Patrimonio Europeo 2023: actividades, rutas y talleres.' },
     { name: 'robots', content: 'index, follow' },
     { name: 'author', content: 'GeoBizi' },
-    { name: 'keywords', content: 'patrimonio europeo, jornadas patrimonio, flysch, talleres, GeoBizi' },
+    { name: 'theme-color', content: '#0b8a4c' },
     { name: 'language', content: 'es' },
     { property: 'og:title', content: 'Jornadas de Patrimonio Europeo 2023 | GeoBizi' },
     { property: 'og:description', content: 'Actividades y talleres de GeoBizi en las Jornadas de Patrimonio Europeo 2023.' },
@@ -113,20 +113,37 @@ useHead({
   ],
   link: [
     { rel: 'canonical', href: pageUrl },
-    { rel: 'image_src', href: ogImage }
+    { rel: 'image_src', href: ogImage },
+    { rel: 'apple-touch-icon', href: '/apple-touch-icon.png', sizes: '180x180' }
   ],
   script: [
     {
       type: 'application/ld+json',
       children: JSON.stringify({
         "@context": "https://schema.org",
-        "@type": "Article",
-        "headline": "Jornadas de Patrimonio Europeo 2023",
-        "description": "Resumen de la participación de GeoBizi en las Jornadas de Patrimonio Europeo 2023: actividades, rutas y talleres.",
-        "author": { "@type": "Organization", "name": "GeoBizi" },
-        "mainEntityOfPage": { "@type": "WebPage", "@id": pageUrl },
-        "image": ogImage,
-        "inLanguage": "es"
+        "@graph": [
+          {
+            "@type": "Organization",
+            "@id": "https://www.geobizi.com/#organization",
+            "name": "GeoBizi",
+            "url": "https://www.geobizi.com",
+            "logo": { "@type": "ImageObject", "url": "https://www.geobizi.com/imagenes/GeobiziLogo.7ae1d6ce.png", "width": 1417, "height": 313 },
+            "sameAs": [
+              "https://www.facebook.com/geobizirik/",
+              "https://www.instagram.com/geotxiki/",
+              "https://www.youtube.com/channel/UCw-C_J0y-jKHp7Zx92lsKfg"
+            ]
+          },
+          {
+            "@type": "Article",
+            "headline": "Jornadas de Patrimonio Europeo 2023",
+            "description": "Resumen de la participación de GeoBizi en las Jornadas de Patrimonio Europeo 2023: actividades, rutas y talleres.",
+            "author": { "@type": "Organization", "@id": "https://www.geobizi.com/#organization" },
+            "mainEntityOfPage": { "@type": "WebPage", "@id": pageUrl },
+            "image": { "@type": "ImageObject", "url": ogImage, "width": 1080, "height": 1080 },
+            "inLanguage": "es"
+          }
+        ]
       })
     }
   ]

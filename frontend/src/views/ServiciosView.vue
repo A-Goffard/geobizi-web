@@ -17,44 +17,44 @@
   import { useRouter } from 'vue-router'
   
   const pageUrl = 'https://www.geobizi.com/servicios'
-  const ogImage = 'https://www.geobizi.com/imagenes/proyectos/zallanatura/zallanatura2.avif'
+  const ogImage = 'https://www.geobizi.com/imagenes/servicios/servicios-hero.avif'
   
   useHead({
-    title: 'Rutas, Talleres y Proyectos Ambientales | GeoBizi',
+    title: 'Servicios | GeoBizi',
     meta: [
-      {
-        name: 'description',
-        content: 'GeoBizi ofrece rutas geológicas y medioambientales, talleres educativos y proyectos de naturaleza para colegios, empresas, instituciones y público general.',
-      },
+      { name: 'description', content: 'Servicios de GeoBizi: rutas, talleres, formaciones y proyectos medioambientales para colegios, empresas e instituciones.' },
       { name: 'robots', content: 'index, follow' },
       { name: 'author', content: 'GeoBizi' },
-      { name: 'publisher', content: 'GeoBizi' },
-      { name: 'keywords', content: 'rutas geológicas, talleres medioambientales, proyectos naturaleza, actividades para colegios, GeoBizi' },
+      { name: 'theme-color', content: '#0b8a4c' },
       { name: 'language', content: 'es' },
-      { property: 'og:title', content: 'Rutas, Talleres y Proyectos Ambientales | GeoBizi' },
-      { property: 'og:description', content: 'GeoBizi ofrece rutas geológicas y medioambientales, talleres educativos y proyectos de naturaleza para colegios, empresas, instituciones y público general.' },
+      { property: 'og:title', content: 'Servicios | GeoBizi' },
+      { property: 'og:description', content: 'Rutas, talleres, formaciones y proyectos medioambientales para colegios, empresas e instituciones.' },
       { property: 'og:type', content: 'website' },
       { property: 'og:url', content: pageUrl },
-      { property: 'og:image', content: ogImage },
-      { name: 'twitter:card', content: 'summary_large_image' },
-      { name: 'twitter:image', content: ogImage },
+      { property: 'og:image', content: ogImage }
     ],
     link: [
       { rel: 'canonical', href: pageUrl },
-      { rel: 'image_src', href: ogImage }
+      { rel: 'image_src', href: ogImage },
+      { rel: 'apple-touch-icon', href: '/apple-touch-icon.png', sizes: '180x180' }
     ],
     script: [
       {
         type: 'application/ld+json',
-        // JSON-LD como string
         children: JSON.stringify({
           "@context": "https://schema.org",
           "@graph": [
             {
               "@type": "Organization",
+              "@id": "https://www.geobizi.com/#organization",
               "name": "GeoBizi",
               "url": "https://www.geobizi.com",
-              "logo": "https://www.geobizi.com/imagenes/GeobiziLogo.7ae1d6ce.png",
+              "logo": {
+                "@type": "ImageObject",
+                "url": "https://www.geobizi.com/imagenes/GeobiziLogo.7ae1d6ce.png",
+                "width": 1417,
+                "height": 313
+              },
               "sameAs": [
                 "https://www.facebook.com/geobizirik/",
                 "https://www.instagram.com/geotxiki/",
@@ -64,11 +64,11 @@
             {
               "@type": "WebPage",
               "url": pageUrl,
-              "name": "Rutas, Talleres y Proyectos Ambientales | GeoBizi",
-              "description": "GeoBizi ofrece rutas geológicas y medioambientales, talleres educativos y proyectos de naturaleza para colegios, empresas, instituciones y público general.",
+              "name": "Servicios | GeoBizi",
+              "description": "Rutas, talleres y proyectos medioambientales para colegios, empresas e instituciones.",
               "inLanguage": "es",
               "isPartOf": { "@id": "https://www.geobizi.com/#organization" },
-              "image": { "@type": "ImageObject", "url": ogImage }
+              "image": { "@type": "ImageObject", "url": ogImage, "width": 1080, "height": 1080 }
             }
           ]
         })

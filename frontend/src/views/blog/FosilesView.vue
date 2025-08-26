@@ -64,7 +64,7 @@ useHead({
     { name: 'description', content: 'Explicación sencilla sobre qué son los fósiles, procesos de formación y su importancia para la paleontología.' },
     { name: 'robots', content: 'index, follow' },
     { name: 'author', content: 'GeoBizi' },
-    { name: 'keywords', content: 'fósiles, paleontología, formación de fósiles, evolución' },
+    { name: 'theme-color', content: '#0b8a4c' },
     { name: 'language', content: 'es' },
     { property: 'og:title', content: '¿Qué son los fósiles y cómo se forman? | GeoBizi' },
     { property: 'og:description', content: 'Aprende sobre la formación de fósiles y su relevancia científica para comprender la historia de la vida.' },
@@ -76,25 +76,42 @@ useHead({
   ],
   link: [
     { rel: 'canonical', href: pageUrl },
-    { rel: 'image_src', href: ogImage }
+    { rel: 'image_src', href: ogImage },
+    { rel: 'apple-touch-icon', href: '/apple-touch-icon.png', sizes: '180x180' }
   ],
   script: [
     {
       type: 'application/ld+json',
       children: JSON.stringify({
-        "@context": "https://schema.org",
-        "@type": "Article",
-        "headline": "¿Qué son los fósiles y cómo se forman?",
-        "description": "Explicación sencilla sobre qué son los fósiles, procesos de formación y su importancia para la paleontología.",
-        "author": { "@type": "Organization", "name": "GeoBizi" },
-        "mainEntityOfPage": { "@type": "WebPage", "@id": pageUrl },
-        "image": ogImage,
-        "inLanguage": "es"
+        "@context":"https://schema.org",
+        "@graph":[
+          {
+            "@type":"Organization",
+            "@id":"https://www.geobizi.com/#organization",
+            "name":"GeoBizi",
+            "url":"https://www.geobizi.com",
+            "logo": { "@type":"ImageObject","url":"https://www.geobizi.com/imagenes/GeobiziLogo.7ae1d6ce.png","width":1417,"height":313 },
+            "sameAs":[
+              "https://www.facebook.com/geobizirik/",
+              "https://www.instagram.com/geotxiki/",
+              "https://www.youtube.com/channel/UCw-C_J0y-jKHp7Zx92lsKfg"
+            ]
+          },
+          {
+            "@type":"Article",
+            "headline":"¿Qué son los fósiles y cómo se forman?",
+            "description":"Explicación sencilla sobre qué son los fósiles, procesos de formación y su importancia para la paleontología.",
+            "author": { "@type":"Organization", "@id":"https://www.geobizi.com/#organization" },
+            "mainEntityOfPage": { "@type":"WebPage", "@id": pageUrl },
+            "image": { "@type":"ImageObject","url":ogImage,"width":1080,"height":1080 },
+            "inLanguage":"es"
+          }
+        ]
       })
     }
   ]
 })
-  </script>
+</script>
   
   <style scoped>
   

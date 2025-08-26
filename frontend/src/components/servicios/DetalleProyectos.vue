@@ -125,9 +125,9 @@
 </template>
 
 <script setup>
-import { useHead } from '@vueuse/head' // añadido
+import { useHead } from '@vueuse/head'
 
-const pageUrl = 'https://www.geobizi.com/detalle-proyectos'
+const pageUrl = 'https://www.geobizi.com/servicios/proyectos'
 const ogImage = 'https://www.geobizi.com/imagenes/proyectos/zallanatura/zallanatura2.avif'
 
 useHead({
@@ -136,7 +136,7 @@ useHead({
     { name: 'description', content: 'Proyectos de biorregeneración y participación comunitaria: oasis de mariposas, bombas de semillas, hoteles de insectos y seguimiento del impacto.' },
     { name: 'robots', content: 'index, follow' },
     { name: 'author', content: 'GeoBizi' },
-    { name: 'keywords', content: 'biorregeneración, proyectos comunidad, oasis de mariposas, GeoBizi' },
+    { name: 'theme-color', content: '#0b8a4c' },
     { name: 'language', content: 'es' },
     { property: 'og:title', content: 'Proyectos Natura — Biorregeneración y participación | GeoBizi' },
     { property: 'og:description', content: 'Iniciativas de biorregeneración y proyectos comunitarios para recuperar biodiversidad y conectar a la ciudadanía con su entorno.' },
@@ -148,25 +148,56 @@ useHead({
   ],
   link: [
     { rel: 'canonical', href: pageUrl },
-    { rel: 'image_src', href: ogImage }
+    { rel: 'image_src', href: ogImage },
+    { rel: 'apple-touch-icon', href: '/apple-touch-icon.png', sizes: '180x180' }
   ],
   script: [
     {
       type: 'application/ld+json',
       children: JSON.stringify({
         "@context": "https://schema.org",
-        "@type": "WebPage",
-        "url": pageUrl,
-        "name": "Proyectos Natura — Biorregeneración y participación | GeoBizi",
-        "description": "Iniciativas de biorregeneración y proyectos comunitarios para recuperar biodiversidad y conectar a la ciudadanía con su entorno.",
-        "inLanguage": "es",
-        "image": ogImage
+        "@graph": [
+          {
+            "@type": "Organization",
+            "@id": "https://www.geobizi.com/#organization",
+            "name": "GeoBizi",
+            "url": "https://www.geobizi.com",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://www.geobizi.com/imagenes/GeobiziLogo.7ae1d6ce.png",
+              "width": 1417,
+              "height": 313
+            },
+            "sameAs": [
+              "https://www.facebook.com/geobizirik/",
+              "https://www.instagram.com/geotxiki/",
+              "https://www.youtube.com/channel/UCw-C_J0y-jKHp7Zx92lsKfg"
+            ]
+          },
+          {
+            "@type": "WebPage",
+            "url": pageUrl,
+            "name": "Proyectos Natura — Biorregeneración y participación | GeoBizi",
+            "description": "Iniciativas de biorregeneración y proyectos comunitarios para recuperar biodiversidad y conectar a la ciudadanía con su entorno.",
+            "inLanguage": "es",
+            "isPartOf": { "@id": "https://www.geobizi.com/#organization" },
+            "image": { "@type": "ImageObject", "url": ogImage, "width": 1080, "height": 1080 }
+          },
+          {
+            "@type": "Service",
+            "serviceType": "Proyectos de restauración y educación ambiental",
+            "provider": { "@type": "Organization", "@id": "https://www.geobizi.com/#organization" },
+            "name": "Proyectos Natura — Biorregeneración y participación | GeoBizi",
+            "description": "Diseño y ejecución de proyectos de restauración, educación e investigación ambiental.",
+            "url": pageUrl,
+            "inLanguage": "es",
+            "image": { "@type": "ImageObject", "url": ogImage, "width": 1080, "height": 1080 }
+          }
+        ]
       })
     }
   ]
 })
-
-// No hay lógica adicional para este artículo
 </script>
 
 <style scoped>

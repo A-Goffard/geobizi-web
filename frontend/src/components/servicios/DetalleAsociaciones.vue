@@ -65,41 +65,53 @@
 </template>
 
 <script setup>
-import { useHead } from '@vueuse/head' // añadido
+import { useHead } from '@vueuse/head'
 
-const pageUrl = 'https://www.geobizi.com/detalle-asociaciones'
-const ogImage = 'https://www.geobizi.com/imagenes/servicios/detalle/actividades.avif'
+const pageUrl = 'https://www.geobizi.com/servicios/asociaciones'
+const ogImage = 'https://www.geobizi.com/imagenes/servicios/asociaciones.avif'
 
 useHead({
-  title: 'Servicios para Asociaciones y Empresas | GeoBizi',
+  title: 'Servicios para Asociaciones | GeoBizi',
   meta: [
-    { name: 'description', content: 'Actividades y talleres a medida para asociaciones y empresas: team building, rutas geológicas y experiencias medioambientales con enfoque didáctico.' },
+    { name: 'description', content: 'Servicios y colaboraciones con asociaciones: talleres, proyectos participativos y formaciones a medida.' },
     { name: 'robots', content: 'index, follow' },
-    { name: 'author', content: 'GeoBizi' },
-    { name: 'keywords', content: 'servicios empresas, team building, talleres medioambientales, rutas guiadas, GeoBizi' },
-    { name: 'language', content: 'es' },
-    { property: 'og:title', content: 'Servicios para Asociaciones y Empresas | GeoBizi' },
-    { property: 'og:description', content: 'Team building, talleres y rutas educativas para asociaciones y empresas. Actividades personalizadas y sostenibles.' },
-    { property: 'og:type', content: 'website' },
-    { property: 'og:url', content: pageUrl },
-    { property: 'og:image', content: ogImage },
-    { name: 'twitter:card', content: 'summary_large_image' }
+    { name: 'theme-color', content: '#0b8a4c' },
+    { name: 'language', content: 'es' }
   ],
   link: [
     { rel: 'canonical', href: pageUrl },
-    { rel: 'image_src', href: ogImage }
+    { rel: 'image_src', href: ogImage },
+    { rel: 'apple-touch-icon', href: '/apple-touch-icon.png', sizes: '180x180' }
   ],
   script: [
     {
       type: 'application/ld+json',
       children: JSON.stringify({
-        "@context": "https://schema.org",
-        "@type": "WebPage",
-        "url": pageUrl,
-        "name": "Servicios para Asociaciones y Empresas | GeoBizi",
-        "description": "Team building, talleres y rutas educativas para asociaciones y empresas. Actividades personalizadas y sostenibles.",
-        "inLanguage": "es",
-        "image": ogImage
+        "@context":"https://schema.org",
+        "@graph":[
+          {
+            "@type":"Organization",
+            "@id":"https://www.geobizi.com/#organization",
+            "name":"GeoBizi",
+            "url":"https://www.geobizi.com",
+            "logo": { "@type":"ImageObject","url":"https://www.geobizi.com/imagenes/GeobiziLogo.7ae1d6ce.png","width":1417,"height":313 },
+            "sameAs":[
+              "https://www.facebook.com/geobizirik/",
+              "https://www.instagram.com/geotxiki/",
+              "https://www.youtube.com/channel/UCw-C_J0y-jKHp7Zx92lsKfg"
+            ]
+          },
+          {
+            "@type":"Service",
+            "serviceType":"Servicios y colaboraciones para asociaciones",
+            "provider": { "@type":"Organization","@id":"https://www.geobizi.com/#organization" },
+            "name":"Servicios para Asociaciones | GeoBizi",
+            "description":"Talleres, formaciones y proyectos participativos para asociaciones y colectivos.",
+            "url": pageUrl,
+            "inLanguage":"es",
+            "image": { "@type":"ImageObject","url":ogImage,"width":1080,"height":1080 }
+          }
+        ]
       })
     }
   ]

@@ -41,54 +41,53 @@ import { ref } from 'vue';
 import { useHead } from '@vueuse/head' // añadido
 
 const pageUrl = 'https://www.geobizi.com/contacto'
-const ogImage = 'https://www.geobizi.com/imagenes/inicio/mision.avif'
+const ogImage = 'https://www.geobizi.com/imagenes/contacto/contacto-hero.avif'
 
 useHead({
   title: 'Contacto | GeoBizi',
   meta: [
-    { name: 'description', content: 'Contacta con GeoBizi para solicitudes, reservas e información sobre rutas, talleres y proyectos medioambientales.' },
+    { name: 'description', content: 'Contacto de GeoBizi: reservas, colaboraciones y consultas sobre actividades y proyectos medioambientales.' },
     { name: 'robots', content: 'index, follow' },
     { name: 'author', content: 'GeoBizi' },
-    { name: 'publisher', content: 'GeoBizi' },
-    { name: 'keywords', content: 'contacto geobizi, reservas, información, actividades medioambientales' },
+    { name: 'theme-color', content: '#0b8a4c' },
     { name: 'language', content: 'es' },
     { property: 'og:title', content: 'Contacto | GeoBizi' },
-    { property: 'og:description', content: 'Contacta con GeoBizi para solicitudes, reservas e información sobre rutas, talleres y proyectos medioambientales.' },
+    { property: 'og:description', content: 'Contacto de GeoBizi para reservas, colaboraciones y consultas.' },
     { property: 'og:type', content: 'website' },
     { property: 'og:url', content: pageUrl },
-    { property: 'og:image', content: ogImage },
-    { name: 'twitter:card', content: 'summary_large_image' },
-    { name: 'twitter:image', content: ogImage },
+    { property: 'og:image', content: ogImage }
   ],
   link: [
     { rel: 'canonical', href: pageUrl },
-    { rel: 'image_src', href: ogImage }
+    { rel: 'image_src', href: ogImage },
+    { rel: 'apple-touch-icon', href: '/apple-touch-icon.png', sizes: '180x180' }
   ],
   script: [
     {
       type: 'application/ld+json',
       children: JSON.stringify({
-        "@context": "https://schema.org",
-        "@graph": [
+        "@context":"https://schema.org",
+        "@graph":[
           {
-            "@type": "Organization",
-            "name": "GeoBizi",
-            "url": "https://www.geobizi.com",
-            "logo": "https://www.geobizi.com/imagenes/GeobiziLogo.7ae1d6ce.png",
-            "sameAs": [
+            "@type":"Organization",
+            "@id":"https://www.geobizi.com/#organization",
+            "name":"GeoBizi",
+            "url":"https://www.geobizi.com",
+            "logo": { "@type":"ImageObject","url":"https://www.geobizi.com/imagenes/GeobiziLogo.7ae1d6ce.png","width":1417,"height":313 },
+            "sameAs":[
               "https://www.facebook.com/geobizirik/",
               "https://www.instagram.com/geotxiki/",
               "https://www.youtube.com/channel/UCw-C_J0y-jKHp7Zx92lsKfg"
-            ],
-            "@id": "https://www.geobizi.com/#organization"
+            ]
           },
           {
-            "@type": "ContactPage",
+            "@type":"ContactPage",
             "url": pageUrl,
-            "name": "Contacto | GeoBizi",
-            "description": "Página de contacto para solicitar información y reservas de actividades medioambientales ofrecidas por GeoBizi.",
-            "inLanguage": "es",
-            "isPartOf": { "@id": "https://www.geobizi.com/#organization" }
+            "name":"Contacto | GeoBizi",
+            "description":"Formulario y datos de contacto para reservas, colaboraciones y consultas.",
+            "inLanguage":"es",
+            "isPartOf": { "@id": "https://www.geobizi.com/#organization" },
+            "image": { "@type":"ImageObject","url":ogImage,"width":1080,"height":1080 }
           }
         ]
       })

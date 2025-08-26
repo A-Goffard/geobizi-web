@@ -19,55 +19,53 @@ import { useHead } from '@vueuse/head' // añadido
 const router = useRouter()
 
 const pageUrl = 'https://www.geobizi.com/projectos'
-const ogImage = 'https://www.geobizi.com/imagenes/proyectos/plantacion4.avif' // imagen representativa
+const ogImage = 'https://www.geobizi.com/imagenes/proyectos/projectos-hero.avif'
 
 useHead({
-  title: 'Proyectos Ambientales y Digitales | GeoBizi',
+  title: 'Proyectos | GeoBizi',
   meta: [
-    { name: 'description', content: 'Proyectos de GeoBizi: experiencias digitales, biorregeneración y acciones comunitarias para mejorar el medioambiente. Conoce nuestros proyectos y participa.' },
+    { name: 'description', content: 'Proyectos de GeoBizi: restauración, educación ambiental y colaboraciones con instituciones.' },
     { name: 'robots', content: 'index, follow' },
     { name: 'author', content: 'GeoBizi' },
-    { name: 'publisher', content: 'GeoBizi' },
-    { name: 'keywords', content: 'proyectos medioambientales, biorregeneración, experiencias digitales, GeoBizi' },
+    { name: 'theme-color', content: '#0b8a4c' },
     { name: 'language', content: 'es' },
-    { property: 'og:title', content: 'Proyectos Ambientales y Digitales | GeoBizi' },
-    { property: 'og:description', content: 'Proyectos de GeoBizi: experiencias digitales, biorregeneración y acciones comunitarias para mejorar el medioambiente.' },
+    { property: 'og:title', content: 'Proyectos | GeoBizi' },
+    { property: 'og:description', content: 'Proyectos de restauración y educación ambiental realizados por GeoBizi.' },
     { property: 'og:type', content: 'website' },
     { property: 'og:url', content: pageUrl },
-    { property: 'og:image', content: ogImage },
-    { name: 'twitter:card', content: 'summary_large_image' },
-    { name: 'twitter:image', content: ogImage },
+    { property: 'og:image', content: ogImage }
   ],
   link: [
     { rel: 'canonical', href: pageUrl },
-    { rel: 'image_src', href: ogImage }
+    { rel: 'image_src', href: ogImage },
+    { rel: 'apple-touch-icon', href: '/apple-touch-icon.png', sizes: '180x180' }
   ],
   script: [
     {
       type: 'application/ld+json',
       children: JSON.stringify({
-        "@context": "https://schema.org",
-        "@graph": [
+        "@context":"https://schema.org",
+        "@graph":[
           {
-            "@type": "Organization",
-            "name": "GeoBizi",
-            "url": "https://www.geobizi.com",
-            "logo": "https://www.geobizi.com/imagenes/GeobiziLogo.7ae1d6ce.png",
-            "sameAs": [
+            "@type":"Organization",
+            "@id":"https://www.geobizi.com/#organization",
+            "name":"GeoBizi",
+            "url":"https://www.geobizi.com",
+            "logo": { "@type":"ImageObject","url":"https://www.geobizi.com/imagenes/GeobiziLogo.7ae1d6ce.png","width":1417,"height":313 },
+            "sameAs":[
               "https://www.facebook.com/geobizirik/",
               "https://www.instagram.com/geotxiki/",
               "https://www.youtube.com/channel/UCw-C_J0y-jKHp7Zx92lsKfg"
-            ],
-            "@id": "https://www.geobizi.com/#organization"
+            ]
           },
           {
-            "@type": "WebPage",
+            "@type":"WebPage",
             "url": pageUrl,
-            "name": "Proyectos Ambientales y Digitales | GeoBizi",
-            "description": "Proyectos de GeoBizi: experiencias digitales, biorregeneración y acciones comunitarias para mejorar el medioambiente.",
-            "inLanguage": "es",
+            "name":"Proyectos | GeoBizi",
+            "description":"Proyectos de restauración y educación ambiental realizados por GeoBizi.",
+            "inLanguage":"es",
             "isPartOf": { "@id": "https://www.geobizi.com/#organization" },
-            "image": { "@type": "ImageObject", "url": ogImage }
+            "image": { "@type":"ImageObject","url":ogImage,"width":1080,"height":1080 }
           }
         ]
       })
