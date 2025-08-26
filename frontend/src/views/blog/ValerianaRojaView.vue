@@ -28,7 +28,8 @@
               <img
         class="img"
         src="/imagenes/blog/detalle/valeriana1.avif"
-        alt="Para cambiar por lo que corresponda"
+        alt="Centranthus ruber — ejemplar en jardín"
+        title="Centranthus ruber — valeriana roja"
         loading="lazy"
       />
       </div>
@@ -36,7 +37,8 @@
               <img
         class="img"
         src="/imagenes/blog/detalle/valeriana2.avif"
-        alt="Para cambiar por lo que corresponda"
+        alt="Valeriana roja propagándose en entorno natural"
+        title="Valeriana roja — propagación"
         loading="lazy"
       />
       </div>
@@ -44,7 +46,8 @@
               <img
         class="img"
         src="/imagenes/blog/detalle/valeriana3.avif"
-        alt="Para cambiar por lo que corresponda"
+        alt="Detalle de las flores de Centranthus ruber"
+        title="Valeriana roja — detalle floral"
         loading="lazy"
       />
       </div>
@@ -54,6 +57,47 @@
 </template>
 
 <script setup>
+import { useHead } from '@vueuse/head' // añadido
+
+const pageUrl = 'https://www.geobizi.com/blog/detalle-valeriana-roja'
+const ogImage = 'https://www.geobizi.com/imagenes/blog/detalle/valeriana1.avif'
+
+useHead({
+  title: 'Valeriana Roja (Centranthus ruber) — Riesgos y manejo | GeoBizi',
+  meta: [
+    { name: 'description', content: 'Conoce el riesgo invasor de Centranthus ruber (valeriana roja), su impacto en ecosistemas y medidas de manejo para proteger la flora autóctona.' },
+    { name: 'robots', content: 'index, follow' },
+    { name: 'author', content: 'GeoBizi' },
+    { name: 'keywords', content: 'valeriana roja, Centranthus ruber, invasora, control de especies, conservación' },
+    { name: 'language', content: 'es' },
+    { property: 'og:title', content: 'Valeriana Roja — Riesgos y manejo | GeoBizi' },
+    { property: 'og:description', content: 'Impactos de Centranthus ruber y recomendaciones para evitar su propagación en hábitats naturales.' },
+    { property: 'og:type', content: 'article' },
+    { property: 'og:url', content: pageUrl },
+    { property: 'og:image', content: ogImage },
+    { name: 'twitter:card', content: 'summary_large_image' },
+    { name: 'twitter:image', content: ogImage }
+  ],
+  link: [
+    { rel: 'canonical', href: pageUrl },
+    { rel: 'image_src', href: ogImage }
+  ],
+  script: [
+    {
+      type: 'application/ld+json',
+      children: JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "Centranthus Ruber (Valeriana Roja): Una Belleza Invasora en los Jardines",
+        "description": "Conoce el riesgo invasor de Centranthus ruber (valeriana roja), su impacto en ecosistemas y medidas de manejo.",
+        "author": { "@type": "Organization", "name": "GeoBizi" },
+        "mainEntityOfPage": { "@type": "WebPage", "@id": pageUrl },
+        "image": ogImage,
+        "inLanguage": "es"
+      })
+    }
+  ]
+})
 
 </script>
 

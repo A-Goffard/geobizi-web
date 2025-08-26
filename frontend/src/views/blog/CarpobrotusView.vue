@@ -1,14 +1,4 @@
 <template>
-    <head>
-      <title>Carpobrotus edulis, planta invasora muy perjudicial | Geobizi</title>
-      <meta name="description" content="Descubre los peligros de la Carpobrotus edulis, su impacto en los ecosistemas locales y las medidas para controlar su propagación.">
-      <meta name="keywords" content="Carpobrotus edulis, planta invasora, Uña de gato, biodiversidad, conservación, ecología">
-      <meta property="og:title" content="Carpobrotus edulis, planta invasora muy perjudicial">
-      <meta property="og:description" content="Explora cómo la Carpobrotus edulis afecta a los ecosistemas locales y las estrategias para su control y conservación de la biodiversidad.">
-      <meta property="og:type" content="article">
-      <meta property="og:url" content="https://geobizi.com/articulo-carpobrotus-edulis">
-      <meta property="og:image" content="https://geobizi.com/img/carpobrotus-edulis.jpg">
-    </head>
     <div class="contenedor-principal">
       <h1>Carpobrotus edulis, planta invasora muy perjudicial</h1>
       <h2>Carpobrotus edulis, una especie originaria de Sudáfrica que resulta ser invasora en muchas partes de nuestro planeta.</h2>
@@ -33,28 +23,31 @@
       <p>Por favor, no siembres o propagues plantas invasoras. ¡Pueden hacer mucho daño!</p>
       <div class="imagen-trio">
       <div>
-              <img
-        class="img"
-        src="/imagenes/blog/detalle/carpobrotus1.jpeg"
-        alt="Para cambiar por lo que corresponda"
-        loading="lazy"
-      />
+        <img
+          class="img"
+          src="/imagenes/blog/detalle/carpobrotus1.jpeg"
+          alt="Carpobrotus edulis — manto invasor en dunas y costas"
+          title="Carpobrotus edulis — invasora en dunas"
+          loading="lazy"
+        />
       </div>
       <div>
-              <img
-        class="img"
-        src="/imagenes/blog/detalle/carpobrotus2.jpg"
-        alt="Para cambiar por lo que corresponda"
-        loading="lazy"
-      />
+        <img
+          class="img"
+          src="/imagenes/blog/detalle/carpobrotus2.jpg"
+          alt="Carpobrotus edulis desplazando flora nativa"
+          title="Impacto de Carpobrotus en flora autóctona"
+          loading="lazy"
+        />
       </div>
       <div>
-              <img
-        class="img"
-        src="/imagenes/blog/detalle/carpobrotus3.jpg"
-        alt="Para cambiar por lo que corresponda"
-        loading="lazy"
-      />
+        <img
+          class="img"
+          src="/imagenes/blog/detalle/carpobrotus3.jpg"
+          alt="Ejemplo de control y restauración tras Carpobrotus"
+          title="Control y restauración tras presencia de Carpobrotus"
+          loading="lazy"
+        />
       </div>
 
     </div>
@@ -62,7 +55,47 @@
   </template>
   
   <script setup>
-  // No hay lógica adicional para este artículo
+import { useHead } from '@vueuse/head'
+
+const pageUrl = 'https://www.geobizi.com/blog/detalle-carpobrotus'
+const ogImage = 'https://www.geobizi.com/imagenes/blog/detalle/carpobrotus1.jpeg'
+
+useHead({
+  title: 'Carpobrotus edulis — Planta invasora | GeoBizi',
+  meta: [
+    { name: 'description', content: 'Impacto ecológico de Carpobrotus edulis y medidas de control para proteger la biodiversidad costera.' },
+    { name: 'robots', content: 'index, follow' },
+    { name: 'author', content: 'GeoBizi' },
+    { name: 'keywords', content: 'Carpobrotus edulis, invasora, dunas, flora autóctona, restauración' },
+    { name: 'language', content: 'es' },
+    { property: 'og:title', content: 'Carpobrotus edulis — Planta invasora | GeoBizi' },
+    { property: 'og:description', content: 'Cómo identificar, controlar y restaurar áreas afectadas por Carpobrotus edulis.' },
+    { property: 'og:type', content: 'article' },
+    { property: 'og:url', content: pageUrl },
+    { property: 'og:image', content: ogImage },
+    { name: 'twitter:card', content: 'summary_large_image' },
+    { name: 'twitter:image', content: ogImage }
+  ],
+  link: [
+    { rel: 'canonical', href: pageUrl },
+    { rel: 'image_src', href: ogImage }
+  ],
+  script: [
+    {
+      type: 'application/ld+json',
+      children: JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "Carpobrotus edulis, planta invasora muy perjudicial",
+        "description": "Impacto ecológico de Carpobrotus edulis y medidas de control para proteger la biodiversidad costera.",
+        "author": { "@type": "Organization", "name": "GeoBizi" },
+        "mainEntityOfPage": { "@type": "WebPage", "@id": pageUrl },
+        "image": ogImage,
+        "inLanguage": "es"
+      })
+    }
+  ]
+})
   </script>
   
   <style scoped>

@@ -15,7 +15,7 @@
 
       <div class="card-servicios">
         <div class="imagen-servicios">
-          <img class="img" src="/imagenes/servicios/detalle/jepazkorri.jpg" alt="Formación para instituciones" loading="lazy"/>
+          <img class="img" src="/imagenes/servicios/detalle/jepazkorri.avif" alt="Formación medioambiental para instituciones" title="Formación medioambiental para instituciones" loading="lazy"/>
         </div>
         <div class="lista-servicios">
           <h3>Formación para las empresas y el pueblo</h3>
@@ -29,7 +29,7 @@
 
       <div class="card-servicios">
         <div class="imagen-servicios">
-          <img class="img" src="/imagenes/servicios/detalle/eguzkilores.jpg" alt="Rutas para instituciones" loading="lazy"/>
+          <img class="img" src="/imagenes/servicios/detalle/eguzkilores.avif" alt="Rutas guiadas y talleres para instituciones" title="Rutas guiadas y talleres para instituciones" loading="lazy"/>
         </div>
         <div class="lista-servicios">
           <h3>Rutas Guiadas y talleres</h3>
@@ -45,7 +45,7 @@
 
       <div class="card-servicios">
         <div class="imagen-servicios">
-          <img class="img" src="/imagenes/servicios/detalle/jepplaya.jpg" alt="Proyectos de Bio-regeneración" loading="lazy"/>
+          <img class="img" src="/imagenes/servicios/detalle/jepplaya.avif" alt="Proyectos colaborativos de biorregeneración" title="Proyectos de biorregeneración colaborativa" loading="lazy"/>
         </div>
         <div class="lista-servicios">
           <h3>Proyectos de Bio-regeneración colaborativos</h3>
@@ -63,7 +63,46 @@
 </template>
 
 <script setup>
-// No hay lógica adicional para este artículo
+import { useHead } from '@vueuse/head' // añadido
+
+const pageUrl = 'https://www.geobizi.com/detalle-instituciones'
+const ogImage = 'https://www.geobizi.com/imagenes/servicios/detalle/jepplaya.avif'
+
+useHead({
+  title: 'Servicios para Instituciones | GeoBizi',
+  meta: [
+    { name: 'description', content: 'Formaciones, rutas y proyectos colaborativos para ayuntamientos e instituciones: sensibilización, biorregeneración y talleres especializados.' },
+    { name: 'robots', content: 'index, follow' },
+    { name: 'author', content: 'GeoBizi' },
+    { name: 'keywords', content: 'instituciones, formación medioambiental, biorregeneración, talleres, GeoBizi' },
+    { name: 'language', content: 'es' },
+    { property: 'og:title', content: 'Servicios para Instituciones | GeoBizi' },
+    { property: 'og:description', content: 'Formaciones, rutas y proyectos colaborativos para ayuntamientos e instituciones: sensibilización y biorregeneración.' },
+    { property: 'og:type', content: 'website' },
+    { property: 'og:url', content: pageUrl },
+    { property: 'og:image', content: ogImage },
+    { name: 'twitter:card', content: 'summary_large_image' },
+    { name: 'twitter:image', content: ogImage }
+  ],
+  link: [
+    { rel: 'canonical', href: pageUrl },
+    { rel: 'image_src', href: ogImage }
+  ],
+  script: [
+    {
+      type: 'application/ld+json',
+      children: JSON.stringify({
+        "@context":"https://schema.org",
+        "@type":"WebPage",
+        "url": pageUrl,
+        "name": "Servicios para Instituciones | GeoBizi",
+        "description": "Formaciones, rutas y proyectos colaborativos para ayuntamientos e instituciones: sensibilización y biorregeneración.",
+        "inLanguage": "es",
+        "image": ogImage
+      })
+    }
+  ]
+})
 </script>
 
 <style scoped></style>

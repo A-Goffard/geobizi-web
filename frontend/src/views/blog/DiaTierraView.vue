@@ -1,14 +1,4 @@
 <template>
-    <head>
-      <title>DÍA MUNDIAL DE LA TIERRA | Geobizi</title>
-      <meta name="description" content="Descubre la importancia del Día Mundial de la Tierra, su historia y cómo podemos contribuir a la protección del medio ambiente.">
-      <meta name="keywords" content="Día Mundial de la Tierra, medio ambiente, biodiversidad, conservación, ecología, protección ambiental">
-      <meta property="og:title" content="DÍA MUNDIAL DE LA TIERRA">
-      <meta property="og:description" content="Explora la historia del Día Mundial de la Tierra y cómo podemos proteger el medio ambiente.">
-      <meta property="og:type" content="article">
-      <meta property="og:url" content="https://geobizi.com/articulo-dia-mundial-de-la-tierra">
-      <meta property="og:image" content="https://geobizi.com/img/dia-mundial-de-la-tierra.jpg">
-    </head>
     <div class="contenedor-principal">
       <h1>DÍA MUNDIAL DE LA TIERRA</h1>
       
@@ -37,7 +27,8 @@
               <img
         class="img"
         src="/imagenes/blog/detalle/diatierra1.avif"
-        alt="Para cambiar por lo que corresponda"
+        alt="Actividad Día de la Tierra — plantación comunitaria"
+        title="Día de la Tierra — plantación comunitaria"
         loading="lazy"
       />
       </div>
@@ -45,7 +36,8 @@
               <img
         class="img"
         src="/imagenes/blog/detalle/diatierra2.avif"
-        alt="Para cambiar por lo que corresponda"
+        alt="Voluntariado ambiental — limpieza y conservación"
+        title="Voluntariado ambiental — limpieza"
         loading="lazy"
       />
       </div>
@@ -53,7 +45,8 @@
               <img
         class="img"
         src="/imagenes/blog/detalle/diatierra3.avif"
-        alt="Para cambiar por lo que corresponda"
+        alt="Plantación y educación ambiental en familia"
+        title="Día de la Tierra — plantación y educación"
         loading="lazy"
       />
       </div>
@@ -64,7 +57,47 @@
   </template>
   
   <script setup>
-  // No hay lógica adicional para este artículo
+import { useHead } from '@vueuse/head' // añadido
+
+const pageUrl = 'https://www.geobizi.com/blog/detalle-dia-tierra'
+const ogImage = 'https://www.geobizi.com/imagenes/blog/detalle/diatierra1.avif'
+
+useHead({
+  title: 'Día Mundial de la Tierra — GeoBizi',
+  meta: [
+    { name: 'description', content: 'Historia y propuestas para participar en el Día Mundial de la Tierra. Actividades y formas de contribuir localmente.' },
+    { name: 'robots', content: 'index, follow' },
+    { name: 'author', content: 'GeoBizi' },
+    { name: 'keywords', content: 'Día de la Tierra, medio ambiente, voluntariado, plantaciones, GeoBizi' },
+    { name: 'language', content: 'es' },
+    { property: 'og:title', content: 'Día Mundial de la Tierra — GeoBizi' },
+    { property: 'og:description', content: 'Historia y formas de participar en el Día Mundial de la Tierra. Actividades y propuestas de GeoBizi.' },
+    { property: 'og:type', content: 'article' },
+    { property: 'og:url', content: pageUrl },
+    { property: 'og:image', content: ogImage },
+    { name: 'twitter:card', content: 'summary_large_image' },
+    { name: 'twitter:image', content: ogImage }
+  ],
+  link: [
+    { rel: 'canonical', href: pageUrl },
+    { rel: 'image_src', href: ogImage }
+  ],
+  script: [
+    {
+      type: 'application/ld+json',
+      children: JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "DÍA MUNDIAL DE LA TIERRA",
+        "description": "Historia y propuestas para participar en el Día Mundial de la Tierra. Actividades y formas de contribuir localmente.",
+        "author": { "@type": "Organization", "name": "GeoBizi" },
+        "mainEntityOfPage": { "@type": "WebPage", "@id": pageUrl },
+        "image": ogImage,
+        "inLanguage": "es"
+      })
+    }
+  ]
+})
   </script>
   
   <style scoped>

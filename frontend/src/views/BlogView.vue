@@ -6,9 +6,9 @@
       <div class="container">
         <div class="card" v-for="article in articles" :key="article.title" @click="goToDetail(article.link)">
           <h2>{{ article.title }}</h2>
-          <img :src="article.image" alt="Artículo del blog" loading="lazy">
+          <img :src="article.image" :alt="article.title + ' — imagen del artículo'" :title="article.title" loading="lazy">
           <p>{{ article.summary }}</p>
-          <button @click.stop="goToDetail(article.link)">Leer +</button>
+          <button @click.stop="goToDetail(article.link)" :title="'Leer ' + article.title">Leer +</button>
         </div>
       </div>
     </div>
@@ -17,8 +17,66 @@
   <script setup>
   import { ref } from 'vue'
   import { useRouter } from 'vue-router'
+  import { useHead } from '@vueuse/head' // añadido
   
   const router = useRouter()
+  
+  const pageUrl = 'https://www.geobizi.com/blog'
+  const ogImage = 'https://www.geobizi.com/imagenes/blog/patrimonio.avif' // representativa
+  
+  useHead({
+    title: 'Blog — Artículos sobre naturaleza y medioambiente | GeoBizi',
+    meta: [
+      { name: 'description', content: 'Artículos y recursos de GeoBizi sobre medioambiente, biodiversidad, rutas y actividades educativas. Lee nuestros posts y aprende sobre naturaleza.' },
+      { name: 'robots', content: 'index, follow' },
+      { name: 'author', content: 'GeoBizi' },
+      { name: 'publisher', content: 'GeoBizi' },
+      { name: 'keywords', content: 'blog medioambiente, artículos naturaleza, GeoBizi, biodiversidad, rutas' },
+      { name: 'language', content: 'es' },
+      { property: 'og:title', content: 'Blog — Artículos sobre naturaleza y medioambiente | GeoBizi' },
+      { property: 'og:description', content: 'Artículos y recursos de GeoBizi sobre medioambiente, biodiversidad, rutas y actividades educativas.' },
+      { property: 'og:type', content: 'website' },
+      { property: 'og:url', content: pageUrl },
+      { property: 'og:image', content: ogImage },
+      { name: 'twitter:card', content: 'summary_large_image' },
+      { name: 'twitter:image', content: ogImage },
+    ],
+    link: [
+      { rel: 'canonical', href: pageUrl },
+      { rel: 'image_src', href: ogImage }
+    ],
+    script: [
+      {
+        type: 'application/ld+json',
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@graph": [
+            {
+              "@type": "Organization",
+              "name": "GeoBizi",
+              "url": "https://www.geobizi.com",
+              "logo": "https://www.geobizi.com/imagenes/GeobiziLogo.7ae1d6ce.png",
+              "sameAs": [
+                "https://www.facebook.com/geobizirik/",
+                "https://www.instagram.com/geotxiki/",
+                "https://www.youtube.com/channel/UCw-C_J0y-jKHp7Zx92lsKfg"
+              ],
+              "@id": "https://www.geobizi.com/#organization"
+            },
+            {
+              "@type": "Blog",
+              "url": pageUrl,
+              "name": "Blog — GeoBizi",
+              "description": "Artículos y recursos de GeoBizi sobre medioambiente, biodiversidad, rutas y actividades educativas.",
+              "inLanguage": "es",
+              "isPartOf": { "@id": "https://www.geobizi.com/#organization" },
+              "image": { "@type": "ImageObject", "url": ogImage }
+            }
+          ]
+        })
+      }
+    ]
+  })
   
   const articles = ref([
     {
@@ -149,6 +207,7 @@
   
   .card button {
     margin-top: auto;
+    margin-bottom: 0.5rem;
     padding: 10px 20px;
     border: none;
     border-radius: 0.5rem;

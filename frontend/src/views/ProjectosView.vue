@@ -4,7 +4,7 @@
     <div class="container">
       <div class="card" v-for="project in projects" :key="project.title" @click="goToDetail(project.link)">
         <h2>{{ project.title }}</h2>
-        <img :src="project.image" alt="Imagen del proyecto" loading="lazy">
+        <img :src="project.image" :alt="project.title + ' — imagen del proyecto'" :title="project.title" loading="lazy">
         <p>{{ project.description }}</p>
       </div>
     </div>
@@ -14,8 +14,66 @@
 <script setup>
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
+import { useHead } from '@vueuse/head' // añadido
 
 const router = useRouter()
+
+const pageUrl = 'https://www.geobizi.com/projectos'
+const ogImage = 'https://www.geobizi.com/imagenes/proyectos/plantacion4.avif' // imagen representativa
+
+useHead({
+  title: 'Proyectos Ambientales y Digitales | GeoBizi',
+  meta: [
+    { name: 'description', content: 'Proyectos de GeoBizi: experiencias digitales, biorregeneración y acciones comunitarias para mejorar el medioambiente. Conoce nuestros proyectos y participa.' },
+    { name: 'robots', content: 'index, follow' },
+    { name: 'author', content: 'GeoBizi' },
+    { name: 'publisher', content: 'GeoBizi' },
+    { name: 'keywords', content: 'proyectos medioambientales, biorregeneración, experiencias digitales, GeoBizi' },
+    { name: 'language', content: 'es' },
+    { property: 'og:title', content: 'Proyectos Ambientales y Digitales | GeoBizi' },
+    { property: 'og:description', content: 'Proyectos de GeoBizi: experiencias digitales, biorregeneración y acciones comunitarias para mejorar el medioambiente.' },
+    { property: 'og:type', content: 'website' },
+    { property: 'og:url', content: pageUrl },
+    { property: 'og:image', content: ogImage },
+    { name: 'twitter:card', content: 'summary_large_image' },
+    { name: 'twitter:image', content: ogImage },
+  ],
+  link: [
+    { rel: 'canonical', href: pageUrl },
+    { rel: 'image_src', href: ogImage }
+  ],
+  script: [
+    {
+      type: 'application/ld+json',
+      children: JSON.stringify({
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Organization",
+            "name": "GeoBizi",
+            "url": "https://www.geobizi.com",
+            "logo": "https://www.geobizi.com/imagenes/GeobiziLogo.7ae1d6ce.png",
+            "sameAs": [
+              "https://www.facebook.com/geobizirik/",
+              "https://www.instagram.com/geotxiki/",
+              "https://www.youtube.com/channel/UCw-C_J0y-jKHp7Zx92lsKfg"
+            ],
+            "@id": "https://www.geobizi.com/#organization"
+          },
+          {
+            "@type": "WebPage",
+            "url": pageUrl,
+            "name": "Proyectos Ambientales y Digitales | GeoBizi",
+            "description": "Proyectos de GeoBizi: experiencias digitales, biorregeneración y acciones comunitarias para mejorar el medioambiente.",
+            "inLanguage": "es",
+            "isPartOf": { "@id": "https://www.geobizi.com/#organization" },
+            "image": { "@type": "ImageObject", "url": ogImage }
+          }
+        ]
+      })
+    }
+  ]
+})
 
 const projects = ref([
   {

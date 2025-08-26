@@ -16,7 +16,7 @@
 
       <div class="card-servicios">
         <div class="imagen-servicios">
-          <img class="img" src="/imagenes/servicios/detalle/actividades.jpg" alt="Talleres para empresas" loading="lazy"/>
+          <img class="img" src="/imagenes/servicios/detalle/actividades.avif" alt="Talleres medioambientales para empresas" title="Talleres medioambientales para empresas" loading="lazy"/>
         </div>
         <div class="lista-servicios">
           <h3>Talleres</h3>
@@ -32,7 +32,7 @@
 
       <div class="card-servicios">
         <div class="imagen-servicios">
-          <img class="img" src="/imagenes/servicios/detalle/rutas2.jpg" alt="Rutas para empresas" loading="lazy"/>
+          <img class="img" src="/imagenes/servicios/detalle/rutas2.avif" alt="Rutas guiadas para empresas — Flysch y geología" title="Rutas guiadas para empresas — Flysch y geología" loading="lazy"/>
         </div>
         <div class="lista-servicios">
           <h3>Rutas guiadas</h3>
@@ -46,7 +46,7 @@
 
       <div class="card-servicios">
         <div class="imagen-servicios">
-          <img class="img" src="/imagenes/servicios/detalle/experiencias2.jpg" alt="Experiencias para empresas" loading="lazy"/>
+          <img class="img" src="/imagenes/servicios/detalle/experiencias2.avif" alt="Experiencias y team building en la naturaleza" title="Team building y experiencias en la naturaleza" loading="lazy"/>
         </div>
         <div class="lista-servicios">
           <h3>Experiencias</h3>
@@ -65,7 +65,45 @@
 </template>
 
 <script setup>
-// No hay lógica adicional para este artículo
+import { useHead } from '@vueuse/head' // añadido
+
+const pageUrl = 'https://www.geobizi.com/detalle-asociaciones'
+const ogImage = 'https://www.geobizi.com/imagenes/servicios/detalle/actividades.avif'
+
+useHead({
+  title: 'Servicios para Asociaciones y Empresas | GeoBizi',
+  meta: [
+    { name: 'description', content: 'Actividades y talleres a medida para asociaciones y empresas: team building, rutas geológicas y experiencias medioambientales con enfoque didáctico.' },
+    { name: 'robots', content: 'index, follow' },
+    { name: 'author', content: 'GeoBizi' },
+    { name: 'keywords', content: 'servicios empresas, team building, talleres medioambientales, rutas guiadas, GeoBizi' },
+    { name: 'language', content: 'es' },
+    { property: 'og:title', content: 'Servicios para Asociaciones y Empresas | GeoBizi' },
+    { property: 'og:description', content: 'Team building, talleres y rutas educativas para asociaciones y empresas. Actividades personalizadas y sostenibles.' },
+    { property: 'og:type', content: 'website' },
+    { property: 'og:url', content: pageUrl },
+    { property: 'og:image', content: ogImage },
+    { name: 'twitter:card', content: 'summary_large_image' }
+  ],
+  link: [
+    { rel: 'canonical', href: pageUrl },
+    { rel: 'image_src', href: ogImage }
+  ],
+  script: [
+    {
+      type: 'application/ld+json',
+      children: JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "url": pageUrl,
+        "name": "Servicios para Asociaciones y Empresas | GeoBizi",
+        "description": "Team building, talleres y rutas educativas para asociaciones y empresas. Actividades personalizadas y sostenibles.",
+        "inLanguage": "es",
+        "image": ogImage
+      })
+    }
+  ]
+})
 </script>
 
 <style scoped></style>

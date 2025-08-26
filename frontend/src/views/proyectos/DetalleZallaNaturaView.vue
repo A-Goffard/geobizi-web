@@ -8,7 +8,7 @@
     </p>
 
     <section class="presentation">
-      <img src="imagenes/proyectos/zallanatura/zallanatura1.avif" alt="Imagen destacada del proyecto Zalla Natura" class="img" loading="lazy" />
+      <img src="imagenes/proyectos/zallanatura/zallanatura1.avif" alt="Imagen destacada del proyecto Zalla Natura" title="Zalla Natura — imagen destacada" class="img" loading="lazy" />
       <div>
         <h2>Sobre el Proyecto</h2>
         <p>
@@ -24,18 +24,18 @@
       <h2>Actividades Realizadas</h2>
       <div class="contenido-seccion">
         <ul>
-          <li><img src="imagenes/iconos/color/maripositaV.png" alt="Mariposita" class="icono" loading="lazy" />Networking inicial</li>
-          <li><img src="imagenes/iconos/color/maripositaV.png" alt="Mariposita" class="icono" loading="lazy" />Presentación del proyecto</li>
-          <li><img src="imagenes/iconos/color/maripositaV.png" alt="Mariposita" class="icono" loading="lazy" />Plantación y lanzamiento de bombas de semillas en Landabaso eskola</li>
-          <li><img src="imagenes/iconos/color/maripositaV.png" alt="Mariposita" class="icono" loading="lazy" />Ruta para conocer los árboles de Zalla</li>
-          <li><img src="imagenes/iconos/color/maripositaV.png" alt="Mariposita" class="icono" loading="lazy" />Taller de pintar mariposas</li>
-          <li><img src="imagenes/iconos/color/maripositaV.png" alt="Mariposita" class="icono" loading="lazy" />Creación de un oasis de mariposas en el parque de Lusa, taller de bombas de semillas y pintado de mariposas de madera</li>
-          <li><img src="imagenes/iconos/color/maripositaV.png" alt="Mariposita" class="icono" loading="lazy" />Lanzamiendo de bombas de semillas y creación de zonas de NO siega en la zona de Tepeyac</li>
-          <li><img src="imagenes/iconos/color/maripositaV.png" alt="Mariposita" class="icono" loading="lazy" />Huerto urbano con Mimetiz eskola en la residencia</li>
-          <li><img src="imagenes/iconos/color/maripositaV.png" alt="Mariposita" class="icono" loading="lazy" />Creación de hotel y casas de insectos y plantación de banda floral en Ibarra</li>
-          <li><img src="imagenes/iconos/color/maripositaV.png" alt="Mariposita" class="icono" loading="lazy" />Colocación de hotel de insectos y cartel en el osasis de mariposas Tximeleku y manualidades infantiles</li>
+          <li><img src="imagenes/iconos/color/maripositaV.png" alt="Mariposita" title="Mariposita" class="icono" loading="lazy" />Networking inicial</li>
+          <li><img src="imagenes/iconos/color/maripositaV.png" alt="Mariposita" title="Mariposita" class="icono" loading="lazy" />Presentación del proyecto</li>
+          <li><img src="imagenes/iconos/color/maripositaV.png" alt="Mariposita" title="Mariposita" class="icono" loading="lazy" />Plantación y lanzamiento de bombas de semillas en Landabaso eskola</li>
+          <li><img src="imagenes/iconos/color/maripositaV.png" alt="Mariposita" title="Mariposita" class="icono" loading="lazy" />Ruta para conocer los árboles de Zalla</li>
+          <li><img src="imagenes/iconos/color/maripositaV.png" alt="Mariposita" title="Mariposita" class="icono" loading="lazy" />Taller de pintar mariposas</li>
+          <li><img src="imagenes/iconos/color/maripositaV.png" alt="Mariposita" title="Mariposita" class="icono" loading="lazy" />Creación de un oasis de mariposas en el parque de Lusa, taller de bombas de semillas y pintado de mariposas de madera</li>
+          <li><img src="imagenes/iconos/color/maripositaV.png" alt="Mariposita" title="Mariposita" class="icono" loading="lazy" />Lanzamiendo de bombas de semillas y creación de zonas de NO siega en la zona de Tepeyac</li>
+          <li><img src="imagenes/iconos/color/maripositaV.png" alt="Mariposita" title="Mariposita" class="icono" loading="lazy" />Huerto urbano con Mimetiz eskola en la residencia</li>
+          <li><img src="imagenes/iconos/color/maripositaV.png" alt="Mariposita" title="Mariposita" class="icono" loading="lazy" />Creación de hotel y casas de insectos y plantación de banda floral en Ibarra</li>
+          <li><img src="imagenes/iconos/color/maripositaV.png" alt="Mariposita" title="Mariposita" class="icono" loading="lazy" />Colocación de hotel de insectos y cartel en el osasis de mariposas Tximeleku y manualidades infantiles</li>
         </ul>
-        <img src="imagenes/proyectos/zallanatura/zallanatura2.avif" alt="Imagen de actividades realizadas" class="img" loading="lazy" />
+        <img src="imagenes/proyectos/zallanatura/zallanatura2.avif" alt="Imagen de actividades realizadas" title="Imagen de actividades realizadas" class="img" loading="lazy" />
       </div>
     </section>
 
@@ -54,7 +54,8 @@
         <img
           class="img"
           src="imagenes/proyectos/zallanatura/zallanatura3.avif"
-          alt="Imagen del proyecto Zalla Natura"
+          alt="Zalla Natura — actividad: plantación y trabajos comunitarios"
+          title="Zalla Natura — imagen 3"
           loading="lazy"
         />
       </div>
@@ -62,7 +63,8 @@
         <img
           class="img"
           src="imagenes/proyectos/zallanatura/zallanatura4.avif"
-          alt="Imagen del proyecto Zalla Natura"
+          alt="Zalla Natura — imagen de voluntariado y plantación"
+          title="Zalla Natura — imagen 4"
           loading="lazy"
         />
       </div>
@@ -70,7 +72,8 @@
         <img
           class="img"
           src="imagenes/proyectos/zallanatura/zallanatura5.avif"
-          alt="Imagen del proyecto Zalla Natura"
+          alt="Zalla Natura — evolución del oasis de mariposas"
+          title="Zalla Natura — imagen 5"
           loading="lazy"
         />
       </div>
@@ -82,6 +85,64 @@
 </template>
 
 <script setup>
+import { useHead } from '@vueuse/head' // añadido
+
+const pageUrl = 'https://www.geobizi.com/detalle-zalla-natura'
+const ogImage = 'https://www.geobizi.com/imagenes/proyectos/zallanatura/zallanatura1.avif'
+
+useHead({
+  title: 'Zalla Natura — Proyecto de biorregeneración | GeoBizi',
+  meta: [
+    { name: 'description', content: 'Zalla Natura: proyecto de biorregeneración colaborativa en Zalla. Plantaciones, creación de oasis de mariposas, talleres y participación comunitaria.' },
+    { name: 'robots', content: 'index, follow' },
+    { name: 'author', content: 'GeoBizi' },
+    { name: 'publisher', content: 'GeoBizi' },
+    { name: 'keywords', content: 'Zalla Natura, biorregeneración, plantación, oasis de mariposas, voluntariado ambiental, GeoBizi' },
+    { name: 'language', content: 'es' },
+    { property: 'og:title', content: 'Zalla Natura — Proyecto de biorregeneración | GeoBizi' },
+    { property: 'og:description', content: 'Proyecto comunitario de biorregeneración en Zalla: plantaciones, talleres y creación de hábitats para mariposas y biodiversidad local.' },
+    { property: 'og:type', content: 'website' },
+    { property: 'og:url', content: pageUrl },
+    { property: 'og:image', content: ogImage },
+    { name: 'twitter:card', content: 'summary_large_image' },
+    { name: 'twitter:image', content: ogImage }
+  ],
+  link: [
+    { rel: 'canonical', href: pageUrl },
+    { rel: 'image_src', href: ogImage }
+  ],
+  script: [
+    {
+      type: 'application/ld+json',
+      children: JSON.stringify({
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Organization",
+            "name": "GeoBizi",
+            "url": "https://www.geobizi.com",
+            "logo": "https://www.geobizi.com/imagenes/GeobiziLogo.7ae1d6ce.png",
+            "sameAs": [
+              "https://www.facebook.com/geobizirik/",
+              "https://www.instagram.com/geotxiki/",
+              "https://www.youtube.com/channel/UCw-C_J0y-jKHp7Zx92lsKfg"
+            ],
+            "@id": "https://www.geobizi.com/#organization"
+          },
+          {
+            "@type": "WebPage",
+            "url": pageUrl,
+            "name": "Zalla Natura — Proyecto de biorregeneración | GeoBizi",
+            "description": "Proyecto comunitario de biorregeneración en Zalla: plantaciones, talleres y creación de hábitats para mariposas y biodiversidad local.",
+            "inLanguage": "es",
+            "isPartOf": { "@id": "https://www.geobizi.com/#organization" },
+            "image": { "@type": "ImageObject", "url": ogImage }
+          }
+        ]
+      })
+    }
+  ]
+})
 </script>
 
 <style scoped>
@@ -97,21 +158,6 @@
   align-items: flex-start;
   gap: 2rem;
   margin: 2rem 0;
-}
-
-.img {
-  max-width: 350px;
-  width: 100%;
-  border-radius: 0.5rem;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-  /* margin: 0 0.5rem ; */
-  /* Centrado vertical en pantallas grandes */
-  align-self: center;
-}
-
-.presentation > div {
-  flex: 1;
-  min-width: 220px;
 }
 
 .secciones {
@@ -143,21 +189,6 @@
   vertical-align: middle;
 }
 
-@media (max-width: 1021px) {
-  .imagen-trio {
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
-    gap: 1.2rem !important;
-    width: 100%;
-  }
-  .imagen-trio > div {
-    width: 100%;
-    display: flex !important;
-    justify-content: center !important;
-    align-items: center !important;
-  }
-}
 
 @media (max-width: 900px) {
   .presentation {

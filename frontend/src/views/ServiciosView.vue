@@ -4,7 +4,7 @@
       <div class="container">
         <div class="card" v-for="section in sections" :key="section.title" @click="goToDetail(section.link)">
           <h2>{{ section.title }}</h2>
-          <img :src="section.image" alt="Servicios Geobizi" loading="lazy">
+          <img :src="section.image" :alt="section.title" :title="section.title" loading="lazy">
           <p>{{ section.content }}</p>
         </div>
       </div>
@@ -12,8 +12,69 @@
   </template>
   
   <script setup>
+  import { useHead } from '@vueuse/head'
   import { ref } from 'vue'
   import { useRouter } from 'vue-router'
+  
+  const pageUrl = 'https://www.geobizi.com/servicios'
+  const ogImage = 'https://www.geobizi.com/imagenes/proyectos/zallanatura/zallanatura2.avif'
+  
+  useHead({
+    title: 'Rutas, Talleres y Proyectos Ambientales | GeoBizi',
+    meta: [
+      {
+        name: 'description',
+        content: 'GeoBizi ofrece rutas geológicas y medioambientales, talleres educativos y proyectos de naturaleza para colegios, empresas, instituciones y público general.',
+      },
+      { name: 'robots', content: 'index, follow' },
+      { name: 'author', content: 'GeoBizi' },
+      { name: 'publisher', content: 'GeoBizi' },
+      { name: 'keywords', content: 'rutas geológicas, talleres medioambientales, proyectos naturaleza, actividades para colegios, GeoBizi' },
+      { name: 'language', content: 'es' },
+      { property: 'og:title', content: 'Rutas, Talleres y Proyectos Ambientales | GeoBizi' },
+      { property: 'og:description', content: 'GeoBizi ofrece rutas geológicas y medioambientales, talleres educativos y proyectos de naturaleza para colegios, empresas, instituciones y público general.' },
+      { property: 'og:type', content: 'website' },
+      { property: 'og:url', content: pageUrl },
+      { property: 'og:image', content: ogImage },
+      { name: 'twitter:card', content: 'summary_large_image' },
+      { name: 'twitter:image', content: ogImage },
+    ],
+    link: [
+      { rel: 'canonical', href: pageUrl },
+      { rel: 'image_src', href: ogImage }
+    ],
+    script: [
+      {
+        type: 'application/ld+json',
+        // JSON-LD como string
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@graph": [
+            {
+              "@type": "Organization",
+              "name": "GeoBizi",
+              "url": "https://www.geobizi.com",
+              "logo": "https://www.geobizi.com/imagenes/GeobiziLogo.7ae1d6ce.png",
+              "sameAs": [
+                "https://www.facebook.com/geobizirik/",
+                "https://www.instagram.com/geotxiki/",
+                "https://www.youtube.com/channel/UCw-C_J0y-jKHp7Zx92lsKfg"
+              ]
+            },
+            {
+              "@type": "WebPage",
+              "url": pageUrl,
+              "name": "Rutas, Talleres y Proyectos Ambientales | GeoBizi",
+              "description": "GeoBizi ofrece rutas geológicas y medioambientales, talleres educativos y proyectos de naturaleza para colegios, empresas, instituciones y público general.",
+              "inLanguage": "es",
+              "isPartOf": { "@id": "https://www.geobizi.com/#organization" },
+              "image": { "@type": "ImageObject", "url": ogImage }
+            }
+          ]
+        })
+      }
+    ]
+  })
   
   const router = useRouter()
   
@@ -38,7 +99,7 @@
     },
     {
       title: 'Proyectos Digitales',
-      content: 'El mundo digital y el natural pueden estar unidos y por ese camino ofrecemos yincanas digitales, o material didáctico digital relacionado con la naturaleza y el medioambiente.',
+      content: 'El mundo digital y el natural pueden estar unidos y por ese camino ofrecemos yincanas digitales, creación y mantenimiento de páginas web con compensación de carbono y material didáctico digital relacionado con la naturaleza y el medioambiente.',
       link: '/detalle-digital',
       image: '/imagenes/servicios/digital.avif',
     },
@@ -59,6 +120,8 @@
   const goToDetail = (link) => {
     router.push(link)
   }
+
+  
   </script>
   
   <style scoped>

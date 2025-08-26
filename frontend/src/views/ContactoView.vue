@@ -23,7 +23,7 @@
           <input type="checkbox" id="privacy" v-model="formData.privacyAccepted" required>
           <label for="privacy">
             He leído y acepto la 
-            <a href="/politica-de-privacidad" target="_blank">política de privacidad</a>.
+            <a href="/politica-de-privacidad" target="_blank" rel="noopener noreferrer" title="Política de privacidad de GeoBizi">política de privacidad</a>.
           </label>
         </div>
         <div class="center">
@@ -38,6 +38,63 @@
 
 <script setup>
 import { ref } from 'vue';
+import { useHead } from '@vueuse/head' // añadido
+
+const pageUrl = 'https://www.geobizi.com/contacto'
+const ogImage = 'https://www.geobizi.com/imagenes/inicio/mision.avif'
+
+useHead({
+  title: 'Contacto | GeoBizi',
+  meta: [
+    { name: 'description', content: 'Contacta con GeoBizi para solicitudes, reservas e información sobre rutas, talleres y proyectos medioambientales.' },
+    { name: 'robots', content: 'index, follow' },
+    { name: 'author', content: 'GeoBizi' },
+    { name: 'publisher', content: 'GeoBizi' },
+    { name: 'keywords', content: 'contacto geobizi, reservas, información, actividades medioambientales' },
+    { name: 'language', content: 'es' },
+    { property: 'og:title', content: 'Contacto | GeoBizi' },
+    { property: 'og:description', content: 'Contacta con GeoBizi para solicitudes, reservas e información sobre rutas, talleres y proyectos medioambientales.' },
+    { property: 'og:type', content: 'website' },
+    { property: 'og:url', content: pageUrl },
+    { property: 'og:image', content: ogImage },
+    { name: 'twitter:card', content: 'summary_large_image' },
+    { name: 'twitter:image', content: ogImage },
+  ],
+  link: [
+    { rel: 'canonical', href: pageUrl },
+    { rel: 'image_src', href: ogImage }
+  ],
+  script: [
+    {
+      type: 'application/ld+json',
+      children: JSON.stringify({
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Organization",
+            "name": "GeoBizi",
+            "url": "https://www.geobizi.com",
+            "logo": "https://www.geobizi.com/imagenes/GeobiziLogo.7ae1d6ce.png",
+            "sameAs": [
+              "https://www.facebook.com/geobizirik/",
+              "https://www.instagram.com/geotxiki/",
+              "https://www.youtube.com/channel/UCw-C_J0y-jKHp7Zx92lsKfg"
+            ],
+            "@id": "https://www.geobizi.com/#organization"
+          },
+          {
+            "@type": "ContactPage",
+            "url": pageUrl,
+            "name": "Contacto | GeoBizi",
+            "description": "Página de contacto para solicitar información y reservas de actividades medioambientales ofrecidas por GeoBizi.",
+            "inLanguage": "es",
+            "isPartOf": { "@id": "https://www.geobizi.com/#organization" }
+          }
+        ]
+      })
+    }
+  ]
+})
 
 const formData = ref({
   name: '',

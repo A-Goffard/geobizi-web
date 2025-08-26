@@ -28,30 +28,30 @@
       
       <h3>¿Por qué elegir una actividad Digital?</h3>
       <p>
-        <img src="/imagenes/iconos/color/estrellitas.png" alt="Original" class="icono" loading="lazy" />
+        <img src="/imagenes/iconos/color/estrellitas.png" alt="Icono actividad original" title="Original — actividad digital" class="icono" loading="lazy" />
         <strong>Actividad original</strong> – No es solo un paseo, es una experiencia interactiva.
       </p>      
       <p>
-        <img src="/imagenes/iconos/color/adaptable.png" alt="Adaptable" class="icono" loading="lazy" />
+        <img src="/imagenes/iconos/color/adaptable.png" alt="Icono actividad adaptable" title="Adaptable — personalizable" class="icono" loading="lazy" />
         <strong>Adaptable</strong> – Podemos personalizarla para otros entornos (montañas, ciudades, parques naturales…).</p>
       <p>
-        <img src="/imagenes/iconos/color/multilingue.png" alt="Multilingüe" class="icono" loading="lazy" />
+        <img src="/imagenes/iconos/color/multilingue.png" alt="Icono multilingüe" title="Multilingüe — varios idiomas" class="icono" loading="lazy" />
         <strong>Multilingüe</strong> – Disponible en euskera y castellano (otros idiomas bajo consulta).</p>
       <p>
-        <img src="/imagenes/iconos/color/libro.png" alt="Educativo" class="icono" loading="lazy" />
+        <img src="/imagenes/iconos/color/libro.png" alt="Icono educativo" title="Educativo — aprendizaje activo" class="icono" loading="lazy" />
         <strong>Educativo y entretenido</strong> – Perfecto para colegios, empresas, ayuntamientos o grupos de ocio.</p>
 
     <div class="horizontal">
       <div class="card-servicios">
         <div class="imagen-trio">
           <div>
-            <img class="img" src="/imagenes/servicios/detalle/digital1.jpg" alt="Yincana Digital" loading="lazy"/>
+            <img class="img" src="/imagenes/servicios/detalle/digital1.avif" alt="Yincana digital — ejemplo de actividad interactiva" title="Yincana Digital — imagen 1" loading="lazy"/>
           </div>
           <div>
-          <img class="img" src="/imagenes/servicios/detalle/digital2.jpg" alt="Yincana Digital" loading="lazy"/>
+          <img class="img" src="/imagenes/servicios/detalle/digital2.avif" alt="Participantes usando móvil en yincana digital" title="Yincana Digital — imagen 2" loading="lazy"/>
           </div>
           <div>
-          <img class="img" src="/imagenes/servicios/detalle/digital3.jpg" alt="Yincana Digital" loading="lazy"/>
+          <img class="img" src="/imagenes/servicios/detalle/digital3.avif" alt="Prueba final de la yincana digital en entorno natural" title="Yincana Digital — imagen 3" loading="lazy"/>
           </div>
         </div>
       </div>
@@ -63,7 +63,46 @@
 </template>
 
 <script setup>
-// No hay lógica adicional para este artículo
+import { useHead } from '@vueuse/head' // añadido
+
+const pageUrl = 'https://www.geobizi.com/detalle-digital'
+const ogImage = 'https://www.geobizi.com/imagenes/servicios/detalle/digital1.avif'
+
+useHead({
+  title: 'Proyectos Digitales Medioambientales | GeoBizi',
+  meta: [
+    { name: 'description', content: 'Proyectos digitales de GeoBizi: yincanas digitales, rutas interactivas y recursos educativos digitales para acercar la naturaleza a todos.' },
+    { name: 'robots', content: 'index, follow' },
+    { name: 'author', content: 'GeoBizi' },
+    { name: 'keywords', content: 'yincana digital, proyectos digitales, educación ambiental, GeoBizi' },
+    { name: 'language', content: 'es' },
+    { property: 'og:title', content: 'Proyectos Digitales Medioambientales | GeoBizi' },
+    { property: 'og:description', content: 'Yincanas digitales, rutas interactivas y proyectos educativos para colegios, ayuntamientos y empresas.' },
+    { property: 'og:type', content: 'website' },
+    { property: 'og:url', content: pageUrl },
+    { property: 'og:image', content: ogImage },
+    { name: 'twitter:card', content: 'summary_large_image' },
+    { name: 'twitter:image', content: ogImage }
+  ],
+  link: [
+    { rel: 'canonical', href: pageUrl },
+    { rel: 'image_src', href: ogImage }
+  ],
+  script: [
+    {
+      type: 'application/ld+json',
+      children: JSON.stringify({
+        "@context":"https://schema.org",
+        "@type":"WebPage",
+        "url": pageUrl,
+        "name": "Proyectos Digitales Medioambientales | GeoBizi",
+        "description": "Yincanas digitales, rutas interactivas y proyectos educativos para colegios, ayuntamientos y empresas.",
+        "inLanguage": "es",
+        "image": ogImage
+      })
+    }
+  ]
+})
 </script>
 
 <style scoped>

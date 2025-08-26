@@ -1,34 +1,4 @@
 <template>
-  <head>
-    <title>
-      La Importancia de la Biodiversidad y el Cambio Climático | Geobizi
-    </title>
-    <meta
-      name="description"
-      content="Descubre por qué la biodiversidad es fundamental para enfrentar el cambio climático y cómo los ecosistemas diversos son clave para la sostenibilidad global."
-    />
-    <meta
-      name="keywords"
-      content="biodiversidad, cambio climático, ecosistemas, sostenibilidad, naturaleza, conservación"
-    />
-    <meta
-      property="og:title"
-      content="La Importancia de la Biodiversidad en Relación con el Cambio Climático"
-    />
-    <meta
-      property="og:description"
-      content="Explora la conexión crucial entre biodiversidad y cambio climático y cómo proteger la naturaleza es vital para el futuro del planeta."
-    />
-    <meta property="og:type" content="article" />
-    <meta
-      property="og:url"
-      content="https://geobizi.com/articulo-biodiversidad-cambio-climatico"
-    />
-    <meta
-      property="og:image"
-      content="https://geobizi.com/img/biodiversidad-cambio-climatico.jpg"
-    />
-  </head>
   <div class="contenedor-principal">
     <h1>
       La Importancia de la Biodiversidad en Relación con el Cambio Climático
@@ -128,35 +98,78 @@
 
     <div class="imagen-trio">
       <div>
-              <img
-        class="img"
-        src="/imagenes/blog/detalle/mariposas.avif"
-        alt="Proyecto de Bio-regeneración"
-        loading="lazy"
-      />
+        <img
+          class="img"
+          src="/imagenes/blog/detalle/mariposas.avif"
+          alt="Mariposas del proyecto Zalla Natura — indicador de biodiversidad local"
+          title="Mariposas — biodiversidad local"
+          loading="lazy"
+        />
       </div>
       <div>
-              <img
-        class="img"
-        src="/imagenes/blog/detalle/ajenuz.avif"
-        alt="Proyecto de Bio-regeneración"
-        loading="lazy"
-      />
+        <img
+          class="img"
+          src="/imagenes/blog/detalle/ajenuz.avif"
+          alt="Ajenuz en su hábitat — ejemplo de flora autóctona"
+          title="Ajenuz — flora autóctona"
+          loading="lazy"
+        />
       </div>
       <div>
-              <img
-        class="img"
-        src="/imagenes/blog/detalle/plantando.avif"
-        alt="Proyecto de Bio-regeneración"
-        loading="lazy"
-      />
+        <img
+          class="img"
+          src="/imagenes/blog/detalle/plantando.avif"
+          alt="Plantación comunitaria — restauración de hábitats y participación"
+          title="Plantación comunitaria — restauración"
+          loading="lazy"
+        />
       </div>
-
     </div>
   </div>
 </template>
 
-<script setup></script>
+<script setup>
+import { useHead } from '@vueuse/head'
+
+const pageUrl = 'https://www.geobizi.com/blog/detalle-biodiversidad'
+const ogImage = 'https://www.geobizi.com/imagenes/blog/detalle/mariposas.avif'
+
+useHead({
+  title: 'La Importancia de la Biodiversidad | GeoBizi',
+  meta: [
+    { name: 'description', content: 'Explora la relación entre biodiversidad y cambio climático y por qué proteger los ecosistemas es esencial para la resiliencia del planeta.' },
+    { name: 'robots', content: 'index, follow' },
+    { name: 'author', content: 'GeoBizi' },
+    { name: 'keywords', content: 'biodiversidad, cambio climático, ecosistemas, conservación, GeoBizi' },
+    { name: 'language', content: 'es' },
+    { property: 'og:title', content: 'La Importancia de la Biodiversidad | GeoBizi' },
+    { property: 'og:description', content: 'Explora la conexión entre biodiversidad y cambio climático y cómo proteger la naturaleza es vital para el futuro.' },
+    { property: 'og:type', content: 'article' },
+    { property: 'og:url', content: pageUrl },
+    { property: 'og:image', content: ogImage },
+    { name: 'twitter:card', content: 'summary_large_image' },
+  ],
+  link: [
+    { rel: 'canonical', href: pageUrl },
+    { rel: 'image_src', href: ogImage }
+  ],
+  script: [
+    {
+      type: 'application/ld+json',
+      children: JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "La Importancia de la Biodiversidad en Relación con el Cambio Climático",
+        "description": "Explora la relación entre biodiversidad y cambio climático y por qué proteger los ecosistemas es esencial para la resiliencia del planeta.",
+        "author": { "@type": "Organization", "name": "GeoBizi" },
+        "mainEntityOfPage": { "@type": "WebPage", "@id": pageUrl },
+        "image": ogImage,
+        "inLanguage": "es"
+      })
+    }
+  ]
+})
+</script>
 
 <style scoped>
 </style>

@@ -14,13 +14,15 @@
           <div class="img-hover-container">
             <img
               :src="actividad.imagen1"
-              alt="Imagen de la actividad"
+              :alt="actividad.titulo + ' — imagen principal'"
+              :title="actividad.titulo + ' — imagen principal'"
               class="img-base"
               loading="lazy"
             />
             <img
               :src="actividad.imagen2"
-              alt="Imagen secundaria de la actividad"
+              :alt="actividad.titulo + ' — imagen secundaria'"
+              :title="actividad.titulo + ' — imagen secundaria'"
               class="img-hover"
               loading="lazy"
             />
@@ -67,7 +69,7 @@
           <input type="checkbox" id="privacy" v-model="formData.privacyAccepted" required>
           <label for="privacy">
             He leído y acepto la 
-            <a href="/politica-de-privacidad" target="_blank">política de privacidad</a>.
+            <a href="/politica-de-privacidad" target="_blank" rel="noopener noreferrer" title="Política de privacidad">política de privacidad</a>.
           </label>
         </div>
         <div class="horizontalC">
@@ -93,9 +95,67 @@
 import { ref, computed, watch } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import actividades from '@/assets/json/actividades.json';
+import { useHead } from '@vueuse/head' // añadido
 
 const route = useRoute();
 const router = useRouter();
+
+const pageUrl = 'https://www.geobizi.com/reservas'
+const ogImage = 'https://www.geobizi.com/imagenes/proyectos/zallanatura/zallanatura2.avif' 
+
+useHead({
+  title: 'Reservas y Actividades | GeoBizi',
+  meta: [
+    { name: 'description', content: 'Reserva actividades y rutas de GeoBizi: talleres, rutas geológicas y proyectos ambientales. Consulta fechas, precios y plazas disponibles.' },
+    { name: 'robots', content: 'index, follow' },
+    { name: 'author', content: 'GeoBizi' },
+    { name: 'publisher', content: 'GeoBizi' },
+    { name: 'keywords', content: 'reservas actividades, rutas naturales, talleres medioambientales, GeoBizi' },
+    { name: 'language', content: 'es' },
+    { property: 'og:title', content: 'Reservas y Actividades | GeoBizi' },
+    { property: 'og:description', content: 'Reserva actividades y rutas de GeoBizi: talleres, rutas geológicas y proyectos ambientales.' },
+    { property: 'og:type', content: 'website' },
+    { property: 'og:url', content: pageUrl },
+    { property: 'og:image', content: ogImage },
+    { name: 'twitter:card', content: 'summary_large_image' },
+    { name: 'twitter:image', content: ogImage },
+  ],
+  link: [
+    { rel: 'canonical', href: pageUrl },
+    { rel: 'image_src', href: ogImage }
+  ],
+  script: [
+    {
+      type: 'application/ld+json',
+      children: JSON.stringify({
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Organization",
+            "name": "GeoBizi",
+            "url": "https://www.geobizi.com",
+            "logo": "https://www.geobizi.com/imagenes/GeobiziLogo.7ae1d6ce.png",
+            "sameAs": [
+              "https://www.facebook.com/geobizirik/",
+              "https://www.instagram.com/geotxiki/",
+              "https://www.youtube.com/channel/UCw-C_J0y-jKHp7Zx92lsKfg"
+            ],
+            "@id": "https://www.geobizi.com/#organization"
+          },
+          {
+            "@type": "WebPage",
+            "url": pageUrl,
+            "name": "Reservas y Actividades | GeoBizi",
+            "description": "Reserva actividades y rutas de GeoBizi: talleres, rutas geológicas y proyectos ambientales.",
+            "inLanguage": "es",
+            "isPartOf": { "@id": "https://www.geobizi.com/#organization" },
+            "image": { "@type": "ImageObject", "url": ogImage }
+          }
+        ]
+      })
+    }
+  ]
+})
 
 const actividadSeleccionada = ref(null);
 const formData = ref({

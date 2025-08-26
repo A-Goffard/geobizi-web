@@ -1,14 +1,4 @@
 <template>
-    <head>
-      <title>Flora autóctona: la importancia de cuidarla | Geobizi</title>
-      <meta name="description" content="Descubre la importancia de proteger la flora autóctona para conservar la biodiversidad y el equilibrio de los ecosistemas.">
-      <meta name="keywords" content="flora autóctona, biodiversidad, conservación, ecología, equilibrio de los ecosistemas, plantas nativas">
-      <meta property="og:title" content="Flora autóctona: la importancia de cuidarla">
-      <meta property="og:description" content="Explora cómo la protección de la flora autóctona es esencial para mantener la biodiversidad y el equilibrio ecológico.">
-      <meta property="og:type" content="article">
-      <meta property="og:url" content="https://geobizi.com/articulo-flora-autoctona">
-      <meta property="og:image" content="https://geobizi.com/img/flora-autoctona.jpg">
-    </head>
     <div class="contenedor-principal">
       <h1>Flora autóctona: la importancia de cuidarla</h1>
       
@@ -26,28 +16,31 @@
       <p>¿Te animas a participar en una <strong>plantación regenerativa</strong>? Es una buena manera de ayudar a reestructurar suelos degradados y reequilibrar el <strong>ecosistema natural</strong> de la zona. En este tipo de actividades colaborativas, conocerás personas con tus mismas inquietudes y ayudarás a la restauración de los ecosistemas mientras disfrutas en buena compañía.</p>
       <div class="imagen-trio">
       <div>
-              <img
-        class="img"
-        src="/imagenes/blog/detalle/plantacion1.avif"
-        alt="Para cambiar por lo que corresponda"
-        loading="lazy"
-      />
+        <img
+          class="img"
+          src="/imagenes/blog/detalle/plantacion1.avif"
+          alt="Plantación con especies autóctonas para restauración de hábitats"
+          title="Plantación con especies autóctonas"
+          loading="lazy"
+        />
       </div>
       <div>
-              <img
-        class="img"
-        src="/imagenes/blog/detalle/plantacion2.avif"
-        alt="Para cambiar por lo que corresponda"
-        loading="lazy"
-      />
+        <img
+          class="img"
+          src="/imagenes/blog/detalle/plantacion2.avif"
+          alt="Restauración de hábitat con plantas nativas"
+          title="Restauración con especies autóctonas"
+          loading="lazy"
+        />
       </div>
       <div>
-              <img
-        class="img"
-        src="/imagenes/blog/detalle/plantacion3.avif"
-        alt="Para cambiar por lo que corresponda"
-        loading="lazy"
-      />
+        <img
+          class="img"
+          src="/imagenes/blog/detalle/plantacion3.avif"
+          alt="Voluntariado plantando especies locales"
+          title="Voluntariado — plantación"
+          loading="lazy"
+        />
       </div>
 
       </div>
@@ -55,7 +48,47 @@
   </template>
   
   <script setup>
-  // No hay lógica adicional para este artículo
+import { useHead } from '@vueuse/head' // añadido
+
+const pageUrl = 'https://www.geobizi.com/blog/detalle-flora-autoctona'
+const ogImage = 'https://www.geobizi.com/imagenes/blog/detalle/plantacion1.avif'
+
+useHead({
+  title: 'Flora autóctona: la importancia de cuidarla | GeoBizi',
+  meta: [
+    { name: 'description', content: 'Por qué proteger la flora autóctona es clave para la biodiversidad local y métodos para recuperarla en espacios degradados.' },
+    { name: 'robots', content: 'index, follow' },
+    { name: 'author', content: 'GeoBizi' },
+    { name: 'keywords', content: 'flora autóctona, biodiversidad, conservación, restauración, GeoBizi' },
+    { name: 'language', content: 'es' },
+    { property: 'og:title', content: 'Flora autóctona: la importancia de cuidarla | GeoBizi' },
+    { property: 'og:description', content: 'Protección y restauración de flora autóctona para conservar biodiversidad y servicios ecosistémicos.' },
+    { property: 'og:type', content: 'article' },
+    { property: 'og:url', content: pageUrl },
+    { property: 'og:image', content: ogImage },
+    { name: 'twitter:card', content: 'summary_large_image' },
+    { name: 'twitter:image', content: ogImage }
+  ],
+  link: [
+    { rel: 'canonical', href: pageUrl },
+    { rel: 'image_src', href: ogImage }
+  ],
+  script: [
+    {
+      type: 'application/ld+json',
+      children: JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "Flora autóctona: la importancia de cuidarla",
+        "description": "Por qué proteger la flora autóctona es clave para la biodiversidad local y métodos para recuperarla en espacios degradados.",
+        "author": { "@type": "Organization", "name": "GeoBizi" },
+        "mainEntityOfPage": { "@type": "WebPage", "@id": pageUrl },
+        "image": ogImage,
+        "inLanguage": "es"
+      })
+    }
+  ]
+})
   </script>
   
   <style scoped>

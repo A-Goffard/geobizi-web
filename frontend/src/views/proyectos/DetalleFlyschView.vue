@@ -20,17 +20,17 @@
       
       <h3>¿Por qué elegir Flysch Digital?</h3>
       <p>
-        <img src="/imagenes/iconos/color/estrellitas.png" alt="Original" class="icono" loading="lazy" />
+        <img src="/imagenes/iconos/color/estrellitas.png" alt="Icono actividad original" title="Original" class="icono" loading="lazy" />
         <strong>Actividad original</strong> – No es solo un paseo, es una experiencia interactiva.
       </p>      
       <p>
-        <img src="/imagenes/iconos/color/adaptable.png" alt="Adaptable" class="icono" loading="lazy" />
+        <img src="/imagenes/iconos/color/adaptable.png" alt="Icono adaptable" title="Adaptable" class="icono" loading="lazy" />
         <strong>Adaptable</strong> – Podemos personalizarla para otros entornos (montañas, ciudades, parques naturales…).</p>
       <p>
-        <img src="/imagenes/iconos/color/multilingue.png" alt="Multilingüe" class="icono" loading="lazy" />
+        <img src="/imagenes/iconos/color/multilingue.png" alt="Icono multilingüe" title="Multilingüe" class="icono" loading="lazy" />
         <strong>Multilingüe</strong> – Disponible en euskera y castellano (otros idiomas bajo consulta).</p>
       <p>
-        <img src="/imagenes/iconos/color/libro.png" alt="Educativo" class="icono" loading="lazy" />
+        <img src="/imagenes/iconos/color/libro.png" alt="Icono educativo" title="Educativo" class="icono" loading="lazy" />
         <strong>Educativo y entretenido</strong> – Perfecto para colegios, empresas o grupos de ocio.</p>
 
       <div class="imagen-trio">
@@ -38,7 +38,8 @@
               <img
         class="img"
         src="/imagenes/proyectos/flyschdigital1.avif"
-        alt="Imagen del proyecto Flysch Digital"
+        alt="Flysch Digital — yincana interactiva en la costa"
+        title="Flysch Digital — imagen 1"
         loading="lazy"
       />
       </div>
@@ -46,7 +47,8 @@
               <img
         class="img"
         src="/imagenes/proyectos/flyschdigital2.avif"
-        alt="Imagen del proyecto Flysch Digital"
+        alt="Participantes resolviendo pruebas de la yincana digital"
+        title="Flysch Digital — imagen 2"
         loading="lazy"
       />
       </div>
@@ -54,7 +56,8 @@
               <img
         class="img"
         src="/imagenes/proyectos/flyschdigital3.avif"
-        alt="Imagen del proyecto Flysch Digital"
+        alt="Exploración del flysch y descubrimiento de fósiles"
+        title="Flysch Digital — imagen 3"
         loading="lazy"
       />
       </div>
@@ -64,7 +67,64 @@
   </template>
   
   <script setup>
-  // No hay lógica adicional para este artículo
+import { useHead } from '@vueuse/head' // añadido
+
+const pageUrl = 'https://www.geobizi.com/detalle-flysch'
+const ogImage = 'https://www.geobizi.com/imagenes/proyectos/flyschdigital1.avif'
+
+useHead({
+  title: 'Flysch Digital — Yincana interactiva | GeoBizi',
+  meta: [
+    { name: 'description', content: 'Flysch Digital: yincana interactiva para explorar el Flysch de Bizkaia. Actividad educativa y divertida para familias, colegios y grupos.' },
+    { name: 'robots', content: 'index, follow' },
+    { name: 'author', content: 'GeoBizi' },
+    { name: 'publisher', content: 'GeoBizi' },
+    { name: 'keywords', content: 'flysch digital, yincana interactiva, rutas educativas, GeoBizi' },
+    { name: 'language', content: 'es' },
+    { property: 'og:title', content: 'Flysch Digital — Yincana interactiva | GeoBizi' },
+    { property: 'og:description', content: 'Flysch Digital: yincana interactiva para explorar el Flysch de Bizkaia. Actividad educativa y divertida para familias, colegios y grupos.' },
+    { property: 'og:type', content: 'website' },
+    { property: 'og:url', content: pageUrl },
+    { property: 'og:image', content: ogImage },
+    { name: 'twitter:card', content: 'summary_large_image' },
+    { name: 'twitter:image', content: ogImage },
+  ],
+  link: [
+    { rel: 'canonical', href: pageUrl },
+    { rel: 'image_src', href: ogImage }
+  ],
+  script: [
+    {
+      type: 'application/ld+json',
+      children: JSON.stringify({
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Organization",
+            "name": "GeoBizi",
+            "url": "https://www.geobizi.com",
+            "logo": "https://www.geobizi.com/imagenes/GeobiziLogo.7ae1d6ce.png",
+            "sameAs": [
+              "https://www.facebook.com/geobizirik/",
+              "https://www.instagram.com/geotxiki/",
+              "https://www.youtube.com/channel/UCw-C_J0y-jKHp7Zx92lsKfg"
+            ],
+            "@id": "https://www.geobizi.com/#organization"
+          },
+          {
+            "@type": "WebPage",
+            "url": pageUrl,
+            "name": "Flysch Digital — Yincana interactiva | GeoBizi",
+            "description": "Flysch Digital: yincana interactiva para explorar el Flysch de Bizkaia. Actividad educativa y divertida para familias, colegios y grupos.",
+            "inLanguage": "es",
+            "isPartOf": { "@id": "https://www.geobizi.com/#organization" },
+            "image": { "@type": "ImageObject", "url": ogImage }
+          }
+        ]
+      })
+    }
+  ]
+})
   </script>
   
   <style scoped>

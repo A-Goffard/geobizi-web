@@ -2,66 +2,66 @@
     <header :class="{ 'scrolled-nav': scrolledNav }">
       <nav>
         <div class="branding">
-          <router-link :to="{name: 'inicio'}">
-            <img src="@/assets/GeobiziLogo.png" class="logo" alt="">
+          <router-link :to="{name: 'inicio'}" title="Ir a Inicio">
+            <img src="@/assets/GeobiziLogo.png" class="logo" alt="GeoBizi - Logo" title="GeoBizi - Inicio">
           </router-link>
         </div>
         <ul v-show="!mobile" class="navigation">
           <li>
-            <router-link class="NavButton link" :to="{name: 'inicio'}" @click="closeMobileNav">Inicio</router-link>
+            <router-link class="NavButton link" :to="{name: 'inicio'}" @click="closeMobileNav" title="Inicio">Inicio</router-link>
           </li>
           <li>
-            <router-link class="NavButton link" :to="{name: 'servicios'}" @click="closeMobileNav">Servicios</router-link>
+            <router-link class="NavButton link" :to="{name: 'servicios'}" @click="closeMobileNav" title="Servicios">Servicios</router-link>
           </li>
           <li>
-            <router-link class="NavButton link" :to="{name: 'calendario'}" @click="closeMobileNav">Calendario</router-link>
+            <router-link class="NavButton link" :to="{name: 'calendario'}" @click="closeMobileNav" title="Calendario">Calendario</router-link>
           </li>
           <li>
-            <router-link class="NavButton link" :to="{name: 'reservas'}" @click="closeMobileNav">Reservas</router-link>
+            <router-link class="NavButton link" :to="{name: 'reservas'}" @click="closeMobileNav" title="Reservas">Reservas</router-link>
           </li>
           <!-- <li>
             <router-link class="NavButton link" :to="{name: 'tienda'}" @click="closeMobileNav">Tienda</router-link>
           </li> -->
           <li>
-            <router-link class="NavButton link" :to="{name: 'blog'}" @click="closeMobileNav">Blog</router-link>
+            <router-link class="NavButton link" :to="{name: 'blog'}" @click="closeMobileNav" title="Blog">Blog</router-link>
           </li>
           <li>
-            <router-link class="NavButton link" :to="{name: 'projectos'}" @click="closeMobileNav">Proyectos</router-link>
+            <router-link class="NavButton link" :to="{name: 'projectos'}" @click="closeMobileNav" title="Proyectos">Proyectos</router-link>
           </li>
           <li>
-            <router-link class="NavButton link" :to="{name: 'contacto'}" @click="closeMobileNav">Contacto</router-link>
+            <router-link class="NavButton link" :to="{name: 'contacto'}" @click="closeMobileNav" title="Contacto">Contacto</router-link>
           </li>
         </ul>
         <div class="icon">
-            <button @click="toggleMobileNav" v-show="mobile">
-                <img :class="{ 'icon-active': mobileNav }" src="@/assets/Hojitas.png" class="hojitas" alt="">
+            <button @click="toggleMobileNav" v-show="mobile" aria-label="Alternar menú" title="Abrir/cerrar menú">
+                <img :class="{ 'icon-active': mobileNav }" src="@/assets/Hojitas.png" class="hojitas" alt="Icono menú - GeoBizi" title="Abrir menú">
             </button>
         </div>
         <transition name="mobile-nav">
           <ul v-show="mobileNav" class="dropdown-nav">
             <li>
-              <router-link class="NavButton link" :to="{name: 'inicio'}" @click="closeMobileNav">Inicio</router-link>
+              <router-link class="NavButton link" :to="{name: 'inicio'}" @click="closeMobileNav" title="Inicio">Inicio</router-link>
             </li>
             <li>
-              <router-link class="NavButton link" :to="{name: 'servicios'}" @click="closeMobileNav">Servicios</router-link>
+              <router-link class="NavButton link" :to="{name: 'servicios'}" @click="closeMobileNav" title="Servicios">Servicios</router-link>
             </li>
             <li>
-              <router-link class="NavButton link" :to="{name: 'calendario'}" @click="closeMobileNav">Calendario</router-link>
+              <router-link class="NavButton link" :to="{name: 'calendario'}" @click="closeMobileNav" title="Calendario">Calendario</router-link>
             </li>
             <li>
-              <router-link class="NavButton link" :to="{name: 'reservas'}" @click="closeMobileNav">Reservas</router-link>
+              <router-link class="NavButton link" :to="{name: 'reservas'}" @click="closeMobileNav" title="Reservas">Reservas</router-link>
             </li>
             <!-- <li>
               <router-link class="NavButton link" :to="{name: 'tienda'}" @click="closeMobileNav">Tienda</router-link>
             </li> -->
             <li>
-              <router-link class="NavButton link" :to="{name: 'blog'}" @click="closeMobileNav">Blog</router-link>
+              <router-link class="NavButton link" :to="{name: 'blog'}" @click="closeMobileNav" title="Blog">Blog</router-link>
             </li>
             <li>
-              <router-link class="NavButton link" :to="{name: 'projectos'}" @click="closeMobileNav">Proyectos</router-link>
+              <router-link class="NavButton link" :to="{name: 'projectos'}" @click="closeMobileNav" title="Proyectos">Proyectos</router-link>
             </li>
             <li>
-              <router-link class="NavButton link" :to="{name: 'contacto'}" @click="closeMobileNav">Contacto</router-link>
+              <router-link class="NavButton link" :to="{name: 'contacto'}" @click="closeMobileNav" title="Contacto">Contacto</router-link>
             </li>
 
           </ul>

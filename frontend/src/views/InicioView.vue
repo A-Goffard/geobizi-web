@@ -28,13 +28,13 @@
       </div>
 
       <div>
-        <img class="imagendiv" src="/imagenes/inicio/mision.avif" alt="Persona observando un paisaje montañoso" loading="lazy">
+        <img class="imagendiv" src="/imagenes/inicio/mision.avif" alt="Mariposas en una mano" title="Mariposas en una mano" loading="lazy">
       </div>
     </div>
 
     <div class="contenedor-historia">
       <div>
-      <img class="imagendiv" src="/imagenes/inicio/esencia.avif" alt="Manos sosteniendo brotes de plantas" loading="lazy">
+      <img class="imagendiv" src="/imagenes/inicio/esencia.avif" alt="Familia plantando un árbol" title="Familia plantando un árbol" loading="lazy">
       </div>
       <div class="cont-texto">
         <h2>Esencia</h2>
@@ -57,7 +57,7 @@
       </div>
 
       <div>
-        <img class="imagendiv" src="/imagenes/inicio/equipo.avif" alt="Grupo de personas colaborando en la naturaleza" loading="lazy">
+        <img class="imagendiv" src="/imagenes/inicio/equipo.avif" alt="Manos en la naturaleza" title="Manos en la naturaleza" loading="lazy">
       </div>
     </div>
   </div>
@@ -67,9 +67,65 @@
 </template>
 
 <script setup>
-  
-</script>
+import { useHead } from '@vueuse/head' // { añadido }
 
+const pageUrl = 'https://www.geobizi.com/'
+const ogImage = 'https://www.geobizi.com/imagenes/inicio/mision.avif'
+
+useHead({
+  title: 'GeoBizi — Naturaleza desde el corazón',
+  meta: [
+    { name: 'description', content: 'GeoBizi diseña experiencias medioambientales: rutas, talleres y proyectos para colegios, empresas, instituciones y público general.' },
+    { name: 'robots', content: 'index, follow' },
+    { name: 'author', content: 'GeoBizi' },
+    { name: 'publisher', content: 'GeoBizi' },
+    { name: 'keywords', content: 'GeoBizi, rutas medioambientales, talleres, proyectos naturaleza, educación ambiental' },
+    { name: 'language', content: 'es' },
+    { property: 'og:title', content: 'GeoBizi — Naturaleza desde el corazón' },
+    { property: 'og:description', content: 'GeoBizi diseña experiencias medioambientales: rutas, talleres y proyectos para colegios, empresas, instituciones y público general.' },
+    { property: 'og:type', content: 'website' },
+    { property: 'og:url', content: pageUrl },
+    { property: 'og:image', content: ogImage },
+    { name: 'twitter:card', content: 'summary_large_image' },
+    { name: 'twitter:image', content: ogImage }
+  ],
+  link: [
+    { rel: 'canonical', href: pageUrl },
+    { rel: 'image_src', href: ogImage }
+  ],
+  script: [
+    {
+      type: 'application/ld+json',
+      children: JSON.stringify({
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Organization",
+            "name": "GeoBizi",
+            "url": "https://www.geobizi.com",
+            "logo": "https://www.geobizi.com/imagenes/GeobiziLogo.7ae1d6ce.png",
+            "sameAs": [
+              "https://www.facebook.com/geobizirik/",
+              "https://www.instagram.com/geotxiki/",
+              "https://www.youtube.com/channel/UCw-C_J0y-jKHp7Zx92lsKfg"
+            ],
+            "@id": "https://www.geobizi.com/#organization"
+          },
+          {
+            "@type": "WebPage",
+            "url": pageUrl,
+            "name": "GeoBizi — Naturaleza desde el corazón",
+            "description": "GeoBizi diseña experiencias medioambientales: rutas, talleres y proyectos para colegios, empresas, instituciones y público general.",
+            "inLanguage": "es",
+            "isPartOf": { "@id": "https://www.geobizi.com/#organization" },
+            "image": { "@type": "ImageObject", "url": ogImage }
+          }
+        ]
+      })
+    }
+  ]
+})
+</script>
 
 <style scoped>
 h1 {

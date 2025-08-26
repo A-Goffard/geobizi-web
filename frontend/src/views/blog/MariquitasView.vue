@@ -33,25 +33,26 @@
     <p>Además de sus beneficios ecológicos, las mariquitas tienen un valor educativo significativo. Su comportamiento y ciclo de vida despiertan la curiosidad y el interés por la naturaleza, especialmente entre los niños. Por ello, uno de nuestros talleres estrella está diseñado para enseñar a los más pequeños sobre la importancia de las mariquitas fabricando y decorando pequeñas casitas para ellas.</p>
     
     <h2>Descubre Nuestros Talleres</h2>
-    <p>Visita nuestra tienda online para ver si hay talleres disponibles sobre las mariquitas y obtener casitas para montar. <a href="https://www.geobizi.com/geotienda" target="_blank">https://www.geobizi.com/geotienda</a></p>
+    <p>Visita nuestra tienda online para ver si hay talleres disponibles sobre las mariquitas y obtener casitas para montar. <a href="https://www.geobizi.com/geotienda" target="_blank" rel="noopener noreferrer" title="Tienda GeoBizi">https://www.geobizi.com/geotienda</a></p>
     
     <h2>Conclusión</h2>
     <p>Las mariquitas son esenciales para la sostenibilidad de nuestros ecosistemas, actuando como depredadoras naturales y polinizadoras, y sirviendo como indicadores de la salud del hábitat. Proteger y preservar a las mariquitas es fundamental para asegurar un futuro ecológico balanceado y sostenible.</p>
 
     <p class="social-media"><b>¡Anímate a seguirnos en redes sociales para no perderte nuestras actividades!</b></p>
 
-    <a href="https://www.instagram.com/geotxiki/" target="_blank">
-        <img src="@/assets/icons/instagram.png" alt="Instagram" class="social-icon" loading="lazy" />
+    <a href="https://www.instagram.com/geotxiki/" target="_blank" rel="noopener noreferrer" title="GeoBizi en Instagram">
+        <img src="@/assets/icons/instagram.png" alt="GeoBizi en Instagram" class="social-icon" loading="lazy" />
     </a>
-    <a href="https://www.facebook.com/geobizirik/" target="_blank">
-        <img src="@/assets/icons/facebook.png" alt="Facebook" class="social-icon" loading="lazy" />
+    <a href="https://www.facebook.com/geobizirik/" target="_blank" rel="noopener noreferrer" title="GeoBizi en Facebook">
+        <img src="@/assets/icons/facebook.png" alt="GeoBizi en Facebook" class="social-icon" loading="lazy" />
     </a>
     <div class="imagen-trio">
       <div>
               <img
         class="img"
         src="/imagenes/blog/detalle/mariquita1.avif"
-        alt="Para cambiar por lo que corresponda"
+        alt="Mariquita adulta sobre hoja — control biológico de plagas"
+        title="Mariquita — control biológico"
         loading="lazy"
       />
       </div>
@@ -59,7 +60,8 @@
               <img
         class="img"
         src="/imagenes/blog/detalle/mariquita2.avif"
-        alt="Para cambiar por lo que corresponda"
+        alt="Taller infantil construyendo casitas para mariquitas"
+        title="Taller — casitas para mariquitas"
         loading="lazy"
       />
       </div>
@@ -67,7 +69,8 @@
               <img
         class="img"
         src="/imagenes/blog/detalle/mariquita3.avif"
-        alt="Para cambiar por lo que corresponda"
+        alt="Detalle de mariquitas en su hábitat"
+        title="Mariquitas en su hábitat"
         loading="lazy"
       />
       </div>
@@ -75,6 +78,50 @@
       </div>
     </div>
 </template>
+
+<script setup>
+import { useHead } from '@vueuse/head'
+
+const pageUrl = 'https://www.geobizi.com/blog/detalle-mariquitas'
+const ogImage = 'https://www.geobizi.com/imagenes/blog/detalle/mariquita1.avif'
+
+useHead({
+  title: 'La Importancia de las Mariquitas — GeoBizi',
+  meta: [
+    { name: 'description', content: 'Descubre por qué las mariquitas son esenciales como control biológico, su valor educativo y talleres de Geobizi.' },
+    { name: 'robots', content: 'index, follow' },
+    { name: 'author', content: 'GeoBizi' },
+    { name: 'keywords', content: 'mariquitas, control biológico, educación ambiental, GeoBizi' },
+    { name: 'language', content: 'es' },
+    { property: 'og:title', content: 'La Importancia de las Mariquitas — GeoBizi' },
+    { property: 'og:description', content: 'Control biológico, educación ambiental y talleres sobre mariquitas ofrecidos por GeoBizi.' },
+    { property: 'og:type', content: 'article' },
+    { property: 'og:url', content: pageUrl },
+    { property: 'og:image', content: ogImage },
+    { name: 'twitter:card', content: 'summary_large_image' },
+    { name: 'twitter:image', content: ogImage }
+  ],
+  link: [
+    { rel: 'canonical', href: pageUrl },
+    { rel: 'image_src', href: ogImage }
+  ],
+  script: [
+    {
+      type: 'application/ld+json',
+      children: JSON.stringify({
+        "@context":"https://schema.org",
+        "@type":"Article",
+        "headline":"La Importancia de las Mariquitas en el medioambiente",
+        "description":"Descubre por qué las mariquitas son esenciales como control biológico y su valor educativo en actividades de Geobizi.",
+        "author": { "@type":"Organization", "name":"GeoBizi" },
+        "mainEntityOfPage": { "@type":"WebPage", "@id": pageUrl },
+        "image": ogImage,
+        "inLanguage":"es"
+      })
+    }
+  ]
+})
+</script>
 
 <style scoped>
 .social-icon {

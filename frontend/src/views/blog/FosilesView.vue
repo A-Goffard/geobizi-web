@@ -1,14 +1,4 @@
 <template>
-    <head>
-      <title>¿Qué son los fósiles y cómo se forman? | Geobizi</title>
-      <meta name="description" content="Descubre qué son los fósiles, cómo se forman y su importancia para entender la evolución de la vida en la Tierra.">
-      <meta name="keywords" content="fósiles, evolución, paleontología, formación de fósiles, mineralización, preservación en ámbar">
-      <meta property="og:title" content="¿Qué son los fósiles y cómo se forman?">
-      <meta property="og:description" content="Explora el proceso de formación de fósiles y su relevancia para la paleontología y el estudio de la vida antigua.">
-      <meta property="og:type" content="article">
-      <meta property="og:url" content="https://geobizi.com/articulo-fosiles">
-      <meta property="og:image" content="https://geobizi.com/img/fosiles.jpg">
-    </head>
     <div class="contenedor-principal">
       <h1>¿Qué son los fósiles y cómo se forman?</h1>
 
@@ -34,7 +24,8 @@
               <img
         class="img"
         src="/imagenes/blog/detalle/fosil1.avif"
-        alt="Para cambiar por lo que corresponda"
+        alt="Fósil en sedimento — ejemplo de conservación"
+        title="Fósil — ejemplo en campo"
         loading="lazy"
       />
       </div>
@@ -42,7 +33,8 @@
               <img
         class="img"
         src="/imagenes/blog/detalle/fosil2.avif"
-        alt="Para cambiar por lo que corresponda"
+        alt="Taller de réplicas de fósiles — actividad didáctica"
+        title="Taller de fósiles — réplica"
         loading="lazy"
       />
       </div>
@@ -50,7 +42,8 @@
               <img
         class="img"
         src="/imagenes/blog/detalle/fosil3.avif"
-        alt="Para cambiar por lo que corresponda"
+        alt="Detalle de un fósil — textura y forma preservada"
+        title="Detalle de fósil"
         loading="lazy"
       />
       </div>
@@ -60,7 +53,47 @@
   </template>
   
   <script setup>
-  // No hay lógica adicional para este artículo
+import { useHead } from '@vueuse/head' // añadido
+
+const pageUrl = 'https://www.geobizi.com/blog/detalle-fosiles'
+const ogImage = 'https://www.geobizi.com/imagenes/blog/detalle/fosil1.avif'
+
+useHead({
+  title: '¿Qué son los fósiles y cómo se forman? | GeoBizi',
+  meta: [
+    { name: 'description', content: 'Explicación sencilla sobre qué son los fósiles, procesos de formación y su importancia para la paleontología.' },
+    { name: 'robots', content: 'index, follow' },
+    { name: 'author', content: 'GeoBizi' },
+    { name: 'keywords', content: 'fósiles, paleontología, formación de fósiles, evolución' },
+    { name: 'language', content: 'es' },
+    { property: 'og:title', content: '¿Qué son los fósiles y cómo se forman? | GeoBizi' },
+    { property: 'og:description', content: 'Aprende sobre la formación de fósiles y su relevancia científica para comprender la historia de la vida.' },
+    { property: 'og:type', content: 'article' },
+    { property: 'og:url', content: pageUrl },
+    { property: 'og:image', content: ogImage },
+    { name: 'twitter:card', content: 'summary_large_image' },
+    { name: 'twitter:image', content: ogImage }
+  ],
+  link: [
+    { rel: 'canonical', href: pageUrl },
+    { rel: 'image_src', href: ogImage }
+  ],
+  script: [
+    {
+      type: 'application/ld+json',
+      children: JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "¿Qué son los fósiles y cómo se forman?",
+        "description": "Explicación sencilla sobre qué son los fósiles, procesos de formación y su importancia para la paleontología.",
+        "author": { "@type": "Organization", "name": "GeoBizi" },
+        "mainEntityOfPage": { "@type": "WebPage", "@id": pageUrl },
+        "image": ogImage,
+        "inLanguage": "es"
+      })
+    }
+  ]
+})
   </script>
   
   <style scoped>

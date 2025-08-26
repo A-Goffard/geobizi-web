@@ -56,18 +56,19 @@
     </ul>
     <p class="social-media"><b>¡Anímate a seguirnos en redes sociales para no perderte nuestras actividades!</b></p>
 
-    <a href="https://www.instagram.com/geotxiki/" target="_blank">
-        <img src="@/assets/icons/instagram.png" alt="Instagram" class="social-icon" loading="lazy" />
+    <a href="https://www.instagram.com/geotxiki/" target="_blank" rel="noopener noreferrer" title="GeoBizi en Instagram">
+        <img src="@/assets/icons/instagram.png" alt="GeoBizi en Instagram" class="social-icon" loading="lazy" />
     </a>
-    <a href="https://www.facebook.com/geobizirik/" target="_blank">
-        <img src="@/assets/icons/facebook.png" alt="Facebook" class="social-icon" loading="lazy" />
+    <a href="https://www.facebook.com/geobizirik/" target="_blank" rel="noopener noreferrer" title="GeoBizi en Facebook">
+        <img src="@/assets/icons/facebook.png" alt="GeoBizi en Facebook" class="social-icon" loading="lazy" />
     </a>
     <div class="imagen-trio">
       <div>
               <img
         class="img"
         src="/imagenes/blog/detalle/freetour1.avif"
-        alt="Para cambiar por lo que corresponda"
+        alt="Participantes en un Free Tour explorando la ciudad"
+        title="Free Tour — participantes explorando"
         loading="lazy"
       />
       </div>
@@ -75,7 +76,8 @@
               <img
         class="img"
         src="/imagenes/blog/detalle/freetour2.avif"
-        alt="Para cambiar por lo que corresponda"
+        alt="Guía explicando un punto de interés durante el Free Tour"
+        title="Free Tour — guía local"
         loading="lazy"
       />
       </div>
@@ -83,7 +85,8 @@
               <img
         class="img"
         src="/imagenes/blog/detalle/freetour3.avif"
-        alt="Para cambiar por lo que corresponda"
+        alt="Recorrido urbano de un Free Tour mostrando arquitectura local"
+        title="Free Tour — recorrido urbano"
         loading="lazy"
       />
       </div>
@@ -91,6 +94,50 @@
       </div>
     </div>
 </template>
+
+<script setup>
+import { useHead } from '@vueuse/head' // añadido
+
+const pageUrl = 'https://www.geobizi.com/blog/detalle-free-tours'
+const ogImage = 'https://www.geobizi.com/imagenes/blog/detalle/freetour1.avif'
+
+useHead({
+  title: 'Free Tours — Qué son y cómo funcionan | GeoBizi',
+  meta: [
+    { name: 'description', content: 'Guía práctica sobre Free Tours: qué son, cómo funcionan, ventajas y consejos para disfrutar de visitas guiadas flexibles y accesibles.' },
+    { name: 'robots', content: 'index, follow' },
+    { name: 'author', content: 'GeoBizi' },
+    { name: 'keywords', content: 'free tours, tours gratuitos, visitas guiadas, turismo local, GeoBizi' },
+    { name: 'language', content: 'es' },
+    { property: 'og:title', content: 'Free Tours — Qué son y cómo funcionan | GeoBizi' },
+    { property: 'og:description', content: 'Guía práctica sobre Free Tours: qué son, cómo funcionan y cómo reservar con GeoBizi.' },
+    { property: 'og:type', content: 'article' },
+    { property: 'og:url', content: pageUrl },
+    { property: 'og:image', content: ogImage },
+    { name: 'twitter:card', content: 'summary_large_image' },
+    { name: 'twitter:image', content: ogImage },
+  ],
+  link: [
+    { rel: 'canonical', href: pageUrl },
+    { rel: 'image_src', href: ogImage }
+  ],
+  script: [
+    {
+      type: 'application/ld+json',
+      children: JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "Free Tours — Qué son y cómo funcionan",
+        "description": "Guía práctica sobre Free Tours: qué son, cómo funcionan y consejos para viajeros.",
+        "author": { "@type": "Organization", "name": "GeoBizi" },
+        "mainEntityOfPage": { "@type": "WebPage", "@id": pageUrl },
+        "image": ogImage,
+        "inLanguage": "es"
+      })
+    }
+  ]
+})
+</script>
 
 <style scoped>
 .social-icon {

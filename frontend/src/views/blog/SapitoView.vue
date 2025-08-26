@@ -1,14 +1,4 @@
 <template>
-    <head>
-      <title>El Sapito Corredor o Buffo Calamita: Un Tesoro Ecológico en Peligro | Geobizi</title>
-      <meta name="description" content="Descubre la fascinante vida del sapito corredor, su relevancia ecológica y los desafíos que enfrenta en un mundo en constante cambio.">
-      <meta name="keywords" content="sapito corredor, Buffo Calamita, anfibios, conservación, biodiversidad, ecología">
-      <meta property="og:title" content="El Sapito Corredor o Buffo Calamita: Un Tesoro Ecológico en Peligro">
-      <meta property="og:description" content="Explora la vida del sapito corredor, su importancia ecológica y las amenazas que enfrenta.">
-      <meta property="og:type" content="article">
-      <meta property="og:url" content="https://geobizi.com/articulo-sapito-corredor">
-      <meta property="og:image" content="https://geobizi.com/img/sapito-corredor.jpg">
-    </head>
     <div class="contenedor-principal">
       <h1>El Sapito Corredor o Buffo Calamita: Un Tesoro Ecológico en Peligro</h1>
       <h2>El Sapito corredor o Buffo Calamita: Un Anfibio Encantador y Vulnerable</h2>
@@ -37,28 +27,31 @@
       <p>Con esfuerzos conjuntos, podemos garantizar la supervivencia de esta especie y preservar su hábitat natural para las generaciones futuras.</p>
       <div class="imagen-trio">
       <div>
-              <img
-        class="img"
-        src="/imagenes/blog/detalle/sapito1.avif"
-        alt="Para cambiar por lo que corresponda"
-        loading="lazy"
-      />
+        <img
+          class="img"
+          src="/imagenes/blog/detalle/sapito1.avif"
+          alt="Sapito corredor (Bufotes calamita) en su hábitat — adulto"
+          title="Sapito corredor — adulto en hábitat"
+          loading="lazy"
+        />
       </div>
       <div>
-              <img
-        class="img"
-        src="/imagenes/blog/detalle/sapito2.avif"
-        alt="Para cambiar por lo que corresponda"
-        loading="lazy"
-      />
+        <img
+          class="img"
+          src="/imagenes/blog/detalle/sapito2.avif"
+          alt="Sapito corredor — detalle de piel y postura"
+          title="Sapito corredor — detalle"
+          loading="lazy"
+        />
       </div>
       <div>
-              <img
-        class="img"
-        src="/imagenes/blog/detalle/sapito3.avif"
-        alt="Para cambiar por lo que corresponda"
-        loading="lazy"
-      />
+        <img
+          class="img"
+          src="/imagenes/blog/detalle/sapito3.avif"
+          alt="Hábitat húmedo del sapito corredor — charca y vegetación"
+          title="Hábitat del sapito corredor"
+          loading="lazy"
+        />
       </div>
 
       </div>
@@ -66,7 +59,47 @@
   </template>
   
   <script setup>
-  // No hay lógica adicional para este artículo
+import { useHead } from '@vueuse/head' // añadido
+
+const pageUrl = 'https://www.geobizi.com/blog/detalle-sapito'
+const ogImage = 'https://www.geobizi.com/imagenes/blog/detalle/sapito1.avif'
+
+useHead({
+  title: 'El Sapito Corredor (Buffo Calamita) — Conservación | GeoBizi',
+  meta: [
+    { name: 'description', content: 'Información sobre el sapito corredor (Buffo Calamita), su biología, importancia ecológica, amenazas y acciones de conservación.' },
+    { name: 'robots', content: 'index, follow' },
+    { name: 'author', content: 'GeoBizi' },
+    { name: 'keywords', content: 'sapito corredor, Buffo Calamita, anfibios, conservación, humedales' },
+    { name: 'language', content: 'es' },
+    { property: 'og:title', content: 'El Sapito Corredor — Conservación | GeoBizi' },
+    { property: 'og:description', content: 'Biología y conservación del sapito corredor, acciones de protección y educación ambiental.' },
+    { property: 'og:type', content: 'article' },
+    { property: 'og:url', content: pageUrl },
+    { property: 'og:image', content: ogImage },
+    { name: 'twitter:card', content: 'summary_large_image' },
+    { name: 'twitter:image', content: ogImage }
+  ],
+  link: [
+    { rel: 'canonical', href: pageUrl },
+    { rel: 'image_src', href: ogImage }
+  ],
+  script: [
+    {
+      type: 'application/ld+json',
+      children: JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "El Sapito Corredor o Buffo Calamita: Un Tesoro Ecológico en Peligro",
+        "description": "Información sobre el sapito corredor (Buffo Calamita), su biología, importancia ecológica, amenazas y acciones de conservación.",
+        "author": { "@type": "Organization", "name": "GeoBizi" },
+        "mainEntityOfPage": { "@type": "WebPage", "@id": pageUrl },
+        "image": ogImage,
+        "inLanguage": "es"
+      })
+    }
+  ]
+})
   </script>
   
   <style scoped>

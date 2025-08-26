@@ -8,7 +8,7 @@
         <p>El año pasado la temática principal era el patrimonio sostenible, así que no pudimos faltar. Y como la conservación del patrimonio es algo muy ligado a los objetivos de desarrollo sostenible, también participaremos este año.</p>
         <p>Este año las jornadas llevan como título, “Patrimonio Vivo”. La temática se centra en el patrimonio inmaterial y hay unas 150 actividades repartidas por todo Bizkaia que comienzan el día 1 de octubre y se irán desarrollando durante todo el mes.</p>
         <p>Podéis ver todas las actividades que se llevaron a cabo en el siguiente enlace: 
-            <a href="https://ondareabizkaia.eus/es/actividades-y-experiencias-2023/">https://ondareabizkaia.eus/es/actividades-y-experiencias-2023/</a></p>
+            <a href="https://ondareabizkaia.eus/es/actividades-y-experiencias-2023/" target="_blank" rel="noopener noreferrer" title="Actividades Jornadas Patrimonio Bizkaia">https://ondareabizkaia.eus/es/actividades-y-experiencias-2023/</a></p>
         <p>Animaros a participar en las jornadas y disfrutar a tope de las actividades que hay. Eso sí, intentad reservar cuanto antes vuestra plaza porque en algunas actividades ya se han agotado.</p>
 
         <h2>¿Qué se entiende por Patrimonio Cultural Inmaterial (PCI)?</h2>
@@ -61,7 +61,8 @@
               <img
         class="img"
         src="/imagenes/blog/detalle/patrimonio1.avif"
-        alt="Para cambiar por lo que corresponda"
+        alt="Talleres y actividades - Jornadas de Patrimonio Europeo 2023"
+        title="Jornadas de Patrimonio — taller"
         loading="lazy"
       />
       </div>
@@ -69,7 +70,8 @@
               <img
         class="img"
         src="/imagenes/blog/detalle/patrimonio2.avif"
-        alt="Para cambiar por lo que corresponda"
+        alt="Ruta por el Flysch de Getxo — actividad educativa"
+        title="Ruta Flysch — actividad educativa"
         loading="lazy"
       />
       </div>
@@ -77,7 +79,8 @@
               <img
         class="img"
         src="/imagenes/blog/detalle/patrimonio3.avif"
-        alt="Para cambiar por lo que corresponda"
+        alt="Taller Eguzkilores — manualidades y tradición"
+        title="Eguzkilores — taller"
         loading="lazy"
       />
       </div>
@@ -87,7 +90,47 @@
 </template>
 
 <script setup>
+import { useHead } from '@vueuse/head' // añadido
 
+const pageUrl = 'https://www.geobizi.com/blog/detalle-patrimonio'
+const ogImage = 'https://www.geobizi.com/imagenes/blog/detalle/patrimonio1.avif'
+
+useHead({
+  title: 'Jornadas de Patrimonio Europeo 2023 | GeoBizi',
+  meta: [
+    { name: 'description', content: 'Resumen de la participación de GeoBizi en las Jornadas de Patrimonio Europeo 2023: actividades, rutas y talleres.' },
+    { name: 'robots', content: 'index, follow' },
+    { name: 'author', content: 'GeoBizi' },
+    { name: 'keywords', content: 'patrimonio europeo, jornadas patrimonio, flysch, talleres, GeoBizi' },
+    { name: 'language', content: 'es' },
+    { property: 'og:title', content: 'Jornadas de Patrimonio Europeo 2023 | GeoBizi' },
+    { property: 'og:description', content: 'Actividades y talleres de GeoBizi en las Jornadas de Patrimonio Europeo 2023.' },
+    { property: 'og:type', content: 'article' },
+    { property: 'og:url', content: pageUrl },
+    { property: 'og:image', content: ogImage },
+    { name: 'twitter:card', content: 'summary_large_image' },
+    { name: 'twitter:image', content: ogImage }
+  ],
+  link: [
+    { rel: 'canonical', href: pageUrl },
+    { rel: 'image_src', href: ogImage }
+  ],
+  script: [
+    {
+      type: 'application/ld+json',
+      children: JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "Jornadas de Patrimonio Europeo 2023",
+        "description": "Resumen de la participación de GeoBizi en las Jornadas de Patrimonio Europeo 2023: actividades, rutas y talleres.",
+        "author": { "@type": "Organization", "name": "GeoBizi" },
+        "mainEntityOfPage": { "@type": "WebPage", "@id": pageUrl },
+        "image": ogImage,
+        "inLanguage": "es"
+      })
+    }
+  ]
+})
 </script>
 
 <style scoped>

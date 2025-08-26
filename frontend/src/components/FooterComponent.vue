@@ -3,33 +3,36 @@
       <div class="footer-content">
         <ul class="footer-links">
           <li>
-            <router-link class="footer-link" :to="{ name: 'privacidad' }">Política de privacidad</router-link>
+            <router-link class="footer-link" :to="{ name: 'privacidad' }" title="Política de privacidad">Política de privacidad</router-link>
           </li>
           <li>
-            <router-link class="footer-link" :to="{ name: 'aviso' }">Aviso legal</router-link>
+            <router-link class="footer-link" :to="{ name: 'aviso' }" title="Aviso legal">Aviso legal</router-link>
           </li>
           <li>
-            <router-link class="footer-link" :to="{ name: 'cancelaciones' }">Política de cancelaciones</router-link>
+            <router-link class="footer-link" :to="{ name: 'cancelaciones' }" title="Política de cancelaciones">Política de cancelaciones</router-link>
           </li>
         </ul>
         <div class="social-media">
-          <a href="mailto:geobizi@hotmail.com">
-            <img src="@/assets/icons/mail.png" alt="Email" class="social-icon" />
+          <a href="mailto:geobizi@hotmail.com" title="Enviar correo a GeoBizi">
+            <img src="@/assets/icons/mail.png" alt="Email" class="social-icon" title="Email" />
           </a>
-          <a href="tel:+34677170921">
-            <img src="@/assets/icons/telephone.png" alt="Phone" class="social-icon" />
+          <a href="tel:+34677170921" title="Llamar a GeoBizi">
+            <img src="@/assets/icons/telephone.png" alt="Phone" class="social-icon" title="Teléfono" />
           </a>
-          <a href="https://www.facebook.com/geobizirik/" target="_blank">
-            <img src="@/assets/icons/facebook.png" alt="Facebook" class="social-icon" />
+          <a href="https://www.facebook.com/geobizirik/" target="_blank" rel="noopener noreferrer" title="GeoBizi en Facebook">
+            <img src="@/assets/icons/facebook.png" alt="Facebook" class="social-icon" title="Facebook" />
           </a>
-          <a href="https://www.youtube.com/channel/UCw-C_J0y-jKHp7Zx92lsKfg" target="_blank">
-            <img src="@/assets/icons/youtube.png" alt="YouTube" class="social-icon" />
+          <a href="https://www.youtube.com/channel/UCw-C_J0y-jKHp7Zx92lsKfg" target="_blank" rel="noopener noreferrer" title="GeoBizi en YouTube">
+            <img src="@/assets/icons/youtube.png" alt="YouTube" class="social-icon" title="YouTube" />
           </a>
-          <a href="https://www.instagram.com/geotxiki/" target="_blank">
-            <img src="@/assets/icons/instagram.png" alt="Instagram" class="social-icon" />
+          <a href="https://www.instagram.com/geotxiki/" target="_blank" rel="noopener noreferrer" title="GeoBizi en Instagram">
+            <img src="@/assets/icons/instagram.png" alt="Instagram" class="social-icon" title="Instagram" />
           </a>
         </div>
         <p class="copyright">© Geobizi 2024. Todos los derechos reservados.</p>
+        <div>
+          <img class="compensacion" src="@/assets/icons/compensacionGeobizi.avif" alt="Sello de impacto compensado de Geobizi" title="Sello de impacto compensado de Geobizi">
+        </div>
       </div>
     </footer>
   </template>
@@ -90,5 +93,10 @@
   .copyright {
     color: var(--darkgrey);
   }
+
+  .compensacion {
+    width: 10rem;
+    height: auto;
+    margin-top: 0.5rem;
+  }
   </style>
-  

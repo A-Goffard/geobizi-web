@@ -18,7 +18,7 @@
 
       <div class="card-servicios">
         <div class="imagen-servicios">
-          <img class="img" src="/imagenes/servicios/detalle/bombas.jpg" alt="Talleres para público general" loading="lazy"/>
+          <img class="img" src="/imagenes/servicios/detalle/bombas.avif" alt="Talleres medioambientales para público general — bombas de semillas y huertos" title="Talleres medioambientales para público general" loading="lazy"/>
         </div>
         <div class="lista-servicios">
           <h3>Talleres</h3>
@@ -36,7 +36,7 @@
 
       <div class="card-servicios">
         <div class="imagen-servicios">
-          <img class="img" src="/imagenes/servicios/detalle/sopela.jpg" alt="Rutas para público general" loading="lazy"/>
+          <img class="img" src="/imagenes/servicios/detalle/sopela.avif" alt="Ruta geológica en Sopela — actividad para público general" title="Ruta geológica en Sopela" loading="lazy"/>
         </div>
         <div class="lista-servicios">
           <h3>Rutas Guiadas</h3>
@@ -50,7 +50,7 @@
 
       <div class="card-servicios">
         <div class="imagen-servicios">
-          <img class="img" src="/imagenes/servicios/detalle/micro.jpg" alt="Experiencias para público general" loading="lazy"/>
+          <img class="img" src="/imagenes/servicios/detalle/micro.avif" alt="Experiencias de inmersión en la naturaleza para público general" title="Experiencias de inmersión en la naturaleza" loading="lazy"/>
         </div>
         <div class="lista-servicios">
           <h3>Experiencias</h3>
@@ -68,7 +68,47 @@
 </template>
 
 <script setup>
-// No hay lógica adicional para este artículo
+import { useHead } from '@vueuse/head' // añadido
+
+const pageUrl = 'https://www.geobizi.com/detalle-general'
+const ogImage = 'https://www.geobizi.com/imagenes/servicios/detalle/bombas.avif'
+
+useHead({
+  title: 'Actividades para público general | GeoBizi',
+  meta: [
+    { name: 'description', content: 'Rutas, talleres y experiencias medioambientales para público general: actividades familiares, talleres y proyectos para disfrutar y aprender en la naturaleza.' },
+    { name: 'robots', content: 'index, follow' },
+    { name: 'author', content: 'GeoBizi' },
+    { name: 'keywords', content: 'actividades público general, talleres familiares, rutas naturales, GeoBizi' },
+    { name: 'language', content: 'es' },
+    { property: 'og:title', content: 'Actividades para público general | GeoBizi' },
+    { property: 'og:description', content: 'Rutas, talleres y experiencias medioambientales para público general: actividades familiares y proyectos para conectar con la naturaleza.' },
+    { property: 'og:type', content: 'website' },
+    { property: 'og:url', content: pageUrl },
+    { property: 'og:image', content: ogImage },
+    { name: 'twitter:card', content: 'summary_large_image' },
+    { name: 'twitter:image', content: ogImage }
+  ],
+  link: [
+    { rel: 'canonical', href: pageUrl },
+    { rel: 'image_src', href: ogImage }
+  ],
+  script: [
+    {
+      type: 'application/ld+json',
+      children: JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "url": pageUrl,
+        "name": "Actividades para público general | GeoBizi",
+        "description": "Rutas, talleres y experiencias medioambientales para público general: actividades familiares y proyectos para disfrutar y aprender en la naturaleza.",
+        "inLanguage": "es",
+        "image": ogImage
+      })
+    }
+  ]
+})
 </script>
 
-<style scoped></style>
+<style scoped>
+</style>

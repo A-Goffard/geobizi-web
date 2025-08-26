@@ -23,7 +23,7 @@
 
       <div class="card-servicios">
         <div class="imagen-servicios">
-          <img class="img" src="/imagenes/servicios/detalle/talleres.jpg" alt="Talleres" loading="lazy"/>
+          <img class="img" src="/imagenes/servicios/detalle/talleres.avif" alt="Talleres medioambientales para colegios" title="Talleres medioambientales para colegios" loading="lazy"/>
         </div>
         <div class="lista-servicios">
           <h3>Talleres</h3>
@@ -42,7 +42,7 @@
 
       <div class="card-servicios">
         <div class="imagen-servicios">
-          <img class="img" src="/imagenes/servicios/detalle/rutas.jpg" alt="Talleres" loading="lazy"/>
+          <img class="img" src="/imagenes/servicios/detalle/rutas.avif" alt="Rutas guiadas educativas para colegios (Flysch, árboles, Azkorri)" title="Rutas guiadas educativas para colegios" loading="lazy"/>
         </div>
         <div class="lista-servicios">
           <h3>Rutas guiadas</h3>
@@ -59,7 +59,7 @@
 
       <div class="card-servicios">
         <div class="imagen-servicios">
-          <img class="img" src="/imagenes/servicios/detalle/experiencias.jpg" alt="Talleres" loading="lazy"/>
+          <img class="img" src="/imagenes/servicios/detalle/experiencias.avif" alt="Experiencias educativas y de inmersión en la naturaleza para centros educativos" title="Experiencias educativas en la naturaleza" loading="lazy"/>
         </div>
         <div class="lista-servicios">
           <h3>Experiencias</h3>
@@ -72,14 +72,51 @@
         </div>
       </div>
 
-
-
     </div>
   </div>
 </template>
 
 <script setup>
-// No hay lógica adicional para este artículo
+import { useHead } from '@vueuse/head' // añadido
+
+const pageUrl = 'https://www.geobizi.com/detalle-colegios'
+const ogImage = 'https://www.geobizi.com/imagenes/servicios/detalle/talleres.avif'
+
+useHead({
+  title: 'Servicios para colegios y centros de enseñanza | GeoBizi',
+  meta: [
+    { name: 'description', content: 'Actividades educativas para colegios: rutas geológicas, talleres prácticos y proyectos medioambientales adaptados al currículo y a distintas edades.' },
+    { name: 'robots', content: 'index, follow' },
+    { name: 'author', content: 'GeoBizi' },
+    { name: 'keywords', content: 'actividades colegios, talleres educativos, rutas escolares, GeoBizi, educación ambiental' },
+    { name: 'language', content: 'es' },
+    { property: 'og:title', content: 'Servicios para colegios y centros de enseñanza | GeoBizi' },
+    { property: 'og:description', content: 'Rutas, talleres y proyectos medioambientales para colegios. Actividades adaptadas por edad y currículo.' },
+    { property: 'og:type', content: 'website' },
+    { property: 'og:url', content: pageUrl },
+    { property: 'og:image', content: ogImage },
+    { name: 'twitter:card', content: 'summary_large_image' },
+    { name: 'twitter:image', content: ogImage }
+  ],
+  link: [
+    { rel: 'canonical', href: pageUrl },
+    { rel: 'image_src', href: ogImage }
+  ],
+  script: [
+    {
+      type: 'application/ld+json',
+      children: JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "url": pageUrl,
+        "name": "Servicios para colegios y centros de enseñanza | GeoBizi",
+        "description": "Rutas, talleres y proyectos medioambientales para colegios. Actividades adaptadas por edad y currículo.",
+        "inLanguage": "es",
+        "image": ogImage
+      })
+    }
+  ]
+})
 </script>
 
 <style scoped></style>
