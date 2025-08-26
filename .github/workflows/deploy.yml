@@ -24,7 +24,28 @@ jobs:
             cd /root/geobizi-web || exit 1
             git fetch origin main
             git reset --hard origin/main
-            docker compose -f docker-compose.yml down -v
-            docker compose -f docker-compose.yml build
-            docker compose -f docker-compose.yml up -d
+            # bajar contenedores antiguos y eliminar huérfanos (si procede)
+            docker compose -f docker-compose.yml down -v --rmi all || true
+            # rebuild forzado
+            docker compose -f docker-compose.yml build --no-cache --pull
+            # levantar (recrear forzadamente; eliminar huérfanos)
+            docker compose -f docker-compose.yml up -d --force-recreate --remove-orphans
+            # esperar un poco a que arranquen los servicios
+            sleep 5
+            # mostrar estado de compose y todos los contenedores (útil para debugging)
+            docker compose -f docker-compose.yml ps
+            docker ps -a --filter "status=exited" --format "table {{.ID}}\t{{.Image}}\t{{.Status}}\t{{.Names}}"
+            # mostrar logs recientes para detectar fallos
+            docker compose -f docker-compose.yml logs --no-log-prefix --tail=200 || true
+            # si hay contenedores en estado exited, mostrar sus logs completos y fallar el job
+            EXITED=$(docker ps -a --filter "status=exited" --format '{{.Names}}' | tr '\n' ' ')
+            if [ -n "$EXITED" ]; then
+              echo "❌ Contenedores en estado 'exited': $EXITED"
+              for NAME in $EXITED; do
+                echo "---- Logs de $NAME ----"
+                docker logs "$NAME" || true
+                echo "---- Fin logs de $NAME ----"
+              done
+              exit 1
+            fi
             echo "✅ Despliegue completado"
