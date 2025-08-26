@@ -24,7 +24,10 @@ jobs:
             cd /root/geobizi-web || exit 1
             git fetch origin main
             git reset --hard origin/main
-            docker compose -f docker-compose.yml down -v
-            docker compose -f docker-compose.yml build --no-cache
+            # bajar y eliminar volúmenes e imágenes para evitar usar artefactos antiguos
+            docker compose -f docker-compose.yml down -v --rmi all || true
+            # forzar rebuild sin cache y tirar de últimas capas
+            docker compose -f docker-compose.yml build --no-cache --pull
+            # si build falla, el script terminará con error y no se levantará la imagen anterior
             docker compose -f docker-compose.yml up -d
             echo "✅ Despliegue completado"
