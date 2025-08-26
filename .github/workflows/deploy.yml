@@ -25,6 +25,6 @@ jobs:
             git fetch origin main
             git reset --hard origin/main
             docker compose -f docker-compose.yml down -v
-            docker compose -f docker-compose.yml build
+            docker compose -f docker-compose.yml build --no-cache
             docker compose -f docker-compose.yml up -d
             echo "✅ Despliegue completado"
