@@ -6,8 +6,12 @@
     <h3>Introducción:</h3>
     <p>El <strong>estramonio</strong> (Datura stramonium) es una planta perteneciente a la familia de las solanáceas conocida por sus propiedades tóxicas. Aunque algunas partes han sido usadas tradicionalmente con fines medicinales, su consumo o manipulación puede ser muy peligroso.</p>
 
-    <p>Es una planta autóctona que puede encontrarse de forma natural que salir de en zonas con mucha materia orgánica.</p>
+    <p>Es una planta que puede encontrarse de forma natural en zonas con mucha materia orgánica.</p>
     <p>En Azkorri hemos encontrado ejemplares en zonas accesibles donde pasan familias, niños y animales. Es importante reconocerla y evitar el contacto: no tocar, no arrancar frutos ni hojas y mantener a las mascotas alejadas.</p>
+
+    <h3>Origen y distribución</h3>
+    <p>El origen exacto del estramonio (Datura stramonium) es incierto, aunque se considera que el género <em>Datura</em> tiene su mayor diversidad en América Central y Sudamérica. La evidencia sugiere que el género pudo haberse originado en América Central y las Grandes Antillas, desde donde se expandió por América del Norte y del Sur.</p>
+    <p>Hoy en día, el estramonio es una planta cosmopolita que crece en zonas cálidas y templadas de casi todo el planeta (excepto en los climas polares). Su amplia distribución se explica porque ha sido cultivado y se ha naturalizado con éxito en muchas regiones.</p>
 
     <h3>Riesgos y síntomas</h3>
     <p>El estramonio contiene alcaloides (como atropina, escopolamina) que pueden producir desde sequedad de boca, visión borrosa y confusión, hasta taquicardia, alucinaciones y en casos graves afectación respiratoria. Si alguien ha estado en contacto o ha ingerido la planta, buscar asistencia médica inmediatamente.</p>
@@ -43,12 +47,12 @@ const ogImage = 'https://www.geobizi.com/imagenes/blog/detalle/estramonio1.avif'
 useHead({
   title: 'Estramonio en Azkorri — Riesgos y precauciones | GeoBizi',
   meta: [
-    { name: 'description', content: 'Información y advertencias sobre el estramonio (Datura stramonium) encontrado en Azkorri. No tocar, mantener a niños y mascotas alejados.' },
+    { name: 'description', content: 'Información sobre el estramonio (Datura stramonium) encontrado en Azkorri: origen, distribución, riesgos y precauciones. No tocar; mantener a niños y mascotas alejados.' },
     { name: 'robots', content: 'index, follow' },
     { name: 'author', content: 'GeoBizi' },
     { name: 'language', content: 'es' },
     { property: 'og:title', content: 'Estramonio en Azkorri — Riesgos y precauciones | GeoBizi' },
-    { property: 'og:description', content: 'Conoce la planta, sus riesgos y qué hacer si hay contacto o ingestión accidental.' },
+    { property: 'og:description', content: 'Conoce el origen probable, la distribución actual, los riesgos y qué hacer si hay contacto o ingestión accidental.' },
     { property: 'og:type', content: 'article' },
     { property: 'og:url', content: pageUrl },
     { property: 'og:image', content: ogImage },
@@ -74,7 +78,7 @@ useHead({
           {
             "@type":"Article",
             "headline":"Estramonio (Datura stramonium) en Azkorri: riesgos y precauciones",
-            "description":"Información y advertencias sobre el estramonio encontrado en Azkorri. Mantener a niños y animales alejados y no tocar la planta.",
+            "description":"Información sobre el estramonio encontrado en Azkorri, incluyendo su origen probable en América Central y las Grandes Antillas, su distribución actual y recomendaciones para evitar el contacto.",
             "author": { "@type":"Organization", "@id":"https://www.geobizi.com/#organization" },
             "mainEntityOfPage": { "@type":"WebPage", "@id": pageUrl },
             "image": { "@type":"ImageObject","url":ogImage }
