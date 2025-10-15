@@ -78,14 +78,38 @@ const projects = ref([
     title: 'Ginkana del Flysch de Bizkaia',
     description: 'Una experiencia digital para explorar el Flysch de Bizkaia de manera interactiva.',
     link: '/detalle-flysch',
-    image: '/imagenes/proyectos/flyschdigital.avif',
+    image: '/imagenes/proyectos/flyschdigital/flyschdigital.avif',
   },
   {
     title: 'Zalla Natura',
     description: 'Un proyecto de biorregeneración colaborativa para mejorar el medioambiente en Zalla.',
     link: '/detalle-zalla-natura',
-    image: '/imagenes/proyectos/plantacion4.avif',
+    image: '/imagenes/proyectos/zallanatura/zallanatura.avif',
   },
+ {
+    title: 'Semana Verde',
+    description: 'Actividades de Aste Berdea: talleres medioambientales, rutas geológicas, hoteles de insectos y limpiezas de playa.',
+    link: '/detalle-aste-berdea',
+    image: '/imagenes/proyectos/asteberdea/semanaverde.avif',
+  },
+  {
+    title: 'Sopela Kosta Fest',
+    description: 'Talleres, rutas de fósiles, ginkana digital y actividades familiares en la costa de Sopela.',
+    link: '/detalle-sopela-kosta-fest',
+    image: '/imagenes/proyectos/sopelakostafest/sopelakostafest.avif',
+  },
+  {
+    title: 'Día del Árbol',
+    description: 'Talleres de bombas de semillas, identificación de árboles, limpiezas y actividades educativas para el Día del Árbol.',
+    link: '/detalle-dia-arbol',
+    image: '/imagenes/proyectos/diadelarbol/diadelarbol.avif',
+  },
+  {
+    title: 'Semana de la Ciencia',
+    description: 'Talleres, rutas y actividades educativas para acercar la ciencia y el medio ambiente a todos los públicos.',
+    link: '/detalle-semana-ciencia',
+    image: '/imagenes/proyectos/zientziaastea/semanaciencia.avif',
+  }
 ])
 
 const goToDetail = (link) => {

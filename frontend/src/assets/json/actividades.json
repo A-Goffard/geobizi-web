@@ -898,5 +898,51 @@
       }
     ],
     "reservas": true
+  },
+  {
+    "id": 48,
+    "titulo": "La huella humana en la costa de Azkorri",
+    "fecha": "2025-10-18",
+    "hora": "10:30",
+    "color": "purple",
+    "descripcion1": "En este paseo guiado por Azkorri exploraremos cómo la industria, las especies invasoras y el cambio climático han dejado su huella en el entorno… y cómo podemos contribuir a su regeneración.",
+    "descripcion2": "Es ideal para familias.",
+    "precio": 0,
+    "imagen1": "imagenes/actividades/azkorri1.avif",
+    "imagen2": "imagenes/actividades/azkorri2.avif",
+    "tipo": "actividad",
+    "publicar": true,
+    "stripeId": "",
+    "opciones": [
+      {
+        "nombre": "",
+        "precio": "",
+        "stripeId": ""
+      }
+    ],
+    "reservas": false
+  },
+  {
+    "id": 49,
+    "titulo": "La huella humana en la costa de Azkorri",
+    "fecha": "2025-10-19",
+    "hora": "12:00",
+    "color": "purple",
+    "descripcion1": "Haz tu propia bomba de semillas, una pequeña esfera de tierra y arcilla que guarda dentro nuevas plantas esperando su momento para brotar.",
+    "descripcion2": "Es ideal para familias.",
+    "precio": 0,
+    "imagen1": "imagenes/actividades/azkorri1.avif",
+    "imagen2": "imagenes/actividades/azkorri2.avif",
+    "tipo": "actividad",
+    "publicar": true,
+    "stripeId": "",
+    "opciones": [
+      {
+        "nombre": "",
+        "precio": "",
+        "stripeId": ""
+      }
+    ],
+    "reservas": false
   }
 ]

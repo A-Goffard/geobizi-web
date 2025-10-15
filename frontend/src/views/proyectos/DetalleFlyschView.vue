@@ -37,7 +37,7 @@
       <div>
               <img
         class="img"
-        src="/imagenes/proyectos/flyschdigital1.avif"
+        src="/imagenes/proyectos/flyschdigital/flyschdigital1.avif"
         alt="Flysch Digital — yincana interactiva en la costa"
         title="Flysch Digital — imagen 1"
         loading="lazy"
@@ -46,7 +46,7 @@
       <div>
               <img
         class="img"
-        src="/imagenes/proyectos/flyschdigital2.avif"
+        src="/imagenes/proyectos/flyschdigital/flyschdigital2.avif"
         alt="Participantes resolviendo pruebas de la yincana digital"
         title="Flysch Digital — imagen 2"
         loading="lazy"
@@ -55,7 +55,7 @@
       <div>
               <img
         class="img"
-        src="/imagenes/proyectos/flyschdigital3.avif"
+        src="/imagenes/proyectos/flyschdigital/flyschdigital3.avif"
         alt="Exploración del flysch y descubrimiento de fósiles"
         title="Flysch Digital — imagen 3"
         loading="lazy"

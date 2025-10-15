@@ -10,6 +10,11 @@ import ProjectosView from '../views/ProjectosView.vue';
 
 import DetalleFlyschView from "@/views/proyectos/DetalleFlyschView.vue";
 import DetalleZallaNaturaView from "@/views/proyectos/DetalleZallaNaturaView.vue";
+import DetalleSemanaCienciaView from '@/views/proyectos/DetalleSemanaCienciaView.vue'
+import DetalleAsteBerdeaView from '@/views/proyectos/DetalleAsteBerdeaView.vue'
+import DetalleSopelaKostaFestView from '@/views/proyectos/DetalleSopelaKostaFestView.vue'
+import DetalleDiaArbolView from '@/views/proyectos/DetalleDiaArbolView.vue'
+
 
 import BlogView from "../views/BlogView.vue";
 
@@ -24,6 +29,7 @@ import CarpobrotusView from "@/views/blog/CarpobrotusView.vue";
 import FloraAutoctonaView from "@/views/blog/FloraAutoctonaView.vue";
 import FosilesView from "@/views/blog/FosilesView.vue";
 import DiaTierraView from "@/views/blog/DiaTierraView.vue";
+import EstramonioView from "@/views/blog/EstramonioView.vue"; // <-- nueva importación
 
 import ContactoView from "../views/ContactoView.vue";
 
@@ -89,7 +95,27 @@ const routes = [
         name: "detalle-zalla-natura",
         component: DetalleZallaNaturaView,
     },
-
+    {
+        path: "/detalle-semana-ciencia",
+        name: "detalle-semana-ciencia",
+        component: DetalleSemanaCienciaView,
+    },
+    {
+        path: "/detalle-aste-berdea",
+        name: "detalle-aste-berdea",
+        component: DetalleAsteBerdeaView,
+    },
+    {
+        path: "/detalle-sopela-kosta-fest",
+        name: "detalle-sopela-kosta-fest",
+        component: DetalleSopelaKostaFestView,
+    },
+    {
+        path: "/detalle-dia-arbol",
+        name: "detalle-dia-arbol",
+        component: DetalleDiaArbolView,
+    },
+    
     {
         path: "/blog",
         name: "blog",
@@ -134,6 +160,11 @@ const routes = [
         path: "/blog/detalle-carpobrotus",
         name: "carpobrotus",
         component: CarpobrotusView,
+    },
+    {
+        path: "/blog/detalle-estramonio",
+        name: "estramonio",
+        component: EstramonioView,
     },
     {
         path: "/blog/detalle-flora-autoctona",

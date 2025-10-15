@@ -79,11 +79,11 @@
   })
   
   const articles = ref([
-    {
-      title: 'Jornadas de Patrimonio Europeo 2023',
-      summary: 'Llega octubre y con él las Jornadas de Patrimonio Europeas. Una oportunidad única para disfrutar de un montón de actividades relacionadas con el patrimonio en diferentes puntos de la comunidad...',
-      link: 'blog/detalle-patrimonio',
-      image: '/imagenes/blog/patrimonio.avif',
+        {
+      title: 'Estramonio (Datura stramonium) en Azkorri: riesgos y precauciones',
+      summary: 'He encontrado estramonio en Azkorri. Muchas familias y animales pasan por allí: conoce la planta, sus riesgos y por qué no debes tocarla.',
+      link: 'blog/detalle-estramonio',
+      image: '/imagenes/blog/detalle/estramonio3.avif',
     },
     {
       title: 'Free Tours: Definición, Funcionamiento y preguntas frecuentes',
@@ -121,6 +121,7 @@
       link: 'blog/detalle-sapito',
       image: '/imagenes/blog/sapito.avif',
     },
+
     {
       title: 'Carpobrotus edulis, invasora perjudicial',
       summary: 'La Carpobrotus edulis, una especie originaria de Sudáfrica que resulta ser invasora en muchas partes de nuestro planeta...',
@@ -144,7 +145,13 @@
       summary: 'Este año 2023, el Día de la Tierra se celebra bajo el lema “Invertir en nuestro planeta”...',
       link: 'blog/detalle-dia-tierra',
       image: '/imagenes/blog/dia-tierra.avif',
-    }
+    },
+    {
+      title: 'Jornadas de Patrimonio Europeo 2023',
+      summary: 'Llega octubre y con él las Jornadas de Patrimonio Europeas. Una oportunidad única para disfrutar de un montón de actividades relacionadas con el patrimonio en diferentes puntos de la comunidad...',
+      link: 'blog/detalle-patrimonio',
+      image: '/imagenes/blog/patrimonio.avif',
+    },
   ])
   
   const goToDetail = (link) => {
