@@ -23,6 +23,7 @@
         <p>Una asesoría pedagógica medioambiental especializada en la formación, divulgación científica y medioambiental y el diseño de experiencias centradas en la naturaleza para que conectes con el mundo desde el respeto y el conocimiento.</p>
         <p>Desde nuestros inicios hemos trabajado con mucho cariño para ofrecerte las mejores experiencias hasta llegar a lo que es hoy en día Geobizi. </p>
         <p>Desarrollamos formaciones, rutas, talleres y experiencias personalizadas para niñas y niños, particulares, perfiles silver, empresas públicas o privadas, colegios u otros centros formativos, instituciones...</p>
+        <p>También diseñamos proyectos de sensibilización y biorregeneración colaborativos para mejorar el entorno natural y fomentar la conciencia ambiental.</p>
         <p>Pensamos que todo tipo de personas, grupos y edades diferentes deben tener acceso a la educación medioambiental y todos los beneficios sociales, naturales y de salud que lleva unidos. Es por ello que adaptamos unos objetivos similares a una diversidad de grupos.</p>
         <p>Nuestras actividades son sostenibles, inclusivas, coeducativas y no discriminatorias.</p>
       </div>
@@ -139,15 +140,6 @@ useHead({
 </script>
 
 <style scoped>
-h1 {
-  color: var(--green);
-}
-.contenedor-principal {
-  padding-top: 7rem;
-  background-color: rgb(255, 255, 255);
-  padding-bottom: 2rem;
-}
-
 .contenedor-secundario {
   max-width: 1200px;
     margin: 0 auto;
@@ -168,7 +160,6 @@ h1 {
 .contenedor-historia {
   display: flex;
   align-items: center;
-  padding: 2rem;
 }
 
 .imagendiv {

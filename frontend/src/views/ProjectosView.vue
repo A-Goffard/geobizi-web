@@ -1,6 +1,7 @@
 <template>
   <div class="general-container">
     <h1>Proyectos</h1>
+          <p>Estos son algunos de nuestros proyectos:</p>
     <div class="container">
       <div class="card" v-for="project in projects" :key="project.title" @click="goToDetail(project.link)">
         <h2>{{ project.title }}</h2>
@@ -74,6 +75,12 @@ useHead({
 })
 
 const projects = ref([
+    {
+    title: 'Zalla Natura',
+    description: 'Un proyecto de biorregeneración colaborativa para mejorar el medioambiente en Zalla.',
+    link: '/detalle-zalla-natura',
+    image: '/imagenes/proyectos/zallanatura/zallanatura.avif',
+  },
   {
     title: 'Ginkana del Flysch de Bizkaia',
     description: 'Una experiencia digital para explorar el Flysch de Bizkaia de manera interactiva.',
@@ -81,12 +88,6 @@ const projects = ref([
     image: '/imagenes/proyectos/flyschdigital/flyschdigital.avif',
   },
   {
-    title: 'Zalla Natura',
-    description: 'Un proyecto de biorregeneración colaborativa para mejorar el medioambiente en Zalla.',
-    link: '/detalle-zalla-natura',
-    image: '/imagenes/proyectos/zallanatura/zallanatura.avif',
-  },
- {
     title: 'Semana Verde',
     description: 'Actividades de Aste Berdea: talleres medioambientales, rutas geológicas, hoteles de insectos y limpiezas de playa.',
     link: '/detalle-aste-berdea',

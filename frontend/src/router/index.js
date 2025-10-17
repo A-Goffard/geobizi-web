@@ -37,14 +37,14 @@ import PoliticadecancelacionesView from "../views/PoliticadecancelacionesView.vu
 import AvisolegalView from "../views/AvisolegalView.vue";
 import PoliticadeprivacidadView from "../views/PoliticadeprivacidadView.vue";
 
+import DetalleRutas from "../components/servicios/DetalleRutas.vue";
+import DetalleActividades from "../components/servicios/DetalleActividades.vue";
+import DetalleSensibilizacion from "../components/servicios/DetalleSensibilizacion.vue";
+import DetalleDigitalySostenible from "../components/servicios/DetalleDigitalySostenible.vue";
+import DetalleFormacion from "../components/servicios/DetalleFormacion.vue";
+import DetalleDescargas from "../components/servicios/DetalleDescargas.vue";
 
 
-import DetalleColegios from "../components/servicios/DetalleColegios.vue";
-import DetalleAsociaciones from "../components/servicios/DetalleAsociaciones.vue";
-import DetalleInstituciones from "../components/servicios/DetalleInstituciones.vue";
-import DetalleDigital from "../components/servicios/DetalleDigital.vue";
-import DetalleProyectos from "../components/servicios/DetalleProyectos.vue";
-import DetalleGeneral from "../components/servicios/DetalleGeneral.vue";
 import Calendario from "@/components/calendario/CalendarioActividades2025.vue";
 
 
@@ -203,75 +203,44 @@ const routes = [
         name: "privacidad",
         component: PoliticadeprivacidadView,
     },
-
+    
 
     {
-        path: "/detalle-colegios",
-        name: "DetalleColegios",
-        component: DetalleColegios,
+        path: "/detalle-rutas",
+        name: "DetalleRutas",
+        component: DetalleRutas,
     },
     {
-        path: "/detalle-asociaciones",
-        name: "DetalleAsociaciones",
-        component: DetalleAsociaciones,
+        path: "/detalle-actividades",
+        name: "DetalleActividades",
+        component: DetalleActividades,
     },
     {
-        path: "/detalle-instituciones",
-        name: "DetalleInstituciones",
-        component: DetalleInstituciones,
+        path: "/detalle-sensibilizacion",
+        name: "DetalleSensibilizacion",
+        component: DetalleSensibilizacion,
     },
     {
         path: "/detalle-digital",
-        name: "DetalleDigital",
-        component: DetalleDigital,
+        name: "DetalleDigitalySostenible",
+        component: DetalleDigitalySostenible,
     },
     {
-        path: "/detalle-proyectos",
-        name: "DetalleProyectos",
-        component: DetalleProyectos,
+        path: "/detalle-formacion",
+        name: "DetalleFormacion",
+        component: DetalleFormacion,
     },
     {
-        path: "/detalle-general",
-        name: "DetalleGeneral",
-        component: DetalleGeneral,
+        path: "/detalle-descargas",
+        name: "DetalleDescargas",
+        component: DetalleDescargas,
     },
     {
         path: "/calendario",
         name: "Calendario",
         component: Calendario,
     },
-    /*
-    {
-        path: "/admin/panel",
-        name: "admin-panel",
-        component: () => import("../views/administracion/AdminPanelView.vue"),
-    },
-    {
-        path: "/admin/usuarios",
-        name: "admin-usuarios",
-        component: () => import("../views/administracion/AdminUsuariosView.vue"),
-    },
-    {
-        path: "/admin/actividades",
-        name: "admin-actividades",
-        component: () => import("../views/administracion/AdminActividadesView.vue"),
-    },
-    {
-        path: "/admin/empresas",
-        name: "admin-empresas",
-        component: () => import("../views/administracion/AdminEmpresasView.vue"),
-    },
-    {
-        path: "/admin/reservas",
-        name: "admin-reservas",
-        component: () => import("../views/administracion/AdminReservasView.vue"),
-    },
-    {
-        path: "/admin/personas",
-        name: "admin-personas",
-        component: () => import("../views/administracion/AdminPersonasView.vue"),
-    },
-    */
+
     // Redirige cualquier ruta no existente a una página de error personalizada
     {
         path: '/:pathMatch(.*)*',

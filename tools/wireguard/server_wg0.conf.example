@@ -1,0 +1,15 @@
+[Interface]
+# IP interna del VPN en el VPS
+Address = 10.14.0.1/24
+ListenPort = 51820
+PrivateKey = <SERVER_PRIVATE_KEY>
+SaveConfig = true
+
+# NAT para que los peers accedan a Internet a través del VPS (ajusta 'eth0' si tu interfaz es distinta)
+PostUp = sysctl -w net.ipv4.ip_forward=1; iptables -A FORWARD -i %i -j ACCEPT; iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
+PostDown = iptables -t nat -D POSTROUTING -o eth0 -j MASQUERADE; iptables -D FORWARD -i %i -j ACCEPT
+
+# Ejemplo de peer (añade uno por cliente, cambia PublicKey y AllowedIPs)
+# [Peer]
+# PublicKey = <CLIENT_PUBLIC_KEY>
+# AllowedIPs = 10.14.0.2/32

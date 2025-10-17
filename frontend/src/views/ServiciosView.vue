@@ -79,41 +79,41 @@
   const router = useRouter()
   
   const sections = ref([
-    {
-      title: 'Para colegios y centros de enseñanza',
-      content: 'Rutas geológicas, medioambientales, talleres, actividades mixtas, proyectos medioambientales para el colegios...',
-      link: '/detalle-colegios',
-      image: '/imagenes/servicios/coles.avif',
+   {
+      title: 'Rutas divulgativas',
+      content: 'Rutas geológicas, medioambientales, limpiezas de playas, interpretación de la fauna y flora... Tenemos algunas ya preparadas y otras las diseñamos a tu medida.',
+      link: '/detalle-rutas',
+      image: '/imagenes/servicios/rutas/rutas.avif',
     },
     {
-      title: 'Asociaciones y empresas',
-      content: 'Si lo necesitas, preparamos una actividad temática en el campo o en tu local. Para trabajar en grupo y forjar vínculos, para aprender, para entretener.',
-      link: '/detalle-asociaciones',
-      image: '/imagenes/servicios/asociaciones.avif',
+      title: 'Talleres y actividades',
+      content: 'Si lo necesitas, preparamos una actividad o taller para un evento, una feria etc., para realizar en el campo o en tu local. Para trabajar en grupo y forjar vínculos, para aprender, para entretener.',
+      link: '/detalle-actividades',
+      image: '/imagenes/servicios/actividades/actividades.avif',
     },
     {
-      title: 'Instituciones',
-      content: 'Si perteneces a un ayuntamiento, o cualquier otro tipo de institución, también tenemos algo para ti. ¿Quieres poner en valor el medio natural de tu entorno?¿Quieres una formación para tus ciudadanos o empresas?',
-      link: '/detalle-instituciones',
-      image: '/imagenes/servicios/ayuntas.avif',
+      title: 'Proyectos de sensibilización y biorregeneración',
+      content: 'Diseñamos proyectos de sensibilización ambiental y biorregeneración para colegios, asociaciones, empresas e instituciones. ¿Quieres poner en valor el medio natural de tu entorno?',
+      link: '/detalle-sensibilizacion',
+      image: '/imagenes/servicios/sensibilizacion/sensibilizacion.avif',
     },
     {
-      title: 'Proyectos Digitales',
+      title: 'Digital y sostenible',
       content: 'El mundo digital y el natural pueden estar unidos y por ese camino ofrecemos yincanas digitales, creación y mantenimiento de páginas web con compensación de carbono y material didáctico digital relacionado con la naturaleza y el medioambiente.',
       link: '/detalle-digital',
-      image: '/imagenes/servicios/digital.avif',
+      image: '/imagenes/servicios/digital/digital.avif',
     },
     {
-      title: 'Proyectos Natura',
-      content: 'También diseñamos proyectos relacionados con la naturaleza, para tu barrio o escuela. ¿Quieres un poryecto para mejorar el medioambiente de tu zona? ¿O participar cuidando la naturaleza?',
-      link: '/detalle-proyectos',
-      image: '/imagenes/servicios/general.avif',
+      title: 'Formación',
+      content: 'También ofrecemos formaciones para empresas, instituciones o centros formativos. Medioambiente, sostenibilidad, educación ambiental, comunicación, herramientas digitales, IA, gamificación...',
+      link: '/detalle-formacion',
+      image: '/imagenes/servicios/formacion/formacion.avif',
     },
     {
-      title: 'Población general',
-      content: 'Siempre tenemos disponibles rutas y talleres para la población general. ¿Quieres contratar una ruta o un taller? Cuéntanos lo que quieres.',
-      link: '/detalle-general',
-      image: '/imagenes/servicios/familias.avif',
+      title: 'Descargas y recursos',
+      content: 'Material digital didáctico o lúdico relacionado con la naturaleza y el medioambiente para descargar. Recursos para docentes, fichas de actividades, juegos educativos...',
+      link: '/detalle-descargas',
+      image: '/imagenes/servicios/descargas/descargas.avif',
     }
   ])
   

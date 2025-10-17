@@ -1,0 +1,16 @@
+[Interface]
+# Clave privada del cliente (genera con wg genkey)
+PrivateKey = <CLIENT_PRIVATE_KEY>
+# IP local del cliente dentro de la VPN
+Address = 10.14.0.2/32
+DNS = 1.1.1.1
+
+[Peer]
+# Clave pública del servidor (obtenla con: cat server_public.key)
+PublicKey = <SERVER_PUBLIC_KEY>
+# IP pública/host:puerto del VPS
+Endpoint = your.vps.ip.or.domain:51820
+# Rutas a enrutar por la VPN. Para acceso a todo el tráfico del cliente: 0.0.0.0/0, ::/0
+# Para solo acceder a la red del VPS (recomendado): 10.14.0.0/24
+AllowedIPs = 10.14.0.0/24
+PersistentKeepalive = 25

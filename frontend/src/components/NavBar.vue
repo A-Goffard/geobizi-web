@@ -224,6 +224,7 @@ const closeMobileNav = () => {
   
   .link {
     font-weight: bold;
+    font-style: normal;
     color: var(--green);
     position: relative;
     transition: 250s ease all;

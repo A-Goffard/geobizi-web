@@ -944,5 +944,28 @@
       }
     ],
     "reservas": false
+  },
+  {
+    "id": 50,
+    "titulo": "Inspira bizitzak - Donosti",
+    "fecha": "2025-10-20",
+    "hora": "12:00",
+    "color": "purple",
+    "descripcion1": "Estaremos en el cursal de Donosti compartiendo experiencias sobre la naturaleza.",
+    "descripcion2": "Para estudiantes de bachillerato.",
+    "precio": 0,
+    "imagen1": "imagenes/actividades/azkorri1.avif",
+    "imagen2": "imagenes/actividades/azkorri2.avif",
+    "tipo": "actividad",
+    "publicar": true,
+    "stripeId": "",
+    "opciones": [
+      {
+        "nombre": "",
+        "precio": "",
+        "stripeId": ""
+      }
+    ],
+    "reservas": false
   }
 ]

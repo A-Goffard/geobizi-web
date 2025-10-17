@@ -64,6 +64,7 @@
   }
   
   .footer-link {
+    font-style: normal;
     font-weight: bold;
     color: var(--green);
     text-decoration: none;

@@ -77,6 +77,10 @@ h3 {
   color: var(--lightgreen);
   margin: 1rem;
 }
+h4 {
+  color: var(--green);
+  margin: 1rem;
+}
 p {
   margin: 1rem;
 }
@@ -125,12 +129,23 @@ margin: 2rem;
 .imagen-trio{
   display: flex;
   gap: 1rem;
+  margin-top: 1rem;
 }
 
 .imagen-trio div {
   flex: 1; /* Distribuye el espacio de manera equitativa */
 }
-
+  a {
+    font-weight: bold;
+    font-style: oblique;
+    color: var(--lightgreen);
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  
+  a:hover {
+    color: var(--shoftgreen);
+  }
 @media (min-width: 950px) {
   .contenedor-principal {
     max-width: 950px;
