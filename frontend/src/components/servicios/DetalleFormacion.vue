@@ -7,24 +7,27 @@
 
     <h2>Áreas de formación</h2>
 
-    <p>Sensibilización medioambiental y participación ciudadana.</p>
-    <p>Sostenibilidad.</p>
-    <p>Comunicación efectiva.</p>
-    <p>Divulgación.</p>
-    <p>Diseño de actividades.</p>
-    <p>Ecoturismo.</p>
-    <p>Técnicas de ocio y tiempo libre.</p>
-    <p>Gestión de equipos.</p>
-    <p>Diseño de espacios verdes.</p>
-    <p>Regeneración y seguimiento de proyectos.</p>
-    <p>Formación para docentes y monitores.</p>
-    <p>Técnicas de educación ambiental.</p>
-    <p>Metodologías activas de enseñanza.</p>
-    <p>Proyectos educativos.</p>
-    <p>Uso de la IA en la educación.</p>
-    <p>Herramientas digitales en la educación.</p>
-    <p>Gamificación.</p>
-    <p>Otras áreas relacionadas con el medio ambiente, la sostenibilidad y la educación.</p>
+    <ul>
+      <li><img src="imagenes/iconos/color/mariposita.png" alt="Mariposita" title="Mariposita" class="icono" loading="lazy" />Sensibilización medioambiental y participación ciudadana.</li>
+      <li><img src="imagenes/iconos/color/mariposita.png" alt="Mariposita" title="Mariposita" class="icono" loading="lazy" />Sostenibilidad.</li>
+      <li><img src="imagenes/iconos/color/mariposita.png" alt="Mariposita" title="Mariposita" class="icono" loading="lazy" />Comunicación efectiva.</li>
+      <li><img src="imagenes/iconos/color/mariposita.png" alt="Mariposita" title="Mariposita" class="icono" loading="lazy" />Divulgación.</li>
+      <li><img src="imagenes/iconos/color/mariposita.png" alt="Mariposita" title="Mariposita" class="icono" loading="lazy" />Didáctica de la ciencia.</li>
+      <li><img src="imagenes/iconos/color/mariposita.png" alt="Mariposita" title="Mariposita" class="icono" loading="lazy" />Diseño de actividades.</li>
+      <li><img src="imagenes/iconos/color/mariposita.png" alt="Mariposita" title="Mariposita" class="icono" loading="lazy" />Ecoturismo.</li>
+      <li><img src="imagenes/iconos/color/mariposita.png" alt="Mariposita" title="Mariposita" class="icono" loading="lazy" />Técnicas de ocio y tiempo libre.</li>
+      <li><img src="imagenes/iconos/color/mariposita.png" alt="Mariposita" title="Mariposita" class="icono" loading="lazy" />Gestión de equipos.</li>
+      <li><img src="imagenes/iconos/color/mariposita.png" alt="Mariposita" title="Mariposita" class="icono" loading="lazy" />Diseño de espacios verdes.</li>
+      <li><img src="imagenes/iconos/color/mariposita.png" alt="Mariposita" title="Mariposita" class="icono" loading="lazy" />Regeneración y seguimiento de proyectos.</li>
+      <li><img src="imagenes/iconos/color/mariposita.png" alt="Mariposita" title="Mariposita" class="icono" loading="lazy" />Formación para docentes y monitores.</li>
+      <li><img src="imagenes/iconos/color/mariposita.png" alt="Mariposita" title="Mariposita" class="icono" loading="lazy" />Técnicas de educación ambiental.</li>
+      <li><img src="imagenes/iconos/color/mariposita.png" alt="Mariposita" title="Mariposita" class="icono" loading="lazy" />Metodologías activas de enseñanza.</li>
+      <li><img src="imagenes/iconos/color/mariposita.png" alt="Mariposita" title="Mariposita" class="icono" loading="lazy" />Proyectos educativos.</li>
+      <li><img src="imagenes/iconos/color/mariposita.png" alt="Mariposita" title="Mariposita" class="icono" loading="lazy" />Uso de la IA en la educación.</li>
+      <li><img src="imagenes/iconos/color/mariposita.png" alt="Mariposita" title="Mariposita" class="icono" loading="lazy" />Herramientas digitales en la educación.</li>
+      <li><img src="imagenes/iconos/color/mariposita.png" alt="Mariposita" title="Mariposita" class="icono" loading="lazy" />Gamificación.</li>
+      <li><img src="imagenes/iconos/color/mariposita.png" alt="Mariposita" title="Mariposita" class="icono" loading="lazy" />Otras áreas relacionadas con el medio ambiente, la sostenibilidad y la educación.</li>
+    </ul>
 
     <h2>Se realizan para</h2>
     <p>Ofrecemos formación para administraciones, colegios, asociaciones, empresas y centros de formación.</p>
@@ -73,4 +76,24 @@ useHead({
 })
 </script>
 
-<style scoped></style>
+<style scoped>
+
+.contenido-seccion ul {
+  flex: 1;
+  min-width: 220px;
+  margin: 0;
+  padding-left: 1.2rem;
+}
+
+.contenido-seccion > img {
+  align-self: center;
+}
+
+.icono {
+  width: 20px;
+  height: 20px;
+  margin-right: 8px;
+  margin-bottom: 8px;
+  vertical-align: middle;
+}
+</style>
