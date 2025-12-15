@@ -19,8 +19,8 @@ import { useHead } from '@vueuse/head' // añadido
 
 const router = useRouter()
 
-const pageUrl = 'https://www.geobizi.com/projectos'
-const ogImage = 'https://www.geobizi.com/imagenes/proyectos/projectos-hero.avif'
+const pageUrl = 'https://www.geobizi.com/proyectos'
+const ogImage = 'https://www.geobizi.com/imagenes/proyectos/proyectos-hero.avif'
 
 useHead({
   title: 'Proyectos | GeoBizi',

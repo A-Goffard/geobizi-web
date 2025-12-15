@@ -26,7 +26,7 @@
             <router-link class="NavButton link" :to="{name: 'blog'}" @click="closeMobileNav" title="Blog">Blog</router-link>
           </li>
           <li>
-            <router-link class="NavButton link" :to="{name: 'projectos'}" @click="closeMobileNav" title="Proyectos">Proyectos</router-link>
+            <router-link class="NavButton link" :to="{name: 'proyectos'}" @click="closeMobileNav" title="Proyectos">Proyectos</router-link>
           </li>
           <li>
             <router-link class="NavButton link" :to="{name: 'contacto'}" @click="closeMobileNav" title="Contacto">Contacto</router-link>
@@ -58,7 +58,7 @@
               <router-link class="NavButton link" :to="{name: 'blog'}" @click="closeMobileNav" title="Blog">Blog</router-link>
             </li>
             <li>
-              <router-link class="NavButton link" :to="{name: 'projectos'}" @click="closeMobileNav" title="Proyectos">Proyectos</router-link>
+              <router-link class="NavButton link" :to="{name: 'proyectos'}" @click="closeMobileNav" title="Proyectos">Proyectos</router-link>
             </li>
             <li>
               <router-link class="NavButton link" :to="{name: 'contacto'}" @click="closeMobileNav" title="Contacto">Contacto</router-link>

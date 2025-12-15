@@ -6,7 +6,7 @@ import CalendarioView from "../views/CalendarioView.vue";
 // import ReservasView from "@/views/ReservasView.vue";
 // import TiendaView from "../views/TiendaView.vue";
 
-import ProjectosView from '../views/ProjectosView.vue';
+import ProyectosView from '../views/ProyectosView.vue';
 
 import DetalleFlyschView from "@/views/proyectos/DetalleFlyschView.vue";
 import DetalleZallaNaturaView from "@/views/proyectos/DetalleZallaNaturaView.vue";
@@ -81,9 +81,9 @@ const routes = [
     // },
     
     {
-        path: "/projectos",
-        name: "projectos",
-        component: ProjectosView,
+        path: "/proyectos",
+        name: "proyectos",
+        component: ProyectosView,
     },
     {
         path: "/detalle-flysch",
