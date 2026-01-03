@@ -74,16 +74,16 @@ const pageUrl = 'https://www.geobizi.com/'
 const ogImage = 'https://www.geobizi.com/imagenes/inicio/mision.avif'
 
 useHead({
-  title: 'GeoBizi — Naturaleza desde el corazón',
+  title: 'Geobizi — Naturaleza desde el corazón',
   meta: [
-    { name: 'description', content: 'GeoBizi diseña experiencias medioambientales: rutas, talleres y proyectos para colegios, empresas, instituciones y público general.' },
+    { name: 'description', content: 'Geobizi diseña experiencias medioambientales: rutas, talleres y proyectos para colegios, empresas, instituciones y público general.' },
     { name: 'robots', content: 'index, follow' },
-    { name: 'author', content: 'GeoBizi' },
-    { name: 'publisher', content: 'GeoBizi' },
+    { name: 'author', content: 'Geobizi' },
+    { name: 'publisher', content: 'Geobizi' },
     { name: 'theme-color', content: '#0b8a4c' },
     { name: 'language', content: 'es' },
-    { property: 'og:title', content: 'GeoBizi — Naturaleza desde el corazón' },
-    { property: 'og:description', content: 'GeoBizi diseña experiencias medioambientales: rutas, talleres y proyectos para colegios, empresas, instituciones y público general.' },
+    { property: 'og:title', content: 'Geobizi — Naturaleza desde el corazón' },
+    { property: 'og:description', content: 'Geobizi diseña experiencias medioambientales: rutas, talleres y proyectos para colegios, empresas, instituciones y público general.' },
     { property: 'og:type', content: 'website' },
     { property: 'og:url', content: pageUrl },
     { property: 'og:image', content: ogImage },
@@ -104,7 +104,7 @@ useHead({
           {
             "@type": "Organization",
             "@id": "https://www.geobizi.com/#organization",
-            "name": "GeoBizi",
+            "name": "Geobizi",
             "url": "https://www.geobizi.com",
             "logo": {
               "@type": "ImageObject",
@@ -121,8 +121,8 @@ useHead({
           {
             "@type": "WebPage",
             "url": pageUrl,
-            "name": "GeoBizi — Naturaleza desde el corazón",
-            "description": "GeoBizi diseña experiencias medioambientales: rutas, talleres y proyectos para colegios, empresas, instituciones y público general.",
+            "name": "Geobizi — Naturaleza desde el corazón",
+            "description": "Geobizi diseña experiencias medioambientales: rutas, talleres y proyectos para colegios, empresas, instituciones y público general.",
             "inLanguage": "es",
             "isPartOf": { "@id": "https://www.geobizi.com/#organization" },
             "image": {

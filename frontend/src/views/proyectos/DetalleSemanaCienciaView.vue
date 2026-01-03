@@ -10,7 +10,7 @@
 
     <h3>Aprendizaje vivencial y divulgativo</h3>
 
-    <p>A lo largo de diferentes ediciones, GeoBizi ha participado en la <strong>Zientzia Astea</strong> con propuestas diseñadas para centros escolares y público general. Las actividades se adaptan a cada espacio y nivel educativo, fomentando la curiosidad, la observación y la experimentación.</p>
+    <p>A lo largo de diferentes ediciones, Geobizi ha participado en la <strong>Zientzia Astea</strong> con propuestas diseñadas para centros escolares y público general. Las actividades se adaptan a cada espacio y nivel educativo, fomentando la curiosidad, la observación y la experimentación.</p>
 
     <p>Charlas, talleres de micromundo, experiencias medioambientales, rutas divulgativas, talleres de cianotipia, juegos de colores, identificación de árboles o recogida de muestras… Cada actividad es una puerta abierta al conocimiento y la exploración del entorno.</p>
 
@@ -74,14 +74,14 @@ const pageUrl = 'https://www.geobizi.com/detalle-semana-ciencia'
 const ogImage = 'https://www.geobizi.com/imagenes/proyectos/semanaciencia1.avif'
 
 useHead({
-  title: 'Semana de la Ciencia — Zientzia Astea | GeoBizi',
+  title: 'Semana de la Ciencia — Zientzia Astea | Geobizi',
   meta: [
     { name: 'description', content: 'Semana de la Ciencia (Zientzia Astea): talleres, rutas y actividades educativas para acercar la ciencia y el medio ambiente a todos los públicos.' },
     { name: 'robots', content: 'index, follow' },
-    { name: 'author', content: 'GeoBizi' },
+    { name: 'author', content: 'Geobizi' },
     { name: 'theme-color', content: '#0b8a4c' },
     { name: 'language', content: 'es' },
-    { property: 'og:title', content: 'Semana de la Ciencia — Zientzia Astea | GeoBizi' },
+    { property: 'og:title', content: 'Semana de la Ciencia — Zientzia Astea | Geobizi' },
     { property: 'og:description', content: 'Semana de la Ciencia (Zientzia Astea): talleres, rutas y actividades educativas para acercar la ciencia y el medio ambiente a todos los públicos.' },
     { property: 'og:type', content: 'article' },
     { property: 'og:url', content: pageUrl },
@@ -103,7 +103,7 @@ useHead({
           {
             "@type": "Organization",
             "@id": "https://www.geobizi.com/#organization",
-            "name": "GeoBizi",
+            "name": "Geobizi",
             "url": "https://www.geobizi.com",
             "logo": {
               "@type": "ImageObject",
@@ -120,7 +120,7 @@ useHead({
           {
             "@type": "WebPage",
             "url": pageUrl,
-            "name": "Semana de la Ciencia — Zientzia Astea | GeoBizi",
+            "name": "Semana de la Ciencia — Zientzia Astea | Geobizi",
             "description": "Semana de la Ciencia (Zientzia Astea): talleres, rutas y actividades educativas para acercar la ciencia y el medio ambiente a todos los públicos.",
             "inLanguage": "es",
             "isPartOf": { "@id": "https://www.geobizi.com/#organization" },

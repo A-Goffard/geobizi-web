@@ -70,7 +70,7 @@
 import { useHead } from '@vueuse/head'
 const pageUrl = 'https://www.geobizi.com/servicios/formacion'
 useHead({
-  title: 'Formación | GeoBizi',
+  title: 'Formación | Geobizi',
   meta: [{ name: 'description', content: 'Formación en sensibilización ambiental, regeneración, gestión de espacios y formación para docentes y técnicos.' }],
   link: [{ rel: 'canonical', href: pageUrl }]
 })

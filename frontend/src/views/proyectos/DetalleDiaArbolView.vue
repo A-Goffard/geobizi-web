@@ -8,7 +8,7 @@
 
     <p>
       El <strong>Día del Árbol</strong> es una celebración dedicada a la naturaleza y al cuidado del entorno. 
-      GeoBizi participa cada año con actividades educativas y participativas para todas las edades, 
+      Geobizi participa cada año con actividades educativas y participativas para todas las edades, 
       fomentando el respeto y la acción directa por los ecosistemas.
     </p>
 
@@ -87,15 +87,15 @@ const pageUrl = 'https://www.geobizi.com/detalle-dia-del-arbol'
 const ogImage = 'https://www.geobizi.com/imagenes/proyectos/diadelarbol1.avif'
 
 useHead({
-  title: 'Día del Árbol — Educación y acción ambiental | GeoBizi',
+  title: 'Día del Árbol — Educación y acción ambiental | Geobizi',
   meta: [
-    { name: 'description', content: 'Día del Árbol: talleres, rutas y actividades participativas de GeoBizi para cuidar, conocer y celebrar la naturaleza.' },
+    { name: 'description', content: 'Día del Árbol: talleres, rutas y actividades participativas de Geobizi para cuidar, conocer y celebrar la naturaleza.' },
     { name: 'robots', content: 'index, follow' },
-    { name: 'author', content: 'GeoBizi' },
+    { name: 'author', content: 'Geobizi' },
     { name: 'theme-color', content: '#0b8a4c' },
     { name: 'language', content: 'es' },
-    { property: 'og:title', content: 'Día del Árbol — Educación y acción ambiental | GeoBizi' },
-    { property: 'og:description', content: 'Día del Árbol: talleres, rutas y actividades participativas de GeoBizi para cuidar, conocer y celebrar la naturaleza.' },
+    { property: 'og:title', content: 'Día del Árbol — Educación y acción ambiental | Geobizi' },
+    { property: 'og:description', content: 'Día del Árbol: talleres, rutas y actividades participativas de Geobizi para cuidar, conocer y celebrar la naturaleza.' },
     { property: 'og:type', content: 'article' },
     { property: 'og:url', content: pageUrl },
     { property: 'og:image', content: ogImage },
@@ -116,7 +116,7 @@ useHead({
           {
             "@type": "Organization",
             "@id": "https://www.geobizi.com/#organization",
-            "name": "GeoBizi",
+            "name": "Geobizi",
             "url": "https://www.geobizi.com",
             "logo": {
               "@type": "ImageObject",
@@ -133,8 +133,8 @@ useHead({
           {
             "@type": "WebPage",
             "url": pageUrl,
-            "name": "Día del Árbol — Educación y acción ambiental | GeoBizi",
-            "description": "Día del Árbol: talleres, rutas y actividades participativas de GeoBizi para cuidar, conocer y celebrar la naturaleza.",
+            "name": "Día del Árbol — Educación y acción ambiental | Geobizi",
+            "description": "Día del Árbol: talleres, rutas y actividades participativas de Geobizi para cuidar, conocer y celebrar la naturaleza.",
             "inLanguage": "es",
             "isPartOf": { "@id": "https://www.geobizi.com/#organization" },
             "image": { "@type": "ImageObject", "url": ogImage, "width": 1080, "height": 1080 }

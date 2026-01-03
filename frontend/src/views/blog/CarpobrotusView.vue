@@ -61,14 +61,14 @@ const pageUrl = 'https://www.geobizi.com/blog/detalle-carpobrotus'
 const ogImage = 'https://www.geobizi.com/imagenes/blog/detalle/carpobrotus1.jpeg'
 
 useHead({
-  title: 'Carpobrotus edulis — Planta invasora | GeoBizi',
+  title: 'Carpobrotus edulis — Planta invasora | Geobizi',
   meta: [
     { name: 'description', content: 'Impacto ecológico de Carpobrotus edulis y medidas de control para proteger la biodiversidad costera.' },
     { name: 'robots', content: 'index, follow' },
-    { name: 'author', content: 'GeoBizi' },
+    { name: 'author', content: 'Geobizi' },
     { name: 'theme-color', content: '#0b8a4c' },
     { name: 'language', content: 'es' },
-    { property: 'og:title', content: 'Carpobrotus edulis — Planta invasora | GeoBizi' },
+    { property: 'og:title', content: 'Carpobrotus edulis — Planta invasora | Geobizi' },
     { property: 'og:description', content: 'Cómo identificar, controlar y restaurar áreas afectadas por Carpobrotus edulis.' },
     { property: 'og:type', content: 'article' },
     { property: 'og:url', content: pageUrl },
@@ -90,7 +90,7 @@ useHead({
           {
             "@type":"Organization",
             "@id":"https://www.geobizi.com/#organization",
-            "name":"GeoBizi",
+            "name":"Geobizi",
             "url":"https://www.geobizi.com",
             "logo": { "@type":"ImageObject","url":"https://www.geobizi.com/imagenes/GeobiziLogo.7ae1d6ce.png","width":1417,"height":313 },
             "sameAs":[

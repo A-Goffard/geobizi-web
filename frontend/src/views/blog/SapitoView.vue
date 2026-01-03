@@ -65,14 +65,14 @@ const pageUrl = 'https://www.geobizi.com/blog/detalle-sapito'
 const ogImage = 'https://www.geobizi.com/imagenes/blog/detalle/sapito1.avif'
 
 useHead({
-  title: 'El Sapito Corredor (Buffo Calamita) — Conservación | GeoBizi',
+  title: 'El Sapito Corredor (Buffo Calamita) — Conservación | Geobizi',
   meta: [
     { name: 'description', content: 'Información sobre el sapito corredor (Buffo Calamita), su biología, importancia ecológica, amenazas y acciones de conservación.' },
     { name: 'robots', content: 'index, follow' },
-    { name: 'author', content: 'GeoBizi' },
+    { name: 'author', content: 'Geobizi' },
     { name: 'theme-color', content: '#0b8a4c' },
     { name: 'language', content: 'es' },
-    { property: 'og:title', content: 'El Sapito Corredor — Conservación | GeoBizi' },
+    { property: 'og:title', content: 'El Sapito Corredor — Conservación | Geobizi' },
     { property: 'og:description', content: 'Biología y conservación del sapito corredor, acciones de protección y educación ambiental.' },
     { property: 'og:type', content: 'article' },
     { property: 'og:url', content: pageUrl },
@@ -94,7 +94,7 @@ useHead({
           {
             "@type": "Organization",
             "@id": "https://www.geobizi.com/#organization",
-            "name": "GeoBizi",
+            "name": "Geobizi",
             "url": "https://www.geobizi.com",
             "logo": { "@type": "ImageObject", "url": "https://www.geobizi.com/imagenes/GeobiziLogo.7ae1d6ce.png", "width": 1417, "height": 313 },
             "sameAs": [

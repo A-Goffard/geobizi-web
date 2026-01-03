@@ -142,7 +142,7 @@
 import { useHead } from '@vueuse/head'
 const pageUrl = 'https://www.geobizi.com/servicios/sensibilizacion'
 useHead({
-  title: 'Sensibilización | GeoBizi',
+  title: 'Sensibilización | Geobizi',
   meta: [{ name: 'description', content: 'Campañas, charlas y acciones de sensibilización para acercar la sostenibilidad a la ciudadanía y colectivos locales.' }],
   link: [{ rel: 'canonical', href: pageUrl }]
 })

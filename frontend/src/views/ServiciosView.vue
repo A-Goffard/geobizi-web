@@ -20,14 +20,14 @@
   const ogImage = 'https://www.geobizi.com/imagenes/servicios/servicios-hero.avif'
   
   useHead({
-    title: 'Servicios | GeoBizi',
+    title: 'Servicios | Geobizi',
     meta: [
-      { name: 'description', content: 'Servicios de GeoBizi: rutas, talleres, formaciones y proyectos medioambientales para colegios, empresas e instituciones.' },
+      { name: 'description', content: 'Servicios de Geobizi: rutas, talleres, formaciones y proyectos medioambientales para colegios, empresas e instituciones.' },
       { name: 'robots', content: 'index, follow' },
-      { name: 'author', content: 'GeoBizi' },
+      { name: 'author', content: 'Geobizi' },
       { name: 'theme-color', content: '#0b8a4c' },
       { name: 'language', content: 'es' },
-      { property: 'og:title', content: 'Servicios | GeoBizi' },
+      { property: 'og:title', content: 'Servicios | Geobizi' },
       { property: 'og:description', content: 'Rutas, talleres, formaciones y proyectos medioambientales para colegios, empresas e instituciones.' },
       { property: 'og:type', content: 'website' },
       { property: 'og:url', content: pageUrl },
@@ -47,7 +47,7 @@
             {
               "@type": "Organization",
               "@id": "https://www.geobizi.com/#organization",
-              "name": "GeoBizi",
+              "name": "Geobizi",
               "url": "https://www.geobizi.com",
               "logo": {
                 "@type": "ImageObject",
@@ -64,7 +64,7 @@
             {
               "@type": "WebPage",
               "url": pageUrl,
-              "name": "Servicios | GeoBizi",
+              "name": "Servicios | Geobizi",
               "description": "Rutas, talleres y proyectos medioambientales para colegios, empresas e instituciones.",
               "inLanguage": "es",
               "isPartOf": { "@id": "https://www.geobizi.com/#organization" },

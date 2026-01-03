@@ -91,16 +91,16 @@ const pageUrl = 'https://www.geobizi.com/calendario'
 const ogImage = 'https://www.geobizi.com/imagenes/proyectos/zallanatura/zallanatura2.avif'
 
 useHead({
-  title: 'Calendario de Actividades | GeoBizi',
+  title: 'Calendario de Actividades | Geobizi',
   meta: [
-    { name: 'description', content: 'Consulta el calendario de GeoBizi: rutas, talleres y actividades familiares y educativas. Reserva plazas y revisa fechas, horarios y ubicaciones.' },
+    { name: 'description', content: 'Consulta el calendario de Geobizi: rutas, talleres y actividades familiares y educativas. Reserva plazas y revisa fechas, horarios y ubicaciones.' },
     { name: 'robots', content: 'index, follow' },
-    { name: 'author', content: 'GeoBizi' },
-    { name: 'publisher', content: 'GeoBizi' },
+    { name: 'author', content: 'Geobizi' },
+    { name: 'publisher', content: 'Geobizi' },
     { name: 'theme-color', content: '#0b8a4c' },
     { name: 'language', content: 'es' },
-    { property: 'og:title', content: 'Calendario de Actividades | GeoBizi' },
-    { property: 'og:description', content: 'Consulta el calendario de GeoBizi: rutas, talleres y actividades familiares y educativas. Reserva plazas y revisa fechas, horarios y ubicaciones.' },
+    { property: 'og:title', content: 'Calendario de Actividades | Geobizi' },
+    { property: 'og:description', content: 'Consulta el calendario de Geobizi: rutas, talleres y actividades familiares y educativas. Reserva plazas y revisa fechas, horarios y ubicaciones.' },
     { property: 'og:type', content: 'website' },
     { property: 'og:url', content: pageUrl },
     { property: 'og:image', content: ogImage },
@@ -121,7 +121,7 @@ useHead({
           {
             "@type": "Organization",
             "@id": "https://www.geobizi.com/#organization",
-            "name": "GeoBizi",
+            "name": "Geobizi",
             "url": "https://www.geobizi.com",
             "logo": {
               "@type": "ImageObject",
@@ -138,8 +138,8 @@ useHead({
           {
             "@type": "WebPage",
             "url": pageUrl,
-            "name": "Calendario de Actividades | GeoBizi",
-            "description": "Consulta el calendario de GeoBizi: rutas, talleres y actividades familiares y educativas. Reserva plazas y revisa fechas, horarios y ubicaciones.",
+            "name": "Calendario de Actividades | Geobizi",
+            "description": "Consulta el calendario de Geobizi: rutas, talleres y actividades familiares y educativas. Reserva plazas y revisa fechas, horarios y ubicaciones.",
             "inLanguage": "es",
             "isPartOf": { "@id": "https://www.geobizi.com/#organization" },
             "image": {

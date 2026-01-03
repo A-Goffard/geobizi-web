@@ -104,16 +104,16 @@ const pageUrl = 'https://www.geobizi.com/reservas'
 const ogImage = 'https://www.geobizi.com/imagenes/proyectos/zallanatura/zallanatura2.avif' 
 
 useHead({
-  title: 'Reservas y Actividades | GeoBizi',
+  title: 'Reservas y Actividades | Geobizi',
   meta: [
-    { name: 'description', content: 'Reserva actividades y rutas de GeoBizi: talleres, rutas geológicas y proyectos ambientales. Consulta fechas, precios y plazas disponibles.' },
+    { name: 'description', content: 'Reserva actividades y rutas de Geobizi: talleres, rutas geológicas y proyectos ambientales. Consulta fechas, precios y plazas disponibles.' },
     { name: 'robots', content: 'index, follow' },
-    { name: 'author', content: 'GeoBizi' },
-    { name: 'publisher', content: 'GeoBizi' },
+    { name: 'author', content: 'Geobizi' },
+    { name: 'publisher', content: 'Geobizi' },
     { name: 'theme-color', content: '#0b8a4c' },
     { name: 'language', content: 'es' },
-    { property: 'og:title', content: 'Reservas y Actividades | GeoBizi' },
-    { property: 'og:description', content: 'Reserva actividades y rutas de GeoBizi: talleres, rutas geológicas y proyectos ambientales.' },
+    { property: 'og:title', content: 'Reservas y Actividades | Geobizi' },
+    { property: 'og:description', content: 'Reserva actividades y rutas de Geobizi: talleres, rutas geológicas y proyectos ambientales.' },
     { property: 'og:type', content: 'website' },
     { property: 'og:url', content: pageUrl },
     { property: 'og:image', content: ogImage },
@@ -134,7 +134,7 @@ useHead({
           {
             "@type": "Organization",
             "@id": "https://www.geobizi.com/#organization",
-            "name": "GeoBizi",
+            "name": "Geobizi",
             "url": "https://www.geobizi.com",
             "logo": {
               "@type": "ImageObject",
@@ -151,8 +151,8 @@ useHead({
           {
             "@type": "WebPage",
             "url": pageUrl,
-            "name": "Reservas y Actividades | GeoBizi",
-            "description": "Reserva actividades y rutas de GeoBizi: talleres, rutas geológicas y proyectos ambientales.",
+            "name": "Reservas y Actividades | Geobizi",
+            "description": "Reserva actividades y rutas de Geobizi: talleres, rutas geológicas y proyectos ambientales.",
             "inLanguage": "es",
             "isPartOf": { "@id": "https://www.geobizi.com/#organization" },
             "image": { "@type": "ImageObject", "url": ogImage, "width": 1080, "height": 1080 }

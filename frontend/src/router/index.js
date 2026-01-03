@@ -18,6 +18,7 @@ import DetalleDiaArbolView from '@/views/proyectos/DetalleDiaArbolView.vue'
 
 import BlogView from "../views/BlogView.vue";
 
+import DetalleFlyschBizkaiaView from "@/views/blog/FlyschBizkaiaView.vue";
 import PatrimonioEuropeo2023View from "../views/blog/PatrimonioEuropeo2023View.vue";
 import FreeToursView from "@/views/blog/FreeToursView.vue";
 import ValerianaRojaView from "@/views/blog/ValerianaRojaView.vue";
@@ -29,8 +30,9 @@ import CarpobrotusView from "@/views/blog/CarpobrotusView.vue";
 import FloraAutoctonaView from "@/views/blog/FloraAutoctonaView.vue";
 import FosilesView from "@/views/blog/FosilesView.vue";
 import DiaTierraView from "@/views/blog/DiaTierraView.vue";
-import EstramonioView from "@/views/blog/EstramonioView.vue"; // <-- nueva importación
+import EstramonioView from "@/views/blog/EstramonioView.vue";
 
+import OtrosView from "@/views/OtrosView.vue";
 import ContactoView from "../views/ContactoView.vue";
 
 import PoliticadecancelacionesView from "../views/PoliticadecancelacionesView.vue";
@@ -122,6 +124,11 @@ const routes = [
         component: BlogView,
     },
     {
+        path: "/blog/detalle-flysch-bizkaia",
+        name: "detalle-flysch-bizkaia",
+        component: DetalleFlyschBizkaiaView,
+    },
+    {
         path: "/blog/detalle-patrimonio",
         name: "detalle-patrimonio",
         component: PatrimonioEuropeo2023View,
@@ -180,6 +187,11 @@ const routes = [
         path: "/blog/detalle-dia-tierra",
         name: "dia-tierra",
         component: DiaTierraView,
+    },
+    {
+        path: "/otros",
+        name: "otros",
+        component: OtrosView,
     },
     {
         path: "/contacto",

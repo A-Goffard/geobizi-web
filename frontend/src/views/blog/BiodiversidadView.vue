@@ -135,14 +135,14 @@ const pageUrl = 'https://www.geobizi.com/blog/detalle-biodiversidad'
 const ogImage = 'https://www.geobizi.com/imagenes/blog/detalle/mariposas.avif'
 
 useHead({
-  title: 'La Importancia de la Biodiversidad | GeoBizi',
+  title: 'La Importancia de la Biodiversidad | Geobizi',
   meta: [
     { name: 'description', content: 'Explora la relación entre biodiversidad y cambio climático y por qué proteger los ecosistemas es esencial para la resiliencia del planeta.' },
     { name: 'robots', content: 'index, follow' },
-    { name: 'author', content: 'GeoBizi' },
+    { name: 'author', content: 'Geobizi' },
     { name: 'theme-color', content: '#0b8a4c' },
     { name: 'language', content: 'es' },
-    { property: 'og:title', content: 'La Importancia de la Biodiversidad | GeoBizi' },
+    { property: 'og:title', content: 'La Importancia de la Biodiversidad | Geobizi' },
     { property: 'og:description', content: 'Explora la conexión entre biodiversidad y cambio climático y cómo proteger la naturaleza es vital para el futuro.' },
     { property: 'og:type', content: 'article' },
     { property: 'og:url', content: pageUrl },
@@ -163,7 +163,7 @@ useHead({
           {
             "@type":"Organization",
             "@id":"https://www.geobizi.com/#organization",
-            "name":"GeoBizi",
+            "name":"Geobizi",
             "url":"https://www.geobizi.com",
             "logo": { "@type":"ImageObject","url":"https://www.geobizi.com/imagenes/GeobiziLogo.7ae1d6ce.png","width":1417,"height":313 },
             "sameAs":[

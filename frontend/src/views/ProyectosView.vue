@@ -23,15 +23,15 @@ const pageUrl = 'https://www.geobizi.com/proyectos'
 const ogImage = 'https://www.geobizi.com/imagenes/proyectos/proyectos-hero.avif'
 
 useHead({
-  title: 'Proyectos | GeoBizi',
+  title: 'Proyectos | Geobizi',
   meta: [
-    { name: 'description', content: 'Proyectos de GeoBizi: restauración, educación ambiental y colaboraciones con instituciones.' },
+    { name: 'description', content: 'Proyectos de Geobizi: restauración, educación ambiental y colaboraciones con instituciones.' },
     { name: 'robots', content: 'index, follow' },
-    { name: 'author', content: 'GeoBizi' },
+    { name: 'author', content: 'Geobizi' },
     { name: 'theme-color', content: '#0b8a4c' },
     { name: 'language', content: 'es' },
-    { property: 'og:title', content: 'Proyectos | GeoBizi' },
-    { property: 'og:description', content: 'Proyectos de restauración y educación ambiental realizados por GeoBizi.' },
+    { property: 'og:title', content: 'Proyectos | Geobizi' },
+    { property: 'og:description', content: 'Proyectos de restauración y educación ambiental realizados por Geobizi.' },
     { property: 'og:type', content: 'website' },
     { property: 'og:url', content: pageUrl },
     { property: 'og:image', content: ogImage }
@@ -50,7 +50,7 @@ useHead({
           {
             "@type":"Organization",
             "@id":"https://www.geobizi.com/#organization",
-            "name":"GeoBizi",
+            "name":"Geobizi",
             "url":"https://www.geobizi.com",
             "logo": { "@type":"ImageObject","url":"https://www.geobizi.com/imagenes/GeobiziLogo.7ae1d6ce.png","width":1417,"height":313 },
             "sameAs":[
@@ -62,8 +62,8 @@ useHead({
           {
             "@type":"WebPage",
             "url": pageUrl,
-            "name":"Proyectos | GeoBizi",
-            "description":"Proyectos de restauración y educación ambiental realizados por GeoBizi.",
+            "name":"Proyectos | Geobizi",
+            "description":"Proyectos de restauración y educación ambiental realizados por Geobizi.",
             "inLanguage":"es",
             "isPartOf": { "@id": "https://www.geobizi.com/#organization" },
             "image": { "@type":"ImageObject","url":ogImage,"width":1080,"height":1080 }

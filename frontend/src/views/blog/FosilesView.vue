@@ -59,14 +59,14 @@ const pageUrl = 'https://www.geobizi.com/blog/detalle-fosiles'
 const ogImage = 'https://www.geobizi.com/imagenes/blog/detalle/fosil1.avif'
 
 useHead({
-  title: '¿Qué son los fósiles y cómo se forman? | GeoBizi',
+  title: '¿Qué son los fósiles y cómo se forman? | Geobizi',
   meta: [
     { name: 'description', content: 'Explicación sencilla sobre qué son los fósiles, procesos de formación y su importancia para la paleontología.' },
     { name: 'robots', content: 'index, follow' },
-    { name: 'author', content: 'GeoBizi' },
+    { name: 'author', content: 'Geobizi' },
     { name: 'theme-color', content: '#0b8a4c' },
     { name: 'language', content: 'es' },
-    { property: 'og:title', content: '¿Qué son los fósiles y cómo se forman? | GeoBizi' },
+    { property: 'og:title', content: '¿Qué son los fósiles y cómo se forman? | Geobizi' },
     { property: 'og:description', content: 'Aprende sobre la formación de fósiles y su relevancia científica para comprender la historia de la vida.' },
     { property: 'og:type', content: 'article' },
     { property: 'og:url', content: pageUrl },
@@ -88,7 +88,7 @@ useHead({
           {
             "@type":"Organization",
             "@id":"https://www.geobizi.com/#organization",
-            "name":"GeoBizi",
+            "name":"Geobizi",
             "url":"https://www.geobizi.com",
             "logo": { "@type":"ImageObject","url":"https://www.geobizi.com/imagenes/GeobiziLogo.7ae1d6ce.png","width":1417,"height":313 },
             "sameAs":[

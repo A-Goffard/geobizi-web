@@ -80,10 +80,10 @@ const pageUrl = 'https://www.geobizi.com/servicios/rutas'
 const ogImage = 'https://www.geobizi.com/imagenes/servicios/detalle/sopela.avif'
 
 useHead({
-  title: 'Rutas guiadas | GeoBizi',
+  title: 'Rutas guiadas | Geobizi',
   meta: [
     { name: 'description', content: 'Rutas guiadas geológicas, medioambientales y temáticas para colegios, asociaciones, empresas y público general. Itinerarios adaptados.' },
-    { property: 'og:title', content: 'Rutas guiadas | GeoBizi' },
+    { property: 'og:title', content: 'Rutas guiadas | Geobizi' },
     { property: 'og:description', content: 'Rutas interpretativas (Flysch, naturaleza y temáticas) adaptadas por edad y objetivos.' },
     { property: 'og:url', content: pageUrl },
     { property: 'og:image', content: ogImage }

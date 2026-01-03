@@ -65,14 +65,14 @@ const pageUrl = 'https://www.geobizi.com/blog/detalle-estuarios'
 const ogImage = 'https://www.geobizi.com/imagenes/blog/detalle/estuario1.avif'
 
 useHead({
-  title: 'La formación de los estuarios | GeoBizi',
+  title: 'La formación de los estuarios | Geobizi',
   meta: [
     { name: 'description', content: 'Qué son los estuarios, su formación, importancia ecológica y amenazas. Información para educar y conservar estos ecosistemas costeros.' },
     { name: 'robots', content: 'index, follow' },
-    { name: 'author', content: 'GeoBizi' },
+    { name: 'author', content: 'Geobizi' },
     { name: 'theme-color', content: '#0b8a4c' },
     { name: 'language', content: 'es' },
-    { property: 'og:title', content: 'La formación de los estuarios | GeoBizi' },
+    { property: 'og:title', content: 'La formación de los estuarios | Geobizi' },
     { property: 'og:description', content: 'Qué son los estuarios, su formación, importancia ecológica y amenazas. Aprende cómo conservar estos valiosos ecosistemas.' },
     { property: 'og:type', content: 'article' },
     { property: 'og:url', content: pageUrl },
@@ -94,7 +94,7 @@ useHead({
           {
             "@type":"Organization",
             "@id":"https://www.geobizi.com/#organization",
-            "name":"GeoBizi",
+            "name":"Geobizi",
             "url":"https://www.geobizi.com",
             "logo": { "@type":"ImageObject","url":"https://www.geobizi.com/imagenes/GeobiziLogo.7ae1d6ce.png","width":1417,"height":313 },
             "sameAs":[

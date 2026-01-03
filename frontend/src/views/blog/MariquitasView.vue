@@ -33,18 +33,18 @@
     <p>Además de sus beneficios ecológicos, las mariquitas tienen un valor educativo significativo. Su comportamiento y ciclo de vida despiertan la curiosidad y el interés por la naturaleza, especialmente entre los niños. Por ello, uno de nuestros talleres estrella está diseñado para enseñar a los más pequeños sobre la importancia de las mariquitas fabricando y decorando pequeñas casitas para ellas.</p>
     
     <h2>Descubre Nuestros Talleres</h2>
-    <p>Visita nuestra tienda online para ver si hay talleres disponibles sobre las mariquitas y obtener casitas para montar. <a href="https://www.geobizi.com/geotienda" target="_blank" rel="noopener noreferrer" title="Tienda GeoBizi">https://www.geobizi.com/geotienda</a></p>
+    <p>Visita nuestra tienda online para ver si hay talleres disponibles sobre las mariquitas y obtener casitas para montar. <a href="https://www.geobizi.com/geotienda" target="_blank" rel="noopener noreferrer" title="Tienda Geobizi">https://www.geobizi.com/geotienda</a></p>
     
     <h2>Conclusión</h2>
     <p>Las mariquitas son esenciales para la sostenibilidad de nuestros ecosistemas, actuando como depredadoras naturales y polinizadoras, y sirviendo como indicadores de la salud del hábitat. Proteger y preservar a las mariquitas es fundamental para asegurar un futuro ecológico balanceado y sostenible.</p>
 
     <p class="social-media"><b>¡Anímate a seguirnos en redes sociales para no perderte nuestras actividades!</b></p>
 
-    <a href="https://www.instagram.com/geotxiki/" target="_blank" rel="noopener noreferrer" title="GeoBizi en Instagram">
-        <img src="@/assets/icons/instagram.png" alt="GeoBizi en Instagram" class="social-icon" loading="lazy" />
+    <a href="https://www.instagram.com/geotxiki/" target="_blank" rel="noopener noreferrer" title="Geobizi en Instagram">
+        <img src="@/assets/icons/instagram.png" alt="Geobizi en Instagram" class="social-icon" loading="lazy" />
     </a>
-    <a href="https://www.facebook.com/geobizirik/" target="_blank" rel="noopener noreferrer" title="GeoBizi en Facebook">
-        <img src="@/assets/icons/facebook.png" alt="GeoBizi en Facebook" class="social-icon" loading="lazy" />
+    <a href="https://www.facebook.com/geobizirik/" target="_blank" rel="noopener noreferrer" title="Geobizi en Facebook">
+        <img src="@/assets/icons/facebook.png" alt="Geobizi en Facebook" class="social-icon" loading="lazy" />
     </a>
     <div class="imagen-trio">
       <div>
@@ -86,15 +86,15 @@ const pageUrl = 'https://www.geobizi.com/blog/detalle-mariquitas'
 const ogImage = 'https://www.geobizi.com/imagenes/blog/detalle/mariquita1.avif'
 
 useHead({
-  title: 'La Importancia de las Mariquitas — GeoBizi',
+  title: 'La Importancia de las Mariquitas — Geobizi',
   meta: [
     { name: 'description', content: 'Descubre por qué las mariquitas son esenciales como control biológico, su valor educativo y talleres de Geobizi.' },
     { name: 'robots', content: 'index, follow' },
-    { name: 'author', content: 'GeoBizi' },
+    { name: 'author', content: 'Geobizi' },
     { name: 'theme-color', content: '#0b8a4c' },
     { name: 'language', content: 'es' },
-    { property: 'og:title', content: 'La Importancia de las Mariquitas — GeoBizi' },
-    { property: 'og:description', content: 'Control biológico, educación ambiental y talleres sobre mariquitas ofrecidos por GeoBizi.' },
+    { property: 'og:title', content: 'La Importancia de las Mariquitas — Geobizi' },
+    { property: 'og:description', content: 'Control biológico, educación ambiental y talleres sobre mariquitas ofrecidos por Geobizi.' },
     { property: 'og:type', content: 'article' },
     { property: 'og:url', content: pageUrl },
     { property: 'og:image', content: ogImage },
@@ -115,7 +115,7 @@ useHead({
           {
             "@type":"Organization",
             "@id":"https://www.geobizi.com/#organization",
-            "name":"GeoBizi",
+            "name":"Geobizi",
             "url":"https://www.geobizi.com",
             "logo": { "@type":"ImageObject", "url":"https://www.geobizi.com/imagenes/GeobiziLogo.7ae1d6ce.png", "width":1417, "height":313 },
             "sameAs":[

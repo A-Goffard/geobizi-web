@@ -114,7 +114,7 @@
 import { useHead } from '@vueuse/head'
 const pageUrl = 'https://www.geobizi.com/servicios/actividades'
 useHead({
-    title: 'Actividades y Talleres | GeoBizi',
+    title: 'Actividades y Talleres | Geobizi',
     meta: [{ name: 'description', content: 'Talleres y actividades: reciclaje creativo, cianotipias, bombas de semillas, rutas, huertos urbanos y formaciones para distintos colectivos.' }],
     link: [{ rel: 'canonical', href: pageUrl }]
 })

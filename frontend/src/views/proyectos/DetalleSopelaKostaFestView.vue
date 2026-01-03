@@ -40,7 +40,7 @@
         <img
           class="img"
           src="/imagenes/proyectos/sopelakostafest/sopelakostafest1.avif"
-          alt="Talleres y actividades de GeoBizi en Sopela Kosta Fest"
+          alt="Talleres y actividades de Geobizi en Sopela Kosta Fest"
           title="Sopela Kosta Fest — imagen 1"
           loading="lazy"
         />
@@ -69,7 +69,7 @@
         <img
           class="img"
           src="/imagenes/proyectos/sopelakostafest/sopelakostafest4.avif"
-          alt="Talleres y actividades de GeoBizi en Sopela Kosta Fest"
+          alt="Talleres y actividades de Geobizi en Sopela Kosta Fest"
           title="Sopela Kosta Fest — imagen 1"
           loading="lazy"
         />
@@ -103,15 +103,15 @@ const pageUrl = 'https://www.geobizi.com/detalle-sopela-kosta-fest'
 const ogImage = 'https://www.geobizi.com/imagenes/proyectos/sopelakostafest1.avif'
 
 useHead({
-  title: 'Sopela Kosta Fest — Actividades creativas y medioambientales | GeoBizi',
+  title: 'Sopela Kosta Fest — Actividades creativas y medioambientales | Geobizi',
   meta: [
-    { name: 'description', content: 'Sopela Kosta Fest: talleres, rutas y experiencias educativas en la costa. Actividades de GeoBizi para descubrir la naturaleza, la ciencia y la creatividad junto al mar.' },
+    { name: 'description', content: 'Sopela Kosta Fest: talleres, rutas y experiencias educativas en la costa. Actividades de Geobizi para descubrir la naturaleza, la ciencia y la creatividad junto al mar.' },
     { name: 'robots', content: 'index, follow' },
-    { name: 'author', content: 'GeoBizi' },
+    { name: 'author', content: 'Geobizi' },
     { name: 'theme-color', content: '#0b8a4c' },
     { name: 'language', content: 'es' },
-    { property: 'og:title', content: 'Sopela Kosta Fest — Actividades creativas y medioambientales | GeoBizi' },
-    { property: 'og:description', content: 'Sopela Kosta Fest: talleres, rutas y experiencias educativas en la costa. Actividades de GeoBizi para descubrir la naturaleza, la ciencia y la creatividad junto al mar.' },
+    { property: 'og:title', content: 'Sopela Kosta Fest — Actividades creativas y medioambientales | Geobizi' },
+    { property: 'og:description', content: 'Sopela Kosta Fest: talleres, rutas y experiencias educativas en la costa. Actividades de Geobizi para descubrir la naturaleza, la ciencia y la creatividad junto al mar.' },
     { property: 'og:type', content: 'article' },
     { property: 'og:url', content: pageUrl },
     { property: 'og:image', content: ogImage },
@@ -132,7 +132,7 @@ useHead({
           {
             "@type": "Organization",
             "@id": "https://www.geobizi.com/#organization",
-            "name": "GeoBizi",
+            "name": "Geobizi",
             "url": "https://www.geobizi.com",
             "logo": {
               "@type": "ImageObject",
@@ -149,8 +149,8 @@ useHead({
           {
             "@type": "WebPage",
             "url": pageUrl,
-            "name": "Sopela Kosta Fest — Actividades creativas y medioambientales | GeoBizi",
-            "description": "Sopela Kosta Fest: talleres, rutas y experiencias educativas en la costa. Actividades de GeoBizi para descubrir la naturaleza, la ciencia y la creatividad junto al mar.",
+            "name": "Sopela Kosta Fest — Actividades creativas y medioambientales | Geobizi",
+            "description": "Sopela Kosta Fest: talleres, rutas y experiencias educativas en la costa. Actividades de Geobizi para descubrir la naturaleza, la ciencia y la creatividad junto al mar.",
             "inLanguage": "es",
             "isPartOf": { "@id": "https://www.geobizi.com/#organization" },
             "image": { "@type": "ImageObject", "url": ogImage, "width": 1080, "height": 1080 }

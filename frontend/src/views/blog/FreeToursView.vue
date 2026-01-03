@@ -56,11 +56,11 @@
     </ul>
     <p class="social-media"><b>¡Anímate a seguirnos en redes sociales para no perderte nuestras actividades!</b></p>
 
-    <a href="https://www.instagram.com/geotxiki/" target="_blank" rel="noopener noreferrer" title="GeoBizi en Instagram">
-        <img src="@/assets/icons/instagram.png" alt="GeoBizi en Instagram" class="social-icon" loading="lazy" />
+    <a href="https://www.instagram.com/geotxiki/" target="_blank" rel="noopener noreferrer" title="Geobizi en Instagram">
+        <img src="@/assets/icons/instagram.png" alt="Geobizi en Instagram" class="social-icon" loading="lazy" />
     </a>
-    <a href="https://www.facebook.com/geobizirik/" target="_blank" rel="noopener noreferrer" title="GeoBizi en Facebook">
-        <img src="@/assets/icons/facebook.png" alt="GeoBizi en Facebook" class="social-icon" loading="lazy" />
+    <a href="https://www.facebook.com/geobizirik/" target="_blank" rel="noopener noreferrer" title="Geobizi en Facebook">
+        <img src="@/assets/icons/facebook.png" alt="Geobizi en Facebook" class="social-icon" loading="lazy" />
     </a>
     <div class="imagen-trio">
       <div>
@@ -102,15 +102,15 @@ const pageUrl = 'https://www.geobizi.com/blog/detalle-free-tours'
 const ogImage = 'https://www.geobizi.com/imagenes/blog/detalle/freetour1.avif'
 
 useHead({
-  title: 'Free Tours — Qué son y cómo funcionan | GeoBizi',
+  title: 'Free Tours — Qué son y cómo funcionan | Geobizi',
   meta: [
     { name: 'description', content: 'Guía práctica sobre Free Tours: qué son, cómo funcionan, ventajas y consejos para disfrutar de visitas guiadas flexibles y accesibles.' },
     { name: 'robots', content: 'index, follow' },
-    { name: 'author', content: 'GeoBizi' },
+    { name: 'author', content: 'Geobizi' },
     { name: 'theme-color', content: '#0b8a4c' },
     { name: 'language', content: 'es' },
-    { property: 'og:title', content: 'Free Tours — Qué son y cómo funcionan | GeoBizi' },
-    { property: 'og:description', content: 'Guía práctica sobre Free Tours: qué son, cómo funcionan y cómo reservar con GeoBizi.' },
+    { property: 'og:title', content: 'Free Tours — Qué son y cómo funcionan | Geobizi' },
+    { property: 'og:description', content: 'Guía práctica sobre Free Tours: qué son, cómo funcionan y cómo reservar con Geobizi.' },
     { property: 'og:type', content: 'article' },
     { property: 'og:url', content: pageUrl },
     { property: 'og:image', content: ogImage },
@@ -131,7 +131,7 @@ useHead({
           {
             "@type":"Organization",
             "@id":"https://www.geobizi.com/#organization",
-            "name":"GeoBizi",
+            "name":"Geobizi",
             "url":"https://www.geobizi.com",
             "logo": { "@type":"ImageObject","url":"https://www.geobizi.com/imagenes/GeobiziLogo.7ae1d6ce.png","width":1417,"height":313 },
             "sameAs":[

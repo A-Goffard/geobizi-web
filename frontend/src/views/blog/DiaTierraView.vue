@@ -63,15 +63,15 @@ const pageUrl = 'https://www.geobizi.com/blog/detalle-dia-tierra'
 const ogImage = 'https://www.geobizi.com/imagenes/blog/detalle/diatierra1.avif'
 
 useHead({
-  title: 'Día Mundial de la Tierra — GeoBizi',
+  title: 'Día Mundial de la Tierra — Geobizi',
   meta: [
     { name: 'description', content: 'Historia y propuestas para participar en el Día Mundial de la Tierra. Actividades y formas de contribuir localmente.' },
     { name: 'robots', content: 'index, follow' },
-    { name: 'author', content: 'GeoBizi' },
+    { name: 'author', content: 'Geobizi' },
     { name: 'theme-color', content: '#0b8a4c' },
     { name: 'language', content: 'es' },
-    { property: 'og:title', content: 'Día Mundial de la Tierra — GeoBizi' },
-    { property: 'og:description', content: 'Historia y formas de participar en el Día Mundial de la Tierra. Actividades y propuestas de GeoBizi.' },
+    { property: 'og:title', content: 'Día Mundial de la Tierra — Geobizi' },
+    { property: 'og:description', content: 'Historia y formas de participar en el Día Mundial de la Tierra. Actividades y propuestas de Geobizi.' },
     { property: 'og:type', content: 'article' },
     { property: 'og:url', content: pageUrl },
     { property: 'og:image', content: ogImage },
@@ -92,7 +92,7 @@ useHead({
           {
             "@type":"Organization",
             "@id":"https://www.geobizi.com/#organization",
-            "name":"GeoBizi",
+            "name":"Geobizi",
             "url":"https://www.geobizi.com",
             "logo": { "@type":"ImageObject","url":"https://www.geobizi.com/imagenes/GeobiziLogo.7ae1d6ce.png","width":1417,"height":313 },
             "sameAs":[

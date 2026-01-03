@@ -45,13 +45,13 @@ const pageUrl = 'https://www.geobizi.com/blog/detalle-estramonio'
 const ogImage = 'https://www.geobizi.com/imagenes/blog/detalle/estramonio1.avif'
 
 useHead({
-  title: 'Estramonio en Azkorri — Riesgos y precauciones | GeoBizi',
+  title: 'Estramonio en Azkorri — Riesgos y precauciones | Geobizi',
   meta: [
     { name: 'description', content: 'Información sobre el estramonio (Datura stramonium) encontrado en Azkorri: origen, distribución, riesgos y precauciones. No tocar; mantener a niños y mascotas alejados.' },
     { name: 'robots', content: 'index, follow' },
-    { name: 'author', content: 'GeoBizi' },
+    { name: 'author', content: 'Geobizi' },
     { name: 'language', content: 'es' },
-    { property: 'og:title', content: 'Estramonio en Azkorri — Riesgos y precauciones | GeoBizi' },
+    { property: 'og:title', content: 'Estramonio en Azkorri — Riesgos y precauciones | Geobizi' },
     { property: 'og:description', content: 'Conoce el origen probable, la distribución actual, los riesgos y qué hacer si hay contacto o ingestión accidental.' },
     { property: 'og:type', content: 'article' },
     { property: 'og:url', content: pageUrl },
@@ -72,7 +72,7 @@ useHead({
           {
             "@type":"Organization",
             "@id":"https://www.geobizi.com/#organization",
-            "name":"GeoBizi",
+            "name":"Geobizi",
             "url":"https://www.geobizi.com"
           },
           {

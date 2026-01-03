@@ -74,14 +74,14 @@ const pageUrl = 'https://www.geobizi.com/detalle-semana-verde'
 const ogImage = 'https://www.geobizi.com/imagenes/proyectos/semanaverde1.avif'
 
 useHead({
-  title: 'Semana Verde — Aste Berdea | GeoBizi',
+  title: 'Semana Verde — Aste Berdea | Geobizi',
   meta: [
     { name: 'description', content: 'Semana Verde (Aste Berdea): talleres medioambientales, rutas divulgativas y actividades de sostenibilidad en Getxo. Una experiencia participativa y educativa.' },
     { name: 'robots', content: 'index, follow' },
-    { name: 'author', content: 'GeoBizi' },
+    { name: 'author', content: 'Geobizi' },
     { name: 'theme-color', content: '#0b8a4c' },
     { name: 'language', content: 'es' },
-    { property: 'og:title', content: 'Semana Verde — Aste Berdea | GeoBizi' },
+    { property: 'og:title', content: 'Semana Verde — Aste Berdea | Geobizi' },
     { property: 'og:description', content: 'Semana Verde (Aste Berdea): talleres medioambientales, rutas divulgativas y actividades de sostenibilidad en Getxo. Una experiencia participativa y educativa.' },
     { property: 'og:type', content: 'article' },
     { property: 'og:url', content: pageUrl },
@@ -103,7 +103,7 @@ useHead({
           {
             "@type": "Organization",
             "@id": "https://www.geobizi.com/#organization",
-            "name": "GeoBizi",
+            "name": "Geobizi",
             "url": "https://www.geobizi.com",
             "logo": {
               "@type": "ImageObject",
@@ -120,7 +120,7 @@ useHead({
           {
             "@type": "WebPage",
             "url": pageUrl,
-            "name": "Semana Verde — Aste Berdea | GeoBizi",
+            "name": "Semana Verde — Aste Berdea | Geobizi",
             "description": "Semana Verde (Aste Berdea): talleres medioambientales, rutas divulgativas y actividades de sostenibilidad en Getxo. Una experiencia participativa y educativa.",
             "inLanguage": "es",
             "isPartOf": { "@id": "https://www.geobizi.com/#organization" },

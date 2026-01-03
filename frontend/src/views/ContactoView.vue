@@ -23,7 +23,7 @@
           <input type="checkbox" id="privacy" v-model="formData.privacyAccepted" required>
           <label for="privacy">
             He leído y acepto la 
-            <a href="/politica-de-privacidad" target="_blank" rel="noopener noreferrer" title="Política de privacidad de GeoBizi">política de privacidad</a>.
+            <a href="/politica-de-privacidad" target="_blank" rel="noopener noreferrer" title="Política de privacidad de Geobizi">política de privacidad</a>.
           </label>
         </div>
         <div class="center">
@@ -44,15 +44,15 @@ const pageUrl = 'https://www.geobizi.com/contacto'
 const ogImage = 'https://www.geobizi.com/imagenes/contacto/contacto-hero.avif'
 
 useHead({
-  title: 'Contacto | GeoBizi',
+  title: 'Contacto | Geobizi',
   meta: [
-    { name: 'description', content: 'Contacto de GeoBizi: reservas, colaboraciones y consultas sobre actividades y proyectos medioambientales.' },
+    { name: 'description', content: 'Contacto de Geobizi: reservas, colaboraciones y consultas sobre actividades y proyectos medioambientales.' },
     { name: 'robots', content: 'index, follow' },
-    { name: 'author', content: 'GeoBizi' },
+    { name: 'author', content: 'Geobizi' },
     { name: 'theme-color', content: '#0b8a4c' },
     { name: 'language', content: 'es' },
-    { property: 'og:title', content: 'Contacto | GeoBizi' },
-    { property: 'og:description', content: 'Contacto de GeoBizi para reservas, colaboraciones y consultas.' },
+    { property: 'og:title', content: 'Contacto | Geobizi' },
+    { property: 'og:description', content: 'Contacto de Geobizi para reservas, colaboraciones y consultas.' },
     { property: 'og:type', content: 'website' },
     { property: 'og:url', content: pageUrl },
     { property: 'og:image', content: ogImage }
@@ -71,7 +71,7 @@ useHead({
           {
             "@type":"Organization",
             "@id":"https://www.geobizi.com/#organization",
-            "name":"GeoBizi",
+            "name":"Geobizi",
             "url":"https://www.geobizi.com",
             "logo": { "@type":"ImageObject","url":"https://www.geobizi.com/imagenes/GeobiziLogo.7ae1d6ce.png","width":1417,"height":313 },
             "sameAs":[
@@ -83,7 +83,7 @@ useHead({
           {
             "@type":"ContactPage",
             "url": pageUrl,
-            "name":"Contacto | GeoBizi",
+            "name":"Contacto | Geobizi",
             "description":"Formulario y datos de contacto para reservas, colaboraciones y consultas.",
             "inLanguage":"es",
             "isPartOf": { "@id": "https://www.geobizi.com/#organization" },

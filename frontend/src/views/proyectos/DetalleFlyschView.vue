@@ -73,14 +73,14 @@ const pageUrl = 'https://www.geobizi.com/detalle-flysch'
 const ogImage = 'https://www.geobizi.com/imagenes/proyectos/flyschdigital1.avif'
 
 useHead({
-  title: 'Flysch Digital — Yincana interactiva | GeoBizi',
+  title: 'Flysch Digital — Yincana interactiva | Geobizi',
   meta: [
     { name: 'description', content: 'Flysch Digital: yincana interactiva para explorar el Flysch de Bizkaia. Actividad educativa y divertida para familias, colegios y grupos.' },
     { name: 'robots', content: 'index, follow' },
-    { name: 'author', content: 'GeoBizi' },
+    { name: 'author', content: 'Geobizi' },
     { name: 'theme-color', content: '#0b8a4c' },
     { name: 'language', content: 'es' },
-    { property: 'og:title', content: 'Flysch Digital — Yincana interactiva | GeoBizi' },
+    { property: 'og:title', content: 'Flysch Digital — Yincana interactiva | Geobizi' },
     { property: 'og:description', content: 'Flysch Digital: yincana interactiva para explorar el Flysch de Bizkaia. Actividad educativa y divertida para familias, colegios y grupos.' },
     { property: 'og:type', content: 'article' },
     { property: 'og:url', content: pageUrl },
@@ -102,7 +102,7 @@ useHead({
           {
             "@type": "Organization",
             "@id": "https://www.geobizi.com/#organization",
-            "name": "GeoBizi",
+            "name": "Geobizi",
             "url": "https://www.geobizi.com",
             "logo": {
               "@type": "ImageObject",
@@ -119,7 +119,7 @@ useHead({
           {
             "@type": "WebPage",
             "url": pageUrl,
-            "name": "Flysch Digital — Yincana interactiva | GeoBizi",
+            "name": "Flysch Digital — Yincana interactiva | Geobizi",
             "description": "Flysch Digital: yincana interactiva para explorar el Flysch de Bizkaia. Actividad educativa y divertida para familias, colegios y grupos.",
             "inLanguage": "es",
             "isPartOf": { "@id": "https://www.geobizi.com/#organization" },

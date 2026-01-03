@@ -3,7 +3,7 @@
       <nav>
         <div class="branding">
           <router-link :to="{name: 'inicio'}" title="Ir a Inicio">
-            <img src="@/assets/GeobiziLogo.png" class="logo" alt="GeoBizi - Logo" title="GeoBizi - Inicio">
+            <img src="@/assets/GeobiziLogo.png" class="logo" alt="Geobizi - Logo" title="Geobizi - Inicio">
           </router-link>
         </div>
         <ul v-show="!mobile" class="navigation">
@@ -28,13 +28,16 @@
           <li>
             <router-link class="NavButton link" :to="{name: 'proyectos'}" @click="closeMobileNav" title="Proyectos">Proyectos</router-link>
           </li>
+                    <li>
+            <router-link class="NavButton link" :to="{name: 'otros'}" @click="closeMobileNav" title="Otros">Otros</router-link>
+          </li>
           <li>
             <router-link class="NavButton link" :to="{name: 'contacto'}" @click="closeMobileNav" title="Contacto">Contacto</router-link>
           </li>
         </ul>
         <div class="icon">
             <button @click="toggleMobileNav" v-show="mobile" aria-label="Alternar menú" title="Abrir/cerrar menú">
-                <img :class="{ 'icon-active': mobileNav }" src="@/assets/Hojitas.png" class="hojitas" alt="Icono menú - GeoBizi" title="Abrir menú">
+                <img :class="{ 'icon-active': mobileNav }" src="@/assets/Hojitas.png" class="hojitas" alt="Icono menú - Geobizi" title="Abrir menú">
             </button>
         </div>
         <transition name="mobile-nav">
@@ -59,6 +62,9 @@
             </li>
             <li>
               <router-link class="NavButton link" :to="{name: 'proyectos'}" @click="closeMobileNav" title="Proyectos">Proyectos</router-link>
+            </li>
+                        <li>
+              <router-link class="NavButton link" :to="{name: 'otros'}" @click="closeMobileNav" title="Otros">Otros</router-link>
             </li>
             <li>
               <router-link class="NavButton link" :to="{name: 'contacto'}" @click="closeMobileNav" title="Contacto">Contacto</router-link>

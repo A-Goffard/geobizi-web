@@ -51,7 +51,7 @@
 import { useHead } from '@vueuse/head'
 const pageUrl = 'https://www.geobizi.com/servicios/digital-sostenible'
 useHead({
-  title: 'Proyectos digitales y sostenibilidad | GeoBizi',
+  title: 'Proyectos digitales y sostenibilidad | Geobizi',
   meta: [{ name: 'description', content: 'Yincanas digitales, rutas interactivas y recursos digitales para educación ambiental y campañas sostenibles.' }],
   link: [{ rel: 'canonical', href: pageUrl }]
 })

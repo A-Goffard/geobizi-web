@@ -13,19 +13,19 @@
           </li>
         </ul>
         <div class="social-media">
-          <a href="mailto:geobizi@hotmail.com" title="Enviar correo a GeoBizi">
+          <a href="mailto:geobizi@hotmail.com" title="Enviar correo a Geobizi">
             <img src="@/assets/icons/mail.png" alt="Email" class="social-icon" title="Email" loading="lazy" />
           </a>
-          <a href="tel:+34677170921" title="Llamar a GeoBizi">
+          <a href="tel:+34677170921" title="Llamar a Geobizi">
             <img src="@/assets/icons/telephone.png" alt="Phone" class="social-icon" title="Teléfono" loading="lazy" />
           </a>
-          <a href="https://www.facebook.com/geobizirik/" target="_blank" rel="noopener noreferrer" title="GeoBizi en Facebook">
+          <a href="https://www.facebook.com/geobizirik/" target="_blank" rel="noopener noreferrer" title="Geobizi en Facebook">
             <img src="@/assets/icons/facebook.png" alt="Facebook" class="social-icon" title="Facebook" loading="lazy" />
           </a>
-          <a href="https://www.youtube.com/channel/UCw-C_J0y-jKHp7Zx92lsKfg" target="_blank" rel="noopener noreferrer" title="GeoBizi en YouTube">
+          <a href="https://www.youtube.com/channel/UCw-C_J0y-jKHp7Zx92lsKfg" target="_blank" rel="noopener noreferrer" title="Geobizi en YouTube">
             <img src="@/assets/icons/youtube.png" alt="YouTube" class="social-icon" title="YouTube" loading="lazy" />
           </a>
-          <a href="https://www.instagram.com/geotxiki/" target="_blank" rel="noopener noreferrer" title="GeoBizi en Instagram">
+          <a href="https://www.instagram.com/geotxiki/" target="_blank" rel="noopener noreferrer" title="Geobizi en Instagram">
             <img src="@/assets/icons/instagram.png" alt="Instagram" class="social-icon" title="Instagram" loading="lazy" />
           </a>
         </div>

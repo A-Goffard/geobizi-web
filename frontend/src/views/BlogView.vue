@@ -25,16 +25,16 @@
   const ogImage = 'https://www.geobizi.com/imagenes/blog/patrimonio.avif' // representativa
   
   useHead({
-    title: 'Blog — Artículos sobre naturaleza y medioambiente | GeoBizi',
+    title: 'Blog — Artículos sobre naturaleza y medioambiente | Geobizi',
     meta: [
-      { name: 'description', content: 'Artículos y recursos de GeoBizi sobre medioambiente, biodiversidad, rutas y actividades educativas. Lee nuestros posts y aprende sobre naturaleza.' },
+      { name: 'description', content: 'Artículos y recursos de Geobizi sobre medioambiente, biodiversidad, rutas y actividades educativas. Lee nuestros posts y aprende sobre naturaleza.' },
       { name: 'robots', content: 'index, follow' },
-      { name: 'author', content: 'GeoBizi' },
-      { name: 'publisher', content: 'GeoBizi' },
-      { name: 'keywords', content: 'blog medioambiente, artículos naturaleza, GeoBizi, biodiversidad, rutas' },
+      { name: 'author', content: 'Geobizi' },
+      { name: 'publisher', content: 'Geobizi' },
+      { name: 'keywords', content: 'blog medioambiente, artículos naturaleza, Geobizi, biodiversidad, rutas' },
       { name: 'language', content: 'es' },
-      { property: 'og:title', content: 'Blog — Artículos sobre naturaleza y medioambiente | GeoBizi' },
-      { property: 'og:description', content: 'Artículos y recursos de GeoBizi sobre medioambiente, biodiversidad, rutas y actividades educativas.' },
+      { property: 'og:title', content: 'Blog — Artículos sobre naturaleza y medioambiente | Geobizi' },
+      { property: 'og:description', content: 'Artículos y recursos de Geobizi sobre medioambiente, biodiversidad, rutas y actividades educativas.' },
       { property: 'og:type', content: 'website' },
       { property: 'og:url', content: pageUrl },
       { property: 'og:image', content: ogImage },
@@ -53,7 +53,7 @@
           "@graph": [
             {
               "@type": "Organization",
-              "name": "GeoBizi",
+              "name": "Geobizi",
               "url": "https://www.geobizi.com",
               "logo": "https://www.geobizi.com/imagenes/GeobiziLogo.7ae1d6ce.png",
               "sameAs": [
@@ -66,8 +66,8 @@
             {
               "@type": "Blog",
               "url": pageUrl,
-              "name": "Blog — GeoBizi",
-              "description": "Artículos y recursos de GeoBizi sobre medioambiente, biodiversidad, rutas y actividades educativas.",
+              "name": "Blog — Geobizi",
+              "description": "Artículos y recursos de Geobizi sobre medioambiente, biodiversidad, rutas y actividades educativas.",
               "inLanguage": "es",
               "isPartOf": { "@id": "https://www.geobizi.com/#organization" },
               "image": { "@type": "ImageObject", "url": ogImage }
@@ -79,6 +79,12 @@
   })
   
   const articles = ref([
+    {
+      title: 'Flysch Bizkaia: Geoturismo y Geología de la Costa Vasca',
+      summary: 'Descubre el Flysch de Bizkaia con Geobizi. Rutas de geoturismo y divulgación geológica en la costa vasca. Aprende la historia de la Tierra en sus rocas.',
+      link: 'blog/detalle-flysch-bizkaia',
+      image: '/imagenes/blog/detalle/flyschbizkaia/flyschbizkaia.avif',
+    },
         {
       title: 'Estramonio (Datura stramonium) en Azkorri: riesgos y precauciones',
       summary: 'He encontrado estramonio en Azkorri. Muchas familias y animales pasan por allí: conoce la planta, sus riesgos y por qué no debes tocarla.',
