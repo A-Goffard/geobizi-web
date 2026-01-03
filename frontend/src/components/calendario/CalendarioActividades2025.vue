@@ -262,8 +262,11 @@ const anioSiguiente = () => {
 }
 
 .mes {
-  width: 20.65rem;
-  margin: 1rem;
+  width: 100%;       
+  max-width: 22rem; 
+  margin: 1rem 0;    
+  padding: 0 10px;  
+  box-sizing: border-box;
 }
 
 .grid {

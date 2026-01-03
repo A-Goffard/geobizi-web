@@ -37,12 +37,13 @@ box-sizing: border-box;
 
   --lightgrey: #dddddd;
   --darkgrey: #333333;
+  --grey: #666;
 
   --megashoftgreen: #efffec;
   --supershoftgreen: #d2f8cd;
   --shoftgreen: #9bee9f;
   --lightgreen: #26B12C;
-  --green: #498536;
+  --green: #50963b;
   --darkgreen: #2c770f;
 
 }
@@ -72,7 +73,10 @@ h1 {
   color: var(--darkgreen);
   margin: 1rem;
 }
-h2,
+h2{
+  color: var(--green);
+  margin: 1rem;
+}
 h3 {
   color: var(--lightgreen);
   margin: 1rem;
@@ -83,6 +87,9 @@ h4 {
 }
 p {
   margin: 1rem;
+  line-height: 1.6;
+  color: var(--darkgrey);
+    margin-bottom: 0.8rem;
 }
 ul{
     margin: 1rem;
