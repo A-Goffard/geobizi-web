@@ -43,7 +43,7 @@
 
         <p>Al finalizar la ruta, los pequeños exploradores recibirán un detalle como recuerdo de esta maravillosa experiencia.</p>
         <p>¡No os perdáis esta oportunidad de conectar con la naturaleza y aprender en familia en la impresionante costa de Getxo!</p>
-        <p><em>Es una actividad parcialmente subvencionada por el ayuntamiento de Getxo.</em></p>
+        <p><em>Es una actividad parcialmente subvencionada por el ayuntamiento de <a href="https://www.getxo.eus" target="_blank" rel="noopener noreferrer" title="Getxo Turismo">Getxo</a>.</em></p>
       </div>
 
       <div class="definicionActividad">
@@ -52,7 +52,7 @@
         <p>Una experiencia única para explorar la naturaleza en familia, con actividades educativas y divertidas que se centran en la flora y fauna de la zona.</p>
         <p>Nos centraremos en lo que podemos observar y aprender sobre la naturaleza nocturna del lugar. Dependiendo de la época y el entorno, los animales y plantas que podremos ver serán diferentes.</p>
         <p>Una aventura diferente para disfrutar de la naturaleza en familia bajo la luz de la luna.</p>
-        <p><em>Las sesiones que se realizan en Getxo están parcialmente subvencionadas por el ayuntamiento de Getxo.</em></p>
+        <p><em>Las sesiones que se realizan en Getxo están parcialmente subvencionadas por el ayuntamiento de <a href="https://www.getxo.eus" target="_blank" rel="noopener noreferrer" title="Getxo Turismo">Getxo</a>.</em></p>
       </div>
 
       <div class="definicionActividad">
@@ -76,7 +76,7 @@
         <p><strong>El ecosistema del río Kadagua:</strong> Conoceremos la importancia de los bosques de ribera y la fauna asociada al río, desde aves acuáticas hasta anfibios.</p>
         <p><strong>Rutas interpretativas:</strong> Paseos guiados por los senderos locales donde la geología y la biología se dan la mano para explicar el paisaje que nos rodea.</p>
         <p><strong>Talleres familiares:</strong> Actividades lúdicas y didácticas diseñadas específicamente para que los vecinos y visitantes de Zalla reconecten con su entorno más cercano.</p>
-        <p><em>Actividades organizadas en colaboración con el Ayuntamiento de Zalla.</em></p>
+        <p><em>Actividades organizadas en colaboración con el Ayuntamiento de <a href="https://www.zalla.eus/es-ES/Paginas/default.aspx" target="_blank" rel="noopener noreferrer" title="Zalla medioambiente">Zalla</a>.</em></p>
       </div>
 
       <div class="definicionActividad">
