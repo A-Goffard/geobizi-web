@@ -62,8 +62,8 @@
            <div class="container">
       
       <a 
-        href="/descargas/documentos/Flyschbizkia-didactica.pdf" 
-        download="Flyschbizkia-didactica.pdf" 
+        href="/descargas/documentos/Flyschbizkaia-didactica.pdf" 
+        download="Flyschbizkaia-didactica.pdf" 
         class="card"
       >
         <img src="/descargas/miniaturas/flyschbizkaia-didactica.avif" alt="Lámina de hojas de arboles" loading="lazy">
