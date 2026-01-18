@@ -67,7 +67,7 @@
         class="card"
       >
         <img src="/descargas/miniaturas/flyschbizkaia-didactica.avif" alt="Lámina de hojas de arboles" loading="lazy">
-        <p class="card-text">Documento didáctico sobre Flyschbizkia</p>
+        <p class="card-text">Documento didáctico sobre Flyschbizkaia</p>
       </a>
 
 
