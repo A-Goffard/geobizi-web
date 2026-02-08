@@ -11,7 +11,6 @@
           class="card" 
           @click="seleccionarActividad(actividad)"
         >
-
           <h2>{{ actividad.titulo }}</h2>
           
           <div class="img-hover-container">
@@ -28,9 +27,9 @@
             <p class="precio-tag">💶 {{ actividad.precio === 0 ? 'Gratis' : actividad.precio + '€' }}</p>
             
             <span class="badge" :class="actividad.proyecto || 'general'">
-            {{ formatProyecto(actividad.proyecto) }}
+              {{ formatProyecto(actividad.proyecto) }}
             </span>
-        </div>
+          </div>
         </div>
       </div>
     </div>
@@ -87,11 +86,24 @@
           <textarea id="message" v-model="formData.message"></textarea>
         </div>
 
+        <div v-if="['zalla', 'flysch', 'naturgaua', 'ferias'].includes(actividadSeleccionada.proyecto)" class="caja-fotos">
+          <p class="titulo-fotos">📸 Recuerdo de la actividad</p>
+          <div class="horizontalC">
+            <input type="checkbox" id="imageRights" v-model="formData.imageRightsAccepted">
+            <label for="imageRights">
+              Autorizo a Geobizi a tomar imágenes durante la actividad para enviárnoslas de recuerdo y usarlas en sus redes sociales/web con fines divulgativos.
+              <br>
+              <span class="nota-fotos">
+                *Priorizamos siempre planos generales o de espaldas, respetando la privacidad de los menores.
+              </span>
+            </label>
+          </div>
+        </div>
+
         <div class="horizontalC">
           <input type="checkbox" id="privacy" v-model="formData.privacyAccepted" required>
           <label for="privacy">
-            He leído y acepto la 
-            <a href="/politica-de-privacidad" target="_blank">política de privacidad</a>.
+            He leído y acepto la <a href="/politica-de-privacidad" target="_blank">política de privacidad</a>.
           </label>
         </div>
         <div class="horizontalC">
@@ -99,19 +111,6 @@
           <label for="privacyAviso">
             Entiendo que esto es una solicitud de reserva pendiente de confirmación.
           </label>
-        </div>
-        <div v-if="['zalla', 'flysch', 'naturgaua'].includes(actividadSeleccionada.proyecto)" class="caja-fotos">
-          <div class="horizontalC">
-            <input type="checkbox" id="imageRights" v-model="formData.imageRightsAccepted">
-            <label for="imageRights">
-              <strong>¡Queremos un recuerdo!</strong><br>
-              Autorizo a Geobizi a tomar imágenes durante la actividad para enviárnoslas después y para usarlas en sus redes sociales/web como muestra de su trabajo.
-              <br>
-              <span class="nota-fotos">
-                *Siempre seleccionamos imágenes respetuosas, priorizando planos generales, de espaldas o detalles (manos trabajando, lupas...) sobre los primeros planos de los menores.
-              </span>
-            </label>
-          </div>
         </div>
 
         <div class="center">
@@ -138,26 +137,24 @@ import { useHead } from '@vueuse/head';
 const route = useRoute();
 const router = useRouter();
 
-// SEO CONFIG
 const pageUrl = 'https://www.geobizi.com/reservas';
 const ogImage = 'https://www.geobizi.com/imagenes/proyectos/zallanatura/zallanatura2.avif';
 
 useHead({
   title: 'Reservas y Actividades | Geobizi',
   meta: [
-    { name: 'description', content: 'Reserva actividades y rutas de Geobizi. Consulta fechas, precios y plazas disponibles.' },
+    { name: 'description', content: 'Reserva actividades y rutas de Geobizi.' },
     { name: 'theme-color', content: '#0b8a4c' },
     { property: 'og:title', content: 'Reservas y Actividades | Geobizi' },
     { property: 'og:image', content: ogImage },
-    { property: 'og:url', content: pageUrl } // <--- AQUÍ SE USA AHORA (Arregla el error)
+    { property: 'og:url', content: pageUrl }
   ],
-  link: [
-    { rel: 'canonical', href: pageUrl } // <--- AQUÍ TAMBIÉN
-  ]
+  link: [{ rel: 'canonical', href: pageUrl }]
 });
 
-// STATE
 const actividadSeleccionada = ref(null);
+
+// AQUÍ ESTÁ LA CLAVE: Inicializamos imageRightsAccepted a false
 const formData = ref({
   nombre: '',
   apellidos: '',
@@ -167,19 +164,18 @@ const formData = ref({
   message: '',
   privacyAccepted: false,
   privacyAcceptedAviso: false,
+  imageRightsAccepted: false, // <--- IMPORTANTE: Debe estar aquí
   numPersonas: 1,
   dni: '',
   edadNinos: ''
 });
+
 const successMessage = ref('');
 const errorMessage = ref('');
 
-// LOGIC
-// 1. Filtrar por fecha futura y ordenar
 const actividadesFiltradas = computed(() => {
   const hoy = new Date();
-  hoy.setHours(0,0,0,0); 
-  
+  hoy.setHours(0,0,0,0);
   return actividades
     .filter(actividad => {
       const fechaActividad = new Date(actividad.fecha);
@@ -192,45 +188,38 @@ const actividadesFiltradas = computed(() => {
     });
 });
 
-// 2. Mapeo de nombres para las Badges (Incluyendo Ferias)
 const formatProyecto = (slug) => {
   const map = {
     'zalla': 'Zalla Natura',
     'flysch': 'Flysch en Familia',
     'naturgaua': 'Naturgaua',
-    'ferias': 'Feria / Mercado', // <--- AÑADIDO
+    'ferias': 'Feria / Mercado',
     'general': 'Actividad'
   };
   return map[slug] || 'Actividad';
 };
 
-// 3. Formato de fecha legible
 const formatearFecha = (fechaStr) => {
   if(!fechaStr) return '';
   const opciones = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-  const fecha = new Date(fechaStr);
-  return fecha.toLocaleDateString('es-ES', opciones);
+  return new Date(fechaStr).toLocaleDateString('es-ES', opciones);
 };
 
-// 4. Watcher para URL (Deep linking)
-watch(
-  () => route.params.id,
-  (id) => {
-    if (id) {
-      actividadSeleccionada.value = actividadesFiltradas.value.find(a => String(a.id) === String(id));
-      if (actividadSeleccionada.value) {
-        formData.value.actividad = `Reserva ID ${id}: ${actividadSeleccionada.value.titulo} (${actividadSeleccionada.value.fecha})`;
-        formData.value.dni = '';
-        formData.value.edadNinos = '';
-      }
-    } else {
-      actividadSeleccionada.value = null;
+watch(() => route.params.id, (id) => {
+  if (id) {
+    actividadSeleccionada.value = actividadesFiltradas.value.find(a => String(a.id) === String(id));
+    if (actividadSeleccionada.value) {
+      formData.value.actividad = `Reserva ID ${id}: ${actividadSeleccionada.value.titulo} (${actividadSeleccionada.value.fecha})`;
+      // Reseteamos campos específicos
+      formData.value.dni = '';
+      formData.value.edadNinos = '';
+      formData.value.imageRightsAccepted = false;
     }
-  },
-  { immediate: true }
-);
+  } else {
+    actividadSeleccionada.value = null;
+  }
+}, { immediate: true });
 
-// ACTIONS
 const seleccionarActividad = (actividad) => {
   router.push({ name: 'reservaActividad', params: { id: actividad.id } });
 };
@@ -243,24 +232,34 @@ const submitForm = () => {
   successMessage.value = '';
   errorMessage.value = '';
 
+  // PREPARAMOS LOS DATOS PARA EL EMAIL (TRUCO PARA QUE SE LEA BIEN)
+  const datosParaEnviar = {
+    ...formData.value,
+    // Convertimos los booleanos a texto para que en el email se vea claro
+    'Acepta Política Privacidad': formData.value.privacyAccepted ? 'SÍ' : 'NO',
+    'Entiende que es solicitud': formData.value.privacyAcceptedAviso ? 'SÍ' : 'NO',
+    'Autoriza Fotos (Derechos Imagen)': formData.value.imageRightsAccepted ? 'SÍ, AUTORIZA' : 'NO AUTORIZA'
+  };
+
   fetch('https://formspree.io/f/xanedzed', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(formData.value)
+    body: JSON.stringify(datosParaEnviar) // Enviamos los datos procesados
   })
     .then(response => {
       if (response.ok) {
         successMessage.value = 'Solicitud enviada correctamente. Nos pondremos en contacto contigo.';
-        // Reset form simple
+        // Limpiar formulario
         formData.value.message = '';
         formData.value.privacyAccepted = false;
         formData.value.privacyAcceptedAviso = false;
+        formData.value.imageRightsAccepted = false;
       } else {
         throw new Error('Error en el envío');
       }
     })
     .catch(error => {
-      errorMessage.value = 'Hubo un error al enviar. Inténtalo de nuevo o contáctanos por email.';
+      errorMessage.value = 'Hubo un error al enviar. Inténtalo de nuevo.';
       console.error(error);
     });
 };
@@ -285,7 +284,7 @@ const submitForm = () => {
 
 /* TARJETAS (CARDS) */
 .card {
-  width: 320px; /* Un poco más anchas para que quepa la info */
+  width: 320px;
   padding: 20px;
   background-color: var(--megashoftgreen);
   border: 1px solid var(--shoftgreen);
@@ -293,7 +292,7 @@ const submitForm = () => {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s, box-shadow 0.3s;
   cursor: pointer;
-  position: relative; /* Para el badge absoluto */
+  position: relative;
   display: flex;
   flex-direction: column;
 }
@@ -304,7 +303,7 @@ const submitForm = () => {
 }
 
 .card h2 {
-  margin-top: 1.5rem; /* Espacio para el badge */
+  margin-top: 0.5rem;
   font-size: 1.2rem;
   margin-bottom: 0.5rem;
   line-height: 1.3;
@@ -314,17 +313,16 @@ const submitForm = () => {
   color: var(--darkgrey);
   font-size: 0.9rem;
   margin-bottom: 1rem;
-  flex-grow: 1; /* Para alinear botones al final si hubiese */
+  flex-grow: 1;
 }
 
-/* BADGES (Etiquetas de color) - AQUÍ ESTÁN LOS COLORES */
-/* BADGES (Etiquetas de color) */
+/* BADGES */
 .badge {
-  display: block;         
-  width: fit-content;     
-  margin: 1rem auto 0 auto;
-  padding: 4px 12px;     
-  border-radius: 20px;   
+  display: block;
+  width: fit-content;
+  margin: 1rem auto 0 auto; /* Centrado abajo */
+  padding: 4px 12px;
+  border-radius: 20px;
   font-size: 0.75rem;
   font-weight: bold;
   color: white;
@@ -333,24 +331,36 @@ const submitForm = () => {
   text-align: center;
 }
 
-/* Colores alineados con la leyenda del calendario */
+/* COLORES DE BADGES */
 .badge.flysch { background-color: orange; }
 .badge.naturgaua { background-color: purple; }
 .badge.zalla { background-color: blue; }
-.badge.general { background-color: green; }
 .badge.ferias { background-color: plum; }
+.badge.general { background-color: green; }
 
-/* INFO RÁPIDA EN TARJETA */
+.badge-large {
+  display: inline-block;
+  padding: 5px 15px;
+  border-radius: 15px;
+  color: white;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+}
+.badge-large.flysch { background-color: orange; }
+.badge-large.naturgaua { background-color: purple; }
+.badge-large.zalla { background-color: blue; }
+.badge-large.ferias { background-color: plum; }
+.badge-large.general { background-color: green; }
+
+/* INFO RÁPIDA */
 .info-rapida {
   background: rgba(255,255,255,0.5);
   padding: 0.8rem;
   border-radius: 0.5rem;
   font-size: 0.9rem;
 }
-.info-rapida p {
-  margin: 4px 0;
-  color: #333;
-}
+.info-rapida p { margin: 4px 0; color: #333; }
 
 /* IMÁGENES */
 .img-hover-container {
@@ -362,19 +372,15 @@ const submitForm = () => {
   margin-bottom: 1rem;
 }
 .img-hover-container img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: opacity 0.5s ease;
-  position: absolute;
-  top: 0; left: 0;
+  width: 100%; height: 100%; object-fit: cover;
+  transition: opacity 0.5s ease; position: absolute; top: 0; left: 0;
 }
 .img-base { opacity: 1; z-index: 1; }
 .img-hover { opacity: 0; z-index: 2; }
 .card:hover .img-hover { opacity: 1; }
 .card:hover .img-base { opacity: 0; }
 
-/* FORMULARIO Y DETALLE */
+/* FORMULARIO */
 .contact-container {
   max-width: 650px;
   margin: 7rem auto 3rem auto;
@@ -385,96 +391,58 @@ const submitForm = () => {
   background: white;
 }
 
-.header-reserva {
-  margin-bottom: 1.5rem;
-  border-bottom: 1px solid #eee;
-  padding-bottom: 1rem;
-}
+.header-reserva { margin-bottom: 1.5rem; border-bottom: 1px solid #eee; padding-bottom: 1rem; }
+.info-reserva-detalle { margin-bottom: 2rem; background: var(--megashoftgreen); padding: 1rem; border-radius: 0.5rem; }
+.info-reserva-detalle p { margin: 0.5rem 0; }
 
-.badge-large {
-  display: inline-block;
-  padding: 5px 15px;
-  border-radius: 15px;
-  color: white;
-  font-weight: bold;
-  margin-bottom: 0.5rem;
-  font-size: 0.9rem;
-}
-/* Reutilizamos los mismos colores */
-.badge-large.flysch { background-color: orange; }
-.badge-large.naturgaua { background-color: purple; }
-.badge-large.zalla { background-color: blue; }
-.badge-large.general { background-color: green; }
-.badge-large.ferias { background-color: plum; }
-
-.info-reserva-detalle {
-  margin-bottom: 2rem;
-  background: var(--megashoftgreen);
-  padding: 1rem;
-  border-radius: 0.5rem;
-}
-.info-reserva-detalle p {
-  margin: 0.5rem 0;
-}
-
-/* INPUTS */
 .form-group { margin-bottom: 1.2rem; }
 label { display: block; font-weight: bold; margin-bottom: 0.3rem; font-size: 0.95rem; }
 input, select, textarea {
-  width: 100%;
-  padding: 0.7rem;
-  font-size: 1rem;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  box-sizing: border-box; /* Importante para que no se salgan */
+  width: 100%; padding: 0.7rem; font-size: 1rem;
+  border: 1px solid #ddd; border-radius: 4px; box-sizing: border-box;
 }
 input:focus, textarea:focus {
-  outline: none;
-  border-color: var(--shoftgreen);
+  outline: none; border-color: var(--shoftgreen);
   box-shadow: 0 0 0 2px var(--megashoftgreen);
 }
 
 .highlight-group {
-  background-color: #f0fdf4; /* Verde muy suave */
-  padding: 15px;
-  border-radius: 6px;
-  border: 1px dashed var(--shoftgreen);
+  background-color: #f0fdf4; padding: 15px;
+  border-radius: 6px; border: 1px dashed var(--shoftgreen);
 }
 
-.horizontalC {
-  display: flex;
-  align-items: flex-start;
-  gap: 10px;
-  margin-bottom: 1rem;
+/* CAJA DE FOTOS */
+.caja-fotos {
+  background-color: #f9f9f9;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 15px;
+  margin-bottom: 20px;
 }
+.titulo-fotos {
+  font-weight: bold; color: var(--shoftgreen);
+  margin-top: 0; margin-bottom: 10px;
+}
+.nota-fotos {
+  display: block; margin-top: 5px; font-size: 0.85rem; color: #666; font-style: italic;
+}
+
+.horizontalC { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 1rem; }
 .horizontalC input { width: auto; margin-top: 5px; }
 .horizontalC label { font-weight: normal; font-size: 0.9rem; }
 
-/* BOTONES */
 .btn-submit {
-  width: 100%;
-  padding: 1rem;
-  background-color: var(--green);
-  color: white;
-  border: none;
-  border-radius: 4px;
-  font-size: 1.1rem;
-  font-weight: bold;
-  cursor: pointer;
-  transition: background 0.3s;
+  width: 100%; padding: 1rem; background-color: var(--green);
+  color: white; border: none; border-radius: 4px;
+  font-size: 1.1rem; font-weight: bold; cursor: pointer; transition: background 0.3s;
 }
 .btn-submit:hover { background-color: var(--lightgreen); }
 
 .volver-btn {
-  background: none;
-  border: none;
-  color: #666;
-  text-decoration: underline;
-  cursor: pointer;
-  margin-top: 1rem;
+  background: none; border: none; color: #666;
+  text-decoration: underline; cursor: pointer; margin-top: 1rem;
 }
 
-/* RESPONSIVE */
 @media (max-width: 613px) {
   .general-container, .contact-container { padding: 1rem; margin-top: 5rem; }
   .card { width: 100%; }
