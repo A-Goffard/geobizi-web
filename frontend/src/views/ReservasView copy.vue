@@ -1,35 +1,6 @@
 <template>
   <div class="container">
-
-    <div v-if="!actividadSeleccionada" class="general-container">
-      <h1>Actividades disponibles</h1>
-      <div class="container-grid">
-        <div v-for="actividad in actividadesFiltradas" :key="actividad.id" class="card"
-          @click="seleccionarActividad(actividad)">
-          <h2>{{ actividad.titulo }}</h2>
-
-          <div class="img-hover-container">
-            <img :src="actividad.imagen1" :alt="actividad.titulo" class="img-base" loading="lazy" />
-            <img :src="actividad.imagen2" :alt="actividad.titulo" class="img-hover" loading="lazy" />
-          </div>
-
-          <p class="descripcion">{{ actividad.descripcion1 }}</p>
-
-          <div class="info-rapida">
-            <p><strong>📅 {{ formatearFecha(actividad.fecha) }}</strong></p>
-            <p>⏰ {{ actividad.hora }}</p>
-            <p v-if="actividad.ubicacion">📍 {{ actividad.ubicacion }}</p>
-            <p class="precio-tag">💶 {{ actividad.precio === 0 ? 'Gratis' : actividad.precio + '€' }}</p>
-
-            <span class="badge" :class="actividad.proyecto || 'general'">
-              {{ formatProyecto(actividad.proyecto) }}
-            </span>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div v-else class="contact-container">
+    <div v-if="actividadSeleccionada" class="contact-container">
       <div class="header-reserva">
         <span class="badge-large" :class="actividadSeleccionada.proyecto || 'general'">
           {{ formatProyecto(actividadSeleccionada.proyecto) }}
@@ -42,85 +13,12 @@
         <p><strong>Hora:</strong> {{ actividadSeleccionada.hora }}</p>
         <p v-if="actividadSeleccionada.ubicacion"><strong>Ubicación:</strong> {{ actividadSeleccionada.ubicacion }}</p>
       </div>
-<div v-if="actividadSeleccionada" class="contact-container">
+
       <form @submit.prevent="submitForm">
         <div class="form-group">
           <label for="nombre">Nombre:</label>
           <input type="text" id="nombre" v-model="formData.nombre" required>
         </div>
-        <div class="form-group">
-          <label for="apellidos">Apellidos:</label>
-          <input type="text" id="apellidos" v-model="formData.apellidos" required>
-        </div>
-        <div class="form-group">
-          <label for="email">Correo Electrónico:</label>
-          <input type="email" id="email" v-model="formData.email" required>
-        </div>
-        <div class="form-group">
-          <label for="phone">Teléfono:</label>
-          <input type="tel" id="phone" v-model="formData.phone" required>
-        </div>
-
-        <div v-if="actividadSeleccionada.descripcion2?.toLowerCase().includes('familia')"
-          class="form-group highlight-group">
-          <label for="edadNinos">Edad de los niños (si asisten):</label>
-          <input type="text" id="edadNinos" v-model="formData.edadNinos" placeholder="Ej: 5 y 8 años">
-        </div>
-
-        <div class="form-group">
-          <label for="numPersonas">Número de personas:</label>
-          <input type="number" id="numPersonas" v-model="formData.numPersonas" min="1" required>
-        </div>
-
-        <div class="form-group">
-          <label for="message">Mensaje / Observaciones:</label>
-          <textarea id="message" v-model="formData.message"></textarea>
-        </div>
-
-        <div v-if="['zalla', 'flysch', 'naturgaua', 'ferias', 'general'].includes(actividadSeleccionada.proyecto)"
-          class="caja-fotos">
-          <p class="titulo-fotos">📸 Recuerdo de la actividad</p>
-          <div class="horizontalC">
-            <input type="checkbox" id="imageRights" v-model="formData.imageRightsAccepted">
-            <label for="imageRights">
-              Autorizo a Geobizi a tomar imágenes durante la actividad para enviárnoslas de recuerdo y usarlas en sus
-              redes sociales/web con fines divulgativos.
-              <br>
-              <span class="nota-fotos">
-                *Priorizamos siempre planos generales o de espaldas, respetando la privacidad de los menores.
-              </span>
-            </label>
-          </div>
-        </div>
-        <div v-if="actividadSeleccionada.proyecto === 'zalla'" class="form-group highlight-group zalla-notice">
-          <p><strong>Información importante (Ayto. de Zalla):</strong></p>
-          <p class="nota-datos">
-            Los datos recogidos en este formulario se utilizarán <strong>únicamente</strong> para la gestión de esta
-            actividad (confirmación, avisos de última hora o seguridad). Una vez finalizada la actividad, los datos no
-            se utilizarán para otros fines comerciales de Geobizi salvo que lo autorices expresamente abajo.
-          </p>
-
-          <div class="horizontalC">
-            <input type="checkbox" id="zallaGroup" v-model="formData.zallaGroupAccepted">
-            <label for="zallaGroup">
-              Deseo unirme al grupo de difusión de <strong>Zalla Natura</strong> para recibir información sobre futuras
-              actividades ambientales en el municipio.
-            </label>
-          </div>
-        </div>
-        <div class="horizontalC">
-          <input type="checkbox" id="privacy" v-model="formData.privacyAccepted" required>
-          <label for="privacy">
-            He leído y acepto la <a href="/politicadeprivacidad" target="_blank">política de privacidad</a>.
-          </label>
-        </div>
-        <div class="horizontalC">
-          <input type="checkbox" id="privacyAviso" v-model="formData.privacyAcceptedAviso" required>
-          <label for="privacyAviso">
-            Entiendo que esto es una solicitud de reserva pendiente de confirmación.
-          </label>
-        </div>
-
         <div class="center">
           <button type="submit" class="btn-submit">Enviar Solicitud</button>
         </div>
@@ -128,16 +26,21 @@
         <p v-if="successMessage" class="success-message">{{ successMessage }}</p>
         <p v-if="errorMessage" class="error-message">{{ errorMessage }}</p>
       </form>
-</div>
+
       <div class="center">
-        <button @click="volverALista" class="volver-btn">← Volver a actividades</button>
+        <button @click="volverALista" class="volver-btn">← Volver al calendario</button>
       </div>
+    </div>
+
+    <div v-else class="contact-container center">
+      <p>No se ha seleccionado ninguna actividad o la actividad ya no está disponible.</p>
+      <button @click="volverALista" class="btn-submit">Ver calendario de actividades</button>
     </div>
   </div>
 </template>
 
 <script setup>
-import { ref, computed, watch } from 'vue';
+import { ref, watch } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import actividades from '@/assets/json/actividades.json';
 import { useHead } from '@vueuse/head';
@@ -145,24 +48,16 @@ import { useHead } from '@vueuse/head';
 const route = useRoute();
 const router = useRouter();
 
-const pageUrl = 'https://www.geobizi.com/reservas';
-const ogImage = 'https://www.geobizi.com/imagenes/proyectos/zallanatura/zallanatura2.avif';
-
+// SEO y Meta
 useHead({
-  title: 'Reservas y Actividades | Geobizi',
-  meta: [
-    { name: 'description', content: 'Reserva actividades y rutas de Geobizi.' },
-    { name: 'theme-color', content: '#0b8a4c' },
-    { property: 'og:title', content: 'Reservas y Actividades | Geobizi' },
-    { property: 'og:image', content: ogImage },
-    { property: 'og:url', content: pageUrl }
-  ],
-  link: [{ rel: 'canonical', href: pageUrl }]
+  title: 'Reservas | Geobizi',
+  meta: [{ name: 'description', content: 'Formulario de reserva de actividades.' }]
 });
 
 const actividadSeleccionada = ref(null);
+const successMessage = ref('');
+const errorMessage = ref('');
 
-// AQUÍ ESTÁ LA CLAVE: Inicializamos imageRightsAccepted a false
 const formData = ref({
   nombre: '',
   apellidos: '',
@@ -179,23 +74,18 @@ const formData = ref({
   edadNinos: ''
 });
 
-const successMessage = ref('');
-const errorMessage = ref('');
-
-const actividadesFiltradas = computed(() => {
-  const hoy = new Date();
-  hoy.setHours(0, 0, 0, 0);
-  return actividades
-    .filter(actividad => {
-      const fechaActividad = new Date(actividad.fecha);
-      return fechaActividad >= hoy && actividad.reservas && actividad.publicar;
-    })
-    .sort((a, b) => {
-      const dateA = new Date(`${a.fecha}T${a.hora}`);
-      const dateB = new Date(`${b.fecha}T${b.hora}`);
-      return dateA - dateB;
-    });
-});
+// Watch simplificado: Busca la actividad por ID en el JSON global
+watch(() => route.params.id, (id) => {
+  if (id) {
+    const encontrada = actividades.find(a => String(a.id) === String(id));
+    if (encontrada) {
+      actividadSeleccionada.value = encontrada;
+      formData.value.actividad = `Reserva ID ${id}: ${encontrada.titulo} (${encontrada.fecha})`;
+    } else {
+      actividadSeleccionada.value = null;
+    }
+  }
+}, { immediate: true });
 
 const formatProyecto = (slug) => {
   const map = {
@@ -214,27 +104,8 @@ const formatearFecha = (fechaStr) => {
   return new Date(fechaStr).toLocaleDateString('es-ES', opciones);
 };
 
-watch(() => route.params.id, (id) => {
-  if (id) {
-    actividadSeleccionada.value = actividadesFiltradas.value.find(a => String(a.id) === String(id));
-    if (actividadSeleccionada.value) {
-      formData.value.actividad = `Reserva ID ${id}: ${actividadSeleccionada.value.titulo} (${actividadSeleccionada.value.fecha})`;
-      // Reseteamos campos específicos
-      formData.value.dni = '';
-      formData.value.edadNinos = '';
-      formData.value.imageRightsAccepted = false;
-    }
-  } else {
-    actividadSeleccionada.value = null;
-  }
-}, { immediate: true });
-
-const seleccionarActividad = (actividad) => {
-  router.push({ name: 'reservaActividad', params: { id: actividad.id } });
-};
-
 const volverALista = () => {
-  router.push('/calendario'); 
+  router.push('/calendario');
 };
 
 const submitForm = () => {
@@ -277,9 +148,6 @@ const submitForm = () => {
 
 <style scoped>
 /* ESTRUCTURA GENERAL */
-.container{
-  margin-top: 5rem;
-}
 .general-container {
   max-width: 1200px;
   margin: 0 auto;
@@ -450,7 +318,7 @@ const submitForm = () => {
 /* FORMULARIO */
 .contact-container {
   max-width: 650px;
-  margin: 1rem auto 1rem auto;
+  margin: 7rem auto 3rem auto;
   padding: 2rem;
   border: 1px solid var(--shoftgreen);
   border-radius: 8px;

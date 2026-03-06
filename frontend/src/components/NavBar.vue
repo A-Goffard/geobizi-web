@@ -16,20 +16,21 @@
           <li>
             <router-link class="NavButton link" :to="{name: 'calendario'}" @click="closeMobileNav" title="Calendario">Calendario</router-link>
           </li>
-          <li>
+          <!-- <li>
             <router-link class="NavButton link" :to="{name: 'reservas'}" @click="closeMobileNav" title="Reservas">Reservas</router-link>
-          </li>
+          </li> -->
           <!-- <li>
             <router-link class="NavButton link" :to="{name: 'tienda'}" @click="closeMobileNav">Tienda</router-link>
           </li> -->
-          <li>
-            <router-link class="NavButton link" :to="{name: 'blog'}" @click="closeMobileNav" title="Blog">Blog</router-link>
-          </li>
+
           <li>
             <router-link class="NavButton link" :to="{name: 'proyectos'}" @click="closeMobileNav" title="Proyectos">Proyectos</router-link>
           </li>
-                    <li>
+          <!-- <li>
             <router-link class="NavButton link" :to="{name: 'otros'}" @click="closeMobileNav" title="Otros">Otros</router-link>
+          </li> -->
+          <li>
+            <router-link class="NavButton link" :to="{name: 'blog'}" @click="closeMobileNav" title="Blog">Blog</router-link>
           </li>
           <li>
             <router-link class="NavButton link" :to="{name: 'contacto'}" @click="closeMobileNav" title="Contacto">Contacto</router-link>
@@ -51,20 +52,21 @@
             <li>
               <router-link class="NavButton link" :to="{name: 'calendario'}" @click="closeMobileNav" title="Calendario">Calendario</router-link>
             </li>
-            <li>
+            <!-- <li>
               <router-link class="NavButton link" :to="{name: 'reservas'}" @click="closeMobileNav" title="Reservas">Reservas</router-link>
-            </li>
+            </li> -->
             <!-- <li>
               <router-link class="NavButton link" :to="{name: 'tienda'}" @click="closeMobileNav">Tienda</router-link>
             </li> -->
-            <li>
-              <router-link class="NavButton link" :to="{name: 'blog'}" @click="closeMobileNav" title="Blog">Blog</router-link>
-            </li>
+
             <li>
               <router-link class="NavButton link" :to="{name: 'proyectos'}" @click="closeMobileNav" title="Proyectos">Proyectos</router-link>
             </li>
-                        <li>
+                        <!-- <li>
               <router-link class="NavButton link" :to="{name: 'otros'}" @click="closeMobileNav" title="Otros">Otros</router-link>
+            </li> -->
+                        <li>
+              <router-link class="NavButton link" :to="{name: 'blog'}" @click="closeMobileNav" title="Blog">Blog</router-link>
             </li>
             <li>
               <router-link class="NavButton link" :to="{name: 'contacto'}" @click="closeMobileNav" title="Contacto">Contacto</router-link>
