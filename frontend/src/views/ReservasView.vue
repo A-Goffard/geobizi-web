@@ -103,8 +103,7 @@
           <div class="horizontalC">
             <input type="checkbox" id="zallaGroup" v-model="formData.zallaGroupAccepted">
             <label for="zallaGroup">
-              Deseo unirme al grupo de difusión de <strong>Zalla Natura</strong> para recibir información sobre futuras
-              actividades ambientales en el municipio.
+              Deseo unirme a la Comunidad de WhatsApp de Geobizi y acceder al grupo de <strong>Zalla Natura</strong> para recibir información directa sobre futuras actividades ambientales y eventos de biodiversidad en el municipio.
             </label>
           </div>
         </div>
