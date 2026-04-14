@@ -18,7 +18,7 @@ import DetalleDiaArbolView from '@/views/proyectos/DetalleDiaArbolView.vue'
 
 import BlogView from "../views/BlogView.vue";
 
-import DetalleFlyschBizkaiaView from "@/views/blog/FlyschBizkaiaView.vue";
+import FlyschBizkaiaView from "@/views/blog/FlyschBizkaiaView.vue";
 import PatrimonioEuropeo2023View from "../views/blog/PatrimonioEuropeo2023View.vue";
 import FreeToursView from "@/views/blog/FreeToursView.vue";
 import ValerianaRojaView from "@/views/blog/ValerianaRojaView.vue";
@@ -124,9 +124,9 @@ const routes = [
         component: BlogView,
     },
     {
-        path: "/blog/detalle-flysch-bizkaia",
-        name: "detalle-flysch-bizkaia",
-        component: DetalleFlyschBizkaiaView,
+        path: "/blog/flysch-bizkaia",
+        name: "flysch-bizkaia",
+        component: FlyschBizkaiaView,
     },
     {
         path: "/blog/detalle-patrimonio",

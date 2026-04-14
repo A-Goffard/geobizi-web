@@ -82,7 +82,7 @@
     {
       title: 'Flysch Bizkaia: Geoturismo y Geología de la Costa Vasca',
       summary: 'Descubre el Flysch de Bizkaia con Geobizi. Rutas de geoturismo y divulgación geológica en la costa vasca. Aprende la historia de la Tierra en sus rocas.',
-      link: 'blog/detalle-flysch-bizkaia',
+      link: 'blog/flysch-bizkaia',
       image: '/imagenes/blog/detalle/flyschbizkaia/flyschbizkaia.avif',
     },
         {

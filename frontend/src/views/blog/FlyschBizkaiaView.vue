@@ -120,43 +120,63 @@
 <script setup>
 import { useHead } from '@vueuse/head'
 
-const pageUrl = 'https://www.geobizi.com/blog/detalle-flysch-bizkaia' // URL corta y SEO-friendly
-const ogImage = 'https://www.geobizi.com/imagenes/blog/detalle/flysch-acantilado.avif' // Asegúrate de usar una imagen de Flysch
+// URL optimizada (sin la palabra "detalle")
+const pageUrl = 'https://www.geobizi.com/blog/flysch-bizkaia' 
+const ogImage = 'https://www.geobizi.com/imagenes/blog/detalle/flysch-acantilado.avif'
 
 useHead({
-    title: 'FlyschBizkaia: Geoturismo y Geología de la Costa Vasca | Geobizi', // Título largo con KW
-    meta: [
-        { name: 'description', content: 'Descubre el Flysch de Bizkaia con Geobizi. Rutas de geoturismo y divulgación geológica en la costa vasca. Aprende la historia de la Tierra en sus rocas.' }, // Descripción SEO clave
-        { name: 'robots', content: 'index, follow' },
-        { name: 'author', content: 'Geobizi' },
-        { name: 'language', content: 'es' },
-        { name: 'keywords', content: 'FlyschBizkaia, flyschbizkaia, geoturismo bizkaia, rutas geológicas, costa vasca, divulgación geológica' }, // Palabras clave
-        { property: 'og:title', content: 'FlyschBizkaia: Geoturismo y Geología de la Costa Vasca | Geobizi' },
-        { property: 'og:description', content: 'Rutas de geoturismo y explicación del Flysch de Bizkaia. ¡Viaja al pasado geológico de la costa vasca!' },
-        { property: 'og:type', content: 'article' },
-        { property: 'og:url', content: pageUrl },
-        { property: 'og:image', content: ogImage },
-        { name: 'twitter:card', content: 'summary_large_image' },
-    ],
-    link: [
-        { rel: 'canonical', href: pageUrl },
-        { rel: 'image_src', href: ogImage },
-    ],
-    script: [
-        {
-            type: 'application/ld+json',
-            children: JSON.stringify({
-                "@context": "https://schema.org",
-                "@type": "Article",
-                "headline": "FlyschBizkaia: Descubre la Geología Oculta de la Costa Vasca",
-                "description": "Descubre el Flysch de Bizkaia con Geobizi. Rutas de geoturismo y divulgación geológica en la costa vasca.",
-                "author": { "@type": "Organization", "@id": "https://www.geobizi.com/#organization" },
-                "mainEntityOfPage": { "@type": "WebPage", "@id": pageUrl },
-                "image": { "@type": "ImageObject", "url": ogImage, "width": 1080, "height": 1080 },
-                "inLanguage": "es"
-            })
+  // Título separado y con términos de búsqueda reales
+  title: 'Flysch de Bizkaia: Rutas Geológicas y Geoturismo | Geobizi', 
+  meta: [
+    // Descripción directa incluyendo localizaciones si aplica (ej. Getxo)
+    { name: 'description', content: 'Descubre el Flysch de Bizkaia con nuestras rutas de geoturismo. Aprende geología, identifica fósiles y explora la costa vasca en familia.' },
+    { name: 'robots', content: 'index, follow' },
+    { name: 'author', content: 'Geobizi' },
+    { name: 'language', content: 'es' },
+    // Etiqueta keywords ELIMINADA
+    { property: 'og:title', content: 'Flysch de Bizkaia: Rutas Geológicas y Geoturismo | Geobizi' },
+    { property: 'og:description', content: 'Descubre el Flysch de Bizkaia con nuestras rutas de geoturismo. Aprende geología y explora la costa vasca.' },
+    { property: 'og:type', content: 'article' },
+    { property: 'og:url', content: pageUrl },
+    { property: 'og:image', content: ogImage },
+    { name: 'twitter:card', content: 'summary_large_image' }
+  ],
+  link: [
+    { rel: 'canonical', href: pageUrl },
+    { rel: 'image_src', href: ogImage }
+  ],
+  script: [
+    {
+      type: 'application/ld+json',
+      children: JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "Flysch de Bizkaia: Descubre la Geología Oculta de la Costa Vasca",
+        "description": "Descubre el Flysch de Bizkaia con Geobizi. Rutas de geoturismo y divulgación geológica en la costa vasca.",
+        "image": ogImage,
+        "author": {
+          "@type": "Organization",
+          "name": "Geobizi",
+          "url": "https://www.geobizi.com"
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": "Geobizi",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://www.geobizi.com/imagenes/GeobiziLogo.7ae1d6ce.png"
+          }
+        },
+        // IMPORTANTE: Actualiza estas fechas a cuando publicaste o modificaste el artículo por última vez
+        "datePublished": "2025-02-15T08:00:00+01:00", 
+        "dateModified": "2026-04-14T10:00:00+02:00",
+        "mainEntityOfPage": {
+          "@type": "WebPage",
+          "@id": pageUrl
         }
-    ]
+      })
+    }
+  ]
 })
 </script>
 <style scoped>
