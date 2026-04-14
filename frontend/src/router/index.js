@@ -3,9 +3,6 @@ import { createRouter, createWebHistory } from "vue-router";
 import InicioView from "../views/InicioView.vue";
 import ServiciosView from "../views/ServiciosView.vue";
 import CalendarioView from "../views/CalendarioView.vue";
-// import ReservasView from "@/views/ReservasView.vue";
-// import TiendaView from "../views/TiendaView.vue";
-
 import ProyectosView from '../views/ProyectosView.vue';
 
 import DetalleFlyschView from "@/views/proyectos/DetalleFlyschView.vue";
@@ -15,11 +12,10 @@ import DetalleAsteBerdeaView from '@/views/proyectos/DetalleAsteBerdeaView.vue'
 import DetalleSopelaKostaFestView from '@/views/proyectos/DetalleSopelaKostaFestView.vue'
 import DetalleDiaArbolView from '@/views/proyectos/DetalleDiaArbolView.vue'
 
-
 import BlogView from "../views/BlogView.vue";
 
 import FlyschBizkaiaView from "@/views/blog/FlyschBizkaiaView.vue";
-import PatrimonioEuropeo2023View from "../views/blog/PatrimonioEuropeo2023View.vue";
+import PatrimonioEuropeoView from "../views/blog/PatrimonioEuropeoView.vue";
 import FreeToursView from "@/views/blog/FreeToursView.vue";
 import ValerianaRojaView from "@/views/blog/ValerianaRojaView.vue";
 import EstuariosView from "@/views/blog/EstuariosView.vue";
@@ -46,9 +42,7 @@ import DetalleDigitalySostenible from "../components/servicios/DetalleDigitalySo
 import DetalleFormacion from "../components/servicios/DetalleFormacion.vue";
 import DetalleDescargas from "../components/servicios/DetalleDescargas.vue";
 
-
 import Calendario from "@/components/calendario/CalendarioActividades2025.vue";
-
 
 const routes = [
     {
@@ -67,21 +61,15 @@ const routes = [
         component: CalendarioView,
     },
     {
-    path: '/reservas',
-    name: 'reservas',
-    component: () => import('@/views/ReservasView.vue')
+        path: '/reservas',
+        name: 'reservas',
+        component: () => import('@/views/ReservasView.vue')
     },
     {
-    path: '/reservas/:id',
-    name: 'reservaActividad',
-    component: () => import('@/views/ReservasView.vue')
+        path: '/reservas/:id',
+        name: 'reservaActividad',
+        component: () => import('@/views/ReservasView.vue')
     },
-    // {
-    //     path: "/tienda",
-    //     name: "tienda",
-    //     component: TiendaView,
-    // },
-    
     {
         path: "/proyectos",
         name: "proyectos",
@@ -118,6 +106,7 @@ const routes = [
         component: DetalleDiaArbolView,
     },
     
+    // --- RUTAS DEL BLOG OPTIMIZADAS (SEO) ---
     {
         path: "/blog",
         name: "blog",
@@ -129,65 +118,67 @@ const routes = [
         component: FlyschBizkaiaView,
     },
     {
-        path: "/blog/detalle-patrimonio",
-        name: "detalle-patrimonio",
-        component: PatrimonioEuropeo2023View,
+        path: "/blog/patrimonio-europeo",
+        name: "patrimonio-europeo",
+        component: PatrimonioEuropeoView,
     },
     {
-        path: "/blog/detalle-free-tours",
-        name: "free-tour",
+        path: "/blog/free-tours",
+        name: "free-tours",
         component: FreeToursView,
     },
     {
-        path: "/blog/detalle-valeriana-roja",
-        name: "valerianaroja",
+        path: "/blog/valeriana-roja",
+        name: "valeriana-roja",
         component: ValerianaRojaView,
     },
     {
-        path: "/blog/detalle-estuarios",
+        path: "/blog/estuarios",
         name: "estuarios",
         component: EstuariosView,
     },
     {
-        path: "/blog/detalle-mariquitas",
+        path: "/blog/mariquitas",
         name: "mariquitas",
         component: MariquitasView,
     },
     {
-        path: "/blog/detalle-biodiversidad",
+        path: "/blog/biodiversidad",
         name: "biodiversidad",
         component: BiodiversidadView,
     },
     {
-        path: "/blog/detalle-sapito",
-        name: "sapito",
+        path: "/blog/sapito-corredor",
+        name: "sapito-corredor",
         component: SapitoView,
     },
     {
-        path: "/blog/detalle-carpobrotus",
+        path: "/blog/carpobrotus",
         name: "carpobrotus",
         component: CarpobrotusView,
     },
     {
-        path: "/blog/detalle-estramonio",
+        path: "/blog/estramonio",
         name: "estramonio",
         component: EstramonioView,
     },
     {
-        path: "/blog/detalle-flora-autoctona",
+        path: "/blog/flora-autoctona",
         name: "flora-autoctona",
         component: FloraAutoctonaView,
     },
     {
-        path: "/blog/detalle-fosiles",
+        path: "/blog/fosiles",
         name: "fosiles",
         component: FosilesView,
     },
     {
-        path: "/blog/detalle-dia-tierra",
+        path: "/blog/dia-tierra",
         name: "dia-tierra",
         component: DiaTierraView,
     },
+    // ----------------------------------------
+
     {
         path: "/otros",
         name: "otros",
@@ -198,8 +189,6 @@ const routes = [
         name: "contacto",
         component: ContactoView,
     },
-
-
     {
         path: "/politicadecancelaciones",
         name: "cancelaciones",
@@ -215,8 +204,6 @@ const routes = [
         name: "privacidad",
         component: PoliticadeprivacidadView,
     },
-    
-
     {
         path: "/detalle-rutas",
         name: "DetalleRutas",
@@ -252,8 +239,6 @@ const routes = [
         name: "Calendario",
         component: Calendario,
     },
-
-    // Redirige cualquier ruta no existente a una página de error personalizada
     {
         path: '/:pathMatch(.*)*',
         name: 'NotFound',
@@ -265,7 +250,6 @@ const router = createRouter({
     history: createWebHistory(),
     routes,
     scrollBehavior() {
-        // Siempre desplaza hacia la parte superior
         return { top: 0 };
     },
 });

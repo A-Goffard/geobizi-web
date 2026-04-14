@@ -1,8 +1,6 @@
 <template>
     <div class="contenedor-principal">
-        <h1>
-            Flysch de Bizkaia: Descubre la Geología Oculta de la Costa Vasca
-        </h1>
+        <h1>Flysch de Bizkaia: Descubre la Geología Oculta de la Costa Vasca</h1>
 
         <p>
             La <strong>Costa Vasca</strong> esconde tesoros geológicos de valor incalculable. Entre ellos, el
@@ -36,23 +34,21 @@
         </p>
         <p>
             En estas zonas del <strong>Flysch de Bizkaia</strong>, las capas se encuentran a menudo plegadas y
-            verticalizadas debido a la orogenia Alpina, creando un paisaje espectacular. Nuestras **rutas de
-            geoturismo** te llevan a interpretarlos, conectando la geología con la ecología marina y la biodiversidad
+            verticalizadas debido a la orogenia Alpina, creando un paisaje espectacular. Nuestras <strong>rutas de
+            geoturismo</strong> te llevan a interpretarlos, conectando la geología con la ecología marina y la biodiversidad
             que se aferra a estas estructuras rocosas.
         </p>
-
 
         <h2>Geoturismo y Educación Ambiental con Geobizi</h2>
         <p>
             En <strong>Geobizi</strong>, creemos que el <strong>geoturismo</strong> no es solo mirar rocas, sino
             entender los procesos que las formaron y cómo influyen en el ecosistema actual. Por eso, nuestras
-            excursiones por el <strong>flyschbizkaia</strong> se centran en:
+            excursiones por el <strong>flysch de Bizkaia</strong> se centran en:
         </p>
 
         <ul>
             <li><strong>Interpretación Geológica:</strong> Aprender a leer las capas, fallas y pliegues.</li>
-            <li><strong>Biodiversidad Litoral:</strong> Observación de las especies adaptadas a la rasa mareal.
-            </li>
+            <li><strong>Biodiversidad Litoral:</strong> Observación de las especies adaptadas a la rasa mareal.</li>
             <li><strong>Historia del Planeta:</strong> Conectar las formaciones locales con eventos globales,
                 como la caída del meteorito que impactó en Yucatán.</li>
         </ul>
@@ -72,45 +68,53 @@
         </p>
 
         <div class="caja-recurso">
-            <h2>Profundiza en la didáctica del Flysch</h2>
+            <h3>Profundiza en la didáctica del Flysch</h3>
             <p>
                 Hemos preparado un documento detallado con recursos didácticos sobre el Flysch de Bizkaia. Ideal para
                 docentes, familias o personas con ganas de aprender más antes de su visita.
             </p>
             <div class="botones-recurso">
-                <a href="/descargas/documentos/Flyschbizkaia-didactica.pdf" download="Flyschbizkaia-didactica.pdf"
-                    class="btn-descargar-directo">
+                <a href="/descargas/documentos/Flyschbizkaia-didactica.pdf" download="Flyschbizkaia-didactica.pdf" class="btn-descargar-directo">
                     Descargar PDF
                 </a>
-            </div> 
-             <div class="botones-recurso">   
                 <a href="/detalle-descargas" class="btn-ver-mas">
                     Ver más recursos
                 </a>
-            </div>
+            </div> 
         </div>
 
         <h2>¡Únete a una Ruta Geológica!</h2>
         <p>
             Si te apasiona la geología y quieres experimentar el <strong>Flysch de Bizkaia</strong> de una manera
-            educativa y consciente, te invitamos a consultar nuestras <a href="../reservas"
-                title="Rutas Geológicas Geobizi">rutas de geoturismo</a>. ¡El próximo capítulo de la historia de la
-            Tierra te espera en la costa!
+            educativa y consciente, te invitamos a consultar nuestras <a href="/calendario" title="Rutas Geológicas Geobizi">rutas de geoturismo</a> en el calendario. ¡El próximo capítulo de la historia de la Tierra te espera en la costa!
         </p>
+
+        <p class="social-media"><b>¡Síguenos en redes sociales para ver imágenes espectaculares de nuestras rutas por el litoral!</b></p>
+        <div class="redes-sociales">
+            <a href="https://www.instagram.com/geotxiki/" target="_blank" rel="noopener noreferrer" title="Geobizi en Instagram">
+                <img src="/imagenes/iconos/instagram.png" alt="Geobizi en Instagram" class="social-icon" loading="lazy" />
+            </a>
+            <a href="https://www.facebook.com/geobizirik/" target="_blank" rel="noopener noreferrer" title="Geobizi en Facebook">
+                <img src="/imagenes/iconos/facebook.png" alt="Geobizi en Facebook" class="social-icon" loading="lazy" />
+            </a>
+            <a href="https://www.tiktok.com/@geobizi" target="_blank" rel="noopener noreferrer" title="Geobizi en TikTok">
+                <img src="/imagenes/iconos/tiktok.png" alt="Geobizi en TikTok" class="social-icon" loading="lazy" />
+            </a>
+        </div>
 
         <div class="imagen-trio">
             <div>
                 <img class="img" src="/imagenes/blog/detalle/flyschbizkaia/sopelaefecto.avif"
-                    alt="Acantilado de Flysch en Bizkaia — pliegues rocosos" title="FlyschBizkaia — Geología costera"
+                    alt="Acantilado de Flysch en Bizkaia mostrando pronunciados pliegues rocosos" title="FlyschBizkaia — Geología costera"
                     loading="lazy" />
             </div>
             <div>
                 <img class="img" src="/imagenes/blog/detalle/flyschbizkaia/coladragonflysch.avif"
-                    alt="Rasa mareal con formaciones de Flyschbizkaia" title="Flysch — Rasa mareal" loading="lazy" />
+                    alt="Rasa mareal con formaciones del Flysch de Bizkaia en bajamar" title="Flysch — Rasa mareal" loading="lazy" />
             </div>
             <div>
                 <img class="img" src="/imagenes/blog/detalle/flyschbizkaia/geoturismo.avif"
-                    alt="Geoturismo en Flysch de Bizkaia" title="Geoturismo en Flysch de Bizkaia" loading="lazy" />
+                    alt="Grupo de geoturismo observando las capas del Flysch de Bizkaia con Geobizi" title="Geoturismo en Flysch de Bizkaia" loading="lazy" />
             </div>
         </div>
 
@@ -120,20 +124,17 @@
 <script setup>
 import { useHead } from '@vueuse/head'
 
-// URL optimizada (sin la palabra "detalle")
+// URL optimizada
 const pageUrl = 'https://www.geobizi.com/blog/flysch-bizkaia' 
-const ogImage = 'https://www.geobizi.com/imagenes/blog/detalle/flysch-acantilado.avif'
+const ogImage = 'https://www.geobizi.com/imagenes/blog/detalle/flyschbizkaia/sopelaefecto.avif' // Asegúrate de que esta ruta existe
 
 useHead({
-  // Título separado y con términos de búsqueda reales
   title: 'Flysch de Bizkaia: Rutas Geológicas y Geoturismo | Geobizi', 
   meta: [
-    // Descripción directa incluyendo localizaciones si aplica (ej. Getxo)
     { name: 'description', content: 'Descubre el Flysch de Bizkaia con nuestras rutas de geoturismo. Aprende geología, identifica fósiles y explora la costa vasca en familia.' },
     { name: 'robots', content: 'index, follow' },
     { name: 'author', content: 'Geobizi' },
     { name: 'language', content: 'es' },
-    // Etiqueta keywords ELIMINADA
     { property: 'og:title', content: 'Flysch de Bizkaia: Rutas Geológicas y Geoturismo | Geobizi' },
     { property: 'og:description', content: 'Descubre el Flysch de Bizkaia con nuestras rutas de geoturismo. Aprende geología y explora la costa vasca.' },
     { property: 'og:type', content: 'article' },
@@ -165,9 +166,14 @@ useHead({
           "logo": {
             "@type": "ImageObject",
             "url": "https://www.geobizi.com/imagenes/GeobiziLogo.7ae1d6ce.png"
-          }
+          },
+          "sameAs": [
+            "https://www.facebook.com/geobizirik/",
+            "https://www.instagram.com/geotxiki/",
+            "https://www.tiktok.com/@geobizi",
+            "https://www.youtube.com/channel/UCw-C_J0y-jKHp7Zx92lsKfg"
+          ]
         },
-        // IMPORTANTE: Actualiza estas fechas a cuando publicaste o modificaste el artículo por última vez
         "datePublished": "2025-02-15T08:00:00+01:00", 
         "dateModified": "2026-04-14T10:00:00+02:00",
         "mainEntityOfPage": {
@@ -179,11 +185,98 @@ useHead({
   ]
 })
 </script>
+
 <style scoped>
+/* CAJA DE RECURSOS */
+.caja-recurso {
+  background-color: var(--megashoftgreen); 
+  border-left: 4px solid var(--shoftgreen); 
+  padding: 1.5rem;
+  margin: 2.5rem 0;
+  border-radius: 0 0.5rem 0.5rem 0;
+}
+.caja-recurso h3 {
+  margin-top: 0;
+  color: var(--lightgreen);
+  font-size: 1.2rem;
+}
+.caja-recurso p {
+  margin-bottom: 1.5rem;
+  color: var(--darkgrey);
+}
 .botones-recurso {
-    display: flex;
-    gap: 1rem;
-    margin-top: 1rem;
-    margin-left: 1rem;
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.btn-descargar-directo {
+  background-color: var(--supershoftgreen);
+  color: var(--lightgreen);
+  padding: 0.6rem 1.2rem;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+}
+.btn-descargar-directo:hover {
+  background-color: var(--shoftgreen);
+  color: var(--white);
+}
+.btn-ver-mas {
+  background-color: transparent;
+  color: var(--lightgreen);
+  padding: 0.6rem 1.2rem;
+  text-decoration: none;
+  font-weight: bold;
+  border: 1px solid var(--shoftgreen);
+  border-radius: 4px;
+  transition: all 0.3s;
+}
+.btn-ver-mas:hover {
+  background-color: var(--shoftgreen);
+  color: white;
+}
+
+/* REDES SOCIALES */
+.social-media {
+  margin-top: 2rem;
+  color: var(--darkgrey);
+}
+.redes-sociales {
+  margin-left: 1rem;
+  display: flex;
+  align-items: center;
+}
+.social-icon {
+  width: 2.5rem; 
+  margin-right: 1rem;
+  margin-bottom: 1.5rem;
+  transition: transform 0.3s;
+}
+.social-icon:hover {
+  transform: scale(1.1);
+}
+
+/* LISTAS CON HOJITAS */
+.contenedor-principal ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+.contenedor-principal li {
+  position: relative;
+  padding-left: 2rem;
+  margin-bottom: 0.8rem;
+  line-height: 1.5;
+}
+.contenedor-principal li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 2px;
+  width: 1.2rem;
+  height: 1.2rem;
+  background-image: url('../../assets/Hojitas.png'); 
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 </style>

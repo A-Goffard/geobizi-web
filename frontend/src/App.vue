@@ -39,6 +39,9 @@ box-sizing: border-box;
   --darkgrey: #333333;
   --grey: #666;
 
+  --yellow: #fff3cd;
+  --orange: #ffc107;
+
   --megashoftgreen: #efffec;
   --supershoftgreen: #d2f8cd;
   --shoftgreen: #9bee9f;
@@ -93,6 +96,12 @@ p {
 }
 ul{
     margin: 1rem;
+    
+}
+li{
+    margin: 0.5rem 0;
+    margin-left: 1rem;
+    color: var(--darkgrey);
 }
 .margen {
 margin: 2rem;
