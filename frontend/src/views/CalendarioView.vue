@@ -44,7 +44,7 @@
     <p><strong>📅 {{ actividad.fecha }}</strong></p>
     <p>⏰ {{ actividad.hora }}</p>
     <p v-if="actividad.ubicacion">📍 {{ actividad.ubicacion }}</p>
-    <p class="precio-tag">💶 {{ actividad.precio === 0 ? 'Gratis' : actividad.precio + '€' }}</p>
+    <p class="precio-tag">💶 {{ actividad.precio === 0 ? 'Gratis' : actividad.precio + ' € por persona' }}</p>
     
     <div class="badge-container">
       <span class="badge" :class="actividad.proyecto || 'general'">
