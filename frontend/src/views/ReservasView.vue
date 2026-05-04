@@ -116,7 +116,7 @@
         <div class="horizontalC">
           <input type="checkbox" id="privacyAviso" v-model="formData.privacyAcceptedAviso" required>
           <label for="privacyAviso">
-            Entiendo que esto es una solicitud de reserva pendiente de confirmación.
+            Entiendo que esto es una solicitud de reserva pendiente de confirmación. La respuesta no es inmediata, puede tardar unos días dependiendo de la fecha de la actividad y la cantidad de reservas.
           </label>
         </div>
 
