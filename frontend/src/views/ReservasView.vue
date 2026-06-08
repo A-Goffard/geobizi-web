@@ -68,7 +68,7 @@
         </div>
 
         <div class="form-group">
-          <label for="numPersonas">Número de personas:</label>
+          <label for="numPersonas">Número de personas totales (adultos y menores incluidos):</label>
           <input type="number" id="numPersonas" v-model="formData.numPersonas" min="1" required>
         </div>
 
