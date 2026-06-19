@@ -41,6 +41,7 @@ import DetalleSensibilizacion from "../components/servicios/DetalleSensibilizaci
 import DetalleDigitalySostenible from "../components/servicios/DetalleDigitalySostenible.vue";
 import DetalleFormacion from "../components/servicios/DetalleFormacion.vue";
 import DetalleDescargas from "../components/servicios/DetalleDescargas.vue";
+import FitxasEtnobotanicasEnkarterri from "../components/contenido-creado/FitxasEtnobotanicasEnkarterri.vue";
 
 import Calendario from "@/components/calendario/CalendarioActividades2025.vue";
 
@@ -233,6 +234,11 @@ const routes = [
         path: "/detalle-descargas",
         name: "DetalleDescargas",
         component: DetalleDescargas,
+    },
+        {
+        path: "/fitxas-etnobotanicas-enkarterri",
+        name: "fitxas-etnobotanicas-enkarterri",
+        component: FitxasEtnobotanicasEnkarterri,
     },
     {
         path: "/calendario",

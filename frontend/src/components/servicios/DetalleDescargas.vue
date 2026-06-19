@@ -6,6 +6,16 @@
 
     <h2>Material disponible</h2>
 
+    <h3>Digital</h3>
+
+    
+           <div class="container">
+           <router-link to="/fitxas-etnobotanicas-enkarterri" class="card">
+  <img src="/imagenes/etnobotanica/catalogo-botanico.avif" alt="Catálogo digital de fichas etnobotánicas de Geobizi" loading="lazy">
+  <p class="card-text">Guía Digital interactiva: Fichas Etnobotánicas y Herbario de Euskal Herria</p>
+</router-link>
+           </div>
+
     <h3>Láminas</h3>
 
     <div class="container">
