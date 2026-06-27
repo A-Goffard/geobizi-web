@@ -80,6 +80,12 @@
   
   const articles = ref([
     {
+      title: 'Nummulites: Las "monedas de piedra" del Flysch de Bizkaia',
+      summary: 'Descubre qué son los Nummulites, los fósiles gigantes de foraminíferos que demuestran que la costa de Getxo fue un mar tropical.',
+      link: '/blog/nummulites-flysch',
+      image: '/imagenes/blog/detalle/nummulites1.avif',
+    },
+    {
       title: 'Flysch Bizkaia: Geoturismo y Geología de la Costa Vasca',
       summary: 'Descubre el Flysch de Bizkaia con Geobizi. Rutas de geoturismo y divulgación geológica en la costa vasca. Aprende la historia de la Tierra en sus rocas.',
       link: '/blog/flysch-bizkaia',

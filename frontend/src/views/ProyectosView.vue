@@ -82,10 +82,10 @@ const projects = ref([
     image: '/imagenes/proyectos/zallanatura/zallanatura.avif',
   },
   {
-    title: 'Ginkana del Flysch de Bizkaia',
-    description: 'Una experiencia digital para explorar el Flysch de Bizkaia de manera interactiva.',
+    title: 'Proyecto Integral: Flysch de Bizkaia',
+    description: 'Divulgación geológica a través de rutas guiadas, yincanas digitales interactivas y material didáctico abierto.',
     link: '/detalle-flysch',
-    image: '/imagenes/proyectos/flyschdigital/flyschdigital.avif',
+    image: '/imagenes/proyectos/flyschdigital/flyschdigital.avif', // Puedes cambiar esta imagen más adelante si quieres una más genérica del acantilado
   },
   {
     title: 'Semana Verde',

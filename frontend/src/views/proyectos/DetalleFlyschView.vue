@@ -1,147 +1,233 @@
 <template>
+  <div class="contenedor-principal">
+    <h1>Proyecto: Flysch de Bizkaia</h1>
+    <h2>Geología, Educación y Tecnología en la Costa Vasca</h2>
+    
+    <p>El <strong>Flysch de Bizkaia</strong> es uno de los patrimonios geológicos más impresionantes de la costa cantábrica. Para dar a conocer su valor incalculable de forma rigurosa y amena, en Geobizi hemos desarrollado un proyecto integral de divulgación que abarca desde la exploración sobre el terreno hasta la innovación digital.</p>
 
-    <div class="contenedor-principal">
-      <h1>Flysch Digital</h1>
-      <h2>Yincana Interactiva</h2>
-      
-      <h3>Donde la aventura, la tecnología y la naturaleza se unen</h3>
+    <hr class="separador-seccion" />
 
-      <p>¿Imaginas explorar un paisaje espectacular mientras resuelves enigmas digitales con tu móvil? Flysch Digital es una experiencia única que combina lo mejor de una yincana tradicional con la emoción de las nuevas tecnologías.</p>
-      <h3>Una aventura para todos</h3>
+    <section class="secciones">
+      <h2>Nuestras Líneas de Acción en el Flysch</h2>
 
-      <p>Una actividad pensada para todos los públicos, familias, grupos de amigos, adultos, adolescentes, turistas... Con ayuda del móvil, irán resolviendo pistas y acertijos por la playa de Sopela hasta dar con la prueba final.</p>
-      <p>En el transcurso de las pruebas se irán moviendo por toda la zona mientras aprenden, descubren, se entretienen y disfrutan de una actividad diferente.</p>
-      <p>Es un proyecto adaptable a otros entonos que resulta original y divertido.</p>
-      <p>La actividad se puede realizar en euskera o castellano.</p>
-      <p>Una posibilidad interesante para los que les gusta hacer algo diferente.</p>
-
-      <h3>¿Quieres una yincana digital personalizada?</h3>
-      <p>¡Creamos yincanas a medida para cualquier lugar! Contáctanos y diseñaremos una experiencia única adaptada a tu entorno.</p>
-      
-      <h3>¿Por qué elegir Flysch Digital?</h3>
-      <p>
-        <img src="/imagenes/iconos/color/estrellitas.png" alt="Icono actividad original" title="Original" class="icono" loading="lazy" />
-        <strong>Actividad original</strong> – No es solo un paseo, es una experiencia interactiva.
-      </p>      
-      <p>
-        <img src="/imagenes/iconos/color/adaptable.png" alt="Icono adaptable" title="Adaptable" class="icono" loading="lazy" />
-        <strong>Adaptable</strong> – Podemos personalizarla para otros entornos (montañas, ciudades, parques naturales…).</p>
-      <p>
-        <img src="/imagenes/iconos/color/multilingue.png" alt="Icono multilingüe" title="Multilingüe" class="icono" loading="lazy" />
-        <strong>Multilingüe</strong> – Disponible en euskera y castellano (otros idiomas bajo consulta).</p>
-      <p>
-        <img src="/imagenes/iconos/color/libro.png" alt="Icono educativo" title="Educativo" class="icono" loading="lazy" />
-        <strong>Educativo y entretenido</strong> – Perfecto para colegios, empresas o grupos de ocio.</p>
-
-      <div class="imagen-trio">
-      <div>
-              <img
-        class="img"
-        src="/imagenes/proyectos/flyschdigital/flyschdigital1.avif"
-        alt="Flysch Digital — yincana interactiva en la costa"
-        title="Flysch Digital — imagen 1"
-        loading="lazy"
-      />
-      </div>
-      <div>
-              <img
-        class="img"
-        src="/imagenes/proyectos/flyschdigital/flyschdigital2.avif"
-        alt="Participantes resolviendo pruebas de la yincana digital"
-        title="Flysch Digital — imagen 2"
-        loading="lazy"
-      />
-      </div>
-      <div>
-              <img
-        class="img"
-        src="/imagenes/proyectos/flyschdigital/flyschdigital3.avif"
-        alt="Exploración del flysch y descubrimiento de fósiles"
-        title="Flysch Digital — imagen 3"
-        loading="lazy"
-      />
+      <!-- LÍNEA 1: YINCANA DIGITAL -->
+      <div class="bloque-accion">
+        <h3>1. Flysch Digital: Yincana Interactiva</h3>
+        <p>¿Imaginas explorar un paisaje espectacular mientras resuelves enigmas digitales con tu dispositivo móvil? <strong>Flysch Digital</strong> es una experiencia única que combina lo mejor de una yincana tradicional de orientación con la tecnología actual.</p>
+        <p>Pensada para familias, colegios y grupos, los participantes recorren la playa de Sopela resolviendo pistas y acertijos geológicos. Durante el transcurso de las pruebas, se mueven por la zona mientras aprenden a identificar estratos y fósiles de manera totalmente interactiva y lúdica. La actividad está disponible en euskera y castellano.</p>
       </div>
 
+      <!-- LÍNEA 2: RUTAS GUIADAS -->
+      <div class="bloque-accion">
+        <h3>2. Geoturismo y Rutas Geológicas</h3>
+        <p>Ofrecemos rutas guiadas interpretativas por los acantilados de Sopela y Getxo (Gorrondatxe / Azkorri). Lejos de una simple caminata, enseñamos a los asistentes a "leer las rocas", interpretando la orogenia alpina, identificando fósiles y microfósiles e integrando el uso de herramientas científicas como el microscopio de campo.</p>
+        <p>Diseñamos itinerarios adaptados al currículo de centros escolares y programas de ciencia ciudadana respaldados por instituciones locales.</p>
+      </div>
+
+      <!-- LÍNEA 3: MATERIAL DIDÁCTICO (Descarga) -->
+      <div class="bloque-accion">
+        <h3>3. Recursos Didácticos Abiertos</h3>
+        <p>Como parte de nuestro compromiso con la educación ambiental, hemos elaborado material técnico y didáctico para que docentes, educadores y familias puedan preparar su visita o profundizar en los conceptos geológicos en el aula.</p>
+        
+        <!-- Tarjeta de Descarga Integrada -->
+        <div class="contenedor-descarga">
+          <a href="/descargas/documentos/Flyschbizkaia-didactica.pdf" download="Flyschbizkaia-didactica.pdf" class="card-descarga">
+            <img src="/descargas/miniaturas/flyschbizkaia-didactica.avif" alt="Portada Guía Didáctica Flyschbizkaia" loading="lazy">
+            <div class="info-descarga">
+              <h4>Guía Didáctica: Flysch de Bizkaia</h4>
+              <p>Documento de apoyo educativo en formato PDF.</p>
+              <span class="btn-falso">Descargar Archivo</span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <hr class="separador-seccion" />
+
+    <h3>¿Por qué elegir nuestro proyecto integral?</h3>
+    <ul>
+      <li><strong>Rigor científico:</strong> Contenidos estructurados por profesionales de la geología y la educación.</li>
+      <li><strong>Innovación:</strong> Integración fluida de herramientas digitales (yincanas móviles) en entornos naturales.</li>
+      <li><strong>Adaptabilidad:</strong> Capacidad de escalar el proyecto y la yincana a otros entornos geológicos o municipios.</li>
+      <li><strong>Multilingüe:</strong> Materiales y dinamización disponibles en euskera y castellano.</li>
+    </ul>
+
+    <!-- GALERÍA DE IMÁGENES -->
+    <div class="imagen-trio">
+      <div>
+        <img
+          class="img"
+          src="/imagenes/proyectos/flyschdigital/flyschdigital1.avif"
+          alt="Flysch Digital — yincana interactiva en la costa"
+          title="Flysch Digital — Yincana"
+          loading="lazy"
+        />
+      </div>
+      <div>
+        <img
+          class="img"
+          src="/imagenes/proyectos/flyschdigital/flyschdigital2.avif"
+          alt="Participantes resolviendo pruebas de la yincana digital con el móvil"
+          title="Resolución de pruebas digitales"
+          loading="lazy"
+        />
+      </div>
+      <div>
+        <img
+          class="img"
+          src="/imagenes/proyectos/flyschdigital/flyschdigital3.avif"
+          alt="Exploración del flysch de Bizkaia y descubrimiento de fósiles"
+          title="Exploración geológica"
+          loading="lazy"
+        />
+      </div>
     </div>
-    </div>
-  </template>
-  
-  <script setup>
-import { useHead } from '@vueuse/head' // añadido
+  </div>
+</template>
+
+<script setup>
+import { useHead } from '@vueuse/head'
 
 const pageUrl = 'https://www.geobizi.com/detalle-flysch'
-const ogImage = 'https://www.geobizi.com/imagenes/proyectos/flyschdigital1.avif'
+const ogImage = 'https://www.geobizi.com/imagenes/proyectos/flyschdigital/flyschdigital1.avif'
 
 useHead({
-  title: 'Flysch Digital — Yincana interactiva | Geobizi',
+  title: 'Proyecto Flysch de Bizkaia: Geoturismo y Yincana Digital | Geobizi',
   meta: [
-    { name: 'description', content: 'Flysch Digital: yincana interactiva para explorar el Flysch de Bizkaia. Actividad educativa y divertida para familias, colegios y grupos.' },
+    { name: 'description', content: 'Proyecto integral sobre el Flysch de Bizkaia (Flyschbizkaia): rutas geológicas, yincana digital interactiva y descarga de guías didácticas.' },
     { name: 'robots', content: 'index, follow' },
     { name: 'author', content: 'Geobizi' },
     { name: 'theme-color', content: '#0b8a4c' },
     { name: 'language', content: 'es' },
-    { property: 'og:title', content: 'Flysch Digital — Yincana interactiva | Geobizi' },
-    { property: 'og:description', content: 'Flysch Digital: yincana interactiva para explorar el Flysch de Bizkaia. Actividad educativa y divertida para familias, colegios y grupos.' },
+    { property: 'og:title', content: 'Proyecto Flysch de Bizkaia: Geoturismo y Educación | Geobizi' },
+    { property: 'og:description', content: 'Explora el Flysch de Bizkaia con nuestra yincana digital, rutas guiadas y recursos educativos descargables.' },
     { property: 'og:type', content: 'article' },
     { property: 'og:url', content: pageUrl },
     { property: 'og:image', content: ogImage },
-    { name: 'twitter:card', content: 'summary_large_image' },
-    { name: 'twitter:image', content: ogImage }
+    { name: 'twitter:card', content: 'summary_large_image' }
   ],
   link: [
     { rel: 'canonical', href: pageUrl },
-    { rel: 'image_src', href: ogImage },
-    { rel: 'apple-touch-icon', href: '/apple-touch-icon.png', sizes: '180x180' }
+    { rel: 'image_src', href: ogImage }
   ],
   script: [
     {
       type: 'application/ld+json',
       children: JSON.stringify({
         "@context": "https://schema.org",
-        "@graph": [
-          {
-            "@type": "Organization",
-            "@id": "https://www.geobizi.com/#organization",
-            "name": "Geobizi",
-            "url": "https://www.geobizi.com",
-            "logo": {
-              "@type": "ImageObject",
-              "url": "https://www.geobizi.com/imagenes/GeobiziLogo.7ae1d6ce.png",
-              "width": 1417,
-              "height": 313
-            },
-            "sameAs": [
-              "https://www.facebook.com/geobizirik/",
-              "https://www.instagram.com/geotxiki/",
-              "https://www.youtube.com/channel/UCw-C_J0y-jKHp7Zx92lsKfg"
-            ]
-          },
-          {
-            "@type": "WebPage",
-            "url": pageUrl,
-            "name": "Flysch Digital — Yincana interactiva | Geobizi",
-            "description": "Flysch Digital: yincana interactiva para explorar el Flysch de Bizkaia. Actividad educativa y divertida para familias, colegios y grupos.",
-            "inLanguage": "es",
-            "isPartOf": { "@id": "https://www.geobizi.com/#organization" },
-            "image": { "@type": "ImageObject", "url": ogImage, "width": 1080, "height": 1080 }
-          }
-        ]
+        "@type": "WebPage",
+        "url": pageUrl,
+        "name": "Proyecto Flysch de Bizkaia: Geoturismo y Yincana Digital | Geobizi",
+        "description": "Proyecto integral sobre el Flysch de Bizkaia: rutas geológicas, yincana digital interactiva y descarga de guías didácticas.",
+        "inLanguage": "es",
+        "isPartOf": {
+          "@type": "Organization",
+          "@id": "https://www.geobizi.com/#organization",
+          "name": "Geobizi",
+          "url": "https://www.geobizi.com"
+        },
+        "image": { "@type": "ImageObject", "url": ogImage, "width": 1080, "height": 1080 }
       })
     }
   ]
 })
-  </script>
-  
-  <style scoped>
-    .contenedor-principal {
-    padding-top: 7rem;
-    background-color: rgb(255, 255, 255);
-    padding-bottom: 2rem;
-  }
-.icono {
-  width: 20px;
-  height: 20px;
-  margin-right: 8px;
-  vertical-align: middle;
+</script>
+
+<style scoped>
+.contenedor-principal {
+  padding-top: 7rem;
+  background-color: rgb(255, 255, 255);
+  padding-bottom: 2rem;
 }
-  </style>
+
+.separador-seccion {
+  margin: 2.5rem 0;
+  border: 0;
+  border-top: 1px solid var(--shoftgreen);
+}
+
+.bloque-accion {
+  margin-bottom: 2.5rem;
+}
+
+.bloque-accion h3 {
+  color: var(--darkgreen);
+  margin-bottom: 1rem;
+}
+
+/* ESTILOS PARA LA TARJETA DE DESCARGA */
+.contenedor-descarga {
+  margin-top: 1.5rem;
+  max-width: 450px;
+}
+
+.card-descarga {
+  display: flex;
+  align-items: center;
+  background-color: var(--megashoftgreen);
+  border: 1px solid var(--shoftgreen);
+  border-radius: 0.5rem;
+  padding: 1rem;
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card-descarga:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.card-descarga img {
+  width: 90px;
+  height: auto;
+  border-radius: 4px;
+  margin-right: 1.5rem;
+  object-fit: cover;
+}
+
+.info-descarga h4 {
+  margin: 0 0 0.5rem 0;
+  color: var(--darkgreen);
+  font-size: 1.1rem;
+}
+
+.info-descarga p {
+  margin: 0 0 1rem 0;
+  font-size: 0.9rem;
+  color: var(--darkgrey);
+}
+
+.btn-falso {
+  background-color: var(--shoftgreen);
+  color: white;
+  padding: 0.4rem 0.8rem;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  font-weight: bold;
+}
+
+/* LISTAS CON HOJITAS */
+.contenedor-principal ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+.contenedor-principal li {
+  position: relative;
+  padding-left: 2rem;
+  margin-bottom: 0.8rem;
+  line-height: 1.5;
+}
+.contenedor-principal li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 2px;
+  width: 1.2rem;
+  height: 1.2rem;
+  background-image: url('../../assets/Hojitas.png'); 
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+</style>

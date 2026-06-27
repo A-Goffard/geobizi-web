@@ -8,7 +8,7 @@
     <section class="modalidades-trabajo">
       <h2>Modalidades de Contratación</h2>
       <p>Trabajamos de forma transversal adaptando la metodología, los materiales y el idioma (euskera/castellano) en
-        base a cuatro líneas operativas principales:</p>
+        base a tres líneas operativas principales:</p>
 
       <div class="bloques-gestion">
         <div class="bloque-modalidad">
@@ -32,32 +32,11 @@
         </div>
 
         <div class="bloque-modalidad">
-          <h3>Talleres y Rutas para Eventos y Ferias</h3>
+          <h3>Talleres para Eventos y Ferias</h3>
           <p>Formatos dinámicos, adaptados y de corta duración idóneos para stands institucionales, ferias de flores, de
             sostenibilidad, jornadas culturales o dinámicas corporativas de <em>team building</em>. Diseñamos
             actividades de fuerte carga manipulativa y visual pensadas para entretener, concienciar y forjar vínculos
             cooperativos en grupos grandes.</p>
-        </div>
-                <div class="bloque-modalidad">
-          <h3>Programas y Rutas Regulares (Fechas Garantizadas)</h3>
-          <p>Actividades, itinerarios guiados y salidas de campo programadas con un calendario fijo e inscripción
-            abierta para particulares, turismo familiar, colectivos reducidos y público <em>Silver</em>. Son
-            experiencias orientadas a la ciencia ciudadana, el descubrimiento del entorno y el disfrute
-            intergeneracional a través de la divulgación ambiental, la botánica y las ciencias de la Tierra (como la
-            geología y la paleontología).</p>
-          <div class="caja-recurso">
-            <h3><strong>Campaña de Getxo — Inscripciones Abiertas:</strong></h3>
-            <p>
-              Ya puedes reservar tu plaza para los
-              servicios garantizados en el litoral de Getxo. Explora la costa en <b>"El Flysch al microscopio"</b> en
-              la playa de Gorrondatxe (Azkorri) o descubre la biodiversidad nocturna con linternas de luz roja en las
-              rutas de <b>"Naturgaua"</b>.
-            </p>
-            <div class="botones-recurso">
-              <a href="/calendario" class="proximas-actividades">Ver próximas actividades</a>
-              <a href="/contacto" class="btn-ver-mas">Contactar con nosotros</a>
-            </div>
-          </div>
         </div>
       </div>
     </section>
@@ -144,34 +123,42 @@
 
 <script setup>
 import { useHead } from '@vueuse/head'
+
 const pageUrl = 'https://www.geobizi.com/servicios/actividades'
 useHead({
-  title: 'Actividades y Talleres | Geobizi',
-  meta: [{ name: 'description', content: 'Programas y talleres ambientales de Geobizi: rutas guiadas con fechas garantizadas, actividades curriculares para centros escolares y proyectos integrales locales.' }],
+  title: 'Actividades y Talleres Ambientales | Geobizi',
+  meta: [{ name: 'description', content: 'Programas y talleres ambientales de Geobizi: actividades curriculares para centros escolares y proyectos integrales locales.' }],
   link: [{ rel: 'canonical', href: pageUrl }]
 })
 </script>
 
 <style scoped>
-.caja-recurso {
-  background-color: var(--megashoftgreen); 
-  border-left: 4px solid var(--shoftgreen); 
-  padding: 1.5rem;
-  margin: 2.5rem 0;
-  border-radius: 0 0.5rem 0.5rem 0;
+.separador-seccion {
+  margin: 3rem 0;
+  border: 0;
+  border-top: 1px solid var(--shoftgreen);
 }
-.caja-recurso h3 {
-  margin-top: 0;
-  color: var(--lightgreen);
-  font-size: 1.2rem;
+
+/* LISTAS CON HOJITAS */
+.contenedor-principal ul {
+  list-style-type: none;
+  padding-left: 0;
 }
-.caja-recurso p {
-  margin-bottom: 1.5rem;
-  color: var(--darkgrey);
+.contenedor-principal li {
+  position: relative;
+  padding-left: 2rem;
+  margin-bottom: 0.8rem;
+  line-height: 1.5;
 }
-.botones-recurso {
-  display: flex;
-  gap: 1rem;
-  flex-wrap: wrap;
+.contenedor-principal li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 2px;
+  width: 1.2rem;
+  height: 1.2rem;
+  background-image: url('../../assets/Hojitas.png'); 
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 </style>
