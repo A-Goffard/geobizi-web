@@ -1,33 +1,31 @@
 <template>
   <div class="contenedor-principal">
-    <h1>Rutas Divulgativas</h1>
-    <p>Realizamos rutas guiadas e itinerarios interpretativos relacionados con la naturaleza y las ciencias de la Tierra. Adaptamos la longitud, el lenguaje técnico y las dinámicas según las edades y los objetivos de cada colectivo.</p>
+    <h1>Rutas Guiadas y de Naturaleza en Bizkaia</h1>
+    
+    <p>La historia de la tierra está escrita en las rocas de Bizkaia. En Geobizi, convertimos el paisaje en un aula abierta donde aprendemos juntos a leer las rocas, observar los fósiles y disfrutar del entorno de forma activa, respetuosa y muy cercana.</p>
+
+    <p>Hacemos rutas guiadas pensadas para compartir y descubrir. Nos adaptamos a cada grupo para que, tengas la edad que tengas, te lleves a casa una experiencia llena de curiosidades y buenos momentos.</p>
 
     <!-- BLOQUE DE MODALIDADES DE RUTAS -->
     <section class="modalidades-trabajo">
-      <h2>Modalidades de Rutas</h2>
-      
+      <h2>¿Cómo nos gusta trabajar?</h2>
       <div class="bloques-gestion">
         <div class="bloque-modalidad">
           <h3>Rutas a Medida</h3>
-          <p>Diseñamos rutas personalizadas exclusivas para centros escolares, asociaciones, empresas (<em>team building</em>), ayuntamientos y grupos privados. Los itinerarios se estructuran en función de los intereses específicos del cliente (geología, botánica, historia local).</p>
+          <p>Diseñamos salidas pensadas para ti. Ya seas un grupo de amigos, un colegio, una asociación o una empresa buscando una actividad diferente, nos sentamos contigo y preparamos el recorrido, el ritmo y el contenido para que encaje perfectamente con lo que buscas.</p>
         </div>
 
         <div class="bloque-modalidad">
-          <h3>Programas y Rutas Regulares (Fechas Garantizadas)</h3>
-          <p>Actividades, itinerarios guiados y salidas de campo programadas con un calendario fijo e inscripción abierta para particulares, turismo familiar, colectivos reducidos y público <em>Silver</em>. Son experiencias orientadas a la ciencia ciudadana y el descubrimiento del entorno a través de la divulgación ambiental.</p>
+          <h3>Rutas con Calendario (Fecha fija)</h3>
+          <p>Son salidas que organizamos con fecha fija y donde cualquiera puede apuntarse. Es la oportunidad ideal para conocernos, disfrutar de la naturaleza en grupo y aprender algo nuevo sobre nuestro entorno.</p>
           
           <div class="caja-recurso">
-            <h3><strong>Campaña de Getxo — Inscripciones Abiertas</strong></h3>
-            <p>
-              Ya puedes reservar tu plaza para los servicios garantizados en el litoral de Getxo. Explora la costa en <b>"El Flysch al microscopio"</b> en la playa de Gorrondatxe (Azkorri) o descubre la biodiversidad nocturna con linternas de luz roja en las rutas de <b>"Naturgaua"</b>.
-            </p>
-            <p class="nota-subvencion">
-              <em>*Nota: Estas rutas están <strong>parcialmente subvencionadas por el Ayuntamiento de Getxo</strong>, facilitando así el acceso a la divulgación científica y al conocimiento de nuestro patrimonio natural.</em>
-            </p>
+            <h3>Campaña de Getxo: "El Flysch al microscopio"</h3>
+            <p>Ya puedes reservar tu plaza para nuestras salidas por el litoral de Getxo. Explora la costa en la playa de Azkorri o descubre la biodiversidad cuando cae el sol en nuestras rutas nocturnas <b>"Naturgaua"</b>.</p>
+            <p class="nota-subvencion"><em>*Estas rutas cuentan con el apoyo del Ayuntamiento de Getxo para acercar la naturaleza a todo el mundo.</em></p>
             <div class="botones-recurso">
-              <a href="/calendario" class="proximas-actividades">Ver Fechas en Geobizi</a>
-              <a href="https://www.getxo.eus/es/turismo/que-hacer/ruta-geologica-flysch" target="_blank" rel="noopener noreferrer" class="btn-ver-mas">Ver información en Getxo Turismo</a>
+              <a href="/calendario" class="proximas-actividades">Ver Fechas</a>
+              <a href="https://www.getxo.eus/es/turismo/que-hacer/ruta-geologica-flysch" target="_blank" rel="noopener noreferrer" class="btn-ver-mas">Info en Getxo Turismo</a>
             </div>
           </div>
         </div>
@@ -36,86 +34,73 @@
 
     <hr class="separador-seccion" />
 
-    <!-- RUTAS ESTANDARIZADAS -->
+    <!-- CATÁLOGO RUTAS -->
     <section class="catalogo-especialidades">
-      <h2>Rutas Estandarizadas de Referencia</h2>
-      <p>Estas son algunas de las rutas de nuestro catálogo que ofrecemos regularmente. Si tienes alguna idea o interés especial, podemos adaptar cualquiera de ellas a tu medida:</p>
+      <h2>Catálogo de Rutas</h2>
+      <p>Aquí tienes algunas de nuestras propuestas favoritas. Si tienes otra idea en mente, ¡cuéntanosla y la diseñamos juntos!</p>
       
       <ul>
-        <li><strong>Flysch de Sopela:</strong> Ruta interpretativa para que descubras la formación de los acantilados y los secretos geológicos de esta zona costera única.</li>
-        <li><strong>Ruta medioambiental en Azkorri:</strong> Itinerario por el entorno natural de Azkorri para conocer a fondo su flora, su fauna y sus ecosistemas dunares.</li>
-        <li><strong>Identificación de árboles:</strong> Ruta botánica diseñada para aprender a identificar las especies arbóreas más comunes de nuestro entorno y sus características.</li>
-        <li><strong>Plantas medicinales:</strong> Recorrido etnobotánico para conocer las plantas medicinales que nos rodean y sus usos tradicionales a lo largo de la historia.</li>
-        <li><strong>Limpieza de playas:</strong> Ruta de voluntariado ambiental enfocada en la retirada responsable de residuos y la concienciación ecológica.</li>
-        <li><strong>Ruta nocturna:</strong> Observación de la naturaleza desde una perspectiva diferente, descubriendo la fauna nocturna y los sonidos del bosque en la oscuridad.</li>
+        <li><strong>Flysch de Sopela:</strong> Un paseo para descubrir cómo se formaron nuestros acantilados y qué secretos geológicos esconden.</li>
+        <li><strong>Ruta medioambiental en Azkorri:</strong> Un recorrido por las dunas, la playa y los acantilados para conocer de cerca las plantas y animales que viven allí.</li>
+        <li><strong>Ruta Etnobotánica:</strong> Un paseo para aprender sobre las plantas medicinales que nos rodean y cómo se han usado tradicionalmente desde siempre.</li>
+        <li><strong>Identificación de árboles:</strong> Un taller al aire libre para fijarnos en la forma de las hojas, los colores y las curiosidades de los árboles de nuestra zona.</li>
+        <li><strong>Limpieza de playas:</strong> Salidas de voluntariado donde, además de cuidar el entorno, hablamos sobre el impacto de los residuos en nuestros ecosistemas.</li>
+        <li><strong>Ruta nocturna (Naturgaua):</strong> Salimos a descubrir los secretos del bosque cuando cae el sol, escuchando con calma todos los sonidos de la naturaleza.</li>
       </ul>
     </section>
+
+    <!-- FAQ -->
+    <section class="faq-section">
+      <h2>Preguntas frecuentes</h2>
+      <h3>¿Son rutas aptas para niños?</h3>
+      <p>¡Por supuesto! Adaptamos lo que contamos y el ritmo para que los más pequeños (y los no tan pequeños) disfruten y aprendan sin darse cuenta. Queremos que sea una experiencia divertida para todos.</p>
+      <h3>¿Qué nivel de dificultad tienen?</h3>
+      <p>Las rutas se adaptan a lo que necesitéis. Podemos hacer desde un paseo tranquilo y cómodo para caminar sin prisa, hasta una ruta con un poquito más de caminata si os apetece hacer ejercicio.</p>
+      <h3>¿Qué equipo necesito llevar?</h3>
+      <p>Lo más importante es que traigas calzado cómodo (botas o zapatillas con buen agarre), algo de abrigo o protección para el sol según el día, y agua. Del resto del equipo (lupas, guías, etc.) nos encargamos nosotros.</p>
+    </section>
+
+    <hr class="separador-seccion" />
 
     <!-- INFORMACIÓN PRÁCTICA -->
     <section class="info-practica">
       <h2>Información Práctica</h2>
-      
       <h3>¿Qué incluyen nuestras rutas?</h3>
       <ul>
-        <li>Servicio de guía especializado en divulgación.</li>
-        <li>Material didáctico de apoyo y dinámicas participativas.</li>
-        <li>Itinerarios personalizados por edad, idioma y objetivos de aprendizaje.</li>
+        <li>Acompañamiento y explicaciones durante todo el recorrido.</li>
+        <li>Material de apoyo (lupas, fichas, guías) para que nadie se pierda ningún detalle.</li>
+        <li>Un itinerario hecho a vuestra medida según intereses y edades.</li>
       </ul>
 
-      <h3>Recomendaciones de seguridad</h3>
+      <h3>Consejos para disfrutar al máximo</h3>
       <ul>
-        <li>Usa calzado adecuado para terreno irregular y ropa adaptada a la meteorología.</li>
-        <li>Lleva siempre agua y protección solar.</li>
-        <li>Ten en cuenta las recomendaciones de dificultad y desnivel específicas para cada ruta.</li>
-        <li>Escucha y sigue siempre las instrucciones del guía.</li>
+        <li>Ven con ganas de observar y disfrutar.</li>
+        <li>Trae ropa cómoda y adaptada a la previsión del tiempo.</li>
+        <li>¡No te olvides del agua y algo de protección solar!</li>
+        <li>Sigue siempre las indicaciones de seguridad para que la ruta sea perfecta.</li>
       </ul>
     </section>
 
-    <!-- GALERÍA DE IMÁGENES -->
+    <!-- GALERÍA -->
     <div class="imagen-trio">
-      <div>
-        <img
-          class="img"
-          src="/imagenes/servicios/rutas/ruta1.avif"
-          alt="Ruta Flysch en Sopela — personas observando formaciones geológicas"
-          title="Ruta Flysch en Sopela — imagen 1"
-          loading="lazy"
-        />
-      </div>
-      <div>
-        <img
-          class="img"
-          src="/imagenes/servicios/rutas/ruta2.avif"
-          alt="Personas identificando anfibios en un entorno natural"
-          title="Ruta medioambiental en Azkorri — imagen 2"
-          loading="lazy"
-        />
-      </div>
-      <div>
-        <img
-          class="img"
-          src="/imagenes/servicios/rutas/ruta3.avif"
-          alt="Ruta escolar por Azkorri"
-          title="Ruta escolar por Azkorri — imagen 3"
-          loading="lazy"
-        />
-      </div>
+      <div><img class="img" src="/imagenes/servicios/rutas/ruta1.avif" alt="Grupo disfrutando de la ruta del Flysch" title="Ruta Flysch" loading="lazy" /></div>
+      <div><img class="img" src="/imagenes/servicios/rutas/ruta2.avif" alt="Observando naturaleza en Azkorri" title="Ruta Azkorri" loading="lazy" /></div>
+      <div><img class="img" src="/imagenes/servicios/rutas/ruta3.avif" alt="Ruta escolar disfrutando" title="Ruta escolar" loading="lazy" /></div>
     </div>
   </div>
 </template>
 
 <script setup>
 import { useHead } from '@vueuse/head'
-
 const pageUrl = 'https://www.geobizi.com/servicios/rutas'
 const ogImage = 'https://www.geobizi.com/imagenes/servicios/detalle/sopela.avif'
 
 useHead({
-  title: 'Rutas Guiadas y Geoturismo | Geobizi',
+  title: 'Rutas Guiadas y Naturaleza | Geobizi',
   meta: [
-    { name: 'description', content: 'Rutas guiadas geológicas, medioambientales y temáticas para colegios, asociaciones, empresas y público general. Rutas subvencionadas en Getxo.' },
-    { property: 'og:title', content: 'Rutas Guiadas y Geoturismo | Geobizi' },
-    { property: 'og:description', content: 'Rutas interpretativas (Flysch, botánica y nocturnas) con fechas garantizadas y a medida.' },
+    { name: 'description', content: 'Rutas guiadas por la naturaleza, geología y botánica de Bizkaia. Experiencias cercanas y adaptadas para todos.' },
+    { property: 'og:title', content: 'Rutas Guiadas y Naturaleza | Geobizi' },
+    { property: 'og:description', content: 'Rutas interpretativas por Bizkaia: Flysch, botánica y rutas nocturnas. ¡Ven a descubrir el entorno con nosotros!' },
     { property: 'og:url', content: pageUrl },
     { property: 'og:image', content: ogImage }
   ],

@@ -1,149 +1,40 @@
 <template>
   <div class="contenedor-principal">
-    <h1>Proyectos de Sensibilización y biorregeneración</h1>
-    <p>Diseñamos y llevamos a cabo proyectos colaborativos de sensibilización ambiental y biorregeneración, adaptados a las necesidades de cada colectivo y entorno.</p>
-    <p>Nuestro objetivo es fomentar la conexión con la naturaleza y promover prácticas sostenibles al mismo tiempo que hacemos un impacto positivo en el medio ambiente.</p>
-    <p>En cada proyecto, buscamos involucrar a la comunidad y fomentar la participación activa, creando un sentido de pertenencia y responsabilidad hacia el entorno.</p>
-    <p>Involucramos a diferentes actores sociales, como escuelas, asociaciones y empresas, para trabajar juntos en la consecución de objetivos comunes.</p>
-    <p>Los proyectos son adaptables y pueden ir desde pequeños eventos puntuales, hasta programas más amplios y continuos.</p>
+    <h1>Proyectos de Sensibilización y Regeneración</h1>
+    
+    <p>En Geobizi nos mueve el deseo de conectar a las personas con el entorno que nos rodea. Por eso, diseñamos proyectos donde no solo hablamos de naturaleza, sino que nos remangamos para cuidarla y entenderla juntos.</p>
 
-    <h2>Proyecto referente</h2>
-    <p>Como proyecto referente, destacamos "Zalla Natura". Un proyecto comunitario realizado en Zalla en el que colaboran el ayuntamiento, asociaciones locales, colegios y ciudadanos para la restauración y conservación de espacios naturales en Zalla. A través de actividades educativas, talleres y acciones de biorregeneración, se busca sensibilizar a la población sobre la importancia de cuidar el entorno natural y fomentar un compromiso activo con la sostenibilidad.</p>
+    <p>Buscamos ese "click" de conexión. Ya sea en un colegio, en una asociación o en una empresa, nuestro objetivo es que cada proyecto deje una huella positiva, creando un compromiso real y sentido con nuestro medio ambiente.</p>
 
-    <p>Más información sobre <a href="https://www.geobizi.com/detalle-zalla-natura">Zalla Natura</a></p>
-    <p>También puedes echar un ojo a otros proyectos: <a href="https://www.geobizi.com/proyectos">Proyectos</a></p>
+    <h2>¿Cómo son nuestros proyectos?</h2>
+    <p>No creemos en las recetas únicas. Cada grupo es un mundo, así que diseñamos actividades a medida: desde pequeñas acciones que generan impacto en un día, hasta programas que acompañan a lo largo del tiempo para ver crecer los resultados.</p>
 
-    <h2>Qué incluyen</h2>
-    <p>Cada proyecto se diseña a medida para cada colectivo, teniendo en cuenta sus características y necesidades específicas.</p>
+    <section class="proyecto-destacado">
+      <h2>Un caso de éxito: "Zalla Natura"</h2>
+      <p>Nos hace especial ilusión recordar "Zalla Natura". Fue un proyecto precioso donde colaboramos con el ayuntamiento, colegios y vecinos de Zalla para recuperar y cuidar sus espacios naturales.</p>
+      <p>Ver cómo el alumnado, las asociaciones y el personal del ayuntamiento trabajaban unidos por su entorno es lo que nos confirma que este es el camino.</p>
+      <p>Puedes conocer más detalles en nuestra página de <a href="https://www.geobizi.com/detalle-zalla-natura">Zalla Natura</a> o ver nuestra sección completa de <a href="https://www.geobizi.com/proyectos">Proyectos realizados</a>.</p>
+    </section>
 
-    <h2>Se realizan para</h2>
-    <p>Centros escolares, asociaciones, empresas, ayuntamientos y público general.</p>
+    <h2>¿Para quién trabajamos?</h2>
+    <p>Nuestra puerta está abierta a todo el mundo: desde centros educativos y asociaciones vecinales, hasta empresas que quieren apostar por la sostenibilidad y administraciones que buscan poner en valor su patrimonio natural.</p>
 
+    <!-- GALERÍA (Simplificada para no abrumar) -->
     <div class="imagen-trio">
-      <div>
-        <img
-          class="img"
-          src="/imagenes/servicios/sensibilizacion/sensibilizacion1.avif"
-          alt="Ruta Flysch en Sopela — personas observando formaciones geológicas"
-          title="Ruta Flysch en Sopela — imagen 1"
-          loading="lazy"
-        />
-      </div>
-      <div>
-        <img
-          class="img"
-          src="/imagenes/servicios/sensibilizacion/sensibilizacion2.avif"
-          alt="Personas identificando anfibios en un entorno natural"
-          title="Ruta medioambiental en Azkorri — imagen 2"
-          loading="lazy"
-        />
-      </div>
-      <div>
-        <img
-          class="img"
-          src="/imagenes/servicios/sensibilizacion/sensibilizacion3.avif"
-          alt="Ruta escolar por Azkorri"
-          title="Ruta escolar por Azkorri — imagen 3"
-          loading="lazy"
-        />
-      </div>
-    </div> 
-        <div class="imagen-trio">
-      <div>
-        <img
-          class="img"
-          src="/imagenes/servicios/sensibilizacion/sensibilizacion4.avif"
-          alt="Ruta Flysch en Sopela — personas observando formaciones geológicas"
-          title="Ruta Flysch en Sopela — imagen 1"
-          loading="lazy"
-        />
-      </div>
-      <div>
-        <img
-          class="img"
-          src="/imagenes/servicios/sensibilizacion/sensibilizacion5.avif"
-          alt="Personas identificando anfibios en un entorno natural"
-          title="Ruta medioambiental en Azkorri — imagen 2"
-          loading="lazy"
-        />
-      </div>
-      <div>
-        <img
-          class="img"
-          src="/imagenes/servicios/sensibilizacion/sensibilizacion6.avif"
-          alt="Ruta escolar por Azkorri"
-          title="Ruta escolar por Azkorri — imagen 3"
-          loading="lazy"
-        />
-      </div>
-    </div>  
-        <div class="imagen-trio">
-      <div>
-        <img
-          class="img"
-          src="/imagenes/servicios/sensibilizacion/sensibilizacion7.avif"
-          alt="Ruta Flysch en Sopela — personas observando formaciones geológicas"
-          title="Ruta Flysch en Sopela — imagen 1"
-          loading="lazy"
-        />
-      </div>
-      <div>
-        <img
-          class="img"
-          src="/imagenes/servicios/sensibilizacion/sensibilizacion8.avif"
-          alt="Personas identificando anfibios en un entorno natural"
-          title="Ruta medioambiental en Azkorri — imagen 2"
-          loading="lazy"
-        />
-      </div>
-      <div>
-        <img
-          class="img"
-          src="/imagenes/servicios/sensibilizacion/sensibilizacion9.avif"
-          alt="Ruta escolar por Azkorri"
-          title="Ruta escolar por Azkorri — imagen 3"
-          loading="lazy"
-        />
-      </div>
-    </div>   
-            <div class="imagen-trio">
-      <div>
-        <img
-          class="img"
-          src="/imagenes/servicios/sensibilizacion/sensibilizacion10.avif"
-          alt="Ruta Flysch en Sopela — personas observando formaciones geológicas"
-          title="Ruta Flysch en Sopela — imagen 1"
-          loading="lazy"
-        />
-      </div>
-      <div>
-        <img
-          class="img"
-          src="/imagenes/servicios/sensibilizacion/sensibilizacion11.avif"
-          alt="Personas identificando anfibios en un entorno natural"
-          title="Ruta medioambiental en Azkorri — imagen 2"
-          loading="lazy"
-        />
-      </div>
-      <div>
-        <img
-          class="img"
-          src="/imagenes/servicios/sensibilizacion/sensibilizacion12.avif"
-          alt="Ruta escolar por Azkorri"
-          title="Ruta escolar por Azkorri — imagen 3"
-          loading="lazy"
-        />
-      </div>
-    </div> 
+      <div><img class="img" src="/imagenes/servicios/sensibilizacion/sensibilizacion1.avif" alt="Acción de regeneración" loading="lazy" /></div>
+      <div><img class="img" src="/imagenes/servicios/sensibilizacion/sensibilizacion2.avif" alt="Participación ciudadana" loading="lazy" /></div>
+      <div><img class="img" src="/imagenes/servicios/sensibilizacion/sensibilizacion3.avif" alt="Proyecto escolar" loading="lazy" /></div>
     </div>
+  </div>
 </template>
 
 <script setup>
 import { useHead } from '@vueuse/head'
+
 const pageUrl = 'https://www.geobizi.com/servicios/sensibilizacion'
 useHead({
-  title: 'Sensibilización | Geobizi',
-  meta: [{ name: 'description', content: 'Campañas, charlas y acciones de sensibilización para acercar la sostenibilidad a la ciudadanía y colectivos locales.' }],
+  title: 'Sensibilización y Regeneración Ambiental | Geobizi',
+  meta: [{ name: 'description', content: 'Proyectos colaborativos para conectar personas y naturaleza mediante la sensibilización y la restauración ambiental.' }],
   link: [{ rel: 'canonical', href: pageUrl }]
 })
 </script>

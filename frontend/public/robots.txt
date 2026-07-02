@@ -1,6 +1,10 @@
-# Permite a todos los robots rastrear todo el sitio
+# Bloquear rastreo de secciones no deseadas
 User-agent: *
 Disallow: /tienda
+Disallow: /geotienda/
+Disallow: /account/
+Disallow: /investigacion/
+Disallow: /admin/
 
-# Opcional: indica la ubicación del sitemap
+# Sitemaps para facilitar el rastreo de páginas válidas
 Sitemap: https://www.geobizi.com/sitemap.xml

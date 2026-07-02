@@ -1,94 +1,55 @@
 <template>
-  <div class="contenedor-principal general-container"> <h1>Recursos y descargas</h1>
-    <p>Aquí encontrarás una selección de materiales educativos y recursos para descargar.</p>
-    <p>Si los usas y crees que están bien y merecen la pena, acuérdate de nosotros.</p>
-    <p>También podemos personalizar y diseñar materiales didácticos a medida.</p>
-
-    <h2>Material disponible</h2>
-
-    <h3>Digital</h3>
-
+  <div class="contenedor-principal">
+    <h1>Recursos y Descargas</h1>
     
-           <div class="container">
-           <router-link to="/fitxas-etnobotanicas-enkarterri" class="card">
-  <img src="/imagenes/etnobotanica/catalogo-botanico.avif" alt="Catálogo digital de fichas etnobotánicas de Geobizi" loading="lazy">
-  <p class="card-text">Guía Digital interactiva: Fichas Etnobotánicas y Herbario de Euskal Herria</p>
-</router-link>
-           </div>
+    <p>Compartimos con vosotros una selección de materiales educativos que hemos ido creando con mucho cariño. Son recursos pensados para apoyar el aprendizaje en el aula, en casa o durante nuestras rutas.</p>
+    
+    <p>Si utilizáis alguno y os resulta útil, ¡nos encantaría saberlo! Y recordad que, si necesitáis algo más específico, podemos diseñar materiales didácticos a vuestra medida: desde láminas hasta recursos digitales interactivos.</p>
 
-    <h3>Láminas</h3>
+    <h2>Nuestra selección</h2>
 
+    <h3>Guías y herramientas interactivas</h3>
     <div class="container">
-      
-      <a 
-        href="/descargas/laminas/cartel-geologia.png" 
-        download="cartel-geologia.png" 
-        class="card"
-      >
-        <img src="/descargas/miniaturas/Cartel-geologia.avif" alt="Lámina de hojas de arboles" loading="lazy">
-        <p class="card-text">Cartel sobre las salidas de la geología</p>
-      </a>
+      <router-link to="/fitxas-etnobotanicas-enkarterri" class="card">
+        <img src="/imagenes/etnobotanica/catalogo-botanico.avif" alt="Catálogo digital de fichas etnobotánicas" loading="lazy">
+        <p class="card-text">Guía Digital interactiva: Fichas Etnobotánicas y Herbario de Euskal Herria</p>
+      </router-link>
+    </div>
 
-            <a 
-        href="/descargas/laminas/polinizadores.avif" 
-        download="polinizadores.avif" 
-        class="card"
-      >
+    <h3>Láminas didácticas (para imprimir)</h3>
+    <div class="container">
+      <a href="/descargas/laminas/cartel-geologia.png" download class="card">
+        <img src="/descargas/miniaturas/Cartel-geologia.avif" alt="Cartel de geología" loading="lazy">
+        <p class="card-text">Cartel sobre las salidas de geología</p>
+      </a>
+      <a href="/descargas/laminas/polinizadores.avif" download class="card">
         <img src="/descargas/laminas/polinizadores.avif" alt="Lámina de polinizadores" loading="lazy">
         <p class="card-text">Lámina de polinizadores</p>
       </a>
-
-            <a 
-        href="/descargas/laminas/mariposas.avif" 
-        download="mariposas.avif" 
-        class="card"
-      >
+      <a href="/descargas/laminas/mariposas.avif" download class="card">
         <img src="/descargas/laminas/mariposas.avif" alt="Lámina de mariposas" loading="lazy">
-        <p class="card-text">Lámina de mariposas</p>
+        <p class="card-text">Lámina de mariposas diurnas</p>
       </a>
-
-                  <a 
-        href="/descargas/laminas/mariposas-nocturnas.avif" 
-        download="mariposas-nocturnas.avif" 
-        class="card"
-      >
+      <a href="/descargas/laminas/mariposas-nocturnas.avif" download class="card">
         <img src="/descargas/laminas/mariposas-nocturnas.avif" alt="Lámina de mariposas nocturnas" loading="lazy">
         <p class="card-text">Lámina de mariposas nocturnas</p>
       </a>
-
-            <a 
-        href="/descargas/laminas/arboles1.avif" 
-        download="arboles1.avif" 
-        class="card"
-      >
-        <img src="/descargas/laminas/arboles1.avif" alt="Lámina de hojas de arboles" loading="lazy">
-        <p class="card-text">Lámina de hojas de árboles en euskera y castellano</p>
+      <a href="/descargas/laminas/arboles1.avif" download class="card">
+        <img src="/descargas/laminas/arboles1.avif" alt="Lámina de hojas" loading="lazy">
+        <p class="card-text">Lámina de hojas de árboles (Euskera/Castellano)</p>
       </a>
-
     </div>
 
-       <h3>Documentos</h3>
-
-           <div class="container">
-      
-      <a 
-        href="/descargas/documentos/Flyschbizkaia-didactica.pdf" 
-        download="Flyschbizkaia-didactica.pdf" 
-        class="card"
-      >
-        <img src="/descargas/miniaturas/flyschbizkaia-didactica.avif" alt="Lámina de hojas de arboles" loading="lazy">
-        <p class="card-text">Documento didáctico sobre Flyschbizkaia</p>
+    <h3>Documentos y unidades didácticas</h3>
+    <div class="container">
+      <a href="/descargas/documentos/Flyschbizkaia-didactica.pdf" download class="card">
+        <img src="/descargas/miniaturas/flyschbizkaia-didactica.avif" alt="Documento didáctico" loading="lazy">
+        <p class="card-text">Documento didáctico sobre Flysch Bizkaia</p>
       </a>
-
-
-
     </div>
 
-    <h2>Se realizan para</h2>
-    <p>Podemos diseñar materiales a medida según las necesidades de cada cliente.</p>
-    <p>Pueden ser en formatos diferentes como láminas, folletos o recursos digitales interactivos por ejemplo.</p>
-    <p>Los materiales están pensados para colegios, asociaciones, entidades locales y público general.</p>
-
+    <h2>¿Necesitas algo a medida?</h2>
+    <p>Podemos diseñar materiales personalizados para colegios, asociaciones o entidades locales. Si necesitas láminas, folletos o un recurso digital muy específico, cuéntanos tu idea y nos ponemos manos a la obra.</p>
   </div>
 </template>
 
@@ -96,8 +57,8 @@
 import { useHead } from '@vueuse/head'
 const pageUrl = 'https://www.geobizi.com/servicios/descargas'
 useHead({
-  title: 'Recursos y descargas | Geobizi',
-  meta: [{ name: 'description', content: 'Fichas didácticas, guías de campo y materiales descargables para apoyar rutas, talleres y proyectos educativos.' }],
+  title: 'Recursos Didácticos y Descargas | Geobizi',
+  meta: [{ name: 'description', content: 'Descarga láminas didácticas, guías interactivas y material educativo para explorar la naturaleza de Bizkaia.' }],
   link: [{ rel: 'canonical', href: pageUrl }]
 })
 </script>

@@ -1,122 +1,78 @@
 <template>
   <div class="contenedor-principal">
-    <h1>Actividades y Talleres</h1>
-    <p>Diseñamos talleres prácticos y experiencias de educación ambiental; adaptamos contenidos, metodologías y duración
-      según las edades y los objetivos pedagógicos o lúdicos de cada colectivo.</p>
+    <h1>Actividades y Talleres para Aprender Disfrutando</h1>
+    
+    <p>En Geobizi nos encanta diseñar experiencias donde el aprendizaje y la diversión van de la mano. No hay dos grupos iguales, por eso adaptamos nuestros talleres y actividades a las edades, los intereses y los objetivos de cada persona que participa.</p>
 
     <!-- BLOQUE DE MODALIDADES DE TRABAJO -->
     <section class="modalidades-trabajo">
-      <h2>Modalidades de Contratación</h2>
-      <p>Trabajamos de forma transversal adaptando la metodología, los materiales y el idioma (euskera/castellano) en
-        base a tres líneas operativas principales:</p>
+      <h2>¿Cómo organizamos nuestras actividades?</h2>
+      <p>Nos adaptamos a lo que necesites, ya sea en euskera o castellano, y ajustamos el contenido para que encaje como un guante en vuestro proyecto o evento:</p>
 
       <div class="bloques-gestion">
         <div class="bloque-modalidad">
-          <h3>Centros Escolares e Instituciones Educativas</h3>
-          <p>Diseñamos talleres prácticos, formaciones específicas y salidas didácticas alineadas con el currículum
-            escolar de Primaria, Secundaria y Bachillerato. Desarrollamos tanto intervenciones puntuales en el aula como
-            programas continuos adaptados a unidades didácticas de ciencias naturales, ecología, medioambiente, geología
-            y botánica.</p>
-          <p class="ejemplo-referencia"><em>Ejemplo de colaboración:</em> Programas curriculares a medida sobre el
-            impacto de la deforestación, talleres didácticos de biodiversidad activa en centros escolares de Mungia.</p>
+          <h3>Para Colegios e Institutos</h3>
+          <p>Llevamos la naturaleza al aula y el aula a la naturaleza. Diseñamos talleres prácticos que encajan con lo que se trabaja en clase (Primaria, Secundaria o Bachillerato), haciendo que los conceptos de ciencia o medioambiente se entiendan mucho mejor tocando y experimentando.</p>
         </div>
 
         <div class="bloque-modalidad">
-          <h3>Proyectos Integrales de Divulgación Medioambiental</h3>
-          <p>Creamos estrategias macro de dinamización ambiental para municipios, mancomunidades y territorios que
-            buscan poner en valor su entorno y sensibilizar a su población. Coordinamos planes que unifican de forma
-            transversal el aprendizaje en las aulas con jornadas prácticas de campo abiertas a toda la ciudadanía.</p>
-          <p class="ejemplo-referencia"><em>Ejemplo de colaboración:</em> Coordinación y desarrollo del programa
-            integral ZallaNatura, unificando la divulgación científica escolar con actividades prácticas y divulgativas
-            abiertas al público general.</p>
+          <h3>Proyectos para Municipios y Entidades</h3>
+          <p>Si buscas darle vida a un espacio natural o concienciar sobre el entorno, te ayudamos a crear estrategias completas. Nos gusta trabajar uniendo lo que se aprende en los talleres con actividades en el campo donde todos puedan participar.</p>
         </div>
 
         <div class="bloque-modalidad">
           <h3>Talleres para Eventos y Ferias</h3>
-          <p>Formatos dinámicos, adaptados y de corta duración idóneos para stands institucionales, ferias de flores, de
-            sostenibilidad, jornadas culturales o dinámicas corporativas de <em>team building</em>. Diseñamos
-            actividades de fuerte carga manipulativa y visual pensadas para entretener, concienciar y forjar vínculos
-            cooperativos en grupos grandes.</p>
+          <p>¿Tienes un stand, una feria de flores o un evento de empresa? Preparamos dinámicas rápidas, visuales y muy participativas. El objetivo es que la gente se lo pase bien mientras descubre algo nuevo y se lleva un recuerdo especial.</p>
         </div>
       </div>
     </section>
 
     <hr class="separador-seccion" />
 
-    <!-- BLOQUE DE TEMÁTICAS (TU CATÁLOGO ORIGINAL) -->
+    <!-- CATÁLOGO -->
     <section class="catalogo-especialidades">
-      <h2>Especialidades y Talleres Disponibles</h2>
-      <p>A partir de nuestras modalidades de trabajo, puedes seleccionar y combinar diferentes contenidos técnicos de
-        nuestro catálogo temático:</p>
+      <h2>Nuestro Catálogo de Talleres</h2>
+      <p>Son muchas las propuestas que tenemos, pero siempre estamos abiertos a nuevas ideas. Aquí tienes lo que más solemos trabajar:</p>
 
-      <h3>Talleres creativos y manuales</h3>
+      <h3>Creatividad con Naturaleza</h3>
       <ul>
-        <li>Reciclaje creativo</li>
-        <li>Pintando figuras de yeso</li>
-        <li>Patatroles</li>
-        <li>Jabones y cosmética natural</li>
-        <li>Ambientadores caseros</li>
-        <li>Mariposas de madera</li>
-        <li>Hojas de arcilla</li>
-        <li>Prensa de flores</li>
-        <li>Papel reciclado</li>
-        <li>Herbario de pintura</li>
-        <li>Eguzkilores</li>
+        <li>Reciclaje creativo: damos una segunda vida a los materiales.</li>
+        <li>Talleres de cosmética natural (jabones, ambientadores).</li>
+        <li>Manualidades con elementos naturales: prensado de flores, hojas de arcilla o mariposas de madera.</li>
+        <li>Creación de Eguzkilores.</li>
       </ul>
 
-      <h3>Talleres científicos y técnicos</h3>
+      <h3>Ciencia en las manos</h3>
       <ul>
-        <li>Réplicas de fósil</li>
-        <li>Planetas magnéticos</li>
-        <li>Cianotipias</li>
-        <li>Microscopio</li>
-        <li>Geodas</li>
-        <li>Brújulas</li>
+        <li>Réplicas de fósiles: un viaje al pasado para entender la geología.</li>
+        <li>Taller de microscopio: para descubrir el mundo invisible que nos rodea.</li>
+        <li>Experimentos curiosos: desde planetas magnéticos hasta cianotipias.</li>
       </ul>
 
-      <h3>Talleres de naturaleza y jardinería</h3>
+      <h3>Naturaleza y Huerto</h3>
       <ul>
-        <li>Bombas de semillas</li>
-        <li>Casas de mariquitas</li>
-        <li>Casas de mariposas</li>
-        <li>Casas de insectos</li>
-        <li>MacetoHuerto</li>
-        <li>Huertos Urbanos</li>
-        <li>Plantas medicinales</li>
-        <li>Oasis de mariposas</li>
-        <li>Biorregeneración colaborativa</li>
+        <li>Bombas de semillas y creación de huertos urbanos o escolares.</li>
+        <li>Construcción de refugios para mariquitas, mariposas e insectos.</li>
+        <li>Jardinería y plantas medicinales para conocer sus usos tradicionales.</li>
       </ul>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq-section">
+      <h2>Preguntas frecuentes</h2>
+      <h3>¿Son actividades solo para niños?</h3>
+      <p>¡Para nada! Adaptamos el contenido a todas las edades, desde educación infantil hasta grupos de adultos o empresas. La curiosidad no tiene edad.</p>
+      <h3>¿Dónde se pueden realizar?</h3>
+      <p>Donde prefiráis. Podemos ir a vuestro centro, local, o organizar la actividad en un entorno natural si preferís estar al aire libre.</p>
+      <h3>¿Podemos personalizar el taller?</h3>
+      <p>Por supuesto, esa es nuestra especialidad. Cuéntanos qué idea tienes y le damos forma juntos para que sea exactamente lo que buscáis.</p>
     </section>
 
     <!-- GALERÍA DE IMÁGENES -->
     <div class="imagen-trio">
-      <div>
-        <img class="img" src="/imagenes/servicios/actividades/actividades1.avif" alt="Actividad de reciclaje creativo"
-          title="Actividad de reciclaje creativo — imagen 1" loading="lazy" />
-      </div>
-      <div>
-        <img class="img" src="/imagenes/servicios/actividades/actividades2.avif" alt="Taller de huertos urbanos"
-          title="Taller de huertos urbanos — imagen 2" loading="lazy" />
-      </div>
-      <div>
-        <img class="img" src="/imagenes/servicios/actividades/actividades3.avif" alt="Taller de Eguzkilores"
-          title="Taller de Eguzkilores — imagen 3" loading="lazy" />
-      </div>
-    </div>
-
-    <div class="imagen-trio">
-      <div>
-        <img class="img" src="/imagenes/servicios/actividades/actividades4.avif" alt="Taller de papel reciclado"
-          title="Taller de papel reciclado — imagen 1" loading="lazy" />
-      </div>
-      <div>
-        <img class="img" src="/imagenes/servicios/actividades/actividades5.avif" alt="Taller de fósiles"
-          title="Taller de fósiles — imagen 2" loading="lazy" />
-      </div>
-      <div>
-        <img class="img" src="/imagenes/servicios/actividades/actividades6.avif" alt="Taller de bombas de semillas"
-          title="Taller de bombas de semillas — imagen 3" loading="lazy" />
-      </div>
+      <div><img class="img" src="/imagenes/servicios/actividades/actividades1.avif" alt="Taller de reciclaje" title="Taller de reciclaje" loading="lazy" /></div>
+      <div><img class="img" src="/imagenes/servicios/actividades/actividades2.avif" alt="Huerto urbano" title="Huerto urbano" loading="lazy" /></div>
+      <div><img class="img" src="/imagenes/servicios/actividades/actividades3.avif" alt="Taller de Eguzkilores" title="Taller de Eguzkilores" loading="lazy" /></div>
     </div>
   </div>
 </template>
@@ -126,8 +82,8 @@ import { useHead } from '@vueuse/head'
 
 const pageUrl = 'https://www.geobizi.com/servicios/actividades'
 useHead({
-  title: 'Actividades y Talleres Ambientales | Geobizi',
-  meta: [{ name: 'description', content: 'Programas y talleres ambientales de Geobizi: actividades curriculares para centros escolares y proyectos integrales locales.' }],
+  title: 'Talleres y Actividades Ambientales | Geobizi',
+  meta: [{ name: 'description', content: 'Talleres prácticos y actividades ambientales adaptadas para colegios, eventos y proyectos locales. ¡Aprende disfrutando!' }],
   link: [{ rel: 'canonical', href: pageUrl }]
 })
 </script>
