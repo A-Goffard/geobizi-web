@@ -1,69 +1,51 @@
 <template>
   <div>
-      <div class="contenedor-cabecero">
-
-
-<div class="contenedor-intro">
-  <h1>Geobizi, naturaleza desde el corazón</h1>
-  <h2>Una empresa nacida del amor a la naturaleza y las ganas de compartir</h2>
-  <h3>Diseñamos experiencias medioambientales únicas</h3>
-  <p>Desarrollamos e implementamos actividades a medida para que disfrutes, desconectes, aprendas y sobre todo, compartamos, siempre con el foco en la naturaleza y el medioambiente.</p>
-</div>
-
-</div>
-  <div class="contenedor-principal">
-
-
-
-
-    <div class="contenedor-historia">
-      <div class="cont-texto">
-        <h2>Historia y misión</h2>
-        <h3>Medioambiente y bienestar</h3>
-        <p>Una asesoría pedagógica medioambiental especializada en la formación, divulgación científica y medioambiental y el diseño de experiencias centradas en la naturaleza para que conectes con el mundo desde el respeto y el conocimiento.</p>
-        <p>Desde nuestros inicios hemos trabajado con mucho cariño para ofrecerte las mejores experiencias hasta llegar a lo que es hoy en día Geobizi. </p>
-        <p>Desarrollamos formaciones, rutas, talleres y experiencias personalizadas para niñas y niños, particulares, perfiles silver, empresas públicas o privadas, colegios u otros centros formativos, instituciones...</p>
-        <p>También diseñamos proyectos de sensibilización y biorregeneración colaborativos para mejorar el entorno natural y fomentar la conciencia ambiental.</p>
-        <p>Pensamos que todo tipo de personas, grupos y edades diferentes deben tener acceso a la educación medioambiental y todos los beneficios sociales, naturales y de salud que lleva unidos. Es por ello que adaptamos unos objetivos similares a una diversidad de grupos.</p>
-        <p>Nuestras actividades son sostenibles, inclusivas, coeducativas y no discriminatorias.</p>
-      </div>
-
-      <div>
-        <img class="imagendiv" src="/imagenes/inicio/mision.avif" alt="Mariposas en una mano" title="Mariposas en una mano" loading="lazy">
+    <div class="contenedor-cabecero">
+      <div class="contenedor-intro">
+        <h1>Geobizi: Ciencia, Naturaleza e Inclusión</h1>
+        <h2>Tu asesoría pedagógica y divulgación científica en Bizkaia</h2>
+        <p>Diseñamos experiencias de aprendizaje significativas. Combinamos educación ambiental, neuroeducación y rigor científico para conectar personas con la naturaleza de forma accesible y equitativa.</p>
       </div>
     </div>
 
-    <div class="contenedor-historia">
-      <div>
-      <img class="imagendiv" src="/imagenes/inicio/esencia.avif" alt="Familia plantando un árbol" title="Familia plantando un árbol" loading="lazy">
-      </div>
-      <div class="cont-texto">
-        <h2>Esencia</h2>
-        <h3>Creemos en el conocimiento compartido</h3>
-        <p>La ciencia y el conocimiento son el vehículo para acercar a las personas a la naturaleza de una forma respetuosa y sostenible.</p>
-        <p>La base para llevar el aprendizaje al hecho es generando una dinámica que permita interiorizar de forma divertida y práctica los conocimientos y conceptos necesarios para crear hábitos de vida sostenibles y respetar la curiosidad natural del ser humano.</p>
-        <p>Hacer las cosas uno mismo e interactuar con la materia facilita la interiorización además de ayudar a desarrollar otras habilidades y herramientas sociales y mentales.</p>
-        <p>Las actividades medioambientales no son un mero entretenimiento y con esa premisa muy presente siempre realizamos nuestras actividades con una calidad y atención especial y siempre teniendo en cuenta el medioambiente y los ODSs.</p>
+    <div class="contenedor-principal">
+      <div class="contenedor-historia">
+        <div class="cont-texto">
+          <h2>Misión pedagógica</h2>
+          <h3>Naturaleza, ciencia y bienestar inclusivo</h3>
+          <p>Somos una asesoría pedagógica medioambiental especializada en divulgación científica y diseño de experiencias que eliminan barreras. Nuestro objetivo es que toda persona, independientemente de sus capacidades, pueda conectar con el medio natural desde el respeto y la curiosidad.</p>
+          <p>Desarrollamos soluciones personalizadas para el sector educativo, instituciones públicas, entidades privadas y familias, aplicando metodologías de Diseño Universal para el Aprendizaje (DUA).</p>
+          <p>Fomentamos la conciencia ambiental mediante proyectos de biorregeneración colaborativa, transformando la teoría en acción práctica y científica.</p>
+        </div>
+        <div>
+          <img class="imagendiv" src="/imagenes/inicio/mision.avif" alt="Divulgación científica inclusiva" title="Geobizi - Ciencia en mano" loading="lazy">
+        </div>
       </div>
 
+      <div class="contenedor-historia">
+        <div>
+          <img class="imagendiv" src="/imagenes/inicio/esencia.avif" alt="Aprendizaje activo en la naturaleza" title="Aprendizaje práctico" loading="lazy">
+        </div>
+        <div class="cont-texto">
+          <h2>Nuestra esencia</h2>
+          <h3>Conocimiento compartido y accesible</h3>
+          <p>Creemos que la ciencia es el vehículo para una ciudadanía crítica y responsable. Nuestras actividades no son un entretenimiento pasajero; son intervenciones educativas diseñadas con rigor, donde la interacción directa con la materia facilita la interiorización de conceptos sostenibles.</p>
+          <p>La curiosidad es un derecho, no un privilegio. Por eso, integramos los Objetivos de Desarrollo Sostenible (ODS) y la perspectiva de la neuroeducación en cada ruta, taller o proyecto de restauración que ejecutamos.</p>
+        </div>
+      </div>
+
+      <div class="contenedor-historia">
+        <div class="cont-texto">
+          <h2>El equipo</h2>
+          <h3>Multidisciplinar, científico y diverso</h3>
+          <p>Geobizi es el punto de encuentro entre la educación, la ciencia, la tecnología y la comunicación. Contamos con un equipo principal de alta cualificación y una red extendida de colaboradores expertos que enriquecen nuestra visión.</p>
+          <p>Trabajamos desde la transversalidad para ofrecer un asesoramiento que cumple con los más altos estándares de calidad, garantizando que el acceso al conocimiento ambiental sea una realidad para todos los grupos sociales.</p>
+        </div>
+        <div>
+          <img class="imagendiv" src="/imagenes/inicio/equipo.avif" alt="Equipo multidisciplinar trabajando" title="Equipo Geobizi" loading="lazy">
+        </div>
+      </div>
     </div>
-
-    <div class="contenedor-historia">
-      <div class="cont-texto">
-        <h2>Nuestro equipo</h2>
-        <h3>Multidisciplinar y colaborativo</h3>
-        <p>Somos un equipo de asesoramiento y de trabajo multidisciplinar de alta cualificación, que colaboramos y trabajamos conjuntamente para satisfacer tus necesidades y mejorar constantemente nuestros servicios.</p>
-        <p>Nuestro equipo no se limita a Geobizi. Además de los compañeros/as que formamos el equipo principal, tenemos otros muchos colaboradores que nos apoyan, ayudan, asesoran, y comparten con nosotros su sabiduría y expertise.</p>
-        <p>Profesionales de la educación, la ciencia, la comunicación y la tecnología forman parte de Geobizi.</p>
-      </div>
-
-      <div>
-        <img class="imagendiv" src="/imagenes/inicio/equipo.avif" alt="Manos en la naturaleza" title="Manos en la naturaleza" loading="lazy">
-      </div>
-    </div>
-  </div>
-
-
   </div>
 </template>
 
