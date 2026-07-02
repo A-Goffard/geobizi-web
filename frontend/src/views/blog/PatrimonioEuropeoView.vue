@@ -102,7 +102,7 @@
 import { useHead } from '@vueuse/head'
 
 // URL optimizada para ser "Evergreen" (Recuerda actualizar tu router/index.js)
-const pageUrl = 'https://www.geobizi.com/blog/jornadas-patrimonio'
+const pageUrl = 'https://www.geobizi.com/blog/patrimonio-europeo'
 const ogImage = 'https://www.geobizi.com/imagenes/blog/detalle/patrimonio1.avif'
 
 useHead({
