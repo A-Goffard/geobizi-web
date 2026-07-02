@@ -127,42 +127,63 @@ useHead({
     { rel: 'image_src', href: ogImage }
   ],
   script: [
-    {
-      type: 'application/ld+json',
-      children: JSON.stringify({
-        "@context": "https://schema.org",
-        "@type": "Article",
-        "headline": "Jornadas Europeas de Patrimonio: Cultura, Naturaleza y Tradición",
-        "description": "Definición del Patrimonio Cultural Inmaterial de la UNESCO y la trayectoria de actividades de Geobizi en las Jornadas Europeas de Patrimonio.",
-        "image": ogImage,
-        "author": {
-          "@type": "Organization",
-          "name": "Geobizi",
-          "url": "https://www.geobizi.com"
-        },
-        "publisher": {
-          "@type": "Organization",
-          "name": "Geobizi",
-          "logo": {
-            "@type": "ImageObject",
-            "url": "https://www.geobizi.com/imagenes/GeobiziLogo.7ae1d6ce.png"
+  {
+    type: 'application/ld+json',
+    children: JSON.stringify({
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Article",
+          "headline": "Jornadas Europeas de Patrimonio: Cultura, Naturaleza y Tradición",
+          "description": "Definición del Patrimonio Cultural Inmaterial de la UNESCO y la trayectoria de actividades de Geobizi en las Jornadas Europeas de Patrimonio.",
+          "image": ogImage,
+          "author": {
+            "@type": "Organization",
+            "name": "Geobizi",
+            "url": "https://www.geobizi.com"
           },
-          "sameAs": [
-            "https://www.facebook.com/geobizirik/",
-            "https://www.instagram.com/geotxiki/",
-            "https://www.tiktok.com/@geobizi",
-            "https://www.youtube.com/channel/UCw-C_J0y-jKHp7Zx92lsKfg"
-          ]
+          "publisher": {
+            "@type": "Organization",
+            "name": "Geobizi",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://www.geobizi.com/imagenes/GeobiziLogo.7ae1d6ce.png"
+            }
+          },
+          "datePublished": "2023-09-20T08:00:00+01:00",
+          "dateModified": "2026-04-14T10:00:00+02:00",
+          "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": pageUrl
+          }
         },
-        "datePublished": "2023-09-20T08:00:00+01:00",
-        "dateModified": "2026-04-14T10:00:00+02:00",
-        "mainEntityOfPage": {
-          "@type": "WebPage",
-          "@id": pageUrl
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Inicio",
+              "item": "https://www.geobizi.com/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Blog",
+              "item": "https://www.geobizi.com/blog"
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "name": "Jornadas de Patrimonio",
+              "item": pageUrl
+            }
+          ]
         }
-      })
-    }
-  ]
+      ]
+    })
+  }
+]
 })
 </script>
 
