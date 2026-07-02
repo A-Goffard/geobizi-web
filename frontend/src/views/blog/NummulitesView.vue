@@ -47,8 +47,9 @@
                 y accesible.
             </p>
             <div class="botones-recurso">
-                <a href="/calendario" class="proximas-actividades">Consultar fechas disponibles</a>
-                <a href="/blog/flysch-bizkaia" class="btn-ver-mas">Leer más sobre el Flysch</a>
+                <router-link to="/calendario" class="proximas-actividades">Consultar fechas disponibles</router-link>
+                <router-link to="/blog/flysch-bizkaia" class="btn-ver-mas">Leer más sobre el Flysch</router-link>
+
             </div>
         </div>
 

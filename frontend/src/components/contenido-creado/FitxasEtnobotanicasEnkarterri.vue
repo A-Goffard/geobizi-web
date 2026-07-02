@@ -101,8 +101,12 @@ import { useHead } from '@vueuse/head'
 
 const pageUrl = 'https://www.geobizi.com/fitxas-etnobotanicas-enkarterri'
 useHead({
-  title: 'Guía Digital: Fichas Etnobotánicas y Plantas Medicinales | Geobizi',
-  meta: [{ name: 'description', content: 'Consulta en tiempo real el catálogo de plantas de Bizkaia: Hipérico, Caléndula, Llantén... descubre sus superpoderes medicinales y pautas de recolección sostenible.' }],
+  title: 'Fichas Etnobotánicas y Guía de Plantas | Geobizi',
+  meta: [
+    { name: 'description', content: 'Guía digital interactiva de plantas y flores de Enkarterri. Identificación, propiedades etnobotánicas y consejos de recolección sostenible.' },
+    { property: 'og:title', content: 'Fichas Etnobotánicas y Guía de Plantas | Geobizi' },
+    { property: 'og:url', content: pageUrl }
+  ],
   link: [{ rel: 'canonical', href: pageUrl }]
 })
 

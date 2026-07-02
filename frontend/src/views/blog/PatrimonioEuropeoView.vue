@@ -48,8 +48,8 @@
         ¿Te has quedado sin plaza en las Jornadas Oficiales? ¿Quieres que adaptemos uno de nuestros talleres (como el del Eguzkilore o la ruta del Flysch) para tu colegio, asociación, empresa o grupo familiar? 
       </p>
       <div class="botones-recurso">
-        <a href="/servicios" class="proximas-actividades">Ver catálogo de actividades</a>
-        <a href="/contacto" class="btn-ver-mas">Contáctanos para tu grupo</a>
+        <router-link to="/calendario" class="proximas-actividades">Ver catálogo de actividades</router-link>
+        <router-link to="/contacto" class="btn-ver-mas">Contactar con nosotros</router-link>
       </div>
     </div>
 

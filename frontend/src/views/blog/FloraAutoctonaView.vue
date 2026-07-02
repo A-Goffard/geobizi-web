@@ -29,8 +29,8 @@
         Una de las formas más bonitas y directas de ayudar al medioambiente es participando en una <strong>plantación regenerativa o voluntariado ambiental</strong>. En Geobizi organizamos jornadas colaborativas para reestructurar suelos degradados plantando flora autóctona. Conocerás a personas con tus mismas inquietudes, disfrutarás de la naturaleza y dejarás un legado vivo para el futuro.
       </p>
       <div class="botones-recurso">
-        <a href="/proyectos" class="proximas-actividades">Descubre nuestros Proyectos</a>
-        <a href="/contacto" class="btn-ver-mas">Apúntate como voluntario/a</a>
+        <router-link to="/calendario" class="proximas-actividades">Ver próximas actividades</router-link>
+        <router-link to="/contacto" class="btn-ver-mas">Apúntate como voluntario/a</router-link>
       </div>
     </div>
 

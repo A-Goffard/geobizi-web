@@ -1,58 +1,93 @@
 <template>
   <div class="contenedor-principal">
     <h1><strong>Centranthus ruber</strong> (Valeriana Roja): Una Belleza Invasora en Nuestros Jardines</h1>
-    
-    <p>En los últimos años, la preocupación por la propagación de <strong>especies exóticas invasoras</strong> ha crecido considerablemente en Bizkaia. Una de las plantas que ha comenzado a destacar negativamente en este sentido es el <strong>Centranthus ruber</strong>, comúnmente conocido como <strong>valeriana roja</strong> o valeriana roja espinosa. Aunque su apariencia encantadora la ha convertido en una elección popular en jardinería, esta planta ha demostrado tener un impacto devastador en los ecosistemas locales.</p>
+
+    <p>En los últimos años, la preocupación por la propagación de <strong>especies exóticas invasoras</strong> ha
+      crecido considerablemente en Bizkaia. Una de las plantas que ha comenzado a destacar negativamente en este sentido
+      es el <strong>Centranthus ruber</strong>, comúnmente conocido como <strong>valeriana roja</strong> o valeriana
+      roja espinosa. Aunque su apariencia encantadora la ha convertido en una elección popular en jardinería, esta
+      planta ha demostrado tener un impacto devastador en los ecosistemas locales.</p>
 
     <h2>Origen y Apariencia de la Valeriana Roja</h2>
-    <p>El <em>Centranthus ruber</em> es nativo de regiones de la cuenca mediterránea, pero se ha expandido rápidamente por colinas, laderas y bordes de carreteras en todo el mundo. Su atractiva apariencia, con vistosos racimos de flores que van desde el rosa claro hasta el rojo carmesí intenso, ha hecho que sea una opción muy apreciada en <strong>jardines privados</strong> y rotondas urbanas.</p>
-    <p>Además de su belleza, su increíble capacidad para crecer en suelos pobres o entre grietas de muros, sumada a su gran resistencia a las sequías, contribuyen a su popularidad entre los aficionados a la jardinería. Sin embargo, esa misma resistencia es lo que la hace tan peligrosa.</p>
+    <p>El <em>Centranthus ruber</em> es nativo de regiones de la cuenca mediterránea, pero se ha expandido rápidamente
+      por colinas, laderas y bordes de carreteras en todo el mundo. Su atractiva apariencia, con vistosos racimos de
+      flores que van desde el rosa claro hasta el rojo carmesí intenso, ha hecho que sea una opción muy apreciada en
+      <strong>jardines privados</strong> y rotondas urbanas.</p>
+    <p>Además de su belleza, su increíble capacidad para crecer en suelos pobres o entre grietas de muros, sumada a su
+      gran resistencia a las sequías, contribuyen a su popularidad entre los aficionados a la jardinería. Sin embargo,
+      esa misma resistencia es lo que la hace tan peligrosa.</p>
 
     <h2>Riesgo de Invasión y Mecanismos de Propagación</h2>
-    <p>Lo que inicialmente podría considerarse una planta de fácil cuidado, pronto se transforma en un <strong>problema medioambiental grave</strong>. La valeriana roja tiene una asombrosa capacidad para propagarse rápidamente y establecer poblaciones densas en áreas naturales protegidas.</p>
+    <p>Lo que inicialmente podría considerarse una planta de fácil cuidado, pronto se transforma en un <strong>problema
+        medioambiental grave</strong>. La valeriana roja tiene una asombrosa capacidad para propagarse rápidamente y
+      establecer poblaciones densas en áreas naturales protegidas.</p>
 
     <p>Su éxito como planta invasora se basa en dos estrategias letales para la flora autóctona:</p>
     <ul>
-      <li><strong>Producción masiva de semillas:</strong> Genera miles de semillas aladas que son dispersadas fácilmente por el viento a grandes distancias, permitiéndole colonizar nuevas áreas rápidamente.</li>
-      <li><strong>Tolerancia extrema:</strong> Soporta la salinidad del mar, suelos rocosos y variaciones climáticas, dándole una ventaja competitiva enorme sobre nuestras especies locales más delicadas.</li>
+      <li><strong>Producción masiva de semillas:</strong> Genera miles de semillas aladas que son dispersadas fácilmente
+        por el viento a grandes distancias, permitiéndole colonizar nuevas áreas rápidamente.</li>
+      <li><strong>Tolerancia extrema:</strong> Soporta la salinidad del mar, suelos rocosos y variaciones climáticas,
+        dándole una ventaja competitiva enorme sobre nuestras especies locales más delicadas.</li>
     </ul>
 
     <h2>El Impacto Ecológico en el Entorno</h2>
-    <p>La proliferación descontrolada de la valeriana roja no es solo un problema estético. Sus consecuencias alteran por completo el equilibrio de nuestros ecosistemas:</p>
+    <p>La proliferación descontrolada de la valeriana roja no es solo un problema estético. Sus consecuencias alteran
+      por completo el equilibrio de nuestros ecosistemas:</p>
     <ul>
-      <li><strong>Desplazamiento de flora autóctona:</strong> Monopoliza la luz, el agua y el espacio, asfixiando a las plantas nativas e impidiendo su crecimiento.</li>
-      <li><strong>Alteración de polinizadores:</strong> Al acaparar la atención de insectos polinizadores, otras plantas autóctonas dejan de reproducirse.</li>
-      <li><strong>Modificación del suelo:</strong> Cambia la estructura química y la dinámica de nutrientes del suelo, dificultando aún más la supervivencia de las especies locales.</li>
+      <li><strong>Desplazamiento de flora autóctona:</strong> Monopoliza la luz, el agua y el espacio, asfixiando a las
+        plantas nativas e impidiendo su crecimiento.</li>
+      <li><strong>Alteración de polinizadores:</strong> Al acaparar la atención de insectos polinizadores, otras plantas
+        autóctonas dejan de reproducirse.</li>
+      <li><strong>Modificación del suelo:</strong> Cambia la estructura química y la dinámica de nutrientes del suelo,
+        dificultando aún más la supervivencia de las especies locales.</li>
     </ul>
 
     <h2>Manejo, Prevención y Jardinería Responsable</h2>
-    <p>Para frenar el avance de la valeriana roja, es fundamental la concienciación. Si ya tienes esta planta en tu jardín, es vital <strong>cortar las flores marchitas antes de que formen semillas</strong> para evitar que el viento las propague hacia los montes cercanos. La mejor prevención es siempre optar por <strong>plantas autóctonas</strong> en nuestros jardines, apoyando así la biodiversidad local sin poner en riesgo los hábitats naturales.</p>
+    <p>Para frenar el avance de la valeriana roja, es fundamental la concienciación. Si ya tienes esta planta en tu
+      jardín, es vital <strong>cortar las flores marchitas antes de que formen semillas</strong> para evitar que el
+      viento las propague hacia los montes cercanos. La mejor prevención es siempre optar por <strong>plantas
+        autóctonas</strong> en nuestros jardines, apoyando así la biodiversidad local sin poner en riesgo los hábitats
+      naturales.</p>
 
     <div class="alerta-importante">
       <p><strong>⚠️ Aviso de Especie Invasora en La Galea (Getxo)</strong><br>
-      Recientemente, desde el equipo de Geobizi hemos detectado la aparición de esta especie invasora a lo largo del <strong>paseo de La Galea</strong>, un espacio natural protegido donde realizamos muchas de nuestras rutas divulgativas. Ya hemos dado el aviso oficial a las autoridades competentes del Ayuntamiento y la Diputación para su pronta erradicación, buscando proteger este valioso entorno costero (aunque por el momento sin éxito).</p>
+        Recientemente, desde el equipo de Geobizi hemos detectado la aparición de esta especie invasora a lo largo del
+        <strong>paseo de La Galea</strong>, un espacio natural protegido donde realizamos muchas de nuestras rutas
+        divulgativas. Ya hemos dado el aviso oficial a las autoridades competentes del Ayuntamiento y la Diputación para
+        su pronta erradicación, buscando proteger este valioso entorno costero (aunque por el momento sin éxito).</p>
     </div>
 
     <div class="caja-recurso">
       <h3>Combate las Especies Invasoras con Educación Ambiental</h3>
       <p>
-        El primer paso para proteger nuestra biodiversidad es saber reconocer qué especies no pertenecen a nuestros ecosistemas. En Geobizi desarrollamos <strong>talleres de sensibilización y proyectos de educación ambiental</strong> para colegios, ayuntamientos y familias. Aprende a identificar y gestionar de forma responsable la flora de tu entorno.
+        El primer paso para proteger nuestra biodiversidad es saber reconocer qué especies no pertenecen a nuestros
+        ecosistemas. En Geobizi desarrollamos <strong>talleres de sensibilización y proyectos de educación
+          ambiental</strong> para colegios, ayuntamientos y familias. Aprende a identificar y gestionar de forma
+        responsable la flora de tu entorno.
       </p>
       <div class="botones-recurso">
-        <a href="/servicios" class="proximas-actividades">Ver nuestros programas educativos</a>
-        <a href="/contacto" class="btn-ver-mas">Contacta para organizar un taller</a>
+
+        <RouterLink to="/servicios" class="btn-ver-mas">Descubre nuestros Servicios</RouterLink>
+        <RouterLink to="/calendario" class="btn-ver-mas">Consultar próximas actividades</RouterLink>
+        <RouterLink to="/contacto" class="btn-ver-mas">Contacta con nosotros</RouterLink>
       </div>
     </div>
 
     <div class="imagen-trio">
       <div>
-        <img class="img" src="/imagenes/blog/detalle/valeriana1.avif" alt="Ejemplar de valeriana roja (Centranthus ruber) floreciendo en un muro de piedra" title="Centranthus ruber en entorno urbano" loading="lazy" />
+        <img class="img" src="/imagenes/blog/detalle/valeriana1.avif"
+          alt="Ejemplar de valeriana roja (Centranthus ruber) floreciendo en un muro de piedra"
+          title="Centranthus ruber en entorno urbano" loading="lazy" />
       </div>
       <div>
-        <img class="img" src="/imagenes/blog/detalle/valeriana2.avif" alt="Matorral denso de valeriana roja propagándose de forma invasiva en un entorno natural" title="Invasión de valeriana roja" loading="lazy" />
+        <img class="img" src="/imagenes/blog/detalle/valeriana2.avif"
+          alt="Matorral denso de valeriana roja propagándose de forma invasiva en un entorno natural"
+          title="Invasión de valeriana roja" loading="lazy" />
       </div>
       <div>
-        <img class="img" src="/imagenes/blog/detalle/valeriana3.avif" alt="Fotografía macro de las pequeñas flores rojas y rosadas del Centranthus ruber" title="Detalle floral del Centranthus ruber" loading="lazy" />
+        <img class="img" src="/imagenes/blog/detalle/valeriana3.avif"
+          alt="Fotografía macro de las pequeñas flores rojas y rosadas del Centranthus ruber"
+          title="Detalle floral del Centranthus ruber" loading="lazy" />
       </div>
     </div>
   </div>
@@ -137,32 +172,37 @@ useHead({
   margin: 1.5rem 0;
   border-radius: 4px;
 }
+
 .alerta-importante p {
   color: #856404;
   margin: 0;
 }
 
 .caja-recurso {
-  background-color: var(--megashoftgreen); 
-  border-left: 4px solid var(--shoftgreen); 
+  background-color: var(--megashoftgreen);
+  border-left: 4px solid var(--shoftgreen);
   padding: 1.5rem;
   margin: 2.5rem 0;
   border-radius: 0 0.5rem 0.5rem 0;
 }
+
 .caja-recurso h3 {
   margin-top: 0;
   color: var(--lightgreen);
   font-size: 1.2rem;
 }
+
 .caja-recurso p {
   margin-bottom: 1.5rem;
   color: var(--darkgrey);
 }
+
 .botones-recurso {
   display: flex;
   gap: 1rem;
   flex-wrap: wrap;
 }
+
 .proximas-actividades {
   background-color: var(--supershoftgreen);
   color: var(--lightgreen);
@@ -172,10 +212,12 @@ useHead({
   border-radius: 4px;
   transition: background-color 0.3s;
 }
+
 .proximas-actividades:hover {
   background-color: var(--shoftgreen);
   color: var(--white);
 }
+
 .btn-ver-mas {
   background-color: transparent;
   color: var(--lightgreen);
@@ -186,6 +228,7 @@ useHead({
   border-radius: 4px;
   transition: all 0.3s;
 }
+
 .btn-ver-mas:hover {
   background-color: var(--shoftgreen);
   color: white;
@@ -202,7 +245,8 @@ useHead({
 /* Dar espacio a la izquierda para que quepa el icono */
 .contenedor-principal li {
   position: relative;
-  padding-left: 2rem; /* Espacio para las hojitas */
+  padding-left: 2rem;
+  /* Espacio para las hojitas */
   margin-bottom: 0.8rem;
   line-height: 1.5;
 }
@@ -215,10 +259,10 @@ useHead({
   top: 2px;
   width: 1.2rem;
   height: 1.2rem;
-  
+
   /* AQUÍ ESTÁ EL CAMBIO MÁGICO: subimos dos carpetas (../../) */
-  background-image: url('../../assets/Hojitas.png'); 
-  
+  background-image: url('../../assets/Hojitas.png');
+
   background-size: contain;
   background-repeat: no-repeat;
 }

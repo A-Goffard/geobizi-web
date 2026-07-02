@@ -32,10 +32,10 @@
       <p>
         La mejor manera de honrar nuestro planeta es aprendiendo a cuidarlo. Te animamos a participar en nuestras actividades medioambientales con tu familia, colegio o grupo de amigos. Apoyando proyectos locales de educación ambiental como Geobizi, ayudas a impulsar la sostenibilidad en tu entorno durante todo el año.
       </p>
-      <div class="botones-recurso">
-        <a href="/calendario" class="proximas-actividades">Ver Calendario de Actividades</a>
-        <a href="/servicios" class="btn-ver-mas">Descubre nuestros Servicios</a>
-      </div>
+<div class="botones-recurso">
+  <router-link to="/calendario" class="proximas-actividades">Ver Calendario de Actividades</router-link>
+  <router-link to="/servicios" class="btn-ver-mas">Descubre nuestros Servicios</router-link>
+</div>
     </div>
 
     <p class="social-media"><b>¡Síguenos en redes sociales para ver cómo celebramos este y otros días importantes para el medio ambiente!</b></p>

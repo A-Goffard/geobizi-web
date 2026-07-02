@@ -32,8 +32,8 @@
                 La conservación de ecosistemas tan complejos como los estuarios solo es posible a través de la <strong>educación medioambiental</strong>. En Geobizi desarrollamos programas de sensibilización, talleres didácticos y salidas de campo para que estudiantes y familias comprendan y valoren nuestro entorno natural.
             </p>
             <div class="botones-recurso">
-                <a href="/servicios" class="proximas-actividades">Descubre nuestros Servicios</a>
-                <a href="/contacto" class="btn-ver-mas">Contacta con nosotros</a>
+                <router-link to="/servicios" class="btn-ver-mas">Descubre nuestros Servicios</router-link>
+                <router-link to="/contacto" class="btn-ver-mas">Contacta con nosotros</router-link>
             </div>
         </div>
 

@@ -2,47 +2,74 @@
   <div class="contenedor-principal">
     <h1>¿Qué son los fósiles y cómo se forman?</h1>
 
-    <p>Los <strong>fósiles</strong> son los restos, huellas o evidencias de organismos (animales, plantas o microbios) que vivieron en la Tierra en el pasado. Estos increíbles "mensajes en la piedra" son fundamentales para que los paleontólogos puedan comprender la <strong>evolución</strong> de la vida en nuestro planeta y cómo han cambiado los ecosistemas a lo largo de millones de años.</p>
-    
+    <p>Los <strong>fósiles</strong> son los restos, huellas o evidencias de organismos (animales, plantas o microbios)
+      que vivieron en la Tierra en el pasado. Estos increíbles "mensajes en la piedra" son fundamentales para que los
+      paleontólogos puedan comprender la <strong>evolución</strong> de la vida en nuestro planeta y cómo han cambiado
+      los ecosistemas a lo largo de millones de años.</p>
+
     <h2>El mágico proceso de la fosilización</h2>
-    <p>Para que un ser vivo se convierta en fósil, debe darse una serie de coincidencias casi milagrosas. Generalmente, cuando un organismo muere, se descompone o es devorado. Sin embargo, la fosilización ocurre cuando esos restos quedan rápidamente enterrados bajo capas de arena, barro o ceniza, aislándolos del oxígeno y frenando su descomposición.</p>
-    
-    <p>Con el paso del tiempo, el peso de los sedimentos y el agua subterránea someten a los restos a procesos químicos y físicos que los preservan. Los más comunes son:</p>
+    <p>Para que un ser vivo se convierta en fósil, debe darse una serie de coincidencias casi milagrosas. Generalmente,
+      cuando un organismo muere, se descompone o es devorado. Sin embargo, la fosilización ocurre cuando esos restos
+      quedan rápidamente enterrados bajo capas de arena, barro o ceniza, aislándolos del oxígeno y frenando su
+      descomposición.</p>
+
+    <p>Con el paso del tiempo, el peso de los sedimentos y el agua subterránea someten a los restos a procesos químicos
+      y físicos que los preservan. Los más comunes son:</p>
 
     <ul>
-      <li><strong>Mineralización (Petrificación):</strong> Es el proceso más habitual. A medida que el hueso o la madera original se disuelve lentamente, los minerales presentes en el agua (como el sílice o el calcio) ocupan su lugar. El resultado es una réplica exacta del organismo original, ¡pero hecha de piedra!</li>
-      <li><strong>Preservación en ámbar:</strong> Ocurre cuando pequeños insectos o restos vegetales quedan atrapados en la resina pegajosa de los árboles prehistóricos. La resina se endurece y se convierte en ámbar, conservando al organismo intacto con un detalle asombroso.</li>
-      <li><strong>Congelación:</strong> En zonas de permafrost (hielo permanente), se han hallado mamuts enteros conservando no solo los huesos, sino también la piel, los órganos y el pelo.</li>
+      <li><strong>Mineralización (Petrificación):</strong> Es el proceso más habitual. A medida que el hueso o la madera
+        original se disuelve lentamente, los minerales presentes en el agua (como el sílice o el calcio) ocupan su
+        lugar. El resultado es una réplica exacta del organismo original, ¡pero hecha de piedra!</li>
+      <li><strong>Preservación en ámbar:</strong> Ocurre cuando pequeños insectos o restos vegetales quedan atrapados en
+        la resina pegajosa de los árboles prehistóricos. La resina se endurece y se convierte en ámbar, conservando al
+        organismo intacto con un detalle asombroso.</li>
+      <li><strong>Congelación:</strong> En zonas de permafrost (hielo permanente), se han hallado mamuts enteros
+        conservando no solo los huesos, sino también la piel, los órganos y el pelo.</li>
     </ul>
-    
+
     <h2>No todo son huesos de dinosaurio</h2>
-    <p>Cuando pensamos en fósiles, a menudo nos imaginamos gigantescos esqueletos de dinosaurios, pero la realidad es mucho más diversa:</p>
+    <p>Cuando pensamos en fósiles, a menudo nos imaginamos gigantescos esqueletos de dinosaurios, pero la realidad es
+      mucho más diversa:</p>
     <ul>
-      <li><strong>Microfósiles:</strong> Caparazones de menos de 1 milímetro pertenecientes a plancton prehistórico (muy comunes en los acantilados de nuestra costa vasca).</li>
-      <li><strong>Fósiles vegetales:</strong> Impresiones perfectas de hojas de helechos gigantes o troncos petrificados.</li>
-      <li><strong>Icnitas:</strong> A veces, lo que se fosiliza no es el animal en sí, sino una <em>marca de su actividad</em>. Esto incluye huellas de pisadas conservadas en el barro solidificado, madrigueras e incluso excrementos fosilizados (coprolitos).</li>
+      <li><strong>Microfósiles:</strong> Caparazones de menos de 1 milímetro pertenecientes a plancton prehistórico (muy
+        comunes en los acantilados de nuestra costa vasca).</li>
+      <li><strong>Fósiles vegetales:</strong> Impresiones perfectas de hojas de helechos gigantes o troncos
+        petrificados.</li>
+      <li><strong>Icnitas:</strong> A veces, lo que se fosiliza no es el animal en sí, sino una <em>marca de su
+          actividad</em>. Esto incluye huellas de pisadas conservadas en el barro solidificado, madrigueras e incluso
+        excrementos fosilizados (coprolitos).</li>
     </ul>
-    
+
     <h2>El trabajo de los Paleontólogos</h2>
-    <p>Para encontrar fósiles, los paleontólogos exploran las rocas sedimentarias expuestas en acantilados, desiertos y montañas. Cada capa de roca actúa como la página de un libro de historia geológica. Al estudiar los fósiles encontrados en capas específicas, los científicos pueden reconstruir cómo era el clima, qué animales convivían y cómo se relacionaban hace millones de años.</p>
+    <p>Para encontrar fósiles, los paleontólogos exploran las rocas sedimentarias expuestas en acantilados, desiertos y
+      montañas. Cada capa de roca actúa como la página de un libro de historia geológica. Al estudiar los fósiles
+      encontrados en capas específicas, los científicos pueden reconstruir cómo era el clima, qué animales convivían y
+      cómo se relacionaban hace millones de años.</p>
 
     <div class="caja-recurso">
       <h3>¡Conviértete en Paleontólogo por un día!</h3>
       <p>
-        La mejor forma de aprender ciencia es tocándola. En las actividades y talleres de Geobizi te enseñamos fósiles reales traídos de diferentes partes del mundo y te enseñamos a analizarlos "in situ". Además, en nuestros <strong>talleres infantiles</strong>, los más pequeños podrán crear sus propias réplicas de fósiles para llevárselas a casa.
+        La mejor forma de aprender ciencia es tocándola. En las actividades y talleres de Geobizi te enseñamos fósiles
+        reales traídos de diferentes partes del mundo y te enseñamos a analizarlos "in situ". Además, en nuestros
+        <strong>talleres infantiles</strong>, los más pequeños podrán crear sus propias réplicas de fósiles para
+        llevárselas a casa.
       </p>
-<div class="botones-recurso">
-        <a href="/calendario" class="proximas-actividades">Ver próximas actividades</a>
-        <a href="/contacto" class="btn-ver-mas">Pedir información para grupos</a>
+      <div class="botones-recurso">
+        <router-link to="/calendario" class="proximas-actividades">Ver próximas actividades</router-link>
+        <router-link to="/contacto" class="btn-ver-mas">Pedir información para grupos</router-link>
+
       </div>
     </div>
 
-    <p class="social-media"><b>¿Te animas a experimentar con nosotros? ¡Síguenos en redes sociales para ver nuestros próximos talleres!</b></p>
+    <p class="social-media"><b>¿Te animas a experimentar con nosotros? ¡Síguenos en redes sociales para ver nuestros
+        próximos talleres!</b></p>
     <div class="redes-sociales">
-      <a href="https://www.instagram.com/geotxiki/" target="_blank" rel="noopener noreferrer" title="Geobizi en Instagram">
+      <a href="https://www.instagram.com/geotxiki/" target="_blank" rel="noopener noreferrer"
+        title="Geobizi en Instagram">
         <img src="/imagenes/iconos/instagram.png" alt="Geobizi en Instagram" class="social-icon" loading="lazy" />
       </a>
-      <a href="https://www.facebook.com/geobizirik/" target="_blank" rel="noopener noreferrer" title="Geobizi en Facebook">
+      <a href="https://www.facebook.com/geobizirik/" target="_blank" rel="noopener noreferrer"
+        title="Geobizi en Facebook">
         <img src="/imagenes/iconos/facebook.png" alt="Geobizi en Facebook" class="social-icon" loading="lazy" />
       </a>
       <a href="https://www.tiktok.com/@geobizi" target="_blank" rel="noopener noreferrer" title="Geobizi en TikTok">
@@ -52,31 +79,19 @@
 
     <div class="imagen-trio">
       <div>
-        <img
-          class="img"
-          src="/imagenes/blog/detalle/fosil1.avif"
+        <img class="img" src="/imagenes/blog/detalle/fosil1.avif"
           alt="Fósil de un ammonite perfectamente conservado incrustado en roca sedimentaria"
-          title="Fósil mineralizado en roca"
-          loading="lazy"
-        />
+          title="Fósil mineralizado en roca" loading="lazy" />
       </div>
       <div>
-        <img
-          class="img"
-          src="/imagenes/blog/detalle/fosil2.avif"
+        <img class="img" src="/imagenes/blog/detalle/fosil2.avif"
           alt="Niños participando en un taller didáctico de Geobizi creando réplicas de fósiles con escayola"
-          title="Taller infantil de réplicas de fósiles"
-          loading="lazy"
-        />
+          title="Taller infantil de réplicas de fósiles" loading="lazy" />
       </div>
       <div>
-        <img
-          class="img"
-          src="/imagenes/blog/detalle/fosil3.avif"
+        <img class="img" src="/imagenes/blog/detalle/fosil3.avif"
           alt="Fotografía macro mostrando el detalle de las texturas preservadas en un fósil antiguo"
-          title="Texturas y detalles de un fósil"
-          loading="lazy"
-        />
+          title="Texturas y detalles de un fósil" loading="lazy" />
       </div>
     </div>
   </div>
@@ -154,26 +169,30 @@ useHead({
 <style scoped>
 /* CAJA DE RECURSOS */
 .caja-recurso {
-  background-color: var(--megashoftgreen); 
-  border-left: 4px solid var(--shoftgreen); 
+  background-color: var(--megashoftgreen);
+  border-left: 4px solid var(--shoftgreen);
   padding: 1.5rem;
   margin: 2.5rem 0;
   border-radius: 0 0.5rem 0.5rem 0;
 }
+
 .caja-recurso h3 {
   margin-top: 0;
   color: var(--lightgreen);
   font-size: 1.2rem;
 }
+
 .caja-recurso p {
   margin-bottom: 1.5rem;
   color: var(--darkgrey);
 }
+
 .botones-recurso {
   display: flex;
   gap: 1rem;
   flex-wrap: wrap;
 }
+
 .proximas-actividades {
   background-color: var(--supershoftgreen);
   color: var(--lightgreen);
@@ -183,10 +202,12 @@ useHead({
   border-radius: 4px;
   transition: background-color 0.3s;
 }
+
 .proximas-actividades:hover {
   background-color: var(--shoftgreen);
   color: var(--white);
 }
+
 .btn-ver-mas {
   background-color: transparent;
   color: var(--lightgreen);
@@ -197,6 +218,7 @@ useHead({
   border-radius: 4px;
   transition: all 0.3s;
 }
+
 .btn-ver-mas:hover {
   background-color: var(--shoftgreen);
   color: white;
@@ -207,17 +229,20 @@ useHead({
   margin-top: 2rem;
   color: var(--darkgrey);
 }
+
 .redes-sociales {
   margin-left: 1rem;
   display: flex;
   align-items: center;
 }
+
 .social-icon {
-  width: 2.5rem; 
+  width: 2.5rem;
   margin-right: 1rem;
   margin-bottom: 1.5rem;
   transition: transform 0.3s;
 }
+
 .social-icon:hover {
   transform: scale(1.1);
 }
@@ -233,7 +258,8 @@ useHead({
 /* Dar espacio a la izquierda para que quepa el icono */
 .contenedor-principal li {
   position: relative;
-  padding-left: 2rem; /* Espacio para las hojitas */
+  padding-left: 2rem;
+  /* Espacio para las hojitas */
   margin-bottom: 0.8rem;
   line-height: 1.5;
 }
@@ -246,10 +272,10 @@ useHead({
   top: 2px;
   width: 1.2rem;
   height: 1.2rem;
-  
+
   /* AQUÍ ESTÁ EL CAMBIO MÁGICO: subimos dos carpetas (../../) */
-  background-image: url('../../assets/Hojitas.png'); 
-  
+  background-image: url('../../assets/Hojitas.png');
+
   background-size: contain;
   background-repeat: no-repeat;
 }

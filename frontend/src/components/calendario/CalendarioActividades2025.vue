@@ -81,34 +81,21 @@ const mesActual = ref(new Date().getMonth());
 
 const router = useRouter();
 
-const irAReserva = (actividad, event) => {
-  if (isMobile.value) {
-    // Si el tooltip no está visible o es de otra actividad, solo muestra el tooltip
-    if (!tooltip.value.visible || tooltip.value.actividad !== actividad) {
-      mostrarTooltip(actividad, event);
-      return;
-    }
-    // Si el tooltip ya está visible para esta actividad, navega
-    ocultarTooltip();
-    const hoy = new Date();
-    const fechaActividad = new Date(actividad.fecha + 'T' + (actividad.hora || '00:00'));
-    if (fechaActividad >= hoy) {
-      if (actividad.reservas) {
-        router.push({ name: 'reservaActividad', params: { id: actividad.id } });
-      } else {
-        router.push({ name: 'reservas' });
-      }
-    }
-  } else {
-    // Desktop: navega directamente
-    const hoy = new Date();
-    const fechaActividad = new Date(actividad.fecha + 'T' + (actividad.hora || '00:00'));
-    if (fechaActividad >= hoy) {
-      if (actividad.reservas) {
-        router.push({ name: 'reservaActividad', params: { id: actividad.id } });
-      } else {
-        router.push({ name: 'reservas' });
-      }
+const irAReserva = (actividad) => {
+  // Cerramos tooltip al hacer clic
+  ocultarTooltip();
+
+  const hoy = new Date();
+  hoy.setHours(0, 0, 0, 0); 
+  
+  // Usamos replace para asegurar compatibilidad total en navegadores
+  const fechaActividad = new Date(actividad.fecha.replace(/-/g, '/')); 
+
+  if (fechaActividad >= hoy) {
+    if (actividad.reservas) {
+      router.push({ name: 'reservaActividad', params: { id: actividad.id } });
+    } else {
+      router.push({ name: 'reservas' });
     }
   }
 };

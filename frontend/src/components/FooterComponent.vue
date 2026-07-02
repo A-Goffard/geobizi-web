@@ -11,6 +11,11 @@
           <li>
             <router-link class="footer-link" :to="{ name: 'cancelaciones' }" title="Política de cancelaciones">Política de cancelaciones</router-link>
           </li>
+          <li>
+  <router-link class="footer-link" :to="{ name: 'DetalleDescargas' }" title="Recursos y descargas">
+    Recursos y descargas
+  </router-link>
+</li>
         </ul>
         <div class="social-media">
           <a href="mailto:geobizi@hotmail.com" title="Enviar correo a Geobizi">

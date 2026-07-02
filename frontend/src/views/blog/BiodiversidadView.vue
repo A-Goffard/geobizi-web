@@ -6,7 +6,8 @@
       La <strong>biodiversidad</strong> es la increíble variedad de formas de vida en
       nuestro planeta, desde las más pequeñas bacterias del suelo hasta las majestuosas
       especies de mamíferos y los frondosos bosques de nuestra geografía. Esta diversidad
-      no es un simple catálogo de la naturaleza; es una red esencial para mantener el equilibrio de los ecosistemas y brindar una
+      no es un simple catálogo de la naturaleza; es una red esencial para mantener el equilibrio de los ecosistemas y
+      brindar una
       serie de beneficios fundamentales para la supervivencia humana. Sin embargo, la
       biodiversidad se encuentra gravemente amenazada debido a la actual crisis climática,
       lo que subraya la urgencia de actuar local y globalmente para preservarla.
@@ -32,7 +33,8 @@
     <p>
       Los <strong>bosques autóctonos</strong> y las zonas húmedas actúan como inmensos sumideros de carbono,
       absorbiendo grandes cantidades de dióxido de carbono de la atmósfera y
-      almacenándolo en la biomasa y el suelo. Proteger y restaurar estos espacios (como promovemos en proyectos locales tipo Zalla Natura) es la tecnología natural más eficiente para combatir el calentamiento global.
+      almacenándolo en la biomasa y el suelo. Proteger y restaurar estos espacios (como promovemos en proyectos locales
+      tipo Zalla Natura) es la tecnología natural más eficiente para combatir el calentamiento global.
     </p>
 
     <h2>Seguridad Alimentaria y Diversidad Genética</h2>
@@ -40,7 +42,9 @@
       La biodiversidad es también la base indiscutible de nuestra
       <strong>seguridad alimentaria</strong> y de una agricultura sostenible. Las
       variedades de cultivos locales y las especies animales domesticadas dependen de la
-      <strong>diversidad genética</strong> silvestre. Si permitimos que el cambio climático y el monocultivo arrasen con esta diversidad, nuestros sistemas alimentarios serán extremadamente vulnerables a nuevas enfermedades y plagas, poniendo en riesgo el suministro global de alimentos.
+      <strong>diversidad genética</strong> silvestre. Si permitimos que el cambio climático y el monocultivo arrasen con
+      esta diversidad, nuestros sistemas alimentarios serán extremadamente vulnerables a nuevas enfermedades y plagas,
+      poniendo en riesgo el suministro global de alimentos.
     </p>
 
     <h2>Servicios Ecosistémicos Vitales para la Sociedad</h2>
@@ -49,55 +53,53 @@
       <strong>servicios ecosistémicos</strong> invisibles pero vitales:
     </p>
     <ul>
-      <li><strong>Polinización:</strong> Insectos como abejas, mariposas y mariquitas garantizan la reproducción de la flora y la producción de frutas y verduras.</li>
-      <li><strong>Protección frente a desastres:</strong> Ecosistemas costeros (como los estuarios y marismas) y bosques de ribera actúan como esponjas y barreras naturales, mitigando el impacto de tormentas e inundaciones.</li>
-      <li><strong>Regulación del ciclo del agua:</strong> Los bosques sanos filtran el agua, recargan los acuíferos y evitan la erosión y desertificación del suelo.</li>
+      <li><strong>Polinización:</strong> Insectos como abejas, mariposas y mariquitas garantizan la reproducción de la
+        flora y la producción de frutas y verduras.</li>
+      <li><strong>Protección frente a desastres:</strong> Ecosistemas costeros (como los estuarios y marismas) y bosques
+        de ribera actúan como esponjas y barreras naturales, mitigando el impacto de tormentas e inundaciones.</li>
+      <li><strong>Regulación del ciclo del agua:</strong> Los bosques sanos filtran el agua, recargan los acuíferos y
+        evitan la erosión y desertificación del suelo.</li>
     </ul>
 
     <h2>Un Círculo Vicioso o Virtuoso</h2>
     <p>
       La pérdida de biodiversidad y el cambio climático están estrechamente
-      interconectados. El cambio climático destruye ecosistemas, lo que libera más carbono a la atmósfera y acelera aún más el calentamiento global. A su vez, un ecosistema degradado pierde su capacidad de protegernos frente a los extremos climáticos. Romper este círculo vicioso y convertirlo en uno virtuoso mediante la <strong>restauración ecológica</strong> es la gran tarea de nuestra generación.
+      interconectados. El cambio climático destruye ecosistemas, lo que libera más carbono a la atmósfera y acelera aún
+      más el calentamiento global. A su vez, un ecosistema degradado pierde su capacidad de protegernos frente a los
+      extremos climáticos. Romper este círculo vicioso y convertirlo en uno virtuoso mediante la <strong>restauración
+        ecológica</strong> es la gran tarea de nuestra generación.
     </p>
 
     <div class="caja-recurso">
       <h3>Pasa a la acción con Geobizi</h3>
       <p>
-        Entender el problema es solo el primer paso. En Geobizi trabajamos activamente en la <strong>educación ambiental, la sensibilización y el desarrollo de proyectos locales</strong> para fomentar y proteger la biodiversidad de Bizkaia.
+        Entender el problema es solo el primer paso. En Geobizi trabajamos activamente en la <strong>educación
+          ambiental, la sensibilización y el desarrollo de proyectos locales</strong> para fomentar y proteger la
+        biodiversidad de Bizkaia.
       </p>
       <div class="botones-recurso">
-        <a href="/proyectos" class="proximas-actividades">Descubre nuestros Proyectos</a>
-        <a href="/contacto" class="btn-ver-mas">Contacta con nosotros</a>
+        <!-- Cambiamos de /proyectos a una ruta más específica si quieres destacar sensibilización -->
+        <router-link to="/servicios/sensibilizacion" class="proximas-actividades">Ver Proyectos de
+          Sensibilización</router-link>
+        <router-link to="/contacto" class="btn-ver-mas">Contacta con nosotros</router-link>
       </div>
     </div>
 
     <div class="imagen-trio">
       <div>
-        <img
-          class="img"
-          src="/imagenes/blog/detalle/mariposas.avif"
+        <img class="img" src="/imagenes/blog/detalle/mariposas.avif"
           alt="Mariposas observadas durante el proyecto Zalla Natura, excelentes bioindicadoras de la salud del ecosistema"
-          title="Mariposas — biodiversidad local"
-          loading="lazy"
-        />
+          title="Mariposas — biodiversidad local" loading="lazy" />
       </div>
       <div>
-        <img
-          class="img"
-          src="/imagenes/blog/detalle/ajenuz.avif"
+        <img class="img" src="/imagenes/blog/detalle/ajenuz.avif"
           alt="Flor de Ajenuz en su hábitat natural, un ejemplo de la importante flora autóctona local"
-          title="Ajenuz — flora autóctona"
-          loading="lazy"
-        />
+          title="Ajenuz — flora autóctona" loading="lazy" />
       </div>
       <div>
-        <img
-          class="img"
-          src="/imagenes/blog/detalle/plantando.avif"
+        <img class="img" src="/imagenes/blog/detalle/plantando.avif"
           alt="Grupo de personas participando en una plantación comunitaria para la restauración de hábitats"
-          title="Plantación comunitaria — restauración"
-          loading="lazy"
-        />
+          title="Plantación comunitaria — restauración" loading="lazy" />
       </div>
     </div>
   </div>
@@ -175,26 +177,30 @@ useHead({
 <style scoped>
 /* Reutilizamos los estilos corporativos para la caja CTA y botones */
 .caja-recurso {
-  background-color: var(--megashoftgreen); 
-  border-left: 4px solid var(--shoftgreen); 
+  background-color: var(--megashoftgreen);
+  border-left: 4px solid var(--shoftgreen);
   padding: 1.5rem;
   margin: 2.5rem 0;
   border-radius: 0 0.5rem 0.5rem 0;
 }
+
 .caja-recurso h3 {
   margin-top: 0;
   color: var(--lightgreen);
   font-size: 1.2rem;
 }
+
 .caja-recurso p {
   margin-bottom: 1.5rem;
   color: var(--darkgrey);
 }
+
 .botones-recurso {
   display: flex;
   gap: 1rem;
   flex-wrap: wrap;
 }
+
 .proximas-actividades {
   background-color: var(--supershoftgreen);
   color: var(--lightgreen);
@@ -204,10 +210,12 @@ useHead({
   border-radius: 4px;
   transition: background-color 0.3s;
 }
+
 .proximas-actividades:hover {
   background-color: var(--shoftgreen);
   color: var(--white);
 }
+
 .btn-ver-mas {
   background-color: transparent;
   color: var(--lightgreen);
@@ -218,6 +226,7 @@ useHead({
   border-radius: 4px;
   transition: all 0.3s;
 }
+
 .btn-ver-mas:hover {
   background-color: var(--shoftgreen);
   color: white;
@@ -234,7 +243,8 @@ useHead({
 /* Dar espacio a la izquierda para que quepa el icono */
 .contenedor-principal li {
   position: relative;
-  padding-left: 2rem; /* Espacio para las hojitas */
+  padding-left: 2rem;
+  /* Espacio para las hojitas */
   margin-bottom: 0.8rem;
   line-height: 1.5;
 }
@@ -247,10 +257,10 @@ useHead({
   top: 2px;
   width: 1.2rem;
   height: 1.2rem;
-  
+
   /* AQUÍ ESTÁ EL CAMBIO MÁGICO: subimos dos carpetas (../../) */
-  background-image: url('../../assets/Hojitas.png'); 
-  
+  background-image: url('../../assets/Hojitas.png');
+
   background-size: contain;
   background-repeat: no-repeat;
 }
