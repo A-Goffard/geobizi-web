@@ -11,11 +11,6 @@
           <li>
             <router-link class="footer-link" :to="{ name: 'cancelaciones' }" title="Política de cancelaciones">Política de cancelaciones</router-link>
           </li>
-          <li>
-  <router-link class="footer-link" :to="{ name: 'DetalleDescargas' }" title="Recursos y descargas">
-    Recursos y descargas
-  </router-link>
-</li>
         </ul>
         <div class="social-media">
           <a href="mailto:geobizi@hotmail.com" title="Enviar correo a Geobizi">
@@ -34,7 +29,7 @@
             <img src="@/assets/icons/instagram.png" alt="Instagram" class="social-icon" title="Instagram" loading="lazy" />
           </a>
         </div>
-        <p class="copyright">© Geobizi 2024. Todos los derechos reservados.</p>
+        <p class="copyright">© Geobizi 2026. Todos los derechos reservados.</p>
         <div>
           <img class="compensacion" src="@/assets/icons/compensacionGeobizi.avif" alt="Sello de impacto compensado de Geobizi" title="Sello de impacto compensado de Geobizi" loading="lazy">
         </div>
