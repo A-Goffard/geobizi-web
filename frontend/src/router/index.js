@@ -58,7 +58,7 @@ const routes = [
     { path: '/reservas', name: 'reservas', component: ReservasView },
     { path: '/reservas/:id', name: 'reservaActividad', component: ReservasView },
     { path: "/proyectos", name: "proyectos", component: ProyectosView },
-    
+
     // --- REDIRECCIONES SEO (De URLs antiguas a nuevas) ---
     { path: '/detalle-rutas', redirect: '/servicios/rutas' },
     { path: '/detalle-actividades', redirect: '/servicios/actividades' },
@@ -66,6 +66,9 @@ const routes = [
     { path: '/detalle-digital', redirect: '/servicios/digital-sostenible' },
     { path: '/detalle-formacion', redirect: '/servicios/formacion' },
     { path: '/detalle-descargas', redirect: '/servicios/descargas' },
+    { path: '/detalle-semana-verde', redirect: '/servicios/actividades' },
+    { path: '/detalle-dia-de-arbol', redirect: '/servicios/sensibilizacion' },
+    { path: '/detalle-aste-berdea', redirect: '/servicios/actividades' },
 
     // --- NUEVAS RUTAS JERÁRQUICAS ---
     { path: "/servicios/rutas", name: "DetalleRutas", component: DetalleRutas },
@@ -74,7 +77,7 @@ const routes = [
     { path: "/servicios/digital-sostenible", name: "DetalleDigitalySostenible", component: DetalleDigitalySostenible },
     { path: "/servicios/formacion", name: "DetalleFormacion", component: DetalleFormacion },
     { path: "/servicios/descargas", name: "DetalleDescargas", component: DetalleDescargas },
-    
+
     // --- PROYECTOS ---
     { path: "/detalle-flysch", name: "detalle-flysch", component: DetalleFlyschView },
     { path: "/detalle-zalla-natura", name: "detalle-zalla-natura", component: DetalleZallaNaturaView },
@@ -108,7 +111,20 @@ const routes = [
     { path: "/politicadeprivacidad", name: "privacidad", component: PoliticadeprivacidadView },
     { path: "/fitxas-etnobotanicas-enkarterri", name: "fitxas-etnobotanicas-enkarterri", component: FitxasEtnobotanicasEnkarterri },
     { path: "/calendario", name: "Calendario", component: Calendario },
-    { path: '/:pathMatch(.*)*', name: 'NotFound', component: () => import('@/views/NotFoundView.vue') }
+
+    {
+        path: '/:pathMatch(.*)*',
+        name: 'NotFound',
+        component: () => import('@/views/NotFoundView.vue'),
+        beforeEnter: (to, from, next) => {
+            // Si la ruta contiene fragmentos de URLs antiguas, redirige automáticamente
+            if (to.fullPath.includes('/geotienda/') || to.fullPath.includes('/investigacion/')) {
+                next({ path: '/servicios', replace: true });
+            } else {
+                next(); // Si no, muestra la página 404
+            }
+        }
+    }
 ];
 
 const router = createRouter({
