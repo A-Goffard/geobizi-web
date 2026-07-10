@@ -41,6 +41,8 @@
         <p><strong>Fecha:</strong> {{ formatearFecha(actividadSeleccionada.fecha) }}</p>
         <p><strong>Hora:</strong> {{ actividadSeleccionada.hora }}</p>
         <p v-if="actividadSeleccionada.ubicacion"><strong>Ubicación:</strong> {{ actividadSeleccionada.ubicacion }}</p>
+        <p v-if="actividadSeleccionada.precio"><strong>Precio:</strong> {{ actividadSeleccionada.precio }} € por persona</p>
+
       </div>
 <div v-if="actividadSeleccionada" class="contact-container">
       <form @submit.prevent="submitForm">
