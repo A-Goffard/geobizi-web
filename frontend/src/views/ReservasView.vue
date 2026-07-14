@@ -13,7 +13,7 @@
             <img :src="actividad.imagen2" :alt="actividad.titulo" class="img-hover" loading="lazy" />
           </div>
 
-          <p class="descripcion">{{ actividad.descripcion1 }}</p>
+          <p class="descripcion">{{ actividad.descripcion }}</p>
 
           <div class="info-rapida">
             <p><strong>📅 {{ formatearFecha(actividad.fecha) }}</strong></p>
@@ -42,6 +42,9 @@
         <p><strong>Hora:</strong> {{ actividadSeleccionada.hora }}</p>
         <p v-if="actividadSeleccionada.ubicacion"><strong>Ubicación:</strong> {{ actividadSeleccionada.ubicacion }}</p>
         <p v-if="actividadSeleccionada.precio"><strong>Precio:</strong> {{ actividadSeleccionada.precio }} € por persona</p>
+        <p v-if="actividadSeleccionada.descripcion"><strong>Descripción:</strong> {{ actividadSeleccionada.descripcion }}</p>
+        <p v-if="actividadSeleccionada.detalles"><strong>Detalles:</strong> {{ actividadSeleccionada.detalles }}</p>
+        <p v-if="actividadSeleccionada.oharrak"><strong>Notas:</strong> {{ actividadSeleccionada.oharrak }}</p>
 
       </div>
 <div v-if="actividadSeleccionada" class="contact-container">
@@ -63,7 +66,7 @@
           <input type="tel" id="phone" v-model="formData.phone" required>
         </div>
 
-        <div v-if="actividadSeleccionada.descripcion2?.toLowerCase().includes('familia')"
+        <div v-if="actividadSeleccionada.detalles?.toLowerCase().includes('familia')"
           class="form-group highlight-group">
           <label for="edadNinos">Edad de los niños (si asisten):</label>
           <input type="text" id="edadNinos" v-model="formData.edadNinos" placeholder="Ej: 5 y 8 años">
@@ -79,7 +82,7 @@
           <textarea id="message" v-model="formData.message"></textarea>
         </div>
 
-        <div v-if="['zalla', 'flysch', 'naturgaua', 'ferias', 'general'].includes(actividadSeleccionada.proyecto)"
+        <div v-if="['zalla', 'flysch', 'naturgaua', 'eventos', 'general'].includes(actividadSeleccionada.proyecto)"
           class="caja-fotos">
           <p class="titulo-fotos">📸 Recuerdo de la actividad</p>
           <div class="horizontalC">
@@ -203,7 +206,7 @@ const formatProyecto = (slug) => {
     'zalla': 'Zalla Natura',
     'flysch': 'Flysch en Familia',
     'naturgaua': 'Naturgaua',
-    'ferias': 'Feria / Mercado',
+    'eventos': 'Feria / Mercado',
     'general': 'Actividad',
   };
   return map[slug] || 'Actividad';
@@ -359,7 +362,7 @@ const submitForm = () => {
   background-color: blue;
 }
 
-.badge.ferias {
+.badge.eventos {
   background-color: plum;
 }
 
@@ -389,7 +392,7 @@ const submitForm = () => {
   background-color: blue;
 }
 
-.badge-large.ferias {
+.badge-large.eventos {
   background-color: plum;
 }
 

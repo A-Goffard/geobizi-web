@@ -87,7 +87,7 @@ const infoProyectos = {
   flysch: { nombre: 'FlyschBizkaia en Familia', color: 'orange', descripcion: 'Ruta geológica y medioambiental por la Costa de Getxo...' },
   naturgaua: { nombre: 'Naturgaua', color: 'purple', descripcion: 'Exploración nocturna y observación de fauna...' },
   zalla: { nombre: 'Actividad de Zalla Natura', color: 'blue', descripcion: 'Talleres y rutas en el entorno de Zalla...' },
-  ferias: { nombre: 'Ferias y mercados', color: 'plum', descripcion: 'Encuéntranos en los stands de divulgación...' },
+  eventos: { nombre: 'Ferias y Eventos', color: 'plum', descripcion: 'Encuéntranos en los stands de divulgación...' },
   general: { nombre: 'Otras actividades', color: 'green', descripcion: 'Talleres variados y eventos especiales...' }
 }
 
@@ -96,7 +96,7 @@ const formatProyecto = (slug) => {
     'zalla': 'Zalla Natura',
     'flysch': 'Flysch en Familia',
     'naturgaua': 'Naturgaua',
-    'ferias': 'Feria / Mercado',
+    'eventos': 'Feria / Evento',
     'general': 'Actividad',
   };
   return map[slug] || 'Actividad';
@@ -358,7 +358,7 @@ useHead({
 .badge.flysch { background-color: orange; }
 .badge.naturgaua { background-color: purple; }
 .badge.zalla { background-color: blue; }
-.badge.ferias { background-color: plum; }
+.badge.eventos { background-color: plum; }
 .badge.general { background-color: green; }
 
 .card h2 {
