@@ -11,7 +11,17 @@ import { ref } from 'vue';
 const mostrar = ref(!localStorage.getItem('cookiesAceptadas'));
 
 const aceptarCookies = () => {
+  // 1. Guardas el estado de que ya aceptó
   localStorage.setItem('cookiesAceptadas', 'true');
+
+  // 2. Le dices a Google Analytics que active el consentimiento de analítica
+  if (typeof window.gtag === 'function') {
+    window.gtag('consent', 'update', {
+      'analytics_storage': 'granted'
+    });
+  }
+
+  // 3. Ocultas tu banner usando la variable correcta ('mostrar')
   mostrar.value = false;
 };
 </script>
