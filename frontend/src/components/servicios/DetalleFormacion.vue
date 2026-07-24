@@ -8,16 +8,19 @@
       <div class="bloque-modalidad">
         <h3>Consultoría Educativa (STEAM y Sostenibilidad)</h3>
         <p>Ayudamos a los centros a integrar la sostenibilidad en todas las asignaturas. Diseñamos proyectos coherentes para que el laboratorio sea un espacio STEAM activo, aplicando el Diseño Universal para el Aprendizaje (DUA) para asegurar que la educación sea realmente inclusiva para todo el alumnado.</p>
+        <router-link to="/contacto?servicio=formacion_consultoria" class="btn-servicio">Preguntar sobre consultoría STEAM</router-link>
       </div>
 
       <div class="bloque-modalidad">
         <h3>Formación Profesional y Técnica</h3>
         <p>Ponemos nuestra experiencia en Lanbide y otros entornos formativos al servicio de tu equipo. Impartimos formación en áreas como ecoturismo, huertos urbanos y gestión del ocio, además de habilidades clave como la comunicación efectiva, el trabajo en equipo y el uso práctico de la IA.</p>
+        <router-link to="/contacto?servicio=formacion_tecnica" class="btn-servicio">Preguntar sobre formación técnica</router-link>
       </div>
 
       <div class="bloque-modalidad">
         <h3>Asesoramiento en Neuroeducación</h3>
         <p>Desde Geobizi, integramos la neurociencia aplicada para acompañar a familias y centros en la gestión de la neurodivergencia. Ofrecemos asesoramiento estratégico para entender y adaptar los entornos educativos a las necesidades reales de cada persona.</p>
+        <router-link to="/contacto?servicio=formacion_neuroeducacion" class="btn-servicio">Preguntar sobre neuroeducación</router-link>
       </div>
     </section>
 
@@ -25,7 +28,7 @@
     <p>Nuestra formación se adapta siempre a vuestras necesidades, basándonos en nuestra experiencia en estos ámbitos:</p>
     
     <ul class="lista-formacion">
-      <li><strong>Educación:</strong> Didáctica de la ciencia, metodologías activas y gamificación.</li>
+      <li><strong>Educación:</strong> Didáctica de la ciencia, metodologías activas, gamificación y DUA.</li>
       <li><strong>Innovación:</strong> Uso ético de la IA, herramientas digitales y diseño de espacios educativos.</li>
       <li><strong>Gestión y Equipos:</strong> Comunicación efectiva, roles de equipo y liderazgo.</li>
       <li><strong>Medioambiente:</strong> Ecoturismo, diseño de espacios verdes y regeneración.</li>

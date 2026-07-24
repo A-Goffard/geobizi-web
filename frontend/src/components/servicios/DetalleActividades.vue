@@ -13,16 +13,22 @@
         <div class="bloque-modalidad">
           <h3>Para Colegios e Institutos</h3>
           <p>Llevamos la naturaleza al aula y el aula a la naturaleza. Diseñamos talleres prácticos que encajan con lo que se trabaja en clase (Primaria, Secundaria o Bachillerato), haciendo que los conceptos de ciencia o medioambiente se entiendan mucho mejor tocando y experimentando.</p>
+          <p>¿Quieres que preparemos un taller para tu centro educativo? ¿Prefieres un proyecto completo?</p>
+          <router-link to="/contacto?servicio=talleres_colegios" class="btn-servicio">Preguntar sobre este servicio</router-link>
         </div>
 
         <div class="bloque-modalidad">
           <h3>Proyectos para Municipios y Entidades</h3>
           <p>Si buscas darle vida a un espacio natural o concienciar sobre el entorno, te ayudamos a crear estrategias completas. Nos gusta trabajar uniendo lo que se aprende en los talleres con actividades en el campo donde todos puedan participar.</p>
+          <p>¿Quieres un proyecto para tu municipio o entidad? ¡Cuentanos!</p>
+          <router-link to="/contacto?servicio=talleres_municipios" class="btn-servicio">Consulta qué podemos hacer</router-link>
         </div>
 
         <div class="bloque-modalidad">
           <h3>Talleres para Eventos y Ferias</h3>
           <p>¿Tienes un stand, una feria de flores o un evento de empresa? Preparamos dinámicas rápidas, visuales y muy participativas. El objetivo es que la gente se lo pase bien mientras descubre algo nuevo y se lleva un recuerdo especial.</p>
+          <p>¿Quieres un taller para tu evento? ¿Uno para peques? ¿Una actividad para adultos? ¡Cuentanos!</p>
+          <router-link to="/contacto?servicio=talleres_ferias" class="btn-servicio">Preguntar sin compromiso</router-link>
         </div>
       </div>
     </section>
@@ -117,4 +123,6 @@ useHead({
   background-size: contain;
   background-repeat: no-repeat;
 }
+
+
 </style>

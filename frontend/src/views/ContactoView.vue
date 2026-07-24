@@ -2,6 +2,12 @@
   <div class="contenedor-principal">
     <div class="contact-container">
       <h1>Contacto</h1>
+      
+      <!-- Aviso visual opcional para que sepas qué servicio están consultando si vienen de un botón -->
+      <p v-if="servicioOrigen" class="aviso-servicio">
+        Estás consultando sobre: <strong>{{ formatearNombreServicio(servicioOrigen) }}</strong>
+      </p>
+
       <form @submit.prevent="submitForm">
         <div class="form-group">
           <label for="name">Nombre:</label>
@@ -37,8 +43,39 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
-import { useHead } from '@vueuse/head' // añadido
+import { ref, onMounted } from 'vue';
+import { useRoute } from 'vue-router';
+import { useHead } from '@vueuse/head';
+
+const route = useRoute();
+const servicioOrigen = ref('');
+
+// Al cargar la página, leemos si viene un servicio en la URL (ej: ?servicio=talleres_colegios)
+onMounted(() => {
+  if (route.query.servicio) {
+    servicioOrigen.value = route.query.servicio;
+  }
+});
+
+// Función para poner bonito el nombre del servicio en el aviso visual
+const formatearNombreServicio = (slug) => {
+  const mapaServicios = {
+    'talleres_colegios': 'Talleres para Colegios e Institutos',
+    'talleres_municipios': 'Proyectos para Municipios y Entidades',
+    'talleres_ferias': 'Talleres para Eventos y Ferias',
+    'material_medida': 'Material Didáctico a Medida',
+    'digital_yincanas': 'Yincanas y Rutas Digitales',
+    'digital_recursos': 'Recursos Digitales Educativos',
+    'digital_webs': 'Webs Eficientes y Sostenibles',
+    'formacion_consultoria': 'Consultoría Educativa (STEAM)',
+    'formacion_tecnica': 'Formación Profesional y Técnica',
+    'formacion_neuroeducacion': 'Asesoramiento en Neuroeducación',
+    'rutas_a_medida': 'Rutas Guiadas a Medida',
+    'rutas_calendario': 'Rutas con Calendario (Fecha Fija)',
+    'sensibilizacion_proyectos': 'Proyectos de Sensibilización y Regeneración'
+  };
+  return mapaServicios[slug] || slug;
+};
 
 const pageUrl = 'https://www.geobizi.com/contacto'
 const ogImage = 'https://www.geobizi.com/imagenes/contacto/contacto-hero.avif'
@@ -110,14 +147,29 @@ const submitForm = () => {
   successMessage.value = '';
   errorMessage.value = '';
 
+  // Preparamos los datos incluyendo el servicio de origen para que te llegue en el email
+  const datosParaEnviar = {
+    ...formData.value,
+    'Servicio Consultado': servicioOrigen.value ? formatearNombreServicio(servicioOrigen.value) : 'Contacto General / Sin especificar'
+  };
+
   fetch('https://formspree.io/f/xanedzed', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(formData.value)
+    body: JSON.stringify(datosParaEnviar)
   })
     .then(response => {
       if (response.ok) {
         successMessage.value = 'Mensaje enviado correctamente.';
+        
+        // --- REGISTRAR EVENTO EN GOOGLE ANALYTICS ---
+        if (typeof window.gtag === 'function') {
+          window.gtag('event', 'enviar_contacto', {
+            'event_category': 'Contacto',
+            'servicio_consultado': servicioOrigen.value || 'general'
+          });
+        }
+
         formData.value = {
           name: '',
           email: '',
@@ -125,6 +177,7 @@ const submitForm = () => {
           message: '',
           privacyAccepted: false
         };
+        servicioOrigen.value = ''; // Limpiamos el origen
       } else {
         throw new Error('Error al enviar el mensaje.');
       }
@@ -150,6 +203,14 @@ const submitForm = () => {
   border-radius: 8px;
   box-shadow: 0px 0px 10px rgba(49, 49, 49, 0.7);
   padding-bottom: 2rem;
+}
+.aviso-servicio {
+  background-color: var(--megashoftgreen);
+  border-left: 4px solid var(--shoftgreen);
+  padding: 0.75rem;
+  margin-bottom: 1.5rem;
+  font-size: 0.95rem;
+  border-radius: 4px;
 }
 .horizontalC { 
   margin: 1rem;
@@ -200,7 +261,6 @@ a{
 .center {
   display: flex;
   justify-content: center;
-
 }
 
 .success-message {
@@ -217,7 +277,8 @@ a{
 
 @media (max-width: 613px) {
   .contact-container {
-    padding: 1rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
     margin: 0.5rem;
   }
 }

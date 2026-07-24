@@ -18,23 +18,23 @@
 
     <h3>Láminas didácticas (para imprimir)</h3>
     <div class="container">
-      <a href="/descargas/laminas/cartel-geologia.png" download class="card">
+      <a href="/descargas/laminas/cartel-geologia.png" download class="card" @click="registrarDescarga('cartel-geologia')">
         <img src="/descargas/miniaturas/Cartel-geologia.avif" alt="Cartel de geología" loading="lazy">
         <p class="card-text">Cartel sobre las salidas de geología</p>
       </a>
-      <a href="/descargas/laminas/polinizadores.avif" download class="card">
+      <a href="/descargas/laminas/polinizadores.avif" download class="card" @click="registrarDescarga('lamina-polinizadores')">
         <img src="/descargas/laminas/polinizadores.avif" alt="Lámina de polinizadores" loading="lazy">
         <p class="card-text">Lámina de polinizadores</p>
       </a>
-      <a href="/descargas/laminas/mariposas.avif" download class="card">
+      <a href="/descargas/laminas/mariposas.avif" download class="card" @click="registrarDescarga('lamina-mariposas-diurnas')">
         <img src="/descargas/laminas/mariposas.avif" alt="Lámina de mariposas" loading="lazy">
         <p class="card-text">Lámina de mariposas diurnas</p>
       </a>
-      <a href="/descargas/laminas/mariposas-nocturnas.avif" download class="card">
+      <a href="/descargas/laminas/mariposas-nocturnas.avif" download class="card" @click="registrarDescarga('lamina-mariposas-nocturnas')">
         <img src="/descargas/laminas/mariposas-nocturnas.avif" alt="Lámina de mariposas nocturnas" loading="lazy">
         <p class="card-text">Lámina de mariposas nocturnas</p>
       </a>
-      <a href="/descargas/laminas/arboles1.avif" download class="card">
+      <a href="/descargas/laminas/arboles1.avif" download class="card" @click="registrarDescarga('lamina-arboles')">
         <img src="/descargas/laminas/arboles1.avif" alt="Lámina de hojas" loading="lazy">
         <p class="card-text">Lámina de hojas de árboles (Euskera/Castellano)</p>
       </a>
@@ -42,7 +42,7 @@
 
     <h3>Documentos y unidades didácticas</h3>
     <div class="container">
-      <a href="/descargas/documentos/Flyschbizkaia-didactica.pdf" download class="card">
+      <a href="/descargas/documentos/Flyschbizkaia-didactica.pdf" download class="card" @click="registrarDescarga('documento-flysch')">
         <img src="/descargas/miniaturas/flyschbizkaia-didactica.avif" alt="Documento didáctico" loading="lazy">
         <p class="card-text">Documento didáctico sobre Flysch Bizkaia</p>
       </a>
@@ -50,17 +50,32 @@
 
     <h2>¿Necesitas algo a medida?</h2>
     <p>Podemos diseñar materiales personalizados para colegios, asociaciones o entidades locales. Si necesitas láminas, folletos o un recurso digital muy específico, cuéntanos tu idea y nos ponemos manos a la obra.</p>
+    
+    <div class="centro-cta">
+      <router-link to="/contacto?servicio=material_medida" class="btn-servicio">Pedir material a medida</router-link>
+    </div>
   </div>
 </template>
 
 <script setup>
 import { useHead } from '@vueuse/head'
+
 const pageUrl = 'https://www.geobizi.com/servicios/descargas'
 useHead({
   title: 'Recursos Didácticos y Descargas | Geobizi',
   meta: [{ name: 'description', content: 'Descarga láminas didácticas, guías interactivas y material educativo para explorar la naturaleza de Bizkaia.' }],
   link: [{ rel: 'canonical', href: pageUrl }]
 })
+
+// Función para registrar las descargas en Google Analytics
+const registrarDescarga = (nombreRecurso) => {
+  if (typeof window.gtag === 'function') {
+    window.gtag('event', 'descargar_recurso', {
+      'event_category': 'Descargas',
+      'event_label': nombreRecurso
+    });
+  }
+}
 </script>
 
 <style scoped>

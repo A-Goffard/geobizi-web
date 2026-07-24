@@ -13,6 +13,7 @@
         <div class="bloque-modalidad">
           <h3>Rutas a Medida</h3>
           <p>Diseñamos salidas pensadas para ti. Ya seas un grupo de amigos, un colegio, una asociación o una empresa buscando una actividad diferente, nos sentamos contigo y preparamos el recorrido, el ritmo y el contenido para que encaje perfectamente con lo que buscas.</p>
+          <router-link to="/contacto?servicio=rutas_a_medida" class="btn-servicio">Pedir ruta a medida</router-link>
         </div>
 
         <div class="bloque-modalidad">
@@ -21,11 +22,14 @@
           
           <div class="caja-recurso">
             <h3>Campaña de Getxo: "El Flysch al microscopio"</h3>
-            <p>Ya puedes reservar tu plaza para nuestras salidas por el litoral de Getxo. Explora la costa en la playa de Azkorri o descubre la biodiversidad cuando cae el sol en nuestras rutas nocturnas <b>"Naturgaua"</b>.</p>
+            <p>Ya puedes reservar tu plaza para nuestras salidas por el litoral de Getxo. Explora la costa en <b>la playa de Azkorri</b> o descubre la biodiversidad cuando cae el sol en nuestras rutas nocturnas <b>"Naturgaua"</b>.</p>
             <p class="nota-subvencion"><em>*Estas rutas cuentan con el apoyo del Ayuntamiento de Getxo para acercar la naturaleza a todo el mundo.</em></p>
             <div class="botones-recurso">
-              <a href="/calendario" class="proximas-actividades">Ver Fechas</a>
+              <router-link to="/calendario" class="proximas-actividades">Ver Fechas</router-link>
               <a href="https://www.getxo.eus/es/turismo/que-hacer/ruta-geologica-flysch" target="_blank" rel="noopener noreferrer" class="btn-ver-mas">Info en Getxo Turismo</a>
+            </div>
+            <div style="margin-top: 1rem;">
+              <router-link to="/contacto?servicio=rutas_calendario" class="btn-servicio">Para resolver dudas</router-link>
             </div>
           </div>
         </div>

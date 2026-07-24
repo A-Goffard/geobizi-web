@@ -234,6 +234,14 @@ watch(() => route.params.id, (id) => {
 }, { immediate: true });
 
 const seleccionarActividad = (actividad) => {
+  // --- AVISAR A GOOGLE ANALYTICS DEL INTENTO ---
+  if (typeof window.gtag === 'function') {
+    window.gtag('event', 'intento_reserva', {
+      'event_category': 'Reservas',
+      'event_label': actividad.titulo
+    });
+  }
+
   router.push({ name: 'reservaActividad', params: { id: actividad.id } });
 };
 
@@ -245,30 +253,31 @@ const submitForm = () => {
   successMessage.value = '';
   errorMessage.value = '';
 
-  // PREPARAMOS LOS DATOS PARA EL EMAIL (TRUCO PARA QUE SE LEA BIEN)
   const datosParaEnviar = {
     ...formData.value,
-    // Convertimos los booleanos a texto para que en el email se vea claro
     'Unirse al grupo Zalla Natura': formData.value.zallaGroupAccepted ? 'SÍ, QUIERE INFO' : 'NO, SOLO ESTA ACTIVIDAD',
     'Acepta Política Privacidad': formData.value.privacyAccepted ? 'SÍ' : 'NO',
     'Entiende que es solicitud': formData.value.privacyAcceptedAviso ? 'SÍ' : 'NO',
     'Autoriza Fotos (Derechos Imagen)': formData.value.imageRightsAccepted ? 'SÍ, AUTORIZA' : 'NO AUTORIZA'
   };
 
- fetch('https://formspree.io/f/xanedzed', {
-   method: 'POST',
-   headers: { 'Content-Type': 'application/json' },
-   body: JSON.stringify(datosParaEnviar) // Enviamos los datos procesados
- })
-
-//   fetch('http://127.0.0.1:5000/api/reservas', {
-//   method: 'POST',
-//   headers: { 'Content-Type': 'application/json' },
-//   body: JSON.stringify(datosParaEnviar)
-// })
+  fetch('https://formspree.io/f/xanedzed', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(datosParaEnviar)
+  })
     .then(response => {
       if (response.ok) {
         successMessage.value = 'Solicitud enviada correctamente. Nos pondremos en contacto contigo.';
+        
+        // --- AVISAR A GOOGLE ANALYTICS DE LA RESERVA COMPLETADA ---
+        if (typeof window.gtag === 'function') {
+          window.gtag('event', 'enviar_reserva', {
+            'event_category': 'Reservas',
+            'event_label': actividadSeleccionada.value?.titulo || 'General'
+          });
+        }
+
         // Limpiar formulario
         formData.value.message = '';
         formData.value.privacyAccepted = false;

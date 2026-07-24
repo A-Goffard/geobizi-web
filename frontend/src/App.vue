@@ -162,6 +162,25 @@ margin: 2rem;
   a:hover {
     color: var(--shoftgreen);
   }
+
+  /* BOTÓN DE ENLACE A SERVICIO */
+.btn-servicio {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background-color: var(--shoftgreen);
+  color: var(--black);
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 0.9rem;
+  transition: background-color 0.3s;
+}
+
+.btn-servicio:hover {
+  background-color: var(--green);
+  color: white;
+}
+
 @media (min-width: 950px) {
   .contenedor-principal {
     max-width: 950px;

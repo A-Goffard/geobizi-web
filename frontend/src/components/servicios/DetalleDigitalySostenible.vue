@@ -12,14 +12,17 @@
         <div class="bloque-modalidad">
             <h3>Yincanas y Rutas Digitales</h3>
             <p>Convertimos un paseo por el monte o una visita a la costa en una aventura interactiva. Con el móvil como guía, planteamos retos y pruebas sobre el propio terreno para que descubrir la biodiversidad sea como jugar a un juego de exploración real.</p>
+            <router-link to="/contacto?servicio=digital_yincanas" class="btn-servicio">Preguntar sobre yincanas</router-link>
         </div>
         <div class="bloque-modalidad">
             <h3>Recursos Digitales Educativos</h3>
             <p>Diseñamos guías, fichas y materiales didácticos digitales pensados para docentes, familias y asociaciones. Recursos interactivos listos para usar, que facilitan el aprendizaje y hacen que el conocimiento de la naturaleza esté al alcance de un clic.</p>
+            <router-link to="/contacto?servicio=digital_recursos" class="btn-servicio">Preguntar sobre recursos digitales</router-link>
         </div>
         <div class="bloque-modalidad">
             <h3>Webs Eficientes y Sostenibles</h3>
             <p>Desarrollamos páginas web a medida para cualquier empresa, particular o proyecto que quiera tener presencia en internet reduciendo su impacto ambiental. Creamos sitios optimizados, rápidos, que consumen menos energía y con compensación de la huella de carbono.</p>
+            <router-link to="/contacto?servicio=digital_webs" class="btn-servicio">Pedir info sobre web sostenible</router-link>
         </div>
     </div>
 
