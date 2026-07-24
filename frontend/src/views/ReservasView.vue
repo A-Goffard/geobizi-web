@@ -255,11 +255,17 @@ const submitForm = () => {
     'Autoriza Fotos (Derechos Imagen)': formData.value.imageRightsAccepted ? 'SÍ, AUTORIZA' : 'NO AUTORIZA'
   };
 
-  fetch('https://formspree.io/f/xanedzed', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(datosParaEnviar) // Enviamos los datos procesados
-  })
+ fetch('https://formspree.io/f/xanedzed', {
+   method: 'POST',
+   headers: { 'Content-Type': 'application/json' },
+   body: JSON.stringify(datosParaEnviar) // Enviamos los datos procesados
+ })
+
+//   fetch('http://127.0.0.1:5000/api/reservas', {
+//   method: 'POST',
+//   headers: { 'Content-Type': 'application/json' },
+//   body: JSON.stringify(datosParaEnviar)
+// })
     .then(response => {
       if (response.ok) {
         successMessage.value = 'Solicitud enviada correctamente. Nos pondremos en contacto contigo.';

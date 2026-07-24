@@ -133,4 +133,12 @@ const router = createRouter({
     scrollBehavior() { return { top: 0 }; },
 });
 
+router.afterEach((to) => {
+  // Si Google Analytics está cargado, le avisamos de cada cambio de ruta
+  if (typeof window.gtag === 'function') {
+    window.gtag('config', 'G-QVJ86K4LBQ', {
+      page_path: to.path,
+    });
+  }
+});
 export default router;
