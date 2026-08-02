@@ -380,10 +380,10 @@ useHead({
 .img-hover-container {
   position: relative;
   width: 100%;
-  aspect-ratio: 16/9;
+  aspect-ratio: 1/1;
   overflow: hidden;
   border-radius: 0.5rem;
-  margin-bottom: 1rem;
+  margin-bottom: 0rem;
 }
 
 .img-hover-container img {
