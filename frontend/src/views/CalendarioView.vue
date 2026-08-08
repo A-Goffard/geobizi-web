@@ -1,19 +1,14 @@
 <template>
   <div class="contenedor-principal">
     <Calendario />
-    
+
     <div class="leyendaContenedor">
       <h1>Actividades Programadas</h1>
-      
+
       <h3>Filtrar por tipo:</h3>
       <div class="leyenda">
-        <button 
-          v-for="(info, key) in infoProyectos" 
-          :key="key"
-          @click="filtroSeleccionado = key"
-          class="leyenda-item btn-filtro"
-          :class="{ activo: filtroSeleccionado === key }"
-        >
+        <button v-for="(info, key) in infoProyectos" :key="key" @click="filtroSeleccionado = key"
+          class="leyenda-item btn-filtro" :class="{ activo: filtroSeleccionado === key }">
           <span class="punto leyenda-punto" :style="{ backgroundColor: info.color }"></span>
           <span>{{ info.nombre }}</span>
         </button>
@@ -30,43 +25,48 @@
 
     <div class="fichas-container">
       <div class="container-grid">
-<div v-for="actividad in actividadesFiltradas" :key="actividad.id" class="card">
-  <h2>{{ actividad.titulo }}</h2>
-  
-  <div class="img-hover-container">
-    <img :src="actividad.imagen1" :alt="actividad.titulo" class="img-base" loading="lazy" />
-    <img :src="actividad.imagen2" :alt="actividad.titulo" class="img-hover" loading="lazy" />
-  </div>
+        <div v-for="actividad in actividadesFiltradas" :key="actividad.id" class="card">
+          <h2>{{ actividad.titulo }}</h2>
 
-  <p class="descripcion">{{ actividad.descripcion1 }}</p>
+          <div class="img-hover-container">
+            <img :src="actividad.imagen1" :alt="actividad.titulo" class="img-base" loading="lazy" />
+            <img :src="actividad.imagen2" :alt="actividad.titulo" class="img-hover" loading="lazy" />
+          </div>
 
-  <div class="info-rapida">
-    <p><strong>📅 {{ actividad.fecha }}</strong></p>
-    <p>⏰ {{ actividad.hora }}</p>
-    <p v-if="actividad.ubicacion">📍 {{ actividad.ubicacion }}</p>
-    <p class="precio-tag">💶 {{ actividad.precio === 0 ? 'Gratis' : actividad.precio + ' € por persona' }}</p>
-    
-    <div class="badge-container">
-      <span class="badge" :class="actividad.proyecto || 'general'">
-        {{ formatProyecto(actividad.proyecto) }}
-      </span>
-    </div>
-  </div>
+          <p class="descripcion">{{ actividad.descripcion1 }}</p>
 
-  <div class="reserva-status">
-    <button 
-      v-if="actividad.reservas" 
-      class="btn-reserva" 
-      @click="router.push({ name: 'reservaActividad', params: { id: actividad.id } })"
-    >
-      Inscribirse / Reservar
-    </button>
-    
-    <span v-else class="aviso-no-reserva">
-      Entrada libre / Sin reserva
-    </span>
-  </div>
-</div>
+          <div class="info-rapida">
+            <p><strong>📅 {{ actividad.fecha }}</strong></p>
+            <p>⏰ {{ actividad.hora }}</p>
+            <p v-if="actividad.ubicacion">📍 {{ actividad.ubicacion }}</p>
+            <p class="precio-tag">💶 {{ actividad.precio === 0 ? 'Gratis' : actividad.precio + ' € por persona' }}</p>
+
+            <div class="badge-container">
+              <span class="badge" :class="actividad.proyecto || 'general'">
+                {{ formatProyecto(actividad.proyecto) }}
+              </span>
+            </div>
+          </div>
+
+          <div class="reserva-status">
+            <!-- CASO 1: Reservas externas (linkReserva tiene valor) -->
+            <a v-if="actividad.reservas && actividad.linkReserva" :href="actividad.linkReserva" target="_blank"
+              class="btn-reserva btn-externo">
+              Inscribirse (web externa)
+            </a>
+
+            <!-- CASO 2: Reservas internas (típicas de Geobizi) -->
+            <button v-else-if="actividad.reservas" class="btn-reserva"
+              @click="router.push({ name: 'reservaActividad', params: { id: actividad.id } })">
+              Inscribirse / Reservar
+            </button>
+
+            <!-- CASO 3: Sin reserva -->
+            <span v-else class="aviso-no-reserva">
+              Entrada libre / Sin reserva
+            </span>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -110,7 +110,7 @@ const actividadesFiltradas = computed(() => {
   return actividades.filter(a => {
     // 2. Convertimos la fecha de la actividad (string) a objeto Date
     const fechaActividad = new Date(a.fecha);
-    
+
     // 3. Condición de tiempo: que sea hoy o en el futuro
     const esFutura = fechaActividad >= hoy;
 
@@ -239,7 +239,7 @@ useHead({
   cursor: pointer;
   transition: all 0.3s ease;
   font-family: inherit;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
 .btn-filtro:hover {
@@ -322,6 +322,7 @@ useHead({
   letter-spacing: 0.5px;
   text-align: center;
 }
+
 .acciones-card {
   margin-top: 12px;
   border-top: 1px solid #eee;
@@ -343,6 +344,29 @@ useHead({
 .btn-reserva:hover {
   background-color: var(--lightgreen);
 }
+
+/* Botón especial para reservas externas */
+.btn-externo {
+  display: block;
+  text-align: center;
+  background-color: var(--lightblue);
+  text-decoration: none;
+  padding: 8px;
+  border-radius: 4px;
+  color: white;
+  font-weight: bold;
+}
+
+.btn-externo:hover {
+  background-color: var(--blue);
+  opacity: 0.9;
+}
+
+  a {
+    font-style:normal;
+    font-size: 0.9rem;
+  }
+
 .aviso-no-reserva {
   display: block;
   text-align: center;
@@ -350,23 +374,40 @@ useHead({
   color: #888;
   font-style: italic;
 }
+
 .badge-container {
   margin-top: 10px;
   display: flex;
   justify-content: center;
 }
-.badge.flysch { background-color: orange; }
-.badge.naturgaua { background-color: purple; }
-.badge.zalla { background-color: blue; }
-.badge.eventos { background-color: plum; }
-.badge.general { background-color: green; }
+
+.badge.flysch {
+  background-color: orange;
+}
+
+.badge.naturgaua {
+  background-color: purple;
+}
+
+.badge.zalla {
+  background-color: blue;
+}
+
+.badge.eventos {
+  background-color: plum;
+}
+
+.badge.general {
+  background-color: green;
+}
 
 .card h2 {
   margin-top: 0.5rem;
   font-size: 1.2rem;
   margin-bottom: 0.8rem;
   line-height: 1.3;
-  padding-right: 0; /* Para no solapar con la badge */
+  padding-right: 0;
+  /* Para no solapar con la badge */
 }
 
 .descripcion {
@@ -392,13 +433,27 @@ useHead({
   object-fit: cover;
   transition: opacity 0.5s ease;
   position: absolute;
-  top: 0; left: 0;
+  top: 0;
+  left: 0;
 }
 
-.img-base { opacity: 1; z-index: 1; }
-.img-hover { opacity: 0; z-index: 2; }
-.card:hover .img-hover { opacity: 1; }
-.card:hover .img-base { opacity: 0; }
+.img-base {
+  opacity: 1;
+  z-index: 1;
+}
+
+.img-hover {
+  opacity: 0;
+  z-index: 2;
+}
+
+.card:hover .img-hover {
+  opacity: 1;
+}
+
+.card:hover .img-base {
+  opacity: 0;
+}
 
 .info-rapida {
   background: rgba(255, 255, 255, 0.6);
@@ -407,8 +462,15 @@ useHead({
   font-size: 0.9rem;
 }
 
-.info-rapida p { margin: 4px 0; color: #333; }
-.precio-tag { font-weight: bold; color: var(--green); }
+.info-rapida p {
+  margin: 4px 0;
+  color: #333;
+}
+
+.precio-tag {
+  font-weight: bold;
+  color: var(--green);
+}
 
 /* SECCIÓN NUEVA: Estado de Reserva en ficha */
 .reserva-status {
@@ -418,8 +480,19 @@ useHead({
   text-align: center;
 }
 
-.msg-abierto { color: var(--green); font-weight: bold; font-size: 0.85rem; margin-bottom: 0.6rem; }
-.msg-cerrado { color: #888; font-size: 0.8rem; font-style: italic; margin: 10px 0; }
+.msg-abierto {
+  color: var(--green);
+  font-weight: bold;
+  font-size: 0.85rem;
+  margin-bottom: 0.6rem;
+}
+
+.msg-cerrado {
+  color: #888;
+  font-size: 0.8rem;
+  font-style: italic;
+  margin: 10px 0;
+}
 
 
 
@@ -459,10 +532,19 @@ useHead({
   border-radius: 0.5rem;
 }
 
-.form-group { margin-bottom: 1.2rem; }
-label { display: block; font-weight: bold; margin-bottom: 0.4rem; font-size: 0.9rem; }
+.form-group {
+  margin-bottom: 1.2rem;
+}
 
-input, textarea {
+label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 0.4rem;
+  font-size: 0.9rem;
+}
+
+input,
+textarea {
   width: 100%;
   padding: 0.8rem;
   border: 1px solid #ddd;
@@ -470,7 +552,8 @@ input, textarea {
   box-sizing: border-box;
 }
 
-input:focus, textarea:focus {
+input:focus,
+textarea:focus {
   outline: none;
   border-color: var(--shoftgreen);
   box-shadow: 0 0 0 3px var(--megashoftgreen);
@@ -492,8 +575,18 @@ input:focus, textarea:focus {
   margin-bottom: 1.5rem;
 }
 
-.titulo-fotos { font-weight: bold; color: var(--shoftgreen); margin-bottom: 8px; display: block; }
-.nota-fotos { font-size: 0.8rem; color: #777; font-style: italic; }
+.titulo-fotos {
+  font-weight: bold;
+  color: var(--shoftgreen);
+  margin-bottom: 8px;
+  display: block;
+}
+
+.nota-fotos {
+  font-size: 0.8rem;
+  color: #777;
+  font-style: italic;
+}
 
 .horizontalC {
   display: flex;
@@ -502,8 +595,16 @@ input:focus, textarea:focus {
   align-items: flex-start;
 }
 
-.horizontalC input { width: auto; margin-top: 4px; }
-.horizontalC label { font-weight: normal; font-size: 0.85rem; line-height: 1.4; }
+.horizontalC input {
+  width: auto;
+  margin-top: 4px;
+}
+
+.horizontalC label {
+  font-weight: normal;
+  font-size: 0.85rem;
+  line-height: 1.4;
+}
 
 .btn-submit {
   width: 100%;
@@ -518,7 +619,9 @@ input:focus, textarea:focus {
   transition: background 0.3s;
 }
 
-.btn-submit:hover { background-color: var(--lightgreen); }
+.btn-submit:hover {
+  background-color: var(--lightgreen);
+}
 
 .volver-btn {
   background: none;
@@ -530,20 +633,49 @@ input:focus, textarea:focus {
   font-size: 0.9rem;
 }
 
-.center { text-align: center; }
+.center {
+  text-align: center;
+}
 
 /* Mensajes de feedback */
-.success-message { color: var(--green); text-align: center; margin-top: 1rem; font-weight: bold; }
-.error-message { color: #d32f2f; text-align: center; margin-top: 1rem; }
+.success-message {
+  color: var(--green);
+  text-align: center;
+  margin-top: 1rem;
+  font-weight: bold;
+}
+
+.error-message {
+  color: #d32f2f;
+  text-align: center;
+  margin-top: 1rem;
+}
 
 /* =========================================
    5. RESPONSIVE
    ========================================= */
 @media (max-width: 768px) {
-  .leyendaContenedor, .fichas-container { padding: 0 1.5rem; }
-  .leyenda { justify-content: center; }
-  .card { width: 100%; }
-  .contact-container { margin: 1rem; padding: 1.5rem; }
-  .contenedor-principal { padding-top: 5.5rem; }
+
+  .leyendaContenedor,
+  .fichas-container {
+    padding: 0 1.5rem;
+  }
+
+  .leyenda {
+    justify-content: center;
+  }
+
+  .card {
+    width: 100%;
+  }
+
+  .contact-container {
+    margin: 1rem;
+    padding: 1.5rem;
+  }
+
+  .contenedor-principal {
+    padding-top: 5.5rem;
+  }
 }
 </style>

@@ -48,7 +48,8 @@ box-sizing: border-box;
   --lightgreen: #26B12C;
   --green: #50963b;
   --darkgreen: #2c770f;
-
+  --lightblue: #7ed4e9;
+  --blue: #418ed6;
 }
 
 html, body {
