@@ -84,11 +84,11 @@
 
         <div v-if="['zalla', 'flysch', 'naturgaua', 'eventos', 'general'].includes(actividadSeleccionada.proyecto)"
           class="caja-fotos">
-          <p class="titulo-fotos">📸 Recuerdo de la actividad</p>
+          <p class="titulo-fotos">📸 Permisos de imagen</p>
           <div class="horizontalC">
             <input type="checkbox" id="imageRights" v-model="formData.imageRightsAccepted">
             <label for="imageRights">
-              Autorizo a Geobizi a tomar imágenes durante la actividad para enviárnoslas de recuerdo y usarlas en sus
+              Autorizo a Geobizi a tomar imágenes durante la actividad para enviárnoslas de recuerdo y/o usarlas en sus
               redes sociales/web con fines divulgativos.
               <br>
               <span class="nota-fotos">
@@ -121,7 +121,7 @@
         <div class="horizontalC">
           <input type="checkbox" id="privacyAviso" v-model="formData.privacyAcceptedAviso" required>
           <label for="privacyAviso">
-            Entiendo que esto es una solicitud de reserva pendiente de confirmación. La respuesta no es inmediata, puede tardar unos días dependiendo de la fecha de la actividad y la cantidad de reservas.
+            Entiendo que esto es una solicitud de reserva pendiente de confirmación. La respuesta no es inmediata, puede tardar unos días dependiendo de la fecha de la actividad y la cantidad de reservas (la solicitud no garantiza la plaza). <b>Mira en tu carpeta de spam</b>.
           </label>
         </div>
 
