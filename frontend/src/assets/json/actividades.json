@@ -712,7 +712,7 @@
     "id": 38,
     "titulo": "Ruta especial fósiles - Sopela",
     "fecha": "2026-09-19",
-    "hora": "10:30 - 11:30",
+    "hora": "10:30 - 12:30",
     "ubicacion": "Sopela Kosta Fest, bajo el Peñón",
     "color": "plum",
     "descripcion": "Una ruta por el Flysch de Bizkaia para descubrir los fósiles que se encuentran en la zona y aprender sobre la historia geológica de la región.",
@@ -727,5 +727,25 @@
     "opciones": [],
     "reservas": true,
     "linkReserva": "https://sopelakostafest.eus/jardueretarako-izena-eman/"
+  }
+  ,
+  {
+    "id": 39,
+    "titulo": "Ruta especial fósiles - Sopela",
+    "fecha": "2026-08-28",
+    "hora": "10:00 - 12:00",
+    "ubicacion": "Sopela Kosta Fest, bajo el Peñón",
+    "color": "green",
+    "descripcion": "Una ruta por el Flysch de Bizkaia para descubrir los fósiles que se encuentran en la zona y aprender sobre la historia geológica de la región.",
+    "detalles": "Para familias y adultos. Para la inscripción a la ruta, es necesario inscribirse en la web de Sopela Kosta Fest. <a href='https://sopelakostafest.eus/jardueretarako-izena-eman/' target='_blank'>Inscripción</a>",
+    "precio": 0,
+    "imagen1": "imagenes/actividades/sopelaflysch1.avif",
+    "imagen2": "imagenes/actividades/sopelaflysch2.avif",
+    "tipo": "feria",
+    "proyecto": "eventos",
+    "publicar": true,
+    "stripeId": "",
+    "opciones": [],
+    "reservas": true
   }
 ]
