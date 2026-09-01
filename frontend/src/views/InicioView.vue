@@ -24,7 +24,7 @@
 
       <div class="contenedor-historia">
         <div>
-          <img class="imagendiv" src="/imagenes/inicio/esencia.avif" alt="Aprendizaje activo en la naturaleza" title="Aprendizaje práctico" loading="lazy">
+          <img class="imagendiv" src="/imagenes/Aintzane.avif" alt="Aprendizaje activo en la naturaleza" title="Aprendizaje práctico" loading="lazy">
         </div>
         <div class="cont-texto">
           <h2>Nuestra esencia</h2>
