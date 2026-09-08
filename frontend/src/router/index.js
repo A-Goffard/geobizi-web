@@ -13,10 +13,9 @@ import ReservasView from "@/views/ReservasView.vue";
 // --- VISTAS DE PROYECTOS ---
 import DetalleFlyschView from "@/views/proyectos/DetalleFlyschView.vue";
 import DetalleZallaNaturaView from "@/views/proyectos/DetalleZallaNaturaView.vue";
-import DetalleSemanaCienciaView from "@/views/proyectos/DetalleSemanaCienciaView.vue";
 import DetalleAsteBerdeaView from "@/views/proyectos/DetalleAsteBerdeaView.vue";
 import DetalleSopelaKostaFestView from "@/views/proyectos/DetalleSopelaKostaFestView.vue";
-import DetalleDiaArbolView from "@/views/proyectos/DetalleDiaArbolView.vue";
+
 
 // --- VISTAS DEL BLOG ---
 import NummulitesView from "@/views/blog/NummulitesView.vue";
@@ -110,11 +109,6 @@ const routes = [
     component: DetalleZallaNaturaView,
   },
   {
-    path: "/detalle-semana-ciencia",
-    name: "detalle-semana-ciencia",
-    component: DetalleSemanaCienciaView,
-  },
-  {
     path: "/detalle-aste-berdea",
     name: "detalle-aste-berdea",
     component: DetalleAsteBerdeaView,
@@ -124,11 +118,7 @@ const routes = [
     name: "detalle-sopela-kosta-fest",
     component: DetalleSopelaKostaFestView,
   },
-  {
-    path: "/detalle-dia-arbol",
-    name: "detalle-dia-arbol",
-    component: DetalleDiaArbolView,
-  },
+
 
   // --- BLOG ---
   { path: "/blog", name: "blog", component: BlogView },
