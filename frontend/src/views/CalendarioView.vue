@@ -61,7 +61,12 @@
               Inscribirse / Reservar
             </button>
 
-            <!-- CASO 3: Sin reserva -->
+            <!-- CASO 4 NUEVO: Pendiente / Por determinar -->
+            <span v-else-if="actividad.estadoReserva === 'pendiente'" class="aviso-pendiente">
+              ⏳ Inscripción por determinar
+            </span>
+
+            <!-- CASO 3: Sin reserva / Entrada libre -->
             <span v-else class="aviso-no-reserva">
               Entrada libre / Sin reserva
             </span>
@@ -362,10 +367,10 @@ useHead({
   opacity: 0.9;
 }
 
-  a {
-    font-style:normal;
-    font-size: 0.9rem;
-  }
+a {
+  font-style: normal;
+  font-size: 0.9rem;
+}
 
 .aviso-no-reserva {
   display: block;
@@ -373,6 +378,17 @@ useHead({
   font-size: 0.85rem;
   color: #888;
   font-style: italic;
+}
+
+.aviso-pendiente {
+  display: block;
+  text-align: center;
+  font-size: 0.85rem;
+  color: #b7791f; /* Un tono anaranjado/marrón elegante que indica estado pendiente */
+  font-weight: bold;
+  background-color: #fef3c7; /* Fondo sutil clarito */
+  padding: 6px;
+  border-radius: 4px;
 }
 
 .badge-container {

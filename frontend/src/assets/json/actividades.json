@@ -747,5 +747,25 @@
     "stripeId": "",
     "opciones": [],
     "reservas": true
+  },
+  {
+    "id": 40,
+    "titulo": "Taller de pintura prehistórica - Trapagarán",
+    "fecha": "2026-09-19",
+    "hora": "16:00 - 18:00",
+    "ubicacion": "Trapagarán, por determinar",
+    "color": "plum",
+    "descripcion": "Un taller en el que realizaremos pinturas prehistóricas con óxidos de hierro, como lo hacían nuestros antepasados.",
+    "detalles": "Para niñas y niños. La forma de inscripción está por determinar. ",
+    "precio": 0,
+    "imagen1": "imagenes/actividades/pintura_prehistorica1.avif",
+    "imagen2": "imagenes/actividades/pintura_prehistorica2.avif",
+    "tipo": "feria",
+    "proyecto": "eventos",
+    "publicar": true,
+    "stripeId": "",
+    "opciones": [],
+    "reservas": false,
+    "estadoReserva": "pendiente"
   }
 ]
