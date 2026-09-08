@@ -54,7 +54,7 @@
         (como nuestras actividades en Sopela Kosta Fest o Aste Berdea) para proteger nuestra costa.
       </p>
       <div class="botones-recurso">
-        <router-link to="/proyectos" class="proximas-actividades">Conoce nuestros Proyectos</router-link>
+        <router-link to="/experiencia" class="proximas-actividades">Conoce nuestros Proyectos</router-link>
         <router-link to="/contacto" class="btn-ver-mas">Únete o pide información</router-link>
       </div>
     </div>

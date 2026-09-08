@@ -13,7 +13,7 @@
       <h2>Un caso de éxito: "Zalla Natura"</h2>
       <p>Nos hace especial ilusión recordar "Zalla Natura". Fue un proyecto precioso donde colaboramos con el ayuntamiento, colegios y vecinos de Zalla para recuperar y cuidar sus espacios naturales.</p>
       <p>Ver cómo el alumnado, las asociaciones y el personal del ayuntamiento trabajaban unidos por su entorno es lo que nos confirma que este es el camino.</p>
-      <p>Puedes conocer más detalles en nuestra página de <router-link to="/detalle-zalla-natura">Zalla Natura</router-link> o ver nuestra sección completa de <router-link to="/proyectos">Proyectos realizados</router-link>.</p>
+      <p>Puedes conocer más detalles en nuestra página de <router-link to="/detalle-zalla-natura">Zalla Natura</router-link> o ver nuestra sección completa de <router-link to="/experiencia">Proyectos realizados</router-link>.</p>
     </section>
 
     <h2>¿Para quién trabajamos?</h2>
