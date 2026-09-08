@@ -29,7 +29,7 @@
 
         <li>
           <router-link class="NavButton link" :to="{ name: 'experiencias' }" @click="closeMobileNav"
-            title="Experiencias">Experiencias</router-link>
+            title="Experiencias">Experiencia</router-link>
         </li>
 
         <li>
@@ -69,7 +69,7 @@
 
           <li>
             <router-link class="NavButton link" :to="{ name: 'experiencias' }" @click="closeMobileNav"
-              title="Experiencias">Experiencias</router-link>
+              title="Experiencias">Experiencia</router-link>
           </li>
 
           <li>
