@@ -19,11 +19,21 @@
             <p><strong>📅 {{ formatearFecha(actividad.fecha) }}</strong></p>
             <p>⏰ {{ actividad.hora }}</p>
             <p v-if="actividad.ubicacion">📍 {{ actividad.ubicacion }}</p>
+            <p v-if="actividad.detalles" class="publico-tag"><strong>👥 Público:</strong> {{ actividad.detalles }}</p>
             <p class="precio-tag">💶 {{ actividad.precio === 0 ? 'Gratis' : actividad.precio + '€' }}</p>
 
             <span class="badge" :class="actividad.proyecto || 'general'">
               {{ formatProyecto(actividad.proyecto) }}
             </span>
+          </div>
+          <div style="margin-top: 1rem; text-align: center;">
+            <a v-if="actividad.linkReserva" :href="actividad.linkReserva" target="_blank"
+              class="btn-reserva btn-externo" style="display: block; text-decoration: none;">
+              Inscribirse (web externa)
+            </a>
+            <button v-else @click="seleccionarActividad(actividad)" class="btn-reserva">
+              Inscribirse / Reservar
+            </button>
           </div>
         </div>
       </div>
@@ -41,98 +51,105 @@
         <p><strong>Fecha:</strong> {{ formatearFecha(actividadSeleccionada.fecha) }}</p>
         <p><strong>Hora:</strong> {{ actividadSeleccionada.hora }}</p>
         <p v-if="actividadSeleccionada.ubicacion"><strong>Ubicación:</strong> {{ actividadSeleccionada.ubicacion }}</p>
-        <p v-if="actividadSeleccionada.precio"><strong>Precio:</strong> {{ actividadSeleccionada.precio }} € por persona</p>
-        <p v-if="actividadSeleccionada.descripcion"><strong>Descripción:</strong> {{ actividadSeleccionada.descripcion }}</p>
+        <p v-if="actividadSeleccionada.precio"><strong>Precio:</strong> {{ actividadSeleccionada.precio }} € por persona
+        </p>
+        <p v-if="actividadSeleccionada.descripcion"><strong>Descripción:</strong> {{ actividadSeleccionada.descripcion
+          }}</p>
         <p v-if="actividadSeleccionada.detalles"><strong>Detalles:</strong> {{ actividadSeleccionada.detalles }}</p>
         <p v-if="actividadSeleccionada.oharrak"><strong>Notas:</strong> {{ actividadSeleccionada.oharrak }}</p>
 
       </div>
-<div v-if="actividadSeleccionada" class="contact-container">
-      <form @submit.prevent="submitForm">
-        <div class="form-group">
-          <label for="nombre">Nombre:</label>
-          <input type="text" id="nombre" v-model="formData.nombre" required>
-        </div>
-        <div class="form-group">
-          <label for="apellidos">Apellidos:</label>
-          <input type="text" id="apellidos" v-model="formData.apellidos" required>
-        </div>
-        <div class="form-group">
-          <label for="email">Correo Electrónico:</label>
-          <input type="email" id="email" v-model="formData.email" required>
-        </div>
-        <div class="form-group">
-          <label for="phone">Teléfono:</label>
-          <input type="tel" id="phone" v-model="formData.phone" required>
-        </div>
+      <div v-if="actividadSeleccionada" class="contact-container">
+        <form @submit.prevent="submitForm">
+          <div class="form-group">
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" v-model="formData.nombre" required>
+          </div>
+          <div class="form-group">
+            <label for="apellidos">Apellidos:</label>
+            <input type="text" id="apellidos" v-model="formData.apellidos" required>
+          </div>
+          <div class="form-group">
+            <label for="email">Correo Electrónico:</label>
+            <input type="email" id="email" v-model="formData.email" required>
+          </div>
+          <div class="form-group">
+            <label for="phone">Teléfono:</label>
+            <input type="tel" id="phone" v-model="formData.phone" required>
+          </div>
 
-        <div v-if="actividadSeleccionada.detalles?.toLowerCase().includes('familia')"
-          class="form-group highlight-group">
-          <label for="edadNinos">Edad de los niños (si asisten):</label>
-          <input type="text" id="edadNinos" v-model="formData.edadNinos" placeholder="Ej: 5 y 8 años">
-        </div>
+          <div v-if="actividadSeleccionada.detalles?.toLowerCase().includes('familia')"
+            class="form-group highlight-group">
+            <label for="edadNinos">Edad de los niños (si asisten):</label>
+            <input type="text" id="edadNinos" v-model="formData.edadNinos" placeholder="Ej: 5 y 8 años">
+          </div>
 
-        <div class="form-group">
-          <label for="numPersonas">Número de personas totales (adultos y menores incluidos):</label>
-          <input type="number" id="numPersonas" v-model="formData.numPersonas" min="1" required>
-        </div>
+          <div class="form-group">
+            <label for="numPersonas">Número de personas totales (adultos y menores incluidos):</label>
+            <input type="number" id="numPersonas" v-model="formData.numPersonas" min="1" required>
+          </div>
 
-        <div class="form-group">
-          <label for="message">Mensaje / Observaciones:</label>
-          <textarea id="message" v-model="formData.message"></textarea>
-        </div>
+          <div class="form-group">
+            <label for="message">Mensaje / Observaciones:</label>
+            <textarea id="message" v-model="formData.message"></textarea>
+          </div>
 
-        <div v-if="['zalla', 'flysch', 'naturgaua', 'eventos', 'general'].includes(actividadSeleccionada.proyecto)"
-          class="caja-fotos">
-          <p class="titulo-fotos">📸 Permisos de imagen</p>
+          <div v-if="['zalla', 'flysch', 'naturgaua', 'eventos', 'general'].includes(actividadSeleccionada.proyecto)"
+            class="caja-fotos">
+            <p class="titulo-fotos">📸 Permisos de imagen</p>
+            <div class="horizontalC">
+              <input type="checkbox" id="imageRights" v-model="formData.imageRightsAccepted">
+              <label for="imageRights">
+                Autorizo a Geobizi a tomar imágenes durante la actividad para enviárnoslas de recuerdo y/o usarlas en
+                sus
+                redes sociales/web con fines divulgativos.
+                <br>
+                <span class="nota-fotos">
+                  *Priorizamos siempre planos generales o de espaldas, respetando la privacidad de los menores.
+                </span>
+              </label>
+            </div>
+          </div>
+          <div v-if="actividadSeleccionada.proyecto === 'zalla'" class="form-group highlight-group zalla-notice">
+            <p><strong>Información importante (Ayto. de Zalla):</strong></p>
+            <p class="nota-datos">
+              Los datos recogidos en este formulario se utilizarán <strong>únicamente</strong> para la gestión de esta
+              actividad (confirmación, avisos de última hora o seguridad). Una vez finalizada la actividad, los datos no
+              se utilizarán para otros fines comerciales de Geobizi salvo que lo autorices expresamente abajo.
+            </p>
+
+            <div class="horizontalC">
+              <input type="checkbox" id="zallaGroup" v-model="formData.zallaGroupAccepted">
+              <label for="zallaGroup">
+                Deseo unirme a la Comunidad de WhatsApp de Geobizi y acceder al grupo de <strong>Zalla Natura</strong>
+                para recibir información directa sobre futuras actividades ambientales y eventos de biodiversidad en el
+                municipio.
+              </label>
+            </div>
+          </div>
           <div class="horizontalC">
-            <input type="checkbox" id="imageRights" v-model="formData.imageRightsAccepted">
-            <label for="imageRights">
-              Autorizo a Geobizi a tomar imágenes durante la actividad para enviárnoslas de recuerdo y/o usarlas en sus
-              redes sociales/web con fines divulgativos.
-              <br>
-              <span class="nota-fotos">
-                *Priorizamos siempre planos generales o de espaldas, respetando la privacidad de los menores.
-              </span>
+            <input type="checkbox" id="privacy" v-model="formData.privacyAccepted" required>
+            <label for="privacy">
+              He leído y acepto la <a href="/politicadeprivacidad" target="_blank">política de privacidad</a>.
             </label>
           </div>
-        </div>
-        <div v-if="actividadSeleccionada.proyecto === 'zalla'" class="form-group highlight-group zalla-notice">
-          <p><strong>Información importante (Ayto. de Zalla):</strong></p>
-          <p class="nota-datos">
-            Los datos recogidos en este formulario se utilizarán <strong>únicamente</strong> para la gestión de esta
-            actividad (confirmación, avisos de última hora o seguridad). Una vez finalizada la actividad, los datos no
-            se utilizarán para otros fines comerciales de Geobizi salvo que lo autorices expresamente abajo.
-          </p>
-
           <div class="horizontalC">
-            <input type="checkbox" id="zallaGroup" v-model="formData.zallaGroupAccepted">
-            <label for="zallaGroup">
-              Deseo unirme a la Comunidad de WhatsApp de Geobizi y acceder al grupo de <strong>Zalla Natura</strong> para recibir información directa sobre futuras actividades ambientales y eventos de biodiversidad en el municipio.
+            <input type="checkbox" id="privacyAviso" v-model="formData.privacyAcceptedAviso" required>
+            <label for="privacyAviso">
+              Entiendo que esto es una solicitud de reserva pendiente de confirmación. La respuesta no es inmediata,
+              puede tardar unos días dependiendo de la fecha de la actividad y la cantidad de reservas (la solicitud no
+              garantiza la plaza). <b>Mira en tu carpeta de spam</b>.
             </label>
           </div>
-        </div>
-        <div class="horizontalC">
-          <input type="checkbox" id="privacy" v-model="formData.privacyAccepted" required>
-          <label for="privacy">
-            He leído y acepto la <a href="/politicadeprivacidad" target="_blank">política de privacidad</a>.
-          </label>
-        </div>
-        <div class="horizontalC">
-          <input type="checkbox" id="privacyAviso" v-model="formData.privacyAcceptedAviso" required>
-          <label for="privacyAviso">
-            Entiendo que esto es una solicitud de reserva pendiente de confirmación. La respuesta no es inmediata, puede tardar unos días dependiendo de la fecha de la actividad y la cantidad de reservas (la solicitud no garantiza la plaza). <b>Mira en tu carpeta de spam</b>.
-          </label>
-        </div>
 
-        <div class="center">
-          <button type="submit" class="btn-submit">Enviar Solicitud</button>
-        </div>
+          <div class="center">
+            <button type="submit" class="btn-submit">Enviar Solicitud</button>
+          </div>
 
-        <p v-if="successMessage" class="success-message">{{ successMessage }}</p>
-        <p v-if="errorMessage" class="error-message">{{ errorMessage }}</p>
-      </form>
-</div>
+          <p v-if="successMessage" class="success-message">{{ successMessage }}</p>
+          <p v-if="errorMessage" class="error-message">{{ errorMessage }}</p>
+        </form>
+      </div>
       <div class="center">
         <button @click="volverALista" class="volver-btn">← Volver a actividades</button>
       </div>
@@ -246,7 +263,7 @@ const seleccionarActividad = (actividad) => {
 };
 
 const volverALista = () => {
-  router.push('/calendario'); 
+  router.push('/calendario');
 };
 
 const submitForm = () => {
@@ -269,7 +286,7 @@ const submitForm = () => {
     .then(response => {
       if (response.ok) {
         successMessage.value = 'Solicitud enviada correctamente. Nos pondremos en contacto contigo.';
-        
+
         // --- AVISAR A GOOGLE ANALYTICS DE LA RESERVA COMPLETADA ---
         if (typeof window.gtag === 'function') {
           window.gtag('event', 'enviar_reserva', {
@@ -296,9 +313,10 @@ const submitForm = () => {
 
 <style scoped>
 /* ESTRUCTURA GENERAL */
-.container{
+.container {
   margin-top: 5rem;
 }
+
 .general-container {
   max-width: 1200px;
   margin: 0 auto;
@@ -559,7 +577,7 @@ textarea:focus {
   align-items: flex-start;
   gap: 10px;
   margin-bottom: 1rem;
-  align-items:first baseline;
+  align-items: first baseline;
 }
 
 .horizontalC input {

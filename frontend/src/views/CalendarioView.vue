@@ -33,12 +33,15 @@
             <img :src="actividad.imagen2" :alt="actividad.titulo" class="img-hover" loading="lazy" />
           </div>
 
-          <p class="descripcion">{{ actividad.descripcion1 }}</p>
+          <!-- DESCRIPCIÓN Y PÚBLICO EN LA FICHA -->
+          <p class="descripcion">{{ actividad.descripcion }}</p>
+          
 
           <div class="info-rapida">
             <p><strong>📅 {{ actividad.fecha }}</strong></p>
             <p>⏰ {{ actividad.hora }}</p>
             <p v-if="actividad.ubicacion">📍 {{ actividad.ubicacion }}</p>
+            <p v-if="actividad.detalles" class="publico-tag"><strong>👥 Público:</strong> {{ actividad.detalles }}</p>
             <p class="precio-tag">💶 {{ actividad.precio === 0 ? 'Gratis' : actividad.precio + ' € por persona' }}</p>
 
             <div class="badge-container">
@@ -61,7 +64,7 @@
               Inscribirse / Reservar
             </button>
 
-            <!-- CASO 4 NUEVO: Pendiente / Por determinar -->
+            <!-- CASO 4: Pendiente / Por determinar -->
             <span v-else-if="actividad.estadoReserva === 'pendiente'" class="aviso-pendiente">
               ⏳ Inscripción por determinar
             </span>
@@ -81,13 +84,12 @@
 import Calendario from '@/components/calendario/CalendarioActividades2025.vue'
 import { useHead } from '@vueuse/head'
 import { ref, computed } from 'vue'
-import { useRouter } from 'vue-router'; // 1. Importa useRouter
+import { useRouter } from 'vue-router';
 import actividades from '@/assets/json/actividades.json';
 
-const router = useRouter(); // 2. Inicializa el router
+const router = useRouter();
 const filtroSeleccionado = ref('todos')
 
-// Mapeo de tus categorías para los filtros
 const infoProyectos = {
   flysch: { nombre: 'FlyschBizkaia en Familia', color: 'orange', descripcion: 'Ruta geológica y medioambiental por la Costa de Getxo...' },
   naturgaua: { nombre: 'Naturgaua', color: 'purple', descripcion: 'Exploración nocturna y observación de fauna...' },
@@ -108,28 +110,18 @@ const formatProyecto = (slug) => {
 };
 
 const actividadesFiltradas = computed(() => {
-  // 1. Obtenemos la fecha de hoy y reseteamos la hora para comparar solo días
   const hoy = new Date();
   hoy.setHours(0, 0, 0, 0);
 
   return actividades.filter(a => {
-    // 2. Convertimos la fecha de la actividad (string) a objeto Date
     const fechaActividad = new Date(a.fecha);
-
-    // 3. Condición de tiempo: que sea hoy o en el futuro
     const esFutura = fechaActividad >= hoy;
-
-    // 4. Condición de filtrado por proyecto (el botón que pulsas)
     const coincideFiltro = filtroSeleccionado.value === 'todos' || a.proyecto === filtroSeleccionado.value;
-
-    // 5. Solo devolvemos si cumple: publicada, es futura y coincide con el filtro
     return a.publicar && esFutura && coincideFiltro;
   }).sort((a, b) => {
-    // 6. Opcional: Las ordenamos por fecha para que la más cercana salga primero
     return new Date(a.fecha) - new Date(b.fecha);
   });
 })
-
 
 const pageUrl = 'https://www.geobizi.com/calendario'
 const ogImage = 'https://www.geobizi.com/imagenes/proyectos/zallanatura/zallanatura2.avif'
@@ -147,56 +139,9 @@ useHead({
     { property: 'og:description', content: 'Consulta el calendario de Geobizi: rutas, talleres y actividades familiares y educativas. Reserva plazas y revisa fechas, horarios y ubicaciones.' },
     { property: 'og:type', content: 'website' },
     { property: 'og:url', content: pageUrl },
-    { property: 'og:image', content: ogImage },
-    { name: 'twitter:card', content: 'summary_large_image' },
-    { name: 'twitter:image', content: ogImage }
+    { property: 'og:image', content: ogImage }
   ],
-  link: [
-    { rel: 'canonical', href: pageUrl },
-    { rel: 'image_src', href: ogImage },
-    { rel: 'apple-touch-icon', href: '/apple-touch-icon.png', sizes: '180x180' }
-  ],
-  script: [
-    {
-      type: 'application/ld+json',
-      children: JSON.stringify({
-        "@context": "https://schema.org",
-        "@graph": [
-          {
-            "@type": "Organization",
-            "@id": "https://www.geobizi.com/#organization",
-            "name": "Geobizi",
-            "url": "https://www.geobizi.com",
-            "logo": {
-              "@type": "ImageObject",
-              "url": "https://www.geobizi.com/imagenes/GeobiziLogo.7ae1d6ce.png",
-              "width": 1417,
-              "height": 313
-            },
-            "sameAs": [
-              "https://www.facebook.com/geobizirik/",
-              "https://www.instagram.com/geotxiki/",
-              "https://www.youtube.com/channel/UCw-C_J0y-jKHp7Zx92lsKfg"
-            ]
-          },
-          {
-            "@type": "WebPage",
-            "url": pageUrl,
-            "name": "Calendario de Actividades | Geobizi",
-            "description": "Consulta el calendario de Geobizi: rutas, talleres y actividades familiares y educativas. Reserva plazas y revisa fechas, horarios y ubicaciones.",
-            "inLanguage": "es",
-            "isPartOf": { "@id": "https://www.geobizi.com/#organization" },
-            "image": {
-              "@type": "ImageObject",
-              "url": ogImage,
-              "width": 1080,
-              "height": 1080
-            }
-          }
-        ]
-      })
-    }
-  ]
+  link: [{ rel: 'canonical', href: pageUrl }]
 })
 </script>
 
