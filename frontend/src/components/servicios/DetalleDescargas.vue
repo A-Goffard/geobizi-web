@@ -52,7 +52,7 @@
     <p>Podemos diseñar materiales personalizados para colegios, asociaciones o entidades locales. Si necesitas láminas, folletos o un recurso digital muy específico, cuéntanos tu idea y nos ponemos manos a la obra.</p>
     
     <div class="centro-cta">
-      <router-link to="/contacto?servicio=material_medida" class="btn-servicio">Pedir material a medida</router-link>
+      <router-link to="/contacto?servicio=material_medida" class="btn-servicio mleft">Pedir material a medida</router-link>
     </div>
   </div>
 </template>

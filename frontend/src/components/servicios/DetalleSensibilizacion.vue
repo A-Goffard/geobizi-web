@@ -20,7 +20,7 @@
     <p>Nuestra puerta está abierta a todo el mundo: desde centros educativos y asociaciones vecinales, hasta empresas que quieren apostar por la sostenibilidad y administraciones que buscan poner en valor su patrimonio natural.</p>
 
     <div class="centro-cta" style="margin-top: 2rem;">
-      <router-link to="/contacto?servicio=sensibilizacion_proyectos" class="btn-servicio">Proponer/pedir un proyecto o iniciativa</router-link>
+      <router-link to="/contacto?servicio=sensibilizacion_proyectos" class="btn-servicio mleft">Proponer/pedir un proyecto o iniciativa</router-link>
     </div>
 
     <!-- GALERÍA -->

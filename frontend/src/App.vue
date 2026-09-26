@@ -181,7 +181,9 @@ margin: 2rem;
   background-color: var(--green);
   color: white;
 }
-
+.mleft{
+  margin-left: 1rem;
+}
 @media (min-width: 950px) {
   .contenedor-principal {
     max-width: 950px;

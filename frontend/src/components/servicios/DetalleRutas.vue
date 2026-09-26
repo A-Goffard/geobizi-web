@@ -13,7 +13,7 @@
         <div class="bloque-modalidad">
           <h3>Rutas a Medida</h3>
           <p>Diseñamos salidas pensadas para ti. Ya seas un grupo de amigos, un colegio, una asociación o una empresa buscando una actividad diferente, nos sentamos contigo y preparamos el recorrido, el ritmo y el contenido para que encaje perfectamente con lo que buscas.</p>
-          <router-link to="/contacto?servicio=rutas_a_medida" class="btn-servicio">Pedir ruta a medida</router-link>
+          <router-link to="/contacto?servicio=rutas_a_medida" class="btn-servicio mleft">Pedir ruta a medida</router-link>
         </div>
 
         <div class="bloque-modalidad">
