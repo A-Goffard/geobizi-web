@@ -7,3 +7,17 @@ services:
     ports:
       - "8080:80"
     restart: always
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: python_backend
+    ports:
+      - "5000:5000"
+    volumes:
+      # Volumen persistente y seguro en el VPS para SQLite
+      - /opt/geobizi/data:/app/data
+    restart: always
+    environment:
+      - DATABASE_URL=sqlite:////app/data/geobizi.db

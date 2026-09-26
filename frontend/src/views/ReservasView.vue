@@ -57,10 +57,13 @@
           }}</p>
         <p v-if="actividadSeleccionada.detalles"><strong>Detalles:</strong> {{ actividadSeleccionada.detalles }}</p>
         <p v-if="actividadSeleccionada.oharrak"><strong>Notas:</strong> {{ actividadSeleccionada.oharrak }}</p>
-
       </div>
+
       <div v-if="actividadSeleccionada" class="contact-container">
         <form @submit.prevent="submitForm">
+
+          <!-- DATOS DE CONTACTO (RESPONSABLE) -->
+          <h3>Datos de la persona responsable / contacto</h3>
           <div class="form-group">
             <label for="nombre">Nombre:</label>
             <input type="text" id="nombre" v-model="formData.nombre" required>
@@ -77,16 +80,41 @@
             <label for="phone">Teléfono:</label>
             <input type="tel" id="phone" v-model="formData.phone" required>
           </div>
-
-          <div v-if="actividadSeleccionada.detalles?.toLowerCase().includes('familia')"
-            class="form-group highlight-group">
-            <label for="edadNinos">Edad de los niños (si asisten):</label>
-            <input type="text" id="edadNinos" v-model="formData.edadNinos" placeholder="Ej: 5 y 8 años">
+          <div class="aviso-plazas" :class="{ 'casi-lleno': plazasDisponibles <= 3 }">
+            <p v-if="plazasDisponibles > 0">
+              Plazas libres disponibles: <strong>{{ plazasDisponibles }}</strong>
+            </p>
+            <p v-else class="completo">
+              ¡Lo sentimos! Esta actividad ya está completa.
+            </p>
+          </div>
+          <div class="form-group">
+            <label for="numPersonas">Número de plazas totales a reservar:</label>
+            <input type="number" id="numPersonas" v-model.number="formData.num_personas" min="1"
+              :max="plazasDisponibles" required />
           </div>
 
-          <div class="form-group">
-            <label for="numPersonas">Número de personas totales (adultos y menores incluidos):</label>
-            <input type="number" id="numPersonas" v-model="formData.numPersonas" min="1" required>
+          <!-- ASISTENTES DINÁMICOS -->
+          <div class="participantes-container" v-if="formData.participantes.length > 0">
+            <h3 class="subtitulo-participantes">Datos de los asistentes (incluyéndote a tí si vas a participar) ({{
+              formData.participantes.length }} personas)</h3>
+
+            <div v-for="(p, index) in formData.participantes" :key="index" class="participante-card">
+              <h4>Asistente {{ index + 1 }}</h4>
+              <div class="form-group">
+                <label :for="'p-nombre-' + index">Nombre:</label>
+                <input type="text" :id="'p-nombre-' + index" v-model="p.nombre" required>
+              </div>
+              <div class="form-group">
+                <label :for="'p-apellidos-' + index">Apellidos:</label>
+                <input type="text" :id="'p-apellidos-' + index" v-model="p.apellidos" required>
+              </div>
+              <div class="form-group">
+                <label :for="'p-edad-' + index">Edad:</label>
+                <input type="number" :id="'p-edad-' + index" v-model.number="p.edad" min="0" max="120" required
+                  placeholder="Ej: 8">
+              </div>
+            </div>
           </div>
 
           <div class="form-group">
@@ -101,8 +129,7 @@
               <input type="checkbox" id="imageRights" v-model="formData.imageRightsAccepted">
               <label for="imageRights">
                 Autorizo a Geobizi a tomar imágenes durante la actividad para enviárnoslas de recuerdo y/o usarlas en
-                sus
-                redes sociales/web con fines divulgativos.
+                sus redes sociales/web con fines divulgativos.
                 <br>
                 <span class="nota-fotos">
                   *Priorizamos siempre planos generales o de espaldas, respetando la privacidad de los menores.
@@ -110,40 +137,24 @@
               </label>
             </div>
           </div>
-          <div v-if="actividadSeleccionada.proyecto === 'zalla'" class="form-group highlight-group zalla-notice">
-            <p><strong>Información importante (Ayto. de Zalla):</strong></p>
-            <p class="nota-datos">
-              Los datos recogidos en este formulario se utilizarán <strong>únicamente</strong> para la gestión de esta
-              actividad (confirmación, avisos de última hora o seguridad). Una vez finalizada la actividad, los datos no
-              se utilizarán para otros fines comerciales de Geobizi salvo que lo autorices expresamente abajo.
-            </p>
 
-            <div class="horizontalC">
-              <input type="checkbox" id="zallaGroup" v-model="formData.zallaGroupAccepted">
-              <label for="zallaGroup">
-                Deseo unirme a la Comunidad de WhatsApp de Geobizi y acceder al grupo de <strong>Zalla Natura</strong>
-                para recibir información directa sobre futuras actividades ambientales y eventos de biodiversidad en el
-                municipio.
-              </label>
-            </div>
-          </div>
           <div class="horizontalC">
             <input type="checkbox" id="privacy" v-model="formData.privacyAccepted" required>
             <label for="privacy">
               He leído y acepto la <a href="/politicadeprivacidad" target="_blank">política de privacidad</a>.
             </label>
           </div>
+
           <div class="horizontalC">
             <input type="checkbox" id="privacyAviso" v-model="formData.privacyAcceptedAviso" required>
             <label for="privacyAviso">
-              Entiendo que esto es una solicitud de reserva pendiente de confirmación. La respuesta no es inmediata,
-              puede tardar unos días dependiendo de la fecha de la actividad y la cantidad de reservas (la solicitud no
-              garantiza la plaza). <b>Mira en tu carpeta de spam</b>.
+              Entiendo que es una actividad con límite de aforo. <b>Mira en tu carpeta de spam</b> si no recibes el
+              correo de confirmación.
             </label>
           </div>
 
           <div class="center">
-            <button type="submit" class="btn-submit">Enviar Solicitud</button>
+            <button type="submit" class="btn-submit">Confirmar Reserva</button>
           </div>
 
           <p v-if="successMessage" class="success-message">{{ successMessage }}</p>
@@ -158,9 +169,8 @@
 </template>
 
 <script setup>
-import { ref, computed, watch } from 'vue';
+import { ref, computed, watch, onMounted } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
-import actividades from '@/assets/json/actividades.json';
 import { useHead } from '@vueuse/head';
 
 const route = useRoute();
@@ -181,35 +191,102 @@ useHead({
   link: [{ rel: 'canonical', href: pageUrl }]
 });
 
+const actividades = ref([]);
 const actividadSeleccionada = ref(null);
 
-// AQUÍ ESTÁ LA CLAVE: Inicializamos imageRightsAccepted a false
+// Función centralizada para cargar las actividades desde la API
+const cargarActividades = async () => {
+  try {
+    const response = await fetch('http://localhost:5000/api/actividades');
+    if (response.ok) {
+      const data = await response.json();
+      actividades.value = data;
+      verificarSeleccionActividad();
+    } else {
+      console.error("Error en la respuesta de la API:", response.status);
+    }
+  } catch (error) {
+    console.error("Error al conectar con la API de actividades:", error);
+  }
+};
+
+// Comprueba la URL actual y selecciona la actividad correspondiente
+const verificarSeleccionActividad = () => {
+  const id = route.params.id;
+  if (id) {
+    actividadSeleccionada.value = actividades.value.find(a => String(a.id) === String(id));
+    if (actividadSeleccionada.value) {
+      formData.value.imageRightsAccepted = false;
+    }
+  } else {
+    actividadSeleccionada.value = null;
+  }
+};
+
+// Al montar el componente, cargamos los datos
+onMounted(() => {
+  cargarActividades();
+});
+
+// Si cambia la ruta (por ejemplo, al volver atrás o cambiar de tarjeta), re-verificamos
+watch(() => route.params.id, () => {
+  verificarSeleccionActividad();
+});
+
 const formData = ref({
   nombre: '',
   apellidos: '',
   email: '',
   phone: '',
-  actividad: '',
   message: '',
-  zallaGroupAccepted: false,
   privacyAccepted: false,
   privacyAcceptedAviso: false,
   imageRightsAccepted: false,
   numPersonas: 1,
-  dni: '',
-  edadNinos: ''
+  participantes: [{ nombre: '', apellidos: '', edad: '' }]
 });
 
 const successMessage = ref('');
 const errorMessage = ref('');
 
+// Sincronizar dinámicamente el número de formularios de participantes con numPersonas
+watch(() => formData.value.numPersonas, (newVal) => {
+  const count = parseInt(newVal) || 1;
+  if (formData.value.participantes.length < count) {
+    while (formData.value.participantes.length < count) {
+      formData.value.participantes.push({ nombre: '', apellidos: '', edad: '' });
+    }
+  } else if (formData.value.participantes.length > count) {
+    formData.value.participantes = formData.value.participantes.slice(0, count);
+  }
+});
+
+// const actividadesFiltradas = computed(() => {
+//   const hoy = new Date();
+//   hoy.setHours(0, 0, 0, 0);
+//   return actividades.value
+//     .filter(actividad => {
+//       const fechaActividad = new Date(actividad.fecha);
+//       return fechaActividad >= hoy && actividad.reservas && actividad.publicar;
+//     })
+//     .sort((a, b) => {
+//       const dateA = new Date(`${a.fecha}T${a.hora}`);
+//       const dateB = new Date(`${b.fecha}T${b.hora}`);
+//       return dateA - dateB;
+//     });
+// });
+
 const actividadesFiltradas = computed(() => {
   const hoy = new Date();
   hoy.setHours(0, 0, 0, 0);
-  return actividades
+
+  return actividades.value
     .filter(actividad => {
-      const fechaActividad = new Date(actividad.fecha);
-      return fechaActividad >= hoy && actividad.reservas && actividad.publicar;
+      // Forzamos hora local añadiendo T00:00:00 para evitar errores de zona horaria
+      const fechaActividad = new Date(actividad.fecha + 'T00:00:00');
+
+      // Comprobamos fecha y aseguramos que reservas y publicar sean verdaderos (1 o true)
+      return fechaActividad >= hoy && Number(actividad.reservas) === 1 && Number(actividad.publicar) === 1;
     })
     .sort((a, b) => {
       const dateA = new Date(`${a.fecha}T${a.hora}`);
@@ -217,7 +294,10 @@ const actividadesFiltradas = computed(() => {
       return dateA - dateB;
     });
 });
-
+const plazasDisponibles = computed(() => {
+  if (!actividadSeleccionada.value) return 0;
+  return actividadSeleccionada.value.plazas_totales - actividadSeleccionada.value.plazas_ocupadas;
+});
 const formatProyecto = (slug) => {
   const map = {
     'zalla': 'Zalla Natura',
@@ -235,14 +315,23 @@ const formatearFecha = (fechaStr) => {
   return new Date(fechaStr).toLocaleDateString('es-ES', opciones);
 };
 
-watch(() => route.params.id, (id) => {
+// Modificamos el watch del ID para que busque o espere correctamente
+watch(() => route.params.id, async (id) => {
   if (id) {
-    actividadSeleccionada.value = actividadesFiltradas.value.find(a => String(a.id) === String(id));
+    // Si la lista aún está vacía (por la asincronía del fetch), podemos buscarla o asegurar que cargue
+    if (actividades.value.length === 0) {
+      try {
+        const response = await fetch('http://localhost:5000/api/actividades');
+        if (response.ok) {
+          actividades.value = await response.json();
+        }
+      } catch (error) {
+        console.error("Error al cargar la actividad seleccionada:", error);
+      }
+    }
+
+    actividadSeleccionada.value = actividades.value.find(a => String(a.id) === String(id));
     if (actividadSeleccionada.value) {
-      formData.value.actividad = `Reserva ID ${id}: ${actividadSeleccionada.value.titulo} (${actividadSeleccionada.value.fecha})`;
-      // Reseteamos campos específicos
-      formData.value.dni = '';
-      formData.value.edadNinos = '';
       formData.value.imageRightsAccepted = false;
     }
   } else {
@@ -251,14 +340,12 @@ watch(() => route.params.id, (id) => {
 }, { immediate: true });
 
 const seleccionarActividad = (actividad) => {
-  // --- AVISAR A GOOGLE ANALYTICS DEL INTENTO ---
   if (typeof window.gtag === 'function') {
     window.gtag('event', 'intento_reserva', {
       'event_category': 'Reservas',
       'event_label': actividad.titulo
     });
   }
-
   router.push({ name: 'reservaActividad', params: { id: actividad.id } });
 };
 
@@ -266,48 +353,57 @@ const volverALista = () => {
   router.push('/calendario');
 };
 
-const submitForm = () => {
+const submitForm = async () => {
   successMessage.value = '';
   errorMessage.value = '';
 
-  const datosParaEnviar = {
-    ...formData.value,
-    'Unirse al grupo Zalla Natura': formData.value.zallaGroupAccepted ? 'SÍ, QUIERE INFO' : 'NO, SOLO ESTA ACTIVIDAD',
-    'Acepta Política Privacidad': formData.value.privacyAccepted ? 'SÍ' : 'NO',
-    'Entiende que es solicitud': formData.value.privacyAcceptedAviso ? 'SÍ' : 'NO',
-    'Autoriza Fotos (Derechos Imagen)': formData.value.imageRightsAccepted ? 'SÍ, AUTORIZA' : 'NO AUTORIZA'
+  const payload = {
+    actividad_id: actividadSeleccionada.value.id,
+    nombre_contacto: formData.value.nombre,
+    apellidos_contacto: formData.value.apellidos,
+    email: formData.value.email,
+    phone: formData.value.phone,
+    num_personas: Number(formData.value.numPersonas),
+    permiso_fotos: formData.value.imageRightsAccepted,
+    observaciones: formData.value.message,
+    participantes: formData.value.participantes.map(p => ({
+      nombre: p.nombre,
+      apellidos: p.apellidos,
+      edad: Number(p.edad)
+    }))
   };
 
-  fetch('https://formspree.io/f/xanedzed', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(datosParaEnviar)
-  })
-    .then(response => {
-      if (response.ok) {
-        successMessage.value = 'Solicitud enviada correctamente. Nos pondremos en contacto contigo.';
-
-        // --- AVISAR A GOOGLE ANALYTICS DE LA RESERVA COMPLETADA ---
-        if (typeof window.gtag === 'function') {
-          window.gtag('event', 'enviar_reserva', {
-            'event_category': 'Reservas',
-            'event_label': actividadSeleccionada.value?.titulo || 'General'
-          });
-        }
-
-        // Limpiar formulario
-        formData.value.message = '';
-        formData.value.privacyAccepted = false;
-        formData.value.privacyAcceptedAviso = false;
-        formData.value.imageRightsAccepted = false;
-      } else {
-        throw new Error('Error en el envío');
-      }
-    })
-    .catch(error => {
-      errorMessage.value = 'Hubo un error al enviar. Inténtalo de nuevo.';
-      console.error(error);
+  try {
+    const response = await fetch('http://localhost:5000/api/reservas', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
     });
+
+    const data = await response.json();
+
+    if (response.ok) {
+      successMessage.value = '¡Reserva realizada con éxito! Las plazas han quedado asignadas.';
+
+      if (typeof window.gtag === 'function') {
+        window.gtag('event', 'enviar_reserva', {
+          'event_category': 'Reservas',
+          'event_label': actividadSeleccionada.value?.titulo || 'General'
+        });
+      }
+
+      // Limpiar formulario básico
+      formData.value.message = '';
+      formData.value.privacyAccepted = false;
+      formData.value.privacyAcceptedAviso = false;
+      formData.value.imageRightsAccepted = false;
+    } else {
+      throw new Error(data.detail || 'Error al procesar la reserva.');
+    }
+  } catch (error) {
+    errorMessage.value = error.message || 'Hubo un error al conectar con el servidor.';
+    console.error(error);
+  }
 };
 </script>
 
@@ -366,12 +462,43 @@ const submitForm = () => {
   flex-grow: 1;
 }
 
+/* PARTICIPANTES DINÁMICOS */
+.participantes-container {
+  background: #fdfdfd;
+  border: 1px solid #e2e8f0;
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+}
+
+.subtitulo-participantes {
+  margin-top: 0;
+  color: var(--shoftgreen);
+  font-size: 1.1rem;
+  border-bottom: 1px solid #edf2f7;
+  padding-bottom: 8px;
+  margin-bottom: 15px;
+}
+
+.participante-card {
+  background: #f7fafc;
+  border: 1px dashed #cbd5e0;
+  padding: 12px;
+  border-radius: 6px;
+  margin-bottom: 12px;
+}
+
+.participante-card h4 {
+  margin: 0 0 10px 0;
+  font-size: 0.95rem;
+  color: #4a5568;
+}
+
 /* BADGES */
 .badge {
   display: block;
   width: fit-content;
   margin: 1rem auto 0 auto;
-  /* Centrado abajo */
   padding: 4px 12px;
   border-radius: 20px;
   font-size: 0.75rem;
@@ -382,7 +509,6 @@ const submitForm = () => {
   text-align: center;
 }
 
-/* COLORES DE BADGES */
 .badge.flysch {
   background-color: orange;
 }
@@ -541,14 +667,6 @@ textarea:focus {
   box-shadow: 0 0 0 2px var(--megashoftgreen);
 }
 
-.highlight-group {
-  background-color: #f0fdf4;
-  padding: 15px;
-  border-radius: 6px;
-  border: 1px dashed var(--shoftgreen);
-}
-
-/* CAJA DE FOTOS */
 .caja-fotos {
   background-color: #f9f9f9;
   border: 1px solid #e0e0e0;
@@ -577,7 +695,6 @@ textarea:focus {
   align-items: flex-start;
   gap: 10px;
   margin-bottom: 1rem;
-  align-items: first baseline;
 }
 
 .horizontalC input {
@@ -613,19 +730,6 @@ textarea:focus {
   text-decoration: underline;
   cursor: pointer;
   margin-top: 1rem;
-}
-
-@media (max-width: 613px) {
-
-  .general-container,
-  .contact-container {
-    padding: 1rem;
-    margin-top: 5rem;
-  }
-
-  .card {
-    width: 100%;
-  }
 }
 
 .success-message {
