@@ -219,7 +219,7 @@ const router = createRouter({
 router.afterEach((to) => {
   // Si Google Analytics está cargado, le avisamos de cada cambio de ruta
   if (typeof window.gtag === "function") {
-    window.gtag("config", "G-QVJ86K4LBQ", {
+    window.gtag("config", "G-LVMVX3Z14P", {
       page_path: to.path,
     });
   }
