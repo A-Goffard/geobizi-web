@@ -54,7 +54,7 @@
         <p v-if="actividadSeleccionada.precio"><strong>Precio:</strong> {{ actividadSeleccionada.precio }} € por persona
         </p>
         <p v-if="actividadSeleccionada.descripcion"><strong>Descripción:</strong> {{ actividadSeleccionada.descripcion
-          }}</p>
+        }}</p>
         <p v-if="actividadSeleccionada.detalles"><strong>Detalles:</strong> {{ actividadSeleccionada.detalles }}</p>
         <p v-if="actividadSeleccionada.oharrak"><strong>Notas:</strong> {{ actividadSeleccionada.oharrak }}</p>
       </div>
@@ -165,6 +165,21 @@
         <button @click="volverALista" class="volver-btn">← Volver a actividades</button>
       </div>
     </div>
+    <!-- MODAL DE ÉXITO BLOQUEANTE -->
+    <div v-if="mostrarModalExito" class="modal-overlay"
+      style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); display: flex; align-items: center; justify-content: center; z-index: 1000;">
+      <div class="modal-content"
+        style="background: white; padding: 2.5rem; border-radius: 8px; text-align: center; max-width: 400px; box-shadow: 0 4px 15px rgba(0,0,0,0.2);">
+        <h3 style="color: #2c5e3b; margin-top: 0;">🌿 ¡Reserva Confirmada!</h3>
+        <p style="color: #333; margin: 1.5rem 0;">{{ successMessage }}</p>
+        <p style="font-size: 13px; color: #666; margin-bottom: 1.5rem;">Te hemos enviado un correo electrónico con los
+          detalles y las recomendaciones.</p>
+        <button @click="mostrarModalExito = false; router.push('/calendario')" class="btn-reserva"
+          style="padding: 10px 20px; cursor: pointer;">
+          Aceptar y volver
+        </button>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -193,6 +208,7 @@ useHead({
 
 const actividades = ref([]);
 const actividadSeleccionada = ref(null);
+const mostrarModalExito = ref(false);
 
 // Función centralizada para cargar las actividades desde la API
 const cargarActividades = async () => {
@@ -242,7 +258,7 @@ const formData = ref({
   privacyAccepted: false,
   privacyAcceptedAviso: false,
   imageRightsAccepted: false,
-  numPersonas: 1,
+  num_personas: 1,
   participantes: [{ nombre: '', apellidos: '', edad: '' }]
 });
 
@@ -250,7 +266,8 @@ const successMessage = ref('');
 const errorMessage = ref('');
 
 // Sincronizar dinámicamente el número de formularios de participantes con numPersonas
-watch(() => formData.value.numPersonas, (newVal) => {
+// Vigila correctamente a num_personas
+watch(() => formData.value.num_personas, (newVal) => {
   const count = parseInt(newVal) || 1;
   if (formData.value.participantes.length < count) {
     while (formData.value.participantes.length < count) {
@@ -358,14 +375,14 @@ const submitForm = async () => {
   errorMessage.value = '';
 
   const payload = {
-    actividad_id: actividadSeleccionada.value.id,
-    nombre_contacto: formData.value.nombre,
-    apellidos_contacto: formData.value.apellidos,
+    actividad_id: Number(actividadSeleccionada.value.id),
+    nombre_contacto: formData.value.nombre,        // <-- Debe coincidir con schemas.py
+    apellidos_contacto: formData.value.apellidos,  // <-- Debe coincidir con schemas.py
     email: formData.value.email,
     phone: formData.value.phone,
-    num_personas: Number(formData.value.numPersonas),
-    permiso_fotos: formData.value.imageRightsAccepted,
-    observaciones: formData.value.message,
+    num_personas: Number(formData.value.num_personas),
+    permiso_fotos: Boolean(formData.value.imageRightsAccepted),
+    observaciones: formData.value.message || "",   // <-- Mapeado a observaciones
     participantes: formData.value.participantes.map(p => ({
       nombre: p.nombre,
       apellidos: p.apellidos,
@@ -383,25 +400,33 @@ const submitForm = async () => {
     const data = await response.json();
 
     if (response.ok) {
+      mostrarModalExito.value = true; // <-- Asegúrate de que esté en true limpio
       successMessage.value = '¡Reserva realizada con éxito! Las plazas han quedado asignadas.';
 
-      if (typeof window.gtag === 'function') {
-        window.gtag('event', 'enviar_reserva', {
-          'event_category': 'Reservas',
-          'event_label': actividadSeleccionada.value?.titulo || 'General'
-        });
-      }
+      // Limpiamos el formulario por completo
+      formData.value = {
+        nombre: '',
+        apellidos: '',
+        email: '',
+        phone: '',
+        message: '',
+        privacyAccepted: false,
+        privacyAcceptedAviso: false,
+        imageRightsAccepted: false,
+        num_personas: 1,
+        participantes: [{ nombre: '', apellidos: '', edad: '' }]
+      };
 
-      // Limpiar formulario básico
-      formData.value.message = '';
-      formData.value.privacyAccepted = false;
-      formData.value.privacyAcceptedAviso = false;
-      formData.value.imageRightsAccepted = false;
+      // ... limpiar formulario ...
     } else {
-      throw new Error(data.detail || 'Error al procesar la reserva.');
+      // Si FastAPI devuelve un error de validación (array o string), lo capturamos bien
+      const errorMsg = Array.isArray(data.detail)
+        ? data.detail.map(err => `${err.loc.join('.')}: ${err.msg}`).join(', ')
+        : (data.detail || 'Error al procesar la reserva.');
+      throw new Error(errorMsg);
     }
   } catch (error) {
-    errorMessage.value = error.message || 'Hubo un error al conectar con el servidor.';
+    errorMessage.value = error.message; // <-- Evitamos que salga [object Object]
     console.error(error);
   }
 };

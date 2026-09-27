@@ -16,7 +16,6 @@ import DetalleZallaNaturaView from "@/views/proyectos/DetalleZallaNaturaView.vue
 import DetalleAsteBerdeaView from "@/views/proyectos/DetalleAsteBerdeaView.vue";
 import DetalleSopelaKostaFestView from "@/views/proyectos/DetalleSopelaKostaFestView.vue";
 
-
 // --- VISTAS DEL BLOG ---
 import NummulitesView from "@/views/blog/NummulitesView.vue";
 import FlyschBizkaiaView from "@/views/blog/FlyschBizkaiaView.vue";
@@ -49,6 +48,8 @@ import FitxasEtnobotanicasEnkarterri from "../components/contenido-creado/Fitxas
 
 // --- OTROS ---
 import Calendario from "@/components/calendario/CalendarioActividades2025.vue";
+import CancelarReservaView from "../views/CancelarReservaView.vue";
+import EditarReservaView from "../views/EditarReservaView.vue";
 
 const routes = [
   { path: "/", name: "inicio", component: InicioView },
@@ -119,7 +120,6 @@ const routes = [
     component: DetalleSopelaKostaFestView,
   },
 
-
   // --- BLOG ---
   { path: "/blog", name: "blog", component: BlogView },
   {
@@ -189,6 +189,16 @@ const routes = [
     component: FitxasEtnobotanicasEnkarterri,
   },
   { path: "/calendario", name: "Calendario", component: Calendario },
+  {
+    path: "/reservas/cancelar",
+    name: "cancelarReserva",
+    component: CancelarReservaView,
+  },
+  {
+    path: "/reservas/editar",
+    name: "editarReserva",
+    component: EditarReservaView, // <-- 3. Ruta para el botón de modificar del correo
+  },
 
   {
     path: "/:pathMatch(.*)*",
