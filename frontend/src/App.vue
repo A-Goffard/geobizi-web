@@ -41,6 +41,9 @@ box-sizing: border-box;
 
   --yellow: #fff3cd;
   --orange: #ffc107;
+  --brownred:#b85d46;
+  --lightbrownred:#f8c3b7;
+  --supershoftbrownred:#fff0ec;
 
   --megashoftgreen: #efffec;
   --supershoftgreen: #d2f8cd;

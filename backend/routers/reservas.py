@@ -122,8 +122,9 @@ def obtener_reserva_por_token(token: str):
     """, (reserva["id"],))
     participantes = cursor.fetchall()
     
+    # Extraemos también plazas_totales y plazas_ocupadas para calcular el tope disponible en el frontend
     cursor.execute("""
-        SELECT id, titulo, fecha, hora, ubicacion, color 
+        SELECT id, titulo, fecha, hora, ubicacion, color, plazas_totales, plazas_ocupadas 
         FROM actividades 
         WHERE id = ?
     """, (reserva["actividad_id"],))
@@ -139,41 +140,58 @@ def obtener_reserva_por_token(token: str):
 
 
 @router.delete("/token/{token}")
-def cancelar_reserva(token: str):
+def cancelar_reserva_por_token(token: str):
     conn = get_db_connection()
     cursor = conn.cursor()
     
     try:
-        cursor.execute("SELECT id, actividad_id, num_personas FROM reservas WHERE token = ?", (token,))
+        # 1. Localizar la reserva mediante el token
+        cursor.execute("""
+            SELECT id, actividad_id, num_personas 
+            FROM reservas 
+            WHERE token = ?
+        """, (token,))
         reserva = cursor.fetchone()
         
         if not reserva:
-            raise HTTPException(status_code=404, detail="Reserva no encontrada.")
+            raise HTTPException(status_code=404, detail="La reserva no existe o ya ha sido cancelada.")
             
         reserva_id = reserva["id"]
         actividad_id = reserva["actividad_id"]
-        num_personas = reserva["num_personas"]
-        
+        plazas_a_liberar = reserva["num_personas"]
+
+        # 2. Devolver las plazas a la actividad de forma segura
         cursor.execute("""
             UPDATE actividades 
             SET plazas_ocupadas = MAX(0, plazas_ocupadas - ?) 
             WHERE id = ?
-        """, (num_personas, actividad_id))
-        
-        cursor.execute("DELETE FROM reservas WHERE id = ?", (reserva_id,))
+        """, (plazas_a_liberar, actividad_id))
+
+        # 3. Eliminar primero a los participantes asociados
+        cursor.execute("""
+            DELETE FROM participantes 
+            WHERE reserva_id = ?
+        """, (reserva_id,))
+
+        # 4. Eliminar el registro principal de la reserva
+        cursor.execute("""
+            DELETE FROM reservas 
+            WHERE id = ?
+        """, (reserva_id,))
+
         conn.commit()
-        
+
         return {
             "status": "success",
-            "message": "Reserva cancelada con éxito. Las plazas han quedado liberadas."
+            "message": "Reserva y lista de participantes eliminados correctamente. Plazas liberadas."
         }
-        
+
     except HTTPException as he:
         conn.rollback()
         raise he
     except Exception as e:
         conn.rollback()
-        raise HTTPException(status_code=500, detail=f"Error interno al cancelar: {str(e)}")
+        raise HTTPException(status_code=500, detail=f"Error al cancelar la reserva: {str(e)}")
     finally:
         conn.close()
         
@@ -184,22 +202,51 @@ def actualizar_reserva_por_token(token: str, datos: dict):
     cursor = conn.cursor()
     
     try:
-        # 1. Comprobamos que la reserva existe mediante el token
-        cursor.execute("SELECT id FROM reservas WHERE token = ?", (token,))
+        # 1. Obtener la reserva actual
+        cursor.execute("SELECT id, actividad_id, num_personas FROM reservas WHERE token = ?", (token,))
         reserva = cursor.fetchone()
         
         if not reserva:
             raise HTTPException(status_code=404, detail="Reserva no encontrada o enlace no válido.")
             
         reserva_id = reserva["id"]
-        
-        # 2. Actualizamos los campos editables de contacto
+        actividad_id = reserva["actividad_id"]
+        plazas_antiguas = int(reserva["num_personas"])
+        plazas_nuevas = int(datos.get("num_personas", plazas_antiguas))
+        diferencia = plazas_nuevas - plazas_antiguas
+
+        # 2. Ajustar aforo según la variación de plazas
+        if diferencia > 0:
+            # Quiere más plazas: comprobación atómica anti-sobreventa
+            cursor.execute("""
+                UPDATE actividades 
+                SET plazas_ocupadas = plazas_ocupadas + ? 
+                WHERE id = ? 
+                  AND (plazas_totales - plazas_ocupadas) >= ?
+            """, (diferencia, actividad_id, diferencia))
+            
+            if cursor.rowcount == 0:
+                raise HTTPException(
+                    status_code=400, 
+                    detail="No quedan suficientes plazas libres para ampliar la reserva."
+                )
+        elif diferencia < 0:
+            # Libera plazas: se restan de plazas_ocupadas
+            plazas_a_liberar = abs(diferencia)
+            cursor.execute("""
+                UPDATE actividades 
+                SET plazas_ocupadas = MAX(0, plazas_ocupadas - ?) 
+                WHERE id = ?
+            """, (plazas_a_liberar, actividad_id))
+
+        # 3. Actualizar datos de la reserva principal
         cursor.execute("""
             UPDATE reservas 
             SET nombre_contacto = ?, 
                 apellidos_contacto = ?, 
                 email = ?, 
                 phone = ?, 
+                num_personas = ?, 
                 observaciones = ?
             WHERE id = ?
         """, (
@@ -207,17 +254,23 @@ def actualizar_reserva_por_token(token: str, datos: dict):
             datos.get("apellidos_contacto"),
             datos.get("email"),
             datos.get("phone"),
+            plazas_nuevas,
             datos.get("observaciones"),
             reserva_id
         ))
-        
+
+        # 4. Actualizar lista de participantes (reemplazo limpio)
+        participantes_nuevos = datos.get("participantes", [])
+        cursor.execute("DELETE FROM participantes WHERE reserva_id = ?", (reserva_id,))
+        for p in participantes_nuevos:
+            cursor.execute("""
+                INSERT INTO participantes (reserva_id, nombre, apellidos, edad)
+                VALUES (?, ?, ?, ?)
+            """, (reserva_id, p.get("nombre"), p.get("apellidos"), int(p.get("edad", 0))))
+
         conn.commit()
-        
-        return {
-            "status": "success",
-            "message": "Reserva actualizada correctamente."
-        }
-        
+        return {"status": "success", "message": "Reserva modificada correctamente."}
+
     except HTTPException as he:
         conn.rollback()
         raise he
