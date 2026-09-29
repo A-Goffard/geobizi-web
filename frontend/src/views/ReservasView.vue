@@ -1,11 +1,16 @@
 <template>
   <div class="container">
 
+    <!-- VISTA 1: LISTADO DE ACTIVIDADES DISPONIBLES (GRID) -->
     <div v-if="!actividadSeleccionada" class="general-container">
       <h1>Actividades disponibles</h1>
       <div class="container-grid">
-        <div v-for="actividad in actividadesFiltradas" :key="actividad.id" class="card"
-          @click="seleccionarActividad(actividad)">
+        <div 
+          v-for="actividad in actividadesFiltradas" 
+          :key="actividad.id" 
+          class="card"
+          @click="seleccionarActividad(actividad)"
+        >
           <h2>{{ actividad.titulo }}</h2>
 
           <div class="img-hover-container">
@@ -26,12 +31,31 @@
               {{ formatProyecto(actividad.proyecto) }}
             </span>
           </div>
-          <div style="margin-top: 1rem; text-align: center;">
-            <a v-if="actividad.linkReserva" :href="actividad.linkReserva" target="_blank"
-              class="btn-reserva btn-externo" style="display: block; text-decoration: none;">
+
+          <div class="acciones-card">
+            <a 
+              v-if="actividad.linkReserva" 
+              :href="actividad.linkReserva" 
+              target="_blank"
+              class="btn-reserva btn-externo"
+              @click.stop
+            >
               Inscribirse (web externa)
             </a>
-            <button v-else @click="seleccionarActividad(actividad)" class="btn-reserva">
+
+            <button 
+              v-else-if="actividad.plazas_totales && actividad.plazas_ocupadas >= actividad.plazas_totales" 
+              @click.stop="seleccionarActividad(actividad)" 
+              class="btn-reserva btn-espera"
+            >
+              ⚠️ Plazas agotadas · Lista de espera
+            </button>
+
+            <button 
+              v-else 
+              @click.stop="seleccionarActividad(actividad)" 
+              class="btn-reserva"
+            >
               Inscribirse / Reservar
             </button>
           </div>
@@ -39,147 +63,223 @@
       </div>
     </div>
 
+    <!-- VISTA 2: FORMULARIO DINÁMICO (RESERVA O LISTA DE ESPERA) -->
     <div v-else class="contact-container">
       <div class="header-reserva">
         <span class="badge-large" :class="actividadSeleccionada.proyecto || 'general'">
           {{ formatProyecto(actividadSeleccionada.proyecto) }}
         </span>
-        <h1>Reserva: {{ actividadSeleccionada.titulo }}</h1>
+        <h1>{{ esModoListaEspera ? 'Lista de espera:' : 'Reserva:' }} {{ actividadSeleccionada.titulo }}</h1>
       </div>
 
       <div class="info-reserva-detalle">
         <p><strong>Fecha:</strong> {{ formatearFecha(actividadSeleccionada.fecha) }}</p>
         <p><strong>Hora:</strong> {{ actividadSeleccionada.hora }}</p>
         <p v-if="actividadSeleccionada.ubicacion"><strong>Ubicación:</strong> {{ actividadSeleccionada.ubicacion }}</p>
-        <p v-if="actividadSeleccionada.precio"><strong>Precio:</strong> {{ actividadSeleccionada.precio }} € por persona
-        </p>
-        <p v-if="actividadSeleccionada.descripcion"><strong>Descripción:</strong> {{ actividadSeleccionada.descripcion
-        }}</p>
+        <p v-if="actividadSeleccionada.precio"><strong>Precio:</strong> {{ actividadSeleccionada.precio }} € por persona</p>
+        <p v-if="actividadSeleccionada.descripcion"><strong>Descripción:</strong> {{ actividadSeleccionada.descripcion }}</p>
         <p v-if="actividadSeleccionada.detalles"><strong>Detalles:</strong> {{ actividadSeleccionada.detalles }}</p>
         <p v-if="actividadSeleccionada.oharrak"><strong>Notas:</strong> {{ actividadSeleccionada.oharrak }}</p>
       </div>
 
-      <div v-if="actividadSeleccionada" class="contact-container">
-        <form @submit.prevent="submitForm">
-
-          <!-- DATOS DE CONTACTO (RESPONSABLE) -->
-          <h3>Datos de la persona responsable / contacto</h3>
-          <div class="form-group">
-            <label for="nombre">Nombre:</label>
-            <input type="text" id="nombre" v-model="formData.nombre" required>
-          </div>
-          <div class="form-group">
-            <label for="apellidos">Apellidos:</label>
-            <input type="text" id="apellidos" v-model="formData.apellidos" required>
-          </div>
-          <div class="form-group">
-            <label for="email">Correo Electrónico:</label>
-            <input type="email" id="email" v-model="formData.email" required>
-          </div>
-          <div class="form-group">
-            <label for="phone">Teléfono:</label>
-            <input type="tel" id="phone" v-model="formData.phone" required>
-          </div>
-          <div class="aviso-plazas" :class="{ 'casi-lleno': plazasDisponibles <= 3 }">
-            <p v-if="plazasDisponibles > 0">
-              Plazas libres disponibles: <strong>{{ plazasDisponibles }}</strong>
-            </p>
-            <p v-else class="completo">
-              ¡Lo sentimos! Esta actividad ya está completa.
-            </p>
-          </div>
-          <div class="form-group">
-            <label for="numPersonas">Número de plazas totales a reservar:</label>
-            <input type="number" id="numPersonas" v-model.number="formData.num_personas" min="1"
-              :max="plazasDisponibles" required />
-          </div>
-
-          <!-- ASISTENTES DINÁMICOS -->
-          <div class="participantes-container" v-if="formData.participantes.length > 0">
-            <h3 class="subtitulo-participantes">Datos de los asistentes (incluyéndote a tí si vas a participar) ({{
-              formData.participantes.length }} personas)</h3>
-
-            <div v-for="(p, index) in formData.participantes" :key="index" class="participante-card">
-              <h4>Asistente {{ index + 1 }}</h4>
-              <div class="form-group">
-                <label :for="'p-nombre-' + index">Nombre:</label>
-                <input type="text" :id="'p-nombre-' + index" v-model="p.nombre" required>
-              </div>
-              <div class="form-group">
-                <label :for="'p-apellidos-' + index">Apellidos:</label>
-                <input type="text" :id="'p-apellidos-' + index" v-model="p.apellidos" required>
-              </div>
-              <div class="form-group">
-                <label :for="'p-edad-' + index">Edad:</label>
-                <input type="number" :id="'p-edad-' + index" v-model.number="p.edad" min="0" max="120" required
-                  placeholder="Ej: 8">
-              </div>
-            </div>
-          </div>
-
-          <div class="form-group">
-            <label for="message">Mensaje / Observaciones:</label>
-            <textarea id="message" v-model="formData.message"></textarea>
-          </div>
-
-          <div v-if="['zalla', 'flysch', 'naturgaua', 'eventos', 'general'].includes(actividadSeleccionada.proyecto)"
-            class="caja-fotos">
-            <p class="titulo-fotos">📸 Permisos de imagen</p>
-            <div class="horizontalC">
-              <input type="checkbox" id="imageRights" v-model="formData.imageRightsAccepted">
-              <label for="imageRights">
-                Autorizo a Geobizi a tomar imágenes durante la actividad para enviárnoslas de recuerdo y/o usarlas en
-                sus redes sociales/web con fines divulgativos.
-                <br>
-                <span class="nota-fotos">
-                  *Priorizamos siempre planos generales o de espaldas, respetando la privacidad de los menores.
-                </span>
-              </label>
-            </div>
-          </div>
-
-          <div class="horizontalC">
-            <input type="checkbox" id="privacy" v-model="formData.privacyAccepted" required>
-            <label for="privacy">
-              He leído y acepto la <a href="/politicadeprivacidad" target="_blank">política de privacidad</a>.
-            </label>
-          </div>
-
-          <div class="horizontalC">
-            <input type="checkbox" id="privacyAviso" v-model="formData.privacyAcceptedAviso" required>
-            <label for="privacyAviso">
-              Entiendo que es una actividad con límite de aforo. <b>Mira en tu carpeta de spam</b> si no recibes el
-              correo de confirmación.
-            </label>
-          </div>
-
-          <div class="center">
-            <button type="submit" class="btn-submit">Confirmar Reserva</button>
-          </div>
-
-          <p v-if="successMessage" class="success-message">{{ successMessage }}</p>
-          <p v-if="errorMessage" class="error-message">{{ errorMessage }}</p>
-        </form>
+      <!-- CASO 1: Aforo 100% agotado de antemano -->
+      <div v-if="actividadTotalmenteAgotada" class="caja-aviso-espera">
+        <h3 class="titulo-espera">⚠️ Aforo completo</h3>
+        <p>
+          No quedan plazas libres para esta actividad. Rellena los datos de tu grupo para entrar en la 
+          <strong>lista de espera</strong>. Si se liberan plazas suficientes para todos vosotros, os avisaremos por riguroso orden de registro.
+        </p>
       </div>
+
+      <!-- CASO 2: Quedan plazas libres, pero se han añadido más asistentes de los disponibles -->
+      <div v-else-if="plazasInsuficientes" class="caja-aviso-espera">
+        <h3 class="titulo-espera">⚠️ No quedan suficientes plazas para todo tu grupo</h3>
+        <p>
+          Actualmente solo {{ plazasDisponibles === 1 ? 'queda' : 'quedan' }} 
+          <strong>{{ plazasDisponibles }} {{ plazasDisponibles === 1 ? 'plaza libre' : 'plazas libres' }}</strong>, pero has añadido fichas para <strong>{{ totalAsistentes }} asistentes</strong>.
+        </p>
+        <p style="margin-top: 0.5rem;">
+          Para no separar al grupo, podéis continuar y <strong>quedaréis anotados en la lista de espera juntos</strong>. Si preferís reservar ahora mismo solo las plazas que quedan libres:
+        </p>
+        <button 
+          type="button" 
+          @click="ajustarAPlazasDisponibles" 
+          class="btn-ajustar-plazas"
+        >
+          Ajustar a {{ plazasDisponibles }} {{ plazasDisponibles === 1 ? 'asistente' : 'asistentes' }} y reservar ahora
+        </button>
+      </div>
+
+      <!-- CASO 3: Hay plazas libres suficientes -->
+      <div v-else class="aviso-plazas" :class="{ 'casi-lleno': plazasDisponibles <= 3 }">
+        <p>
+          Plazas libres disponibles: <strong>{{ plazasDisponibles }}</strong> &nbsp;|&nbsp; 
+          Asistentes a inscribir: <strong>{{ totalAsistentes }}</strong>
+        </p>
+      </div>
+
+      <!-- FORMULARIO ÚNICO -->
+      <form @submit.prevent="enviarFormulario">
+        <h3 class="seccion-titulo">Datos de la persona responsable / contacto</h3>
+
+        <div class="form-group">
+          <label for="nombre">Nombre:</label>
+          <input type="text" id="nombre" v-model="formData.nombre" required />
+        </div>
+
+        <div class="form-group">
+          <label for="apellidos">Apellidos:</label>
+          <input type="text" id="apellidos" v-model="formData.apellidos" required />
+        </div>
+
+        <div class="form-group">
+          <label for="email">Correo Electrónico:</label>
+          <input type="email" id="email" v-model="formData.email" required />
+        </div>
+
+        <div class="form-group">
+          <label for="phone">Teléfono de contacto:</label>
+          <input type="tel" id="phone" v-model="formData.phone" required />
+        </div>
+
+        <!-- LISTADO DINÁMICO DE ASISTENTES (FICHA POR PERSONA) -->
+        <h3 class="seccion-titulo">
+          Asistentes ({{ totalAsistentes }} {{ totalAsistentes === 1 ? 'plaza' : 'plazas' }})
+        </h3>
+        <p class="texto-ayuda">
+          Indica los datos de cada persona participante (incluyéndote a ti si vas a asistir a la actividad).
+        </p>
+
+        <div class="participantes-lista">
+          <div 
+            v-for="(p, index) in formData.participantes" 
+            :key="index" 
+            class="participante-card"
+          >
+            <div class="participante-header">
+              <h4 class="participante-titulo">Asistente {{ index + 1 }}</h4>
+              
+              <!-- Solo se muestra el botón quitar si hay más de 1 asistente -->
+              <button 
+                v-if="formData.participantes.length > 1" 
+                type="button" 
+                @click="eliminarAsistente(index)" 
+                class="btn-quitar"
+                title="Quitar asistente"
+              >
+                ✕ Quitar
+              </button>
+            </div>
+
+            <div class="participante-grid">
+              <div class="form-subgroup">
+                <label :for="'p-nombre-' + index">Nombre:</label>
+                <input type="text" :id="'p-nombre-' + index" v-model="p.nombre" required />
+              </div>
+
+              <div class="form-subgroup">
+                <label :for="'p-apellidos-' + index">Apellidos:</label>
+                <input type="text" :id="'p-apellidos-' + index" v-model="p.apellidos" required />
+              </div>
+
+              <div class="form-subgroup grupo-edad">
+                <label :for="'p-edad-' + index">Edad:</label>
+                <input 
+                  type="number" 
+                  :id="'p-edad-' + index" 
+                  v-model.number="p.edad" 
+                  min="0" 
+                  max="120" 
+                  required
+                  placeholder="Ej: 8" 
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Botón para sumar acompañantes (máximo 10 personas por reserva) -->
+        <button 
+          v-if="formData.participantes.length < 10"
+          type="button" 
+          @click="agregarAsistente" 
+          class="btn-anadir-asistente"
+        >
+          ➕ Añadir otro asistente
+        </button>
+
+        <div class="form-group">
+          <label for="message">Mensaje / Observaciones:</label>
+          <textarea id="message" v-model="formData.message"></textarea>
+        </div>
+
+        <!-- Permisos de imagen -->
+        <div 
+          v-if="!esModoListaEspera && ['zalla', 'flysch', 'naturgaua', 'eventos', 'general'].includes(actividadSeleccionada.proyecto)" 
+          class="caja-fotos"
+        >
+          <p class="titulo-fotos">📸 Permisos de imagen</p>
+          <div class="horizontalC">
+            <input type="checkbox" id="imageRights" v-model="formData.imageRightsAccepted" />
+            <label for="imageRights">
+              Autorizo a Geobizi a tomar imágenes durante la actividad para enviárnoslas de recuerdo y/o usarlas en sus redes sociales/web con fines divulgativos.
+              <br />
+              <span class="nota-fotos">
+                *Priorizamos siempre planos generales o de espaldas, respetando la privacidad de los menores.
+              </span>
+            </label>
+          </div>
+        </div>
+
+        <div class="horizontalC">
+          <input type="checkbox" id="privacy" v-model="formData.privacyAccepted" required />
+          <label for="privacy">
+            He leído y acepto la <a href="/politicadeprivacidad" target="_blank">política de privacidad</a>.
+          </label>
+        </div>
+
+        <div class="horizontalC">
+          <input type="checkbox" id="privacyAviso" v-model="formData.privacyAcceptedAviso" required />
+          <label for="privacyAviso">
+            Entiendo las condiciones de participación. <b>Revisa tu carpeta de spam</b> si no ves el correo de confirmación.
+          </label>
+        </div>
+
+        <div class="center">
+          <button 
+            type="submit" 
+            class="btn-submit" 
+            :class="{ 'btn-espera': esModoListaEspera }"
+            :disabled="enviando"
+          >
+            {{ enviando ? 'Enviando...' : textoBotonEnvio }}
+          </button>
+        </div>
+
+        <p v-if="errorMessage" class="error-message">{{ errorMessage }}</p>
+      </form>
+
       <div class="center">
         <button @click="volverALista" class="volver-btn">← Volver a actividades</button>
       </div>
     </div>
+
     <!-- MODAL DE ÉXITO BLOQUEANTE -->
-    <div v-if="mostrarModalExito" class="modal-overlay"
-      style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); display: flex; align-items: center; justify-content: center; z-index: 1000;">
-      <div class="modal-content"
-        style="background: white; padding: 2.5rem; border-radius: 8px; text-align: center; max-width: 400px; box-shadow: 0 4px 15px rgba(0,0,0,0.2);">
-        <h3 style="color: #2c5e3b; margin-top: 0;">🌿 ¡Reserva Confirmada!</h3>
-        <p style="color: #333; margin: 1.5rem 0;">{{ successMessage }}</p>
-        <p style="font-size: 13px; color: #666; margin-bottom: 1.5rem;">Te hemos enviado un correo electrónico con los
-          detalles y las recomendaciones.</p>
-        <button @click="mostrarModalExito = false; router.push('/calendario')" class="btn-reserva"
-          style="padding: 10px 20px; cursor: pointer;">
-          Aceptar y volver
-        </button>
+    <div v-if="mostrarModalExito" class="modal-overlay">
+      <div class="modal-tarjeta">
+        <div class="modal-icono">{{ esListaEsperaModal ? '📋' : '🌿' }}</div>
+        <h3 class="modal-titulo-exito">
+          {{ esListaEsperaModal ? '¡Anotados en la lista de espera!' : '¡Reserva Confirmada!' }}
+        </h3>
+        <p class="modal-subtexto">{{ successMessage }}</p>
+        <div class="modal-acciones">
+          <button @click="cerrarModalYVolver" class="btn-accion">
+            Aceptar y volver
+          </button>
+        </div>
       </div>
     </div>
+
   </div>
 </template>
 
@@ -209,24 +309,36 @@ useHead({
 const actividades = ref([]);
 const actividadSeleccionada = ref(null);
 const mostrarModalExito = ref(false);
+const esListaEsperaModal = ref(false);
+const enviando = ref(false);
 
-// Función centralizada para cargar las actividades desde la API
+const successMessage = ref('');
+const errorMessage = ref('');
+
+const formData = ref({
+  nombre: '',
+  apellidos: '',
+  email: '',
+  phone: '',
+  message: '',
+  privacyAccepted: false,
+  privacyAcceptedAviso: false,
+  imageRightsAccepted: false,
+  participantes: [{ nombre: '', apellidos: '', edad: '' }]
+});
+
 const cargarActividades = async () => {
   try {
     const response = await fetch('http://localhost:5000/api/actividades');
     if (response.ok) {
-      const data = await response.json();
-      actividades.value = data;
+      actividades.value = await response.json();
       verificarSeleccionActividad();
-    } else {
-      console.error("Error en la respuesta de la API:", response.status);
     }
   } catch (error) {
     console.error("Error al conectar con la API de actividades:", error);
   }
 };
 
-// Comprueba la URL actual y selecciona la actividad correspondiente
 const verificarSeleccionActividad = () => {
   const id = route.params.id;
   if (id) {
@@ -239,59 +351,37 @@ const verificarSeleccionActividad = () => {
   }
 };
 
-// Al montar el componente, cargamos los datos
 onMounted(() => {
   cargarActividades();
 });
 
-// Si cambia la ruta (por ejemplo, al volver atrás o cambiar de tarjeta), re-verificamos
 watch(() => route.params.id, () => {
   verificarSeleccionActividad();
 });
 
-const formData = ref({
-  nombre: '',
-  apellidos: '',
-  email: '',
-  phone: '',
-  message: '',
-  privacyAccepted: false,
-  privacyAcceptedAviso: false,
-  imageRightsAccepted: false,
-  num_personas: 1,
-  participantes: [{ nombre: '', apellidos: '', edad: '' }]
+// Control dinámico de asistentes
+const totalAsistentes = computed(() => {
+  return formData.value.participantes.length;
 });
 
-const successMessage = ref('');
-const errorMessage = ref('');
-
-// Sincronizar dinámicamente el número de formularios de participantes con numPersonas
-// Vigila correctamente a num_personas
-watch(() => formData.value.num_personas, (newVal) => {
-  const count = parseInt(newVal) || 1;
-  if (formData.value.participantes.length < count) {
-    while (formData.value.participantes.length < count) {
-      formData.value.participantes.push({ nombre: '', apellidos: '', edad: '' });
-    }
-  } else if (formData.value.participantes.length > count) {
-    formData.value.participantes = formData.value.participantes.slice(0, count);
+const agregarAsistente = () => {
+  if (formData.value.participantes.length < 10) {
+    formData.value.participantes.push({ nombre: '', apellidos: '', edad: '' });
   }
-});
+};
 
-// const actividadesFiltradas = computed(() => {
-//   const hoy = new Date();
-//   hoy.setHours(0, 0, 0, 0);
-//   return actividades.value
-//     .filter(actividad => {
-//       const fechaActividad = new Date(actividad.fecha);
-//       return fechaActividad >= hoy && actividad.reservas && actividad.publicar;
-//     })
-//     .sort((a, b) => {
-//       const dateA = new Date(`${a.fecha}T${a.hora}`);
-//       const dateB = new Date(`${b.fecha}T${b.hora}`);
-//       return dateA - dateB;
-//     });
-// });
+const eliminarAsistente = (index) => {
+  if (formData.value.participantes.length > 1) {
+    formData.value.participantes.splice(index, 1);
+  }
+};
+
+const ajustarAPlazasDisponibles = () => {
+  const disponibles = plazasDisponibles.value;
+  if (disponibles > 0 && formData.value.participantes.length > disponibles) {
+    formData.value.participantes = formData.value.participantes.slice(0, disponibles);
+  }
+};
 
 const actividadesFiltradas = computed(() => {
   const hoy = new Date();
@@ -299,22 +389,38 @@ const actividadesFiltradas = computed(() => {
 
   return actividades.value
     .filter(actividad => {
-      // Forzamos hora local añadiendo T00:00:00 para evitar errores de zona horaria
       const fechaActividad = new Date(actividad.fecha + 'T00:00:00');
-
-      // Comprobamos fecha y aseguramos que reservas y publicar sean verdaderos (1 o true)
       return fechaActividad >= hoy && Number(actividad.reservas) === 1 && Number(actividad.publicar) === 1;
     })
-    .sort((a, b) => {
-      const dateA = new Date(`${a.fecha}T${a.hora}`);
-      const dateB = new Date(`${b.fecha}T${b.hora}`);
-      return dateA - dateB;
-    });
+    .sort((a, b) => new Date(`${a.fecha}T${a.hora}`) - new Date(`${b.fecha}T${b.hora}`));
 });
+
+// Plazas y estados
 const plazasDisponibles = computed(() => {
-  if (!actividadSeleccionada.value) return 0;
-  return actividadSeleccionada.value.plazas_totales - actividadSeleccionada.value.plazas_ocupadas;
+  if (!actividadSeleccionada.value || actividadSeleccionada.value.plazas_totales === undefined) return 0;
+  return Math.max(0, actividadSeleccionada.value.plazas_totales - actividadSeleccionada.value.plazas_ocupadas);
 });
+
+const actividadTotalmenteAgotada = computed(() => {
+  return plazasDisponibles.value <= 0;
+});
+
+const plazasInsuficientes = computed(() => {
+  return plazasDisponibles.value > 0 && totalAsistentes.value > plazasDisponibles.value;
+});
+
+const esModoListaEspera = computed(() => {
+  return actividadTotalmenteAgotada.value || plazasInsuficientes.value;
+});
+
+const textoBotonEnvio = computed(() => {
+  const total = totalAsistentes.value;
+  if (esModoListaEspera.value) {
+    return `Unir al grupo a la lista de espera (${total} ${total === 1 ? 'plaza' : 'plazas'})`;
+  }
+  return `Confirmar Reserva (${total} ${total === 1 ? 'plaza' : 'plazas'})`;
+});
+
 const formatProyecto = (slug) => {
   const map = {
     'zalla': 'Zalla Natura',
@@ -332,37 +438,7 @@ const formatearFecha = (fechaStr) => {
   return new Date(fechaStr).toLocaleDateString('es-ES', opciones);
 };
 
-// Modificamos el watch del ID para que busque o espere correctamente
-watch(() => route.params.id, async (id) => {
-  if (id) {
-    // Si la lista aún está vacía (por la asincronía del fetch), podemos buscarla o asegurar que cargue
-    if (actividades.value.length === 0) {
-      try {
-        const response = await fetch('http://localhost:5000/api/actividades');
-        if (response.ok) {
-          actividades.value = await response.json();
-        }
-      } catch (error) {
-        console.error("Error al cargar la actividad seleccionada:", error);
-      }
-    }
-
-    actividadSeleccionada.value = actividades.value.find(a => String(a.id) === String(id));
-    if (actividadSeleccionada.value) {
-      formData.value.imageRightsAccepted = false;
-    }
-  } else {
-    actividadSeleccionada.value = null;
-  }
-}, { immediate: true });
-
 const seleccionarActividad = (actividad) => {
-  if (typeof window.gtag === 'function') {
-    window.gtag('event', 'intento_reserva', {
-      'event_category': 'Reservas',
-      'event_label': actividad.titulo
-    });
-  }
   router.push({ name: 'reservaActividad', params: { id: actividad.id } });
 };
 
@@ -370,19 +446,34 @@ const volverALista = () => {
   router.push('/calendario');
 };
 
-const submitForm = async () => {
-  successMessage.value = '';
-  errorMessage.value = '';
+const cerrarModalYVolver = () => {
+  mostrarModalExito.value = false;
+  router.push('/calendario');
+};
 
+const enviarFormulario = async () => {
+  errorMessage.value = '';
+  enviando.value = true;
+
+  if (esModoListaEspera.value) {
+    await ejecutarListaEspera();
+  } else {
+    await ejecutarReserva();
+  }
+
+  enviando.value = false;
+};
+
+const ejecutarReserva = async () => {
   const payload = {
     actividad_id: Number(actividadSeleccionada.value.id),
-    nombre_contacto: formData.value.nombre,        // <-- Debe coincidir con schemas.py
-    apellidos_contacto: formData.value.apellidos,  // <-- Debe coincidir con schemas.py
+    nombre_contacto: formData.value.nombre,
+    apellidos_contacto: formData.value.apellidos,
     email: formData.value.email,
     phone: formData.value.phone,
-    num_personas: Number(formData.value.num_personas),
+    num_personas: totalAsistentes.value,
     permiso_fotos: Boolean(formData.value.imageRightsAccepted),
-    observaciones: formData.value.message || "",   // <-- Mapeado a observaciones
+    observaciones: formData.value.message || "",
     participantes: formData.value.participantes.map(p => ({
       nombre: p.nombre,
       apellidos: p.apellidos,
@@ -391,49 +482,68 @@ const submitForm = async () => {
   };
 
   try {
-    const response = await fetch('http://localhost:5000/api/reservas', {
+    const res = await fetch('http://localhost:5000/api/reservas', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload)
     });
 
-    const data = await response.json();
-
-    if (response.ok) {
-      mostrarModalExito.value = true; // <-- Asegúrate de que esté en true limpio
+    const data = await res.json();
+    if (res.ok) {
+      esListaEsperaModal.value = false;
       successMessage.value = '¡Reserva realizada con éxito! Las plazas han quedado asignadas.';
-
-      // Limpiamos el formulario por completo
-      formData.value = {
-        nombre: '',
-        apellidos: '',
-        email: '',
-        phone: '',
-        message: '',
-        privacyAccepted: false,
-        privacyAcceptedAviso: false,
-        imageRightsAccepted: false,
-        num_personas: 1,
-        participantes: [{ nombre: '', apellidos: '', edad: '' }]
-      };
-
-      // ... limpiar formulario ...
+      mostrarModalExito.value = true;
     } else {
-      // Si FastAPI devuelve un error de validación (array o string), lo capturamos bien
       const errorMsg = Array.isArray(data.detail)
-        ? data.detail.map(err => `${err.loc.join('.')}: ${err.msg}`).join(', ')
+        ? data.detail.map(e => `${e.loc.join('.')}: ${e.msg}`).join(', ')
         : (data.detail || 'Error al procesar la reserva.');
       throw new Error(errorMsg);
     }
-  } catch (error) {
-    errorMessage.value = error.message; // <-- Evitamos que salga [object Object]
-    console.error(error);
+  } catch (err) {
+    errorMessage.value = err.message;
+  }
+};
+
+const ejecutarListaEspera = async () => {
+  const payload = {
+    actividad_id: Number(actividadSeleccionada.value.id),
+    nombre: formData.value.nombre,
+    apellidos: formData.value.apellidos,
+    email: formData.value.email,
+    phone: formData.value.phone,
+    num_personas: totalAsistentes.value,
+    participantes: formData.value.participantes.map(p => ({
+      nombre: p.nombre,
+      apellidos: p.apellidos,
+      edad: Number(p.edad)
+    }))
+  };
+
+  try {
+    const res = await fetch('http://localhost:5000/api/lista-espera', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+
+    const data = await res.json();
+    if (res.ok) {
+      esListaEsperaModal.value = true;
+      successMessage.value = data.message || 'Tu grupo ha quedado registrado en la lista de espera. Si se liberan plazas suficientes, os avisaremos por correo.';
+      mostrarModalExito.value = true;
+    } else {
+      const errorMsg = Array.isArray(data.detail)
+        ? data.detail.map(e => `${e.loc.join('.')}: ${e.msg}`).join(', ')
+        : (data.detail || 'Error al registrarse en la lista de espera.');
+      throw new Error(errorMsg);
+    }
+  } catch (err) {
+    errorMessage.value = err.message;
   }
 };
 </script>
 
 <style scoped>
-/* ESTRUCTURA GENERAL */
 .container {
   margin-top: 5rem;
 }
@@ -443,7 +553,7 @@ const submitForm = async () => {
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  padding: 7rem 2rem 2rem 2rem;
+  padding: 2rem;
 }
 
 .container-grid {
@@ -453,7 +563,7 @@ const submitForm = async () => {
   justify-content: center;
 }
 
-/* TARJETAS (CARDS) */
+/* Tarjetas */
 .card {
   width: 320px;
   padding: 20px;
@@ -463,7 +573,6 @@ const submitForm = async () => {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s, box-shadow 0.3s;
   cursor: pointer;
-  position: relative;
   display: flex;
   flex-direction: column;
 }
@@ -487,117 +596,40 @@ const submitForm = async () => {
   flex-grow: 1;
 }
 
-/* PARTICIPANTES DINÁMICOS */
-.participantes-container {
-  background: #fdfdfd;
-  border: 1px solid #e2e8f0;
-  padding: 15px;
-  border-radius: 8px;
-  margin-bottom: 1.5rem;
-}
-
-.subtitulo-participantes {
-  margin-top: 0;
-  color: var(--shoftgreen);
-  font-size: 1.1rem;
-  border-bottom: 1px solid #edf2f7;
-  padding-bottom: 8px;
-  margin-bottom: 15px;
-}
-
-.participante-card {
-  background: #f7fafc;
-  border: 1px dashed #cbd5e0;
-  padding: 12px;
-  border-radius: 6px;
-  margin-bottom: 12px;
-}
-
-.participante-card h4 {
-  margin: 0 0 10px 0;
-  font-size: 0.95rem;
-  color: #4a5568;
-}
-
-/* BADGES */
-.badge {
-  display: block;
-  width: fit-content;
-  margin: 1rem auto 0 auto;
-  padding: 4px 12px;
-  border-radius: 20px;
-  font-size: 0.75rem;
-  font-weight: bold;
-  color: white;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
+.acciones-card {
+  margin-top: 1rem;
   text-align: center;
 }
 
-.badge.flysch {
-  background-color: orange;
-}
-
-.badge.naturgaua {
-  background-color: purple;
-}
-
-.badge.zalla {
-  background-color: blue;
-}
-
-.badge.eventos {
-  background-color: plum;
-}
-
-.badge.general {
-  background-color: green;
-}
-
-.badge-large {
-  display: inline-block;
-  padding: 5px 15px;
-  border-radius: 15px;
-  color: white;
+.btn-reserva {
+  width: 100%;
+  background-color: var(--green);
+  color: var(--white);
+  border: none;
+  padding: 10px;
+  border-radius: 4px;
+  cursor: pointer;
   font-weight: bold;
-  margin-bottom: 0.5rem;
   font-size: 0.9rem;
+  transition: all 0.3s ease;
 }
 
-.badge-large.flysch {
-  background-color: orange;
+.btn-reserva:hover {
+  background-color: var(--lightgreen);
 }
 
-.badge-large.naturgaua {
-  background-color: purple;
+.btn-externo {
+  display: block;
+  text-decoration: none;
+  background-color: var(--lightblue);
+  color: var(--white);
 }
 
-.badge-large.zalla {
-  background-color: blue;
+.btn-externo:hover {
+  background-color: var(--blue);
 }
 
-.badge-large.eventos {
-  background-color: plum;
-}
-
-.badge-large.general {
-  background-color: green;
-}
-
-/* INFO RÁPIDA */
-.info-rapida {
-  background: rgba(255, 255, 255, 0.5);
-  padding: 0.8rem;
-  border-radius: 0.5rem;
-  font-size: 0.9rem;
-}
-
-.info-rapida p {
-  margin: 4px 0;
-  color: #333;
-}
-
-/* IMÁGENES */
+/* Imágenes con efecto hover */
 .img-hover-container {
   position: relative;
   width: 100%;
@@ -635,15 +667,27 @@ const submitForm = async () => {
   opacity: 0;
 }
 
-/* FORMULARIO */
+.info-rapida {
+  background: rgba(255, 255, 255, 0.5);
+  padding: 0.8rem;
+  border-radius: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.info-rapida p {
+  margin: 4px 0;
+  color: var(--darkgrey);
+}
+
+/* Contenedor del Formulario */
 .contact-container {
-  max-width: 650px;
-  margin: 1rem auto 1rem auto;
+  max-width: 680px;
+  margin: 1rem auto 3rem auto;
   padding: 2rem;
   border: 1px solid var(--shoftgreen);
   border-radius: 8px;
-  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
-  background: white;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.08);
+  background: var(--white);
 }
 
 .header-reserva {
@@ -663,6 +707,74 @@ const submitForm = async () => {
   margin: 0.5rem 0;
 }
 
+.seccion-titulo {
+  color: var(--green);
+  border-bottom: 2px solid var(--supershoftgreen);
+  padding-bottom: 0.4rem;
+  margin: 2rem 0 1rem 0;
+}
+
+.texto-ayuda {
+  color: var(--grey);
+  font-size: 0.85rem;
+  margin: -0.5rem 0 1.25rem 0;
+}
+
+/* Cajas de aviso */
+.caja-aviso-espera {
+  background-color: var(--yellow);
+  border-left: 4px solid var(--orange);
+  padding: 1rem 1.25rem;
+  border-radius: 4px;
+  margin-bottom: 1.5rem;
+}
+
+.titulo-espera {
+  color: var(--darkyellow);
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+
+.caja-aviso-espera p {
+  color: var(--darkgrey);
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.btn-ajustar-plazas {
+  margin-top: 0.8rem;
+  background-color: var(--white);
+  color: var(--darkgreen);
+  border: 1px solid var(--green);
+  border-radius: 4px;
+  padding: 0.45rem 0.9rem;
+  font-size: 0.85rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.btn-ajustar-plazas:hover {
+  background-color: var(--green);
+  color: var(--white);
+}
+
+.aviso-plazas {
+  padding: 0.6rem 0.8rem;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+  background-color: var(--megashoftgreen);
+  color: var(--darkgreen);
+  font-size: 0.95rem;
+}
+
+.aviso-plazas.casi-lleno {
+  background-color: var(--yellow);
+  color: var(--darkyellow);
+}
+
+/* Formulario */
 .form-group {
   margin-bottom: 1.2rem;
 }
@@ -672,24 +784,98 @@ label {
   font-weight: bold;
   margin-bottom: 0.3rem;
   font-size: 0.95rem;
+  color: var(--darkgrey);
 }
 
-input,
-select,
-textarea {
+input, select, textarea {
   width: 100%;
   padding: 0.7rem;
   font-size: 1rem;
-  border: 1px solid #ddd;
+  border: 1px solid var(--lightgrey);
   border-radius: 4px;
   box-sizing: border-box;
 }
 
-input:focus,
-textarea:focus {
+input:focus, textarea:focus {
   outline: none;
-  border-color: var(--shoftgreen);
-  box-shadow: 0 0 0 2px var(--megashoftgreen);
+  border-color: var(--green);
+  box-shadow: 0 0 0 3px var(--supershoftgreen);
+}
+
+/* Fichas dinámicas de asistentes */
+.participantes-lista {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 1.2rem;
+}
+
+.participante-card {
+  background-color: var(--megashoftgreen);
+  border: 1px solid var(--supershoftgreen);
+  border-radius: 6px;
+  padding: 1.2rem;
+}
+
+.participante-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+
+.participante-titulo {
+  color: var(--darkgreen);
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+.btn-quitar {
+  background-color: var(--supershoftbrownred);
+  border: 1px solid var(--lightbrownred);
+  color: var(--brownred);
+  border-radius: 4px;
+  padding: 0.3rem 0.65rem;
+  font-size: 0.8rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.btn-quitar:hover {
+  background-color: var(--brownred);
+  color: var(--white);
+}
+
+.btn-anadir-asistente {
+  background-color: var(--megashoftgreen);
+  border: 1px dashed var(--green);
+  color: var(--darkgreen);
+  border-radius: 6px;
+  padding: 0.65rem 1rem;
+  font-size: 0.9rem;
+  font-weight: bold;
+  cursor: pointer;
+  width: 100%;
+  margin-bottom: 1.5rem;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.btn-anadir-asistente:hover {
+  background-color: var(--supershoftgreen);
+  border-color: var(--darkgreen);
+}
+
+.participante-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 90px;
+  gap: 0.75rem;
+}
+
+.form-subgroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
 }
 
 .caja-fotos {
@@ -702,7 +888,7 @@ textarea:focus {
 
 .titulo-fotos {
   font-weight: bold;
-  color: var(--shoftgreen);
+  color: var(--green);
   margin-top: 0;
   margin-bottom: 10px;
 }
@@ -711,7 +897,7 @@ textarea:focus {
   display: block;
   margin-top: 5px;
   font-size: 0.85rem;
-  color: #666;
+  color: var(--grey);
   font-style: italic;
 }
 
@@ -724,6 +910,7 @@ textarea:focus {
 
 .horizontalC input {
   width: auto;
+  margin-top: 3px;
 }
 
 .horizontalC label {
@@ -731,42 +918,14 @@ textarea:focus {
   font-size: 0.9rem;
 }
 
-.btn-submit {
-  width: 100%;
-  padding: 1rem;
-  background-color: var(--green);
-  color: white;
-  border: none;
-  border-radius: 4px;
-  font-size: 1.1rem;
-  font-weight: bold;
-  cursor: pointer;
-  transition: background 0.3s;
-}
-
-.btn-submit:hover {
-  background-color: var(--lightgreen);
-}
-
-.volver-btn {
-  background: none;
-  border: none;
-  color: #666;
-  text-decoration: underline;
-  cursor: pointer;
-  margin-top: 1rem;
-}
-
-.success-message {
-  color: var(--green);
+.center {
   text-align: center;
-  margin-top: 1rem;
-  font-weight: bold;
 }
 
-.error-message {
-  color: red;
-  text-align: center;
-  margin-top: 1rem;
+/* Responsive */
+@media (max-width: 650px) {
+  .participante-grid {
+    grid-template-columns: 1fr;
+  }
 }
 </style>

@@ -50,6 +50,7 @@ import FitxasEtnobotanicasEnkarterri from "../components/contenido-creado/Fitxas
 import Calendario from "@/components/calendario/CalendarioActividades2025.vue";
 import CancelarReservaView from "../views/CancelarReservaView.vue";
 import EditarReservaView from "../views/EditarReservaView.vue";
+import ConfirmarEsperaView from "../views/ConfirmarEsperaView.vue";
 
 const routes = [
   { path: "/", name: "inicio", component: InicioView },
@@ -197,8 +198,13 @@ const routes = [
   {
     path: "/reservas/editar",
     name: "editarReserva",
-    component: EditarReservaView, // <-- 3. Ruta para el botón de modificar del correo
+    component: EditarReservaView,
   },
+  {
+  path: '/reservas/confirmar-espera',
+  name: 'confirmarEspera',
+  component: ConfirmarEsperaView,
+},
 
   {
     path: "/:pathMatch(.*)*",

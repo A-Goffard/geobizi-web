@@ -1,5 +1,5 @@
 <template>
-  <div class="contenedor-principal">
+  <div class="contenedor-principal contenedor-calendario">
     <Calendario />
 
     <div class="leyendaContenedor">
@@ -7,8 +7,13 @@
 
       <h3>Filtrar por tipo:</h3>
       <div class="leyenda">
-        <button v-for="(info, key) in infoProyectos" :key="key" @click="filtroSeleccionado = key"
-          class="leyenda-item btn-filtro" :class="{ activo: filtroSeleccionado === key }">
+        <button 
+          v-for="(info, key) in infoProyectos" 
+          :key="key" 
+          @click="filtroSeleccionado = key"
+          class="leyenda-item btn-filtro" 
+          :class="{ activo: filtroSeleccionado === key }"
+        >
           <span class="punto leyenda-punto" :style="{ backgroundColor: info.color }"></span>
           <span>{{ info.nombre }}</span>
         </button>
@@ -33,9 +38,7 @@
             <img :src="actividad.imagen2" :alt="actividad.titulo" class="img-hover" loading="lazy" />
           </div>
 
-          <!-- DESCRIPCIÓN Y PÚBLICO EN LA FICHA -->
           <p class="descripcion">{{ actividad.descripcion }}</p>
-          
 
           <div class="info-rapida">
             <p><strong>📅 {{ actividad.fecha }}</strong></p>
@@ -52,24 +55,40 @@
           </div>
 
           <div class="reserva-status">
-            <!-- CASO 1: Reservas externas (linkReserva tiene valor) -->
-            <a v-if="actividad.reservas && actividad.linkReserva" :href="actividad.linkReserva" target="_blank"
-              class="btn-reserva btn-externo">
+            <!-- CASO 1: Enlace externo -->
+            <a 
+              v-if="actividad.reservas && actividad.linkReserva" 
+              :href="actividad.linkReserva" 
+              target="_blank"
+              class="btn-reserva btn-externo"
+            >
               Inscribirse (web externa)
             </a>
 
-            <!-- CASO 2: Reservas internas (típicas de Geobizi) -->
-            <button v-else-if="actividad.reservas" class="btn-reserva"
-              @click="router.push({ name: 'reservaActividad', params: { id: actividad.id } })">
+            <!-- CASO 2A: Reservas de Geobizi - Plazas agotadas (Lista de espera) -->
+            <button 
+              v-else-if="actividad.reservas && estaAgotada(actividad)" 
+              class="btn-reserva btn-espera"
+              @click="irAReserva(actividad.id)"
+            >
+              ⚠️ Plazas agotadas · Lista de espera
+            </button>
+
+            <!-- CASO 2B: Reservas de Geobizi - Plazas disponibles -->
+            <button 
+              v-else-if="actividad.reservas" 
+              class="btn-reserva"
+              @click="irAReserva(actividad.id)"
+            >
               Inscribirse / Reservar
             </button>
 
-            <!-- CASO 4: Pendiente / Por determinar -->
+            <!-- CASO 3: Inscripción pendiente o por determinar -->
             <span v-else-if="actividad.estadoReserva === 'pendiente'" class="aviso-pendiente">
               ⏳ Inscripción por determinar
             </span>
 
-            <!-- CASO 3: Sin reserva / Entrada libre -->
+            <!-- CASO 4: Entrada libre -->
             <span v-else class="aviso-no-reserva">
               Entrada libre / Sin reserva
             </span>
@@ -83,12 +102,39 @@
 <script setup>
 import Calendario from '@/components/calendario/CalendarioActividades2025.vue'
 import { useHead } from '@vueuse/head'
-import { ref, computed } from 'vue'
+import { ref, computed, onMounted } from 'vue'
 import { useRouter } from 'vue-router';
-import actividades from '@/assets/json/actividades.json';
+import actividadesJson from '@/assets/json/actividades.json';
 
 const router = useRouter();
-const filtroSeleccionado = ref('todos')
+const filtroSeleccionado = ref('todos');
+
+// Estado reactivo inicializado con el JSON
+const listaActividades = ref(actividadesJson);
+
+// Sincroniza en tiempo real las plazas ocupadas desde el backend SQLite
+onMounted(async () => {
+  try {
+    const res = await fetch('http://localhost:5000/api/actividades');
+    if (res.ok) {
+      const actividadesBd = await res.json();
+      listaActividades.value = listaActividades.value.map(act => {
+        const bd = actividadesBd.find(b => b.id === act.id);
+        if (bd) {
+          return {
+            ...act,
+            plazas_totales: bd.plazas_totales,
+            plazas_ocupadas: bd.plazas_ocupadas
+          };
+        }
+        return act;
+      });
+    }
+  } catch (err) {
+    // Si la API no responde en local, continúa con los datos del JSON
+    console.warn('Aviso: Cargando aforo base desde JSON local.', err);
+  }
+});
 
 const infoProyectos = {
   flysch: { nombre: 'FlyschBizkaia en Familia', color: 'orange', descripcion: 'Ruta geológica y medioambiental por la Costa de Getxo...' },
@@ -96,7 +142,7 @@ const infoProyectos = {
   zalla: { nombre: 'Actividad de Zalla Natura', color: 'blue', descripcion: 'Talleres y rutas en el entorno de Zalla...' },
   eventos: { nombre: 'Ferias y Eventos', color: 'plum', descripcion: 'Encuéntranos en los stands de divulgación...' },
   general: { nombre: 'Otras actividades', color: 'green', descripcion: 'Talleres variados y eventos especiales...' }
-}
+};
 
 const formatProyecto = (slug) => {
   const map = {
@@ -109,19 +155,29 @@ const formatProyecto = (slug) => {
   return map[slug] || 'Actividad';
 };
 
+// Comprueba si una actividad ya no tiene hueco libre
+const estaAgotada = (actividad) => {
+  if (actividad.plazas_totales && actividad.plazas_ocupadas >= actividad.plazas_totales) {
+    return true;
+  }
+  return false;
+};
+
+const irAReserva = (id) => {
+  router.push({ name: 'reservaActividad', params: { id } });
+};
+
 const actividadesFiltradas = computed(() => {
   const hoy = new Date();
   hoy.setHours(0, 0, 0, 0);
 
-  return actividades.filter(a => {
+  return listaActividades.value.filter(a => {
     const fechaActividad = new Date(a.fecha);
     const esFutura = fechaActividad >= hoy;
     const coincideFiltro = filtroSeleccionado.value === 'todos' || a.proyecto === filtroSeleccionado.value;
     return a.publicar && esFutura && coincideFiltro;
-  }).sort((a, b) => {
-    return new Date(a.fecha) - new Date(b.fecha);
-  });
-})
+  }).sort((a, b) => new Date(a.fecha) - new Date(b.fecha));
+});
 
 const pageUrl = 'https://www.geobizi.com/calendario'
 const ogImage = 'https://www.geobizi.com/imagenes/proyectos/zallanatura/zallanatura2.avif'
@@ -142,25 +198,18 @@ useHead({
     { property: 'og:image', content: ogImage }
   ],
   link: [{ rel: 'canonical', href: pageUrl }]
-})
+});
 </script>
 
 <style scoped>
 /* =========================================
-   1. ESTRUCTURA Y CONTENEDORES GENERALES
+   1. ESTRUCTURA Y CONTENEDOR ESPECÍFICO
    ========================================= */
-.contenedor-principal {
-  padding-top: 7rem;
-  background-color: #fff;
-  padding-bottom: 4rem;
+.contenedor-calendario {
+  max-width: 1200px;
+  margin: 0 auto;
   min-height: 100vh;
-}
-
-@media (min-width: 950px) {
-  .contenedor-principal {
-    max-width: 1200px;
-    margin: 0 auto;
-  }
+  padding-bottom: 4rem;
 }
 
 .leyendaContenedor {
@@ -183,7 +232,7 @@ useHead({
   align-items: center;
   gap: 10px;
   border: 1px solid #eee;
-  background: white;
+  background: var(--white);
   padding: 10px 18px;
   border-radius: 25px;
   cursor: pointer;
@@ -212,7 +261,6 @@ useHead({
   flex-shrink: 0;
 }
 
-/* Info del proyecto al filtrar */
 .info-detalle-proyecto {
   background-color: #f9fdfb;
   border-left: 4px solid var(--shoftgreen);
@@ -259,116 +307,11 @@ useHead({
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
-/* Badges (Etiquetas de tipo de actividad) */
-.badge {
-  display: block;
-  width: fit-content;
-  padding: 4px 12px;
-  border-radius: 0.25rem;
-  font-size: 0.75rem;
-  font-weight: bold;
-  color: white;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  text-align: center;
-}
-
-.acciones-card {
-  margin-top: 12px;
-  border-top: 1px solid #eee;
-  padding-top: 10px;
-}
-
-.btn-reserva {
-  width: 100%;
-  background-color: var(--green);
-  color: white;
-  border: none;
-  padding: 8px;
-  border-radius: 4px;
-  cursor: pointer;
-  font-weight: bold;
-  transform: ease all 0.3s;
-}
-
-.btn-reserva:hover {
-  background-color: var(--lightgreen);
-}
-
-/* Botón especial para reservas externas */
-.btn-externo {
-  display: block;
-  text-align: center;
-  background-color: var(--lightblue);
-  text-decoration: none;
-  padding: 8px;
-  border-radius: 4px;
-  color: white;
-  font-weight: bold;
-}
-
-.btn-externo:hover {
-  background-color: var(--blue);
-  opacity: 0.9;
-}
-
-a {
-  font-style: normal;
-  font-size: 0.9rem;
-}
-
-.aviso-no-reserva {
-  display: block;
-  text-align: center;
-  font-size: 0.85rem;
-  color: #888;
-  font-style: italic;
-}
-
-.aviso-pendiente {
-  display: block;
-  text-align: center;
-  font-size: 0.85rem;
-  color: #b7791f; /* Un tono anaranjado/marrón elegante que indica estado pendiente */
-  font-weight: bold;
-  background-color: #fef3c7; /* Fondo sutil clarito */
-  padding: 6px;
-  border-radius: 4px;
-}
-
-.badge-container {
-  margin-top: 10px;
-  display: flex;
-  justify-content: center;
-}
-
-.badge.flysch {
-  background-color: orange;
-}
-
-.badge.naturgaua {
-  background-color: purple;
-}
-
-.badge.zalla {
-  background-color: blue;
-}
-
-.badge.eventos {
-  background-color: plum;
-}
-
-.badge.general {
-  background-color: green;
-}
-
 .card h2 {
   margin-top: 0.5rem;
   font-size: 1.2rem;
   margin-bottom: 0.8rem;
   line-height: 1.3;
-  padding-right: 0;
-  /* Para no solapar con la badge */
 }
 
 .descripcion {
@@ -385,7 +328,7 @@ a {
   aspect-ratio: 1/1;
   overflow: hidden;
   border-radius: 0.5rem;
-  margin-bottom: 0rem;
+  margin-bottom: 0;
 }
 
 .img-hover-container img {
@@ -417,7 +360,7 @@ a {
 }
 
 .info-rapida {
-  background: rgba(255, 255, 255, 0.6);
+  background: rgba(255, 255, 255, 0.7);
   padding: 0.8rem;
   border-radius: 0.5rem;
   font-size: 0.9rem;
@@ -425,7 +368,7 @@ a {
 
 .info-rapida p {
   margin: 4px 0;
-  color: #333;
+  color: var(--darkgrey);
 }
 
 .precio-tag {
@@ -433,7 +376,29 @@ a {
   color: var(--green);
 }
 
-/* SECCIÓN NUEVA: Estado de Reserva en ficha */
+/* Badges temáticos */
+.badge-container {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+}
+
+.badge {
+  display: block;
+  width: fit-content;
+  padding: 4px 12px;
+  border-radius: 0.25rem;
+  font-size: 0.75rem;
+  font-weight: bold;
+  color: var(--white);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  text-align: center;
+}
+
+/* =========================================
+   4. ESTADO DE RESERVAS Y BOTONES
+   ========================================= */
 .reserva-status {
   margin-top: 1.2rem;
   padding-top: 1rem;
@@ -441,182 +406,74 @@ a {
   text-align: center;
 }
 
-.msg-abierto {
-  color: var(--green);
-  font-weight: bold;
-  font-size: 0.85rem;
-  margin-bottom: 0.6rem;
-}
-
-.msg-cerrado {
-  color: #888;
-  font-size: 0.8rem;
-  font-style: italic;
-  margin: 10px 0;
-}
-
-
-
-/* =========================================
-   4. FORMULARIO DE RESERVA (CONTACT-CONTAINER)
-   ========================================= */
-.contact-container {
-  max-width: 650px;
-  margin: 2rem auto 4rem auto;
-  padding: 2rem;
-  border: 1px solid var(--shoftgreen);
-  border-radius: 12px;
-  background: white;
-  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.08);
-}
-
-.header-reserva {
-  margin-bottom: 1.5rem;
-  border-bottom: 1px solid #eee;
-  padding-bottom: 1rem;
-}
-
-.badge-large {
-  display: inline-block;
-  padding: 5px 15px;
-  border-radius: 0.5rem;
-  color: white;
-  font-weight: bold;
-  margin-bottom: 0.5rem;
-  font-size: 0.8rem;
-}
-
-.info-reserva-detalle {
-  margin-bottom: 2rem;
-  background: var(--megashoftgreen);
-  padding: 1.2rem;
-  border-radius: 0.5rem;
-}
-
-.form-group {
-  margin-bottom: 1.2rem;
-}
-
-label {
-  display: block;
-  font-weight: bold;
-  margin-bottom: 0.4rem;
-  font-size: 0.9rem;
-}
-
-input,
-textarea {
+.btn-reserva {
   width: 100%;
-  padding: 0.8rem;
-  border: 1px solid #ddd;
-  border-radius: 6px;
+  background-color: var(--green);
+  color: var(--white);
+  border: none;
+  padding: 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+}
+
+.btn-reserva:hover {
+  background-color: var(--lightgreen);
+  transform: translateY(-2px);
+}
+
+/* Botón específico para lista de espera cuando está agotado */
+.btn-espera {
+  background-color: #d97706; /* Ámbar cálido visible */
+  color: var(--white);
+}
+
+.btn-espera:hover {
+  background-color: #b45309;
+}
+
+/* Botón especial para reservas externas */
+.btn-externo {
+  display: block;
+  text-align: center;
+  background-color: var(--lightblue);
+  color: var(--white);
+  padding: 10px;
+  border-radius: 4px;
+  font-weight: bold;
   box-sizing: border-box;
 }
 
-input:focus,
-textarea:focus {
-  outline: none;
-  border-color: var(--shoftgreen);
-  box-shadow: 0 0 0 3px var(--megashoftgreen);
+.btn-externo:hover {
+  background-color: var(--blue);
+  color: var(--white);
 }
 
-.highlight-group {
-  background-color: #f0fdf4;
-  padding: 15px;
-  border-radius: 8px;
-  border: 1px dashed var(--shoftgreen);
-  margin-bottom: 1.5rem;
-}
-
-.caja-fotos {
-  background-color: #f9f9f9;
-  border: 1px solid #eee;
-  border-radius: 8px;
-  padding: 15px;
-  margin-bottom: 1.5rem;
-}
-
-.titulo-fotos {
-  font-weight: bold;
-  color: var(--shoftgreen);
-  margin-bottom: 8px;
+.aviso-no-reserva {
   display: block;
-}
-
-.nota-fotos {
-  font-size: 0.8rem;
-  color: #777;
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--grey);
   font-style: italic;
 }
 
-.horizontalC {
-  display: flex;
-  gap: 12px;
-  margin-bottom: 1rem;
-  align-items: flex-start;
-}
-
-.horizontalC input {
-  width: auto;
-  margin-top: 4px;
-}
-
-.horizontalC label {
-  font-weight: normal;
+.aviso-pendiente {
+  display: block;
+  text-align: center;
   font-size: 0.85rem;
-  line-height: 1.4;
-}
-
-.btn-submit {
-  width: 100%;
-  padding: 1.2rem;
-  background-color: var(--green);
-  color: white;
-  border: none;
-  border-radius: 6px;
-  font-size: 1.1rem;
+  color: var(--darkyellow);
   font-weight: bold;
-  cursor: pointer;
-  transition: background 0.3s;
-}
-
-.btn-submit:hover {
-  background-color: var(--lightgreen);
-}
-
-.volver-btn {
-  background: none;
-  border: none;
-  color: #888;
-  text-decoration: underline;
-  cursor: pointer;
-  margin-top: 1.5rem;
-  font-size: 0.9rem;
-}
-
-.center {
-  text-align: center;
-}
-
-/* Mensajes de feedback */
-.success-message {
-  color: var(--green);
-  text-align: center;
-  margin-top: 1rem;
-  font-weight: bold;
-}
-
-.error-message {
-  color: #d32f2f;
-  text-align: center;
-  margin-top: 1rem;
+  background-color: var(--yellow);
+  padding: 8px;
+  border-radius: 4px;
 }
 
 /* =========================================
    5. RESPONSIVE
    ========================================= */
 @media (max-width: 768px) {
-
   .leyendaContenedor,
   .fichas-container {
     padding: 0 1.5rem;
@@ -630,12 +487,7 @@ textarea:focus {
     width: 100%;
   }
 
-  .contact-container {
-    margin: 1rem;
-    padding: 1.5rem;
-  }
-
-  .contenedor-principal {
+  .contenedor-calendario {
     padding-top: 5.5rem;
   }
 }

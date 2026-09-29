@@ -14,7 +14,7 @@ def init_db():
     conn = get_db_connection()
     cursor = conn.cursor()
     
-    # Tabla de Actividades con todos tus campos
+    # 1. Tabla de Actividades
     cursor.execute("""
         CREATE TABLE IF NOT EXISTS actividades (
             id INTEGER PRIMARY KEY,
@@ -42,7 +42,7 @@ def init_db():
         )
     """)
     
-    # Tabla de Reservas principales
+    # 2. Tabla de Reservas (incluye estado: 'confirmada' o 'lista_espera')
     cursor.execute("""
         CREATE TABLE IF NOT EXISTS reservas (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -55,11 +55,29 @@ def init_db():
             token TEXT UNIQUE NOT NULL,
             permiso_fotos BOOLEAN DEFAULT 0,
             observaciones TEXT,
+            estado TEXT NOT NULL DEFAULT 'confirmada',
+            fecha_creacion DATETIME DEFAULT CURRENT_TIMESTAMP,
             FOREIGN KEY (actividad_id) REFERENCES actividades (id)
         )
     """)
 
-    # Tabla de Participantes (asistentes con nombre y edad)
+    # Migración automática si la tabla ya existía en tu equipo sin estas columnas
+    try:
+        cursor.execute("ALTER TABLE reservas ADD COLUMN estado TEXT NOT NULL DEFAULT 'confirmada'")
+    except sqlite3.OperationalError:
+        pass  # La columna ya existe
+
+    try:
+        cursor.execute("ALTER TABLE reservas ADD COLUMN fecha_creacion DATETIME DEFAULT CURRENT_TIMESTAMP")
+    except sqlite3.OperationalError:
+        pass  # La columna ya existe
+    
+    # En init_db() dentro de database.py:
+    try:
+        cursor.execute("ALTER TABLE reservas ADD COLUMN expiracion_oferta DATETIME")
+    except sqlite3.OperationalError:
+        pass
+    # 3. Tabla de Participantes (asistentes asociados a la reserva)
     cursor.execute("""
         CREATE TABLE IF NOT EXISTS participantes (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -73,7 +91,7 @@ def init_db():
     
     conn.commit()
     
-    # Volcado automático desde el JSON si la tabla está vacía
+    # Volcado automático inicial desde el JSON si la tabla de actividades está vacía
     cursor.execute("SELECT COUNT(*) FROM actividades")
     if cursor.fetchone()[0] == 0:
         json_path = "actividades.json"
