@@ -314,7 +314,8 @@ a:hover {
 
 .btn-secundario:hover,
 .btn-cancelar:hover {
-  background-color: #cacaca;
+  background-color: var(--lightgrey);
+  filter: brightness(0.92); /* Oscurece ligeramente el gris de forma natural */
   transform: translateY(-2px);
 }
 

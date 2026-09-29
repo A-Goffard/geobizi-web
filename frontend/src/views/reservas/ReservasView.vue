@@ -150,60 +150,23 @@
           Indica los datos de cada persona participante (incluyéndote a ti si vas a asistir a la actividad).
         </p>
 
-        <div class="participantes-lista">
-          <div 
-            v-for="(p, index) in formData.participantes" 
-            :key="index" 
-            class="participante-card"
-          >
-            <div class="participante-header">
-              <h4 class="participante-titulo">Asistente {{ index + 1 }}</h4>
-              
-              <!-- Solo se muestra el botón quitar si hay más de 1 asistente -->
-              <button 
-                v-if="formData.participantes.length > 1" 
-                type="button" 
-                @click="eliminarAsistente(index)" 
-                class="btn-quitar"
-                title="Quitar asistente"
-              >
-                ✕ Quitar
-              </button>
-            </div>
+<div class="participantes-lista">
+  <ParticipanteCard
+    v-for="(p, index) in formData.participantes"
+    :key="index"
+    v-model="formData.participantes[index]"
+    :index="index"
+    :can-remove="formData.participantes.length > 1"
+    @remove="eliminarAsistente(index)"
+  />
+</div>
 
-            <div class="participante-grid">
-              <div class="form-subgroup">
-                <label :for="'p-nombre-' + index">Nombre:</label>
-                <input type="text" :id="'p-nombre-' + index" v-model="p.nombre" required />
-              </div>
-
-              <div class="form-subgroup">
-                <label :for="'p-apellidos-' + index">Apellidos:</label>
-                <input type="text" :id="'p-apellidos-' + index" v-model="p.apellidos" required />
-              </div>
-
-              <div class="form-subgroup grupo-edad">
-                <label :for="'p-edad-' + index">Edad:</label>
-                <input 
-                  type="number" 
-                  :id="'p-edad-' + index" 
-                  v-model.number="p.edad" 
-                  min="0" 
-                  max="120" 
-                  required
-                  placeholder="Ej: 8" 
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Botón para sumar acompañantes (máximo 10 personas por reserva) -->
+        <!-- Botón para sumar acompañantes (se deshabilita al alcanzar el aforo total) -->
         <button 
-          v-if="formData.participantes.length < 10"
           type="button" 
           @click="agregarAsistente" 
           class="btn-anadir-asistente"
+          :disabled="totalAsistentes >= topeMaximo"
         >
           ➕ Añadir otro asistente
         </button>
@@ -265,28 +228,24 @@
     </div>
 
     <!-- MODAL DE ÉXITO BLOQUEANTE -->
-    <div v-if="mostrarModalExito" class="modal-overlay">
-      <div class="modal-tarjeta">
-        <div class="modal-icono">{{ esListaEsperaModal ? '📋' : '🌿' }}</div>
-        <h3 class="modal-titulo-exito">
-          {{ esListaEsperaModal ? '¡Anotados en la lista de espera!' : '¡Reserva Confirmada!' }}
-        </h3>
-        <p class="modal-subtexto">{{ successMessage }}</p>
-        <div class="modal-acciones">
-          <button @click="cerrarModalYVolver" class="btn-accion">
-            Aceptar y volver
-          </button>
-        </div>
-      </div>
-    </div>
+<!-- Reemplaza el div manual .modal-overlay por esto: -->
+<ModalExito
+  :visible="mostrarModalExito"
+  :es-lista-espera="esListaEsperaModal"
+  :mensaje="successMessage"
+  @cerrar="cerrarModalYVolver"
+/>
 
   </div>
 </template>
 
 <script setup>
+import ParticipanteCard from '@/components/reservas/ParticipanteCard.vue';
+import ModalExito from '@/components/reservas/ModalExito.vue';
 import { ref, computed, watch, onMounted } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import { useHead } from '@vueuse/head';
+
 
 const route = useRoute();
 const router = useRouter();
@@ -311,7 +270,6 @@ const actividadSeleccionada = ref(null);
 const mostrarModalExito = ref(false);
 const esListaEsperaModal = ref(false);
 const enviando = ref(false);
-
 const successMessage = ref('');
 const errorMessage = ref('');
 
@@ -342,9 +300,9 @@ const cargarActividades = async () => {
 const verificarSeleccionActividad = () => {
   const id = route.params.id;
   if (id) {
-    actividadSeleccionada.value = actividades.value.find(a => String(a.id) === String(id));
-    if (actividadSeleccionada.value) {
-      formData.value.imageRightsAccepted = false;
+    const actividadActualizada = actividades.value.find(a => String(a.id) === String(id));
+    if (actividadActualizada) {
+      actividadSeleccionada.value = actividadActualizada;
     }
   } else {
     actividadSeleccionada.value = null;
@@ -364,10 +322,17 @@ const totalAsistentes = computed(() => {
   return formData.value.participantes.length;
 });
 
+// El tope máximo ahora es reactivo y toma las plazas totales de la actividad (o 20 por defecto)
+const topeMaximo = computed(() => {
+  return actividadSeleccionada.value?.plazas_totales || 20;
+});
+
 const agregarAsistente = () => {
-  if (formData.value.participantes.length < 10) {
-    formData.value.participantes.push({ nombre: '', apellidos: '', edad: '' });
+  if (formData.value.participantes.length >= topeMaximo.value) {
+    alert(`No puedes añadir más de ${topeMaximo.value} personas (aforo máximo de la actividad).`);
+    return;
   }
+  formData.value.participantes.push({ nombre: '', apellidos: '', edad: '' });
 };
 
 const eliminarAsistente = (index) => {
@@ -489,14 +454,27 @@ const ejecutarReserva = async () => {
     });
 
     const data = await res.json();
+
     if (res.ok) {
       esListaEsperaModal.value = false;
       successMessage.value = '¡Reserva realizada con éxito! Las plazas han quedado asignadas.';
       mostrarModalExito.value = true;
     } else {
+      // 1. Extraer el mensaje del backend
       const errorMsg = Array.isArray(data.detail)
         ? data.detail.map(e => `${e.loc.join('.')}: ${e.msg}`).join(', ')
         : (data.detail || 'Error al procesar la reserva.');
+
+      // 2. Si el fallo es por falta de plazas (alguien reservó antes)
+      if (res.status === 400 && (errorMsg.includes('plazas') || errorMsg.includes('libres'))) {
+        // Refrescamos los datos reales desde el servidor
+        await cargarActividades();
+        
+        // Mensaje pedagógico informando de la transición a lista de espera
+        errorMessage.value = '⚠️ Las últimas plazas acaban de reservarse hace un instante. Hemos actualizado el formulario para que puedas apuntar a tu grupo a la lista de espera directamente.';
+        return;
+      }
+
       throw new Error(errorMsg);
     }
   } catch (err) {
@@ -507,11 +485,13 @@ const ejecutarReserva = async () => {
 const ejecutarListaEspera = async () => {
   const payload = {
     actividad_id: Number(actividadSeleccionada.value.id),
-    nombre: formData.value.nombre,
-    apellidos: formData.value.apellidos,
+    nombre_contacto: formData.value.nombre,
+    apellidos_contacto: formData.value.apellidos,
     email: formData.value.email,
     phone: formData.value.phone,
     num_personas: totalAsistentes.value,
+    permiso_fotos: Boolean(formData.value.imageRightsAccepted),
+    observaciones: formData.value.message || "",
     participantes: formData.value.participantes.map(p => ({
       nombre: p.nombre,
       apellidos: p.apellidos,

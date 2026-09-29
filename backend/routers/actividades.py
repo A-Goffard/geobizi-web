@@ -1,5 +1,5 @@
 from fastapi import APIRouter
-from database import get_db_connection
+from core.database import get_db_connection
 
 router = APIRouter(tags=["Actividades"])
 

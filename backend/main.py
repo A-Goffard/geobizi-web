@@ -1,7 +1,7 @@
 import os
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from database import init_db
+from core.database import init_db
 from routers import actividades, reservas
 
 app = FastAPI(title="Geobizi TIK API de Reservas", version="1.0")

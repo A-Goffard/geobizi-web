@@ -59,59 +59,27 @@
           <div v-if="plazasLibresAdicionales > 0" class="aviso-disponibles">
             ℹ️ Quedan <strong>{{ plazasLibresAdicionales }}</strong> {{ plazasLibresAdicionales === 1 ? 'plaza libre adicional' : 'plazas libres adicionales' }} por si deseas añadir a más personas.
           </div>
+
           <div v-else class="aviso-completo">
             ⚠️ Aforo completo: no quedan más plazas libres para añadir más asistentes a esta actividad.
           </div>
         </div>
 
-        <!-- Lista dinámica de asistentes -->
+        <!-- Lista dinámica de asistentes mediante ParticipanteCard reutilizable -->
         <div class="participantes-lista">
-          <div v-for="(p, index) in participantes" :key="index" class="participante-card">
-            <div class="participante-header">
-              <h4 class="participante-titulo">Asistente {{ index + 1 }}</h4>
-
-              <!-- Solo se muestra si hay más de 1 persona en la reserva -->
-              <button 
-                v-if="participantes.length > 1" 
-                type="button" 
-                @click="solicitarEliminarAsistente(index)"
-                class="btn-quitar" 
-                title="Quitar a este asistente"
-              >
-                ✕ Quitar
-              </button>
-            </div>
-
-            <div class="participante-grid">
-              <div class="form-subgroup">
-                <label :for="'p-nombre-' + index">Nombre:</label>
-                <input type="text" :id="'p-nombre-' + index" v-model="p.nombre" required class="form-input" />
-              </div>
-
-              <div class="form-subgroup">
-                <label :for="'p-apellidos-' + index">Apellidos:</label>
-                <input type="text" :id="'p-apellidos-' + index" v-model="p.apellidos" required class="form-input" />
-              </div>
-
-              <div class="form-subgroup grupo-edad">
-                <label :for="'p-edad-' + index">Edad:</label>
-                <input 
-                  type="number" 
-                  :id="'p-edad-' + index" 
-                  v-model.number="p.edad" 
-                  min="0" 
-                  max="120" 
-                  required
-                  class="form-input" 
-                />
-              </div>
-            </div>
-          </div>
+          <ParticipanteCard
+            v-for="(p, index) in participantes"
+            :key="index"
+            v-model="participantes[index]"
+            :index="index"
+            :can-remove="participantes.length > 1"
+            @remove="solicitarEliminarAsistente(index)"
+          />
         </div>
 
         <!-- Botón para añadir asistentes cómodamente -->
         <button 
-          v-if="plazasLibresAdicionales > 0"
+          v-if="plazasLibresAdicionales > 0" 
           type="button" 
           @click="agregarAsistente" 
           class="btn-anadir-asistente"
@@ -129,7 +97,6 @@
           <button type="submit" class="btn-guardar" :disabled="guardando">
             {{ guardando ? 'Guardando cambios...' : 'Guardar Cambios' }}
           </button>
-
           <button type="button" @click="router.push('/calendario')" class="btn-cancelar">
             Volver
           </button>
@@ -139,8 +106,8 @@
       </form>
     </div>
 
-    <!-- MODAL DE DOBLE VERIFICACIÓN PARA QUITAR ASISTENTE -->
-    <div v-if="mostrarModalQuitar" class="modal-overlay">
+    <!-- Modal de confirmación defensivo al quitar asistente -->
+    <div v-if="mostrarModalQuitar" class="modal-overlay" @click.self="cancelarEliminarAsistente">
       <div class="modal-tarjeta">
         <div class="modal-icono">⚠️</div>
         <h3 class="modal-titulo">¿Quitar a este asistente?</h3>
@@ -150,9 +117,7 @@
             <strong>Atención: Esta plaza se liberará.</strong>
           </p>
           <p class="modal-subtexto">
-            Estás a punto de quitar a
-            <strong>{{ asistenteSeleccionadoInfo }}</strong>. Al guardar los cambios, esta plaza quedará disponible para
-            otras personas y <strong>podrías no recuperarla</strong> si la actividad se llena.
+            Estás a punto de quitar a <strong>{{ asistenteSeleccionadoInfo }}</strong>. Al guardar los cambios, esta plaza quedará disponible para la lista de espera u otras personas y <strong>podrías no recuperarla</strong> si la actividad se llena.
           </p>
         </div>
 
@@ -167,30 +132,23 @@
       </div>
     </div>
 
-    <!-- MODAL DE ÉXITO TRAS MODIFICAR LA RESERVA -->
-    <div v-if="mostrarModalExito" class="modal-overlay">
-      <div class="modal-tarjeta">
-        <div class="modal-icono">🌿</div>
-        <h3 class="modal-titulo-exito">¡Reserva modificada con éxito!</h3>
-
-        <p class="modal-subtexto">
-          Los cambios se han guardado correctamente en el sistema. Te hemos enviado un correo con el resumen actualizado
-          de tu inscripción.
-        </p>
-
-        <div class="modal-acciones">
-          <button @click="irACalendario" class="btn-accion">
-            Aceptar y volver
-          </button>
-        </div>
-      </div>
-    </div>
+    <!-- Modal de éxito reutilizable tras guardar cambios -->
+    <ModalExito
+      :visible="mostrarModalExito"
+      :es-lista-espera="false"
+      titulo="¡Reserva modificada con éxito!"
+      mensaje="Los cambios se han guardado correctamente en el sistema. Te hemos enviado un correo con el resumen actualizado de tu inscripción."
+      @cerrar="irACalendario"
+    />
   </div>
 </template>
 
 <script setup>
+/* eslint-disable */
 import { ref, computed, onMounted } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
+import ParticipanteCard from '@/components/reservas/ParticipanteCard.vue';
+import ModalExito from '@/components/reservas/ModalExito.vue';
 
 const route = useRoute();
 const router = useRouter();
@@ -203,7 +161,6 @@ const reserva = ref({});
 const actividad = ref({});
 const participantes = ref([]);
 const plazasIniciales = ref(0);
-
 const mensajeError = ref('');
 
 // Modales reactivos
@@ -265,6 +222,7 @@ const solicitarEliminarAsistente = (index) => {
   if (participantes.value.length <= 1) return;
   const p = participantes.value[index];
 
+  // Si la tarjeta está completamente vacía, se retira directamente sin confirmación
   if (!p.nombre?.trim() && !p.apellidos?.trim()) {
     participantes.value.splice(index, 1);
     reserva.value.num_personas = participantes.value.length;
@@ -310,6 +268,7 @@ const actualizarReserva = async () => {
     });
 
     const data = await response.json();
+
     if (response.ok) {
       plazasIniciales.value = payload.num_personas;
       mostrarModalExito.value = true;
@@ -331,52 +290,39 @@ const irACalendario = () => {
 
 <style scoped>
 .container-editar {
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  min-height: calc(100vh - 12rem);
-  padding: 7rem 1.5rem 3rem 1.5rem;
-  background-color: var(--white);
-  box-sizing: border-box;
+  max-width: 680px;
+  margin: 2.5rem auto;
+  padding: 0 1rem;
 }
 
 .card-editar {
-  width: 100%;
-  max-width: 680px;
-  background-color: var(--white);
-  border: 1px solid var(--shoftgreen);
-  border-radius: 0.5rem;
-  padding: 2.5rem 2rem;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  background: var(--white);
+  border: 1px solid var(--supershoftgreen);
+  border-radius: 12px;
+  padding: 2.2rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
 }
 
 .titulo-editar {
   color: var(--darkgreen);
-  margin-top: 0;
+  font-size: 1.6rem;
   margin-bottom: 1.5rem;
   text-align: center;
 }
 
-.texto-cargando {
-  color: var(--darkgrey);
-  line-height: 1.6;
-  font-size: 1rem;
-}
-
-/* Tarjeta resumen de la actividad */
 .actividad-resumen {
-  background-color: var(--megashoftgreen);
+  background: var(--megashoftgreen);
   border-left: 4px solid var(--green);
-  border-radius: 4px;
-  padding: 1rem 1.25rem;
-  margin-bottom: 2rem;
+  border-radius: 6px;
+  padding: 1rem 1.2rem;
+  margin-bottom: 1.5rem;
 }
 
 .actividad-titulo {
-  font-weight: bold;
   color: var(--darkgreen);
-  margin: 0 0 0.3rem 0;
-  font-size: 1.05rem;
+  font-weight: 700;
+  font-size: 1.1rem;
+  margin: 0 0 0.35rem 0;
 }
 
 .actividad-detalles {
@@ -386,168 +332,227 @@ const irACalendario = () => {
 }
 
 .seccion-titulo {
-  color: var(--green);
-  border-bottom: 2px solid var(--supershoftgreen);
-  padding-bottom: 0.4rem;
-  margin: 2rem 0 1.25rem 0;
-}
-
-/* Caja de información y disponibilidad de plazas */
-.caja-disponibilidad {
-  background-color: var(--megashoftgreen);
-  border: 1px solid var(--supershoftgreen);
-  border-radius: 6px;
-  padding: 1rem 1.25rem;
-  margin-bottom: 1.5rem;
-}
-
-.plazas-conteo {
   color: var(--darkgreen);
-  font-size: 1rem;
-  margin-bottom: 0.4rem;
+  font-size: 1.15rem;
+  margin: 1.5rem 0 0.75rem 0;
+  padding-bottom: 0.35rem;
+  border-bottom: 2px solid var(--supershoftgreen);
 }
 
-.aviso-disponibles {
-  color: var(--darkgrey);
-  font-size: 0.9rem;
-  line-height: 1.4;
-}
-
-.aviso-disponibles strong {
-  color: var(--green);
-}
-
-.aviso-completo {
-  background-color: var(--yellow);
-  color: var(--darkyellow);
-  border-left: 3px solid var(--orange);
-  padding: 0.5rem 0.75rem;
-  border-radius: 4px;
-  font-size: 0.85rem;
-  line-height: 1.4;
-  margin-top: 0.4rem;
-}
-
-/* Estructura del formulario */
 .form-group {
+  margin-bottom: 1rem;
   display: flex;
   flex-direction: column;
-  gap: 0.4rem;
-  margin-bottom: 1.25rem;
 }
 
-.form-group label,
-.form-subgroup label {
-  font-weight: bold;
-  font-size: 0.9rem;
+.form-group label {
+  font-size: 0.85rem;
+  font-weight: 600;
   color: var(--darkgrey);
+  margin-bottom: 0.3rem;
 }
 
 .form-input,
 .form-textarea {
-  width: 100%;
-  padding: 0.65rem 0.8rem;
+  padding: 0.6rem 0.75rem;
   border: 1px solid var(--lightgrey);
-  border-radius: 4px;
+  border-radius: 6px;
   font-size: 0.95rem;
   color: var(--darkgrey);
-  background-color: var(--white);
-  box-sizing: border-box;
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  background: var(--white);
+  outline: none;
+  transition: border-color 0.2s;
 }
 
 .form-input:focus,
 .form-textarea:focus {
-  outline: none;
   border-color: var(--green);
-  box-shadow: 0 0 0 3px var(--supershoftgreen);
 }
 
 .form-textarea {
-  min-height: 90px;
+  min-height: 80px;
   resize: vertical;
 }
 
-/* Fichas de asistentes y controles específicos */
-.participantes-lista {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  margin-bottom: 1.5rem;
-}
-
-.participante-card {
-  background-color: var(--megashoftgreen);
-  border: 1px solid var(--supershoftgreen);
+.caja-disponibilidad {
+  background: var(--white);
+  border: 1px solid var(--lightgrey);
   border-radius: 6px;
-  padding: 1.2rem;
+  padding: 0.9rem 1rem;
+  margin-bottom: 1rem;
 }
 
-.participante-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 0.75rem;
-}
-
-.participante-titulo {
-  color: var(--darkgreen);
-  margin: 0;
+.plazas-conteo {
+  color: var(--darkgrey);
   font-size: 0.95rem;
+  margin-bottom: 0.35rem;
 }
 
-.btn-quitar {
-  background-color: var(--supershoftbrownred);
-  border: 1px solid var(--lightbrownred);
-  color: var(--brownred);
+.aviso-disponibles {
+  color: var(--darkgreen);
+  font-size: 0.85rem;
+}
+
+.aviso-completo {
+  color: var(--darkyellow);
+  background: var(--yellow);
   border-radius: 4px;
-  padding: 0.3rem 0.65rem;
-  font-size: 0.8rem;
-  font-weight: bold;
-  cursor: pointer;
-  transition: background-color 0.2s ease;
-}
-
-.btn-quitar:hover {
-  background-color: var(--brownred);
-  color: var(--white);
+  padding: 0.4rem 0.6rem;
+  font-size: 0.85rem;
 }
 
 .btn-anadir-asistente {
-  background-color: var(--megashoftgreen);
-  border: 1px dashed var(--green);
+  background: var(--megashoftgreen);
   color: var(--darkgreen);
-  border-radius: 6px;
-  padding: 0.65rem 1rem;
-  font-size: 0.9rem;
-  font-weight: bold;
-  cursor: pointer;
+  border: 1px dashed var(--green);
   width: 100%;
-  margin-bottom: 1.5rem;
-  transition: background-color 0.2s ease, border-color 0.2s ease;
+  padding: 0.75rem;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin: 0.5rem 0 1.25rem 0;
+  transition: all 0.2s;
 }
 
 .btn-anadir-asistente:hover {
-  background-color: var(--supershoftgreen);
-  border-color: var(--darkgreen);
+  background: var(--supershoftgreen);
 }
 
-.participante-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr 90px;
+.acciones-botones {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.btn-guardar {
+  flex: 2;
+  background: var(--green);
+  color: var(--white);
+  border: none;
+  padding: 0.85rem;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.btn-guardar:hover:not(:disabled) {
+  background: var(--darkgreen);
+}
+
+.btn-guardar:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.btn-cancelar,
+.btn-secundario {
+  flex: 1;
+  background: var(--lightgrey);
+  color: var(--darkgrey);
+  border: none;
+  padding: 0.85rem;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-align: center;
+  transition: background 0.2s;
+}
+
+.btn-cancelar:hover,
+.btn-secundario:hover {
+  background: #cacaca;
+}
+
+.mensaje-error {
+  color: var(--brownred);
+  background: var(--supershoftbrownred);
+  border: 1px solid var(--lightbrownred);
+  border-radius: 6px;
+  padding: 0.75rem;
+  font-size: 0.9rem;
+  margin-top: 1rem;
+  text-align: center;
+}
+
+/* Modal de confirmación defensiva al eliminar asistente */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(2px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  padding: 1rem;
+}
+
+.modal-tarjeta {
+  background: var(--white);
+  border-radius: 12px;
+  max-width: 440px;
+  width: 100%;
+  padding: 2rem;
+  text-align: center;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.modal-icono {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.modal-titulo {
+  color: var(--darkgrey);
+  font-size: 1.25rem;
+  margin: 0 0 0.75rem 0;
+}
+
+.modal-alerta-box {
+  background: var(--supershoftbrownred);
+  border: 1px solid var(--lightbrownred);
+  border-radius: 6px;
+  padding: 0.9rem;
+  margin-bottom: 1.25rem;
+  text-align: left;
+}
+
+.modal-alerta-texto {
+  color: var(--brownred);
+  font-size: 0.85rem;
+  margin: 0 0 0.35rem 0;
+}
+
+.modal-subtexto {
+  color: var(--darkgrey);
+  font-size: 0.85rem;
+  line-height: 1.4;
+  margin: 0;
+}
+
+.modal-acciones {
+  display: flex;
   gap: 0.75rem;
 }
 
-.form-subgroup {
-  display: flex;
-  flex-direction: column;
-  gap: 0.3rem;
+.btn-destructivo {
+  flex: 1;
+  background: var(--brownred);
+  color: var(--white);
+  border: none;
+  padding: 0.75rem;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s;
 }
 
-/* Adaptación responsive */
-@media (max-width: 650px) {
-  .participante-grid {
-    grid-template-columns: 1fr;
-  }
+.btn-destructivo:hover {
+  background: #9f4935;
 }
 </style>

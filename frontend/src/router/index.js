@@ -1,14 +1,24 @@
 import { createRouter, createWebHistory } from "vue-router";
 
 // --- VISTAS PRINCIPALES ---
-import InicioView from "../views/InicioView.vue";
-import ServiciosView from "../views/ServiciosView.vue";
-import CalendarioView from "../views/CalendarioView.vue";
-import ExperienciaView from "../views/ExperienciaView.vue";
-import BlogView from "../views/BlogView.vue";
-import ContactoView from "../views/ContactoView.vue";
+import InicioView from "@/views/InicioView.vue";
+import ServiciosView from "@/views/ServiciosView.vue";
+import CalendarioView from "@/views/CalendarioView.vue";
+import ExperienciaView from "@/views/ExperienciaView.vue";
+import BlogView from "@/views/BlogView.vue";
+import ContactoView from "@/views/ContactoView.vue";
 import OtrosView from "@/views/OtrosView.vue";
-import ReservasView from "@/views/ReservasView.vue";
+
+// --- MÓDULO DE RESERVAS ---
+import ReservasView from "@/views/reservas/ReservasView.vue";
+import EditarReservaView from "@/views/reservas/EditarReservaView.vue";
+import CancelarReservaView from "@/views/reservas/CancelarReservaView.vue";
+import ConfirmarEsperaView from "@/views/reservas/ConfirmarEsperaView.vue";
+
+// --- LEGAL ---
+import PoliticadecancelacionesView from "@/views/legal/PoliticadecancelacionesView.vue";
+import AvisolegalView from "@/views/legal/AvisolegalView.vue";
+import PoliticadeprivacidadView from "@/views/legal/PoliticadeprivacidadView.vue";
 
 // --- VISTAS DE PROYECTOS ---
 import DetalleFlyschView from "@/views/proyectos/DetalleFlyschView.vue";
@@ -32,35 +42,32 @@ import FosilesView from "@/views/blog/FosilesView.vue";
 import DiaTierraView from "@/views/blog/DiaTierraView.vue";
 import EstramonioView from "@/views/blog/EstramonioView.vue";
 
-// --- LEGAL Y OTROS ---
-import PoliticadecancelacionesView from "../views/PoliticadecancelacionesView.vue";
-import AvisolegalView from "../views/AvisolegalView.vue";
-import PoliticadeprivacidadView from "../views/PoliticadeprivacidadView.vue";
-
 // --- COMPONENTES DE SERVICIOS (Detalles) ---
-import DetalleRutas from "../components/servicios/DetalleRutas.vue";
-import DetalleActividades from "../components/servicios/DetalleActividades.vue";
-import DetalleSensibilizacion from "../components/servicios/DetalleSensibilizacion.vue";
-import DetalleDigitalySostenible from "../components/servicios/DetalleDigitalySostenible.vue";
-import DetalleFormacion from "../components/servicios/DetalleFormacion.vue";
-import DetalleDescargas from "../components/servicios/DetalleDescargas.vue";
-import FitxasEtnobotanicasEnkarterri from "../components/contenido-creado/FitxasEtnobotanicasEnkarterri.vue";
-
-// --- OTROS ---
-import Calendario from "@/components/calendario/CalendarioActividades2025.vue";
-import CancelarReservaView from "../views/CancelarReservaView.vue";
-import EditarReservaView from "../views/EditarReservaView.vue";
-import ConfirmarEsperaView from "../views/ConfirmarEsperaView.vue";
+import DetalleRutas from "@/components/servicios/DetalleRutas.vue";
+import DetalleActividades from "@/components/servicios/DetalleActividades.vue";
+import DetalleSensibilizacion from "@/components/servicios/DetalleSensibilizacion.vue";
+import DetalleDigitalySostenible from "@/components/servicios/DetalleDigitalySostenible.vue";
+import DetalleFormacion from "@/components/servicios/DetalleFormacion.vue";
+import DetalleDescargas from "@/components/servicios/DetalleDescargas.vue";
+import FitxasEtnobotanicasEnkarterri from "@/components/contenido-creado/FitxasEtnobotanicasEnkarterri.vue";
 
 const routes = [
+  // Inicio y Páginas Generales
   { path: "/", name: "inicio", component: InicioView },
   { path: "/servicios", name: "servicios", component: ServiciosView },
   { path: "/calendario", name: "calendario", component: CalendarioView },
+  { path: "/experiencia", name: "experiencias", component: ExperienciaView },
+  { path: "/contacto", name: "contacto", component: ContactoView },
+  { path: "/otros", name: "otros", component: OtrosView },
+
+  // Módulo de Reservas y Lista de Espera
   { path: "/reservas", name: "reservas", component: ReservasView },
   { path: "/reservas/:id", name: "reservaActividad", component: ReservasView },
-  { path: "/experiencia", name: "experiencias", component: ExperienciaView },
+  { path: "/reservas/editar", name: "editarReserva", component: EditarReservaView },
+  { path: "/reservas/cancelar", name: "cancelarReserva", component: CancelarReservaView },
+  { path: "/reservas/confirmar-espera", name: "confirmarEspera", component: ConfirmarEsperaView },
 
-  // --- REDIRECCIONES SEO (De URLs antiguas a nuevas) ---
+  // Redirecciones SEO de Servicios
   { path: "/detalle-rutas", redirect: "/servicios/rutas" },
   { path: "/detalle-actividades", redirect: "/servicios/actividades" },
   { path: "/detalle-sensibilizacion", redirect: "/servicios/sensibilizacion" },
@@ -71,154 +78,53 @@ const routes = [
   { path: "/detalle-dia-de-arbol", redirect: "/servicios/sensibilizacion" },
   { path: "/detalle-aste-berdea", redirect: "/servicios/actividades" },
 
-  // --- NUEVAS RUTAS JERÁRQUICAS ---
+  // Rutas Jerárquicas de Servicios
   { path: "/servicios/rutas", name: "DetalleRutas", component: DetalleRutas },
-  {
-    path: "/servicios/actividades",
-    name: "DetalleActividades",
-    component: DetalleActividades,
-  },
-  {
-    path: "/servicios/sensibilizacion",
-    name: "DetalleSensibilizacion",
-    component: DetalleSensibilizacion,
-  },
-  {
-    path: "/servicios/digital-sostenible",
-    name: "DetalleDigitalySostenible",
-    component: DetalleDigitalySostenible,
-  },
-  {
-    path: "/servicios/formacion",
-    name: "DetalleFormacion",
-    component: DetalleFormacion,
-  },
-  {
-    path: "/servicios/descargas",
-    name: "DetalleDescargas",
-    component: DetalleDescargas,
-  },
+  { path: "/servicios/actividades", name: "DetalleActividades", component: DetalleActividades },
+  { path: "/servicios/sensibilizacion", name: "DetalleSensibilizacion", component: DetalleSensibilizacion },
+  { path: "/servicios/digital-sostenible", name: "DetalleDigitalySostenible", component: DetalleDigitalySostenible },
+  { path: "/servicios/formacion", name: "DetalleFormacion", component: DetalleFormacion },
+  { path: "/servicios/descargas", name: "DetalleDescargas", component: DetalleDescargas },
+  { path: "/fitxas-etnobotanicas-enkarterri", name: "fitxas-etnobotanicas-enkarterri", component: FitxasEtnobotanicasEnkarterri },
 
-  // --- PROYECTOS ---
-  {
-    path: "/detalle-flysch",
-    name: "detalle-flysch",
-    component: DetalleFlyschView,
-  },
-  {
-    path: "/detalle-zalla-natura",
-    name: "detalle-zalla-natura",
-    component: DetalleZallaNaturaView,
-  },
-  {
-    path: "/detalle-aste-berdea",
-    name: "detalle-aste-berdea",
-    component: DetalleAsteBerdeaView,
-  },
-  {
-    path: "/detalle-sopela-kosta-fest",
-    name: "detalle-sopela-kosta-fest",
-    component: DetalleSopelaKostaFestView,
-  },
+  // Proyectos
+  { path: "/detalle-flysch", name: "detalle-flysch", component: DetalleFlyschView },
+  { path: "/detalle-zalla-natura", name: "detalle-zalla-natura", component: DetalleZallaNaturaView },
+  { path: "/detalle-aste-berdea", name: "detalle-aste-berdea", component: DetalleAsteBerdeaView },
+  { path: "/detalle-sopela-kosta-fest", name: "detalle-sopela-kosta-fest", component: DetalleSopelaKostaFestView },
 
-  // --- BLOG ---
+  // Blog
   { path: "/blog", name: "blog", component: BlogView },
-  {
-    path: "/blog/nummulites-flysch",
-    name: "nummulites-flysch",
-    component: NummulitesView,
-  },
-  {
-    path: "/blog/flysch-bizkaia",
-    name: "flysch-bizkaia",
-    component: FlyschBizkaiaView,
-  },
-  {
-    path: "/blog/patrimonio-europeo",
-    name: "patrimonio-europeo",
-    component: PatrimonioEuropeoView,
-  },
+  { path: "/blog/nummulites-flysch", name: "nummulites-flysch", component: NummulitesView },
+  { path: "/blog/flysch-bizkaia", name: "flysch-bizkaia", component: FlyschBizkaiaView },
+  { path: "/blog/patrimonio-europeo", name: "patrimonio-europeo", component: PatrimonioEuropeoView },
   { path: "/blog/free-tours", name: "free-tours", component: FreeToursView },
-  {
-    path: "/blog/valeriana-roja",
-    name: "valeriana-roja",
-    component: ValerianaRojaView,
-  },
+  { path: "/blog/valeriana-roja", name: "valeriana-roja", component: ValerianaRojaView },
   { path: "/blog/estuarios", name: "estuarios", component: EstuariosView },
   { path: "/blog/mariquitas", name: "mariquitas", component: MariquitasView },
-  {
-    path: "/blog/biodiversidad",
-    name: "biodiversidad",
-    component: BiodiversidadView,
-  },
-  {
-    path: "/blog/sapito-corredor",
-    name: "sapito-corredor",
-    component: SapitoView,
-  },
-  {
-    path: "/blog/carpobrotus",
-    name: "carpobrotus",
-    component: CarpobrotusView,
-  },
+  { path: "/blog/biodiversidad", name: "biodiversidad", component: BiodiversidadView },
+  { path: "/blog/sapito-corredor", name: "sapito-corredor", component: SapitoView },
+  { path: "/blog/carpobrotus", name: "carpobrotus", component: CarpobrotusView },
   { path: "/blog/estramonio", name: "estramonio", component: EstramonioView },
-  {
-    path: "/blog/flora-autoctona",
-    name: "flora-autoctona",
-    component: FloraAutoctonaView,
-  },
+  { path: "/blog/flora-autoctona", name: "flora-autoctona", component: FloraAutoctonaView },
   { path: "/blog/fosiles", name: "fosiles", component: FosilesView },
   { path: "/blog/dia-tierra", name: "dia-tierra", component: DiaTierraView },
 
-  // --- OTROS ---
-  { path: "/otros", name: "otros", component: OtrosView },
-  { path: "/contacto", name: "contacto", component: ContactoView },
-  {
-    path: "/politicadecancelaciones",
-    name: "cancelaciones",
-    component: PoliticadecancelacionesView,
-  },
+  // Legal
+  { path: "/politicadecancelaciones", name: "cancelaciones", component: PoliticadecancelacionesView },
   { path: "/avisolegal", name: "aviso", component: AvisolegalView },
-  {
-    path: "/politicadeprivacidad",
-    name: "privacidad",
-    component: PoliticadeprivacidadView,
-  },
-  {
-    path: "/fitxas-etnobotanicas-enkarterri",
-    name: "fitxas-etnobotanicas-enkarterri",
-    component: FitxasEtnobotanicasEnkarterri,
-  },
-  { path: "/calendario", name: "Calendario", component: Calendario },
-  {
-    path: "/reservas/cancelar",
-    name: "cancelarReserva",
-    component: CancelarReservaView,
-  },
-  {
-    path: "/reservas/editar",
-    name: "editarReserva",
-    component: EditarReservaView,
-  },
-  {
-  path: '/reservas/confirmar-espera',
-  name: 'confirmarEspera',
-  component: ConfirmarEsperaView,
-},
+  { path: "/politicadeprivacidad", name: "privacidad", component: PoliticadeprivacidadView },
 
+  // Ruta 404 (Wildcard)
   {
     path: "/:pathMatch(.*)*",
     name: "NotFound",
     component: () => import("@/views/NotFoundView.vue"),
     beforeEnter: (to, from, next) => {
-      // Si la ruta contiene fragmentos de URLs antiguas, redirige automáticamente
-      if (
-        to.fullPath.includes("/geotienda/") ||
-        to.fullPath.includes("/investigacion/")
-      ) {
+      if (to.fullPath.includes("/geotienda/") || to.fullPath.includes("/investigacion/")) {
         next({ path: "/servicios", replace: true });
       } else {
-        next(); // Si no, muestra la página 404
+        next();
       }
     },
   },
@@ -233,11 +139,11 @@ const router = createRouter({
 });
 
 router.afterEach((to) => {
-  // Si Google Analytics está cargado, le avisamos de cada cambio de ruta
   if (typeof window.gtag === "function") {
     window.gtag("config", "G-LVMVX3Z14P", {
       page_path: to.path,
     });
   }
 });
+
 export default router;

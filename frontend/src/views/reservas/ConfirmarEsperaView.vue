@@ -44,6 +44,7 @@
 </template>
 
 <script setup>
+/* eslint-disable */
 import { ref, onMounted } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 
@@ -92,7 +93,7 @@ onMounted(async () => {
   justify-content: center;
   align-items: center;
   min-height: calc(100vh - 12rem);
-  padding: 7rem 1.5rem 3rem 1.5rem;
+  padding: 4rem 1.5rem;
   background-color: var(--white);
   box-sizing: border-box;
 }
@@ -101,31 +102,28 @@ onMounted(async () => {
   width: 100%;
   max-width: 520px;
   background-color: var(--white);
-  border: 1px solid var(--shoftgreen);
-  border-radius: 0.5rem;
+  border: 1px solid var(--supershoftgreen);
+  border-radius: 12px;
   padding: 2.5rem 2rem;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
   text-align: center;
 }
 
 .titulo-confirmar {
   color: var(--darkgrey);
-  margin-top: 0;
-  margin-bottom: 0.5rem;
+  margin: 0 0 0.5rem 0;
   font-size: 1.4rem;
 }
 
 .titulo-exito {
   color: var(--darkgreen);
-  margin-top: 0;
-  margin-bottom: 0.5rem;
+  margin: 0 0 0.5rem 0;
   font-size: 1.4rem;
 }
 
 .titulo-error {
   color: var(--brownred);
-  margin-top: 0;
-  margin-bottom: 0.5rem;
+  margin: 0 0 0.5rem 0;
   font-size: 1.4rem;
 }
 
@@ -133,7 +131,7 @@ onMounted(async () => {
 .texto-sub {
   color: var(--darkgrey);
   line-height: 1.5;
-  margin: 0.5rem 0 1.5rem 0;
+  margin: 0.5rem 0 1rem 0;
   font-size: 0.95rem;
 }
 </style>

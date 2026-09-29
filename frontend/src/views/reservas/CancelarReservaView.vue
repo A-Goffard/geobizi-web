@@ -18,14 +18,14 @@
         </button>
       </div>
 
-      <!-- Estado inicial: Pregunta básica -->
+      <!-- Estado inicial: Confirmación previa -->
       <div v-else class="contenido-cancelar">
         <p class="texto-descripcion">
-          Has solicitado cancelar tu inscripción para esta actividad. Si continúas, tus plazas se pondrán a disposición de otras personas interesadas.
+          Has solicitado cancelar tu inscripción para esta actividad. Si continúas, tus plazas se liberarán de inmediato y se ofrecerán a la lista de espera u otras personas interesadas.
         </p>
 
         <div class="acciones-botones">
-          <!-- Este botón abre el modal de seguridad, no borra aún -->
+          <!-- Este botón abre el modal defensivo de confirmación -->
           <button @click="abrirConfirmacion" class="btn-alerta">
             Quiero cancelar mi reserva
           </button>
@@ -36,12 +36,12 @@
       </div>
     </div>
 
-    <!-- MODAL DE DOBLE VERIFICACIÓN / ACCIÓN IRREVERSIBLE -->
-    <div v-if="mostrarModal" class="modal-overlay">
+    <!-- Modal de confirmación defensiva / acción irreversible -->
+    <div v-if="mostrarModal" class="modal-overlay" @click.self="cerrarConfirmacion">
       <div class="modal-tarjeta">
         <div class="modal-icono">⚠️</div>
         <h3 class="modal-titulo">¿Confirmas la cancelación definitiva?</h3>
-        
+
         <div class="modal-alerta-box">
           <p class="modal-alerta-texto">
             <strong>Atención: Esta acción es totalmente irreversible.</strong>
@@ -65,6 +65,7 @@
 </template>
 
 <script setup>
+/* eslint-disable */
 import { ref } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 
@@ -101,6 +102,7 @@ const ejecutarCancelacion = async () => {
     });
 
     const data = await response.json();
+
     if (response.ok) {
       mensajeEstado.value = 'Tu reserva ha sido cancelada con éxito. Las plazas han quedado liberadas.';
       error.value = false;
@@ -122,7 +124,7 @@ const ejecutarCancelacion = async () => {
   justify-content: center;
   align-items: center;
   min-height: calc(100vh - 12rem);
-  padding: 7rem 1.5rem 3rem 1.5rem;
+  padding: 4rem 1.5rem;
   background-color: var(--white);
   box-sizing: border-box;
 }
@@ -131,10 +133,10 @@ const ejecutarCancelacion = async () => {
   width: 100%;
   max-width: 520px;
   background-color: var(--white);
-  border: 1px solid var(--lightgrey);
-  border-radius: 0.5rem;
+  border: 1px solid var(--supershoftbrownred);
+  border-radius: 12px;
   padding: 2.5rem 2rem;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
   text-align: center;
 }
 

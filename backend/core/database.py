@@ -7,6 +7,8 @@ DB_PATH = "data/geobizi.db"
 def get_db_connection():
     conn = sqlite3.connect(DB_PATH)
     conn.row_factory = sqlite3.Row
+    # Activa la integridad referencial (ON DELETE CASCADE) en SQLite
+    conn.execute("PRAGMA foreign_keys = ON")
     return conn
 
 def init_db():
@@ -42,7 +44,7 @@ def init_db():
         )
     """)
     
-    # 2. Tabla de Reservas (incluye estado: 'confirmada' o 'lista_espera')
+    # 2. Tabla de Reservas principales
     cursor.execute("""
         CREATE TABLE IF NOT EXISTS reservas (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -57,26 +59,27 @@ def init_db():
             observaciones TEXT,
             estado TEXT NOT NULL DEFAULT 'confirmada',
             fecha_creacion DATETIME DEFAULT CURRENT_TIMESTAMP,
-            FOREIGN KEY (actividad_id) REFERENCES actividades (id)
+            expiracion_oferta DATETIME,
+            FOREIGN KEY (actividad_id) REFERENCES actividades (id) ON DELETE CASCADE
         )
     """)
 
-    # Migración automática si la tabla ya existía en tu equipo sin estas columnas
+    # Migraciones seguras para bases de datos ya existentes
     try:
         cursor.execute("ALTER TABLE reservas ADD COLUMN estado TEXT NOT NULL DEFAULT 'confirmada'")
     except sqlite3.OperationalError:
-        pass  # La columna ya existe
+        pass
 
     try:
         cursor.execute("ALTER TABLE reservas ADD COLUMN fecha_creacion DATETIME DEFAULT CURRENT_TIMESTAMP")
     except sqlite3.OperationalError:
-        pass  # La columna ya existe
+        pass
     
-    # En init_db() dentro de database.py:
     try:
         cursor.execute("ALTER TABLE reservas ADD COLUMN expiracion_oferta DATETIME")
     except sqlite3.OperationalError:
         pass
+
     # 3. Tabla de Participantes (asistentes asociados a la reserva)
     cursor.execute("""
         CREATE TABLE IF NOT EXISTS participantes (
@@ -88,6 +91,11 @@ def init_db():
             FOREIGN KEY (reserva_id) REFERENCES reservas (id) ON DELETE CASCADE
         )
     """)
+
+    # 4. Índices para acelerar búsquedas y filtros
+    cursor.execute("CREATE INDEX IF NOT EXISTS idx_reservas_actividad_estado ON reservas (actividad_id, estado);")
+    cursor.execute("CREATE INDEX IF NOT EXISTS idx_participantes_reserva_id ON participantes (reserva_id);")
+    cursor.execute("CREATE INDEX IF NOT EXISTS idx_reservas_token ON reservas (token);")
     
     conn.commit()
     
