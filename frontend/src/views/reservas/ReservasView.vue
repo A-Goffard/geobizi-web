@@ -245,7 +245,8 @@ import ModalExito from '@/components/reservas/ModalExito.vue';
 import { ref, computed, watch, onMounted } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import { useHead } from '@vueuse/head';
-
+// Importamos los endpoints
+import { ENDPOINTS } from '@/config/api';
 
 const route = useRoute();
 const router = useRouter();
@@ -287,7 +288,8 @@ const formData = ref({
 
 const cargarActividades = async () => {
   try {
-    const response = await fetch('http://localhost:5000/api/actividades');
+    // Cambia la URL fija por ENDPOINTS.ACTIVIDADES:
+const response = await fetch(ENDPOINTS.ACTIVIDADES);
     if (response.ok) {
       actividades.value = await response.json();
       verificarSeleccionActividad();
@@ -447,7 +449,7 @@ const ejecutarReserva = async () => {
   };
 
   try {
-    const res = await fetch('http://localhost:5000/api/reservas', {
+    const res = await fetch(ENDPOINTS.RESERVAS, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload)
@@ -500,7 +502,7 @@ const ejecutarListaEspera = async () => {
   };
 
   try {
-    const res = await fetch('http://localhost:5000/api/lista-espera', {
+    const res = await fetch(ENDPOINTS.LISTA_ESPERA, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload)
