@@ -1,6 +1,6 @@
 <template>
   <div class="contenedor-principal contenedor-calendario">
-    <Calendario />
+    <Calendario :actividades="listaActividades" />
 
     <div class="leyendaContenedor">
       <h1>Actividades Programadas</h1>
@@ -100,39 +100,34 @@
 </template>
 
 <script setup>
-import Calendario from '@/components/calendario/CalendarioActividades2025.vue'
+/* eslint-disable */
+import Calendario from '@/components/calendario/CalendarioActividades.vue'
 import { useHead } from '@vueuse/head'
 import { ref, computed, onMounted } from 'vue'
 import { useRouter } from 'vue-router';
 import actividadesJson from '@/assets/json/actividades.json';
+import { ENDPOINTS } from '@/config/api';
 
 const router = useRouter();
 const filtroSeleccionado = ref('todos');
 
-// Estado reactivo inicializado con el JSON
+// Estado reactivo inicializado con el JSON como fallback inmediato
 const listaActividades = ref(actividadesJson);
 
-// Sincroniza en tiempo real las plazas ocupadas desde el backend SQLite
+// Sincroniza desde el backend SQLite
 onMounted(async () => {
   try {
-    const res = await fetch('http://localhost:5000/api/actividades');
+    const res = await fetch(ENDPOINTS.ACTIVIDADES);
     if (res.ok) {
       const actividadesBd = await res.json();
-      listaActividades.value = listaActividades.value.map(act => {
-        const bd = actividadesBd.find(b => b.id === act.id);
-        if (bd) {
-          return {
-            ...act,
-            plazas_totales: bd.plazas_totales,
-            plazas_ocupadas: bd.plazas_ocupadas
-          };
-        }
-        return act;
-      });
+      // Asignamos directamente las actividades de la base de datos normalizando el enlace externo
+      listaActividades.value = actividadesBd.map(act => ({
+        ...act,
+        linkReserva: act.linkReserva || act.link_reserva
+      }));
     }
   } catch (err) {
-    // Si la API no responde en local, continúa con los datos del JSON
-    console.warn('Aviso: Cargando aforo base desde JSON local.', err);
+    console.warn('Aviso: Cargando datos base desde JSON local.', err);
   }
 });
 
@@ -167,15 +162,17 @@ const irAReserva = (id) => {
   router.push({ name: 'reservaActividad', params: { id } });
 };
 
+// Filtra para mostrar solo las actividades futuras y publicadas
 const actividadesFiltradas = computed(() => {
   const hoy = new Date();
   hoy.setHours(0, 0, 0, 0);
 
   return listaActividades.value.filter(a => {
-    const fechaActividad = new Date(a.fecha);
+    // Normalizar formato fecha para evitar discrepancias entre navegadores
+    const fechaActividad = new Date(a.fecha + 'T00:00:00');
     const esFutura = fechaActividad >= hoy;
     const coincideFiltro = filtroSeleccionado.value === 'todos' || a.proyecto === filtroSeleccionado.value;
-    return a.publicar && esFutura && coincideFiltro;
+    return Boolean(a.publicar) && esFutura && coincideFiltro;
   }).sort((a, b) => new Date(a.fecha) - new Date(b.fecha));
 });
 
@@ -185,15 +182,9 @@ const ogImage = 'https://www.geobizi.com/imagenes/proyectos/zallanatura/zallanat
 useHead({
   title: 'Calendario de Actividades | Geobizi',
   meta: [
-    { name: 'description', content: 'Consulta el calendario de Geobizi: rutas, talleres y actividades familiares y educativas. Reserva plazas y revisa fechas, horarios y ubicaciones.' },
-    { name: 'robots', content: 'index, follow' },
-    { name: 'author', content: 'Geobizi' },
-    { name: 'publisher', content: 'Geobizi' },
+    { name: 'description', content: 'Consulta el calendario de Geobizi: rutas, talleres y actividades familiares y educativas.' },
     { name: 'theme-color', content: '#0b8a4c' },
-    { name: 'language', content: 'es' },
     { property: 'og:title', content: 'Calendario de Actividades | Geobizi' },
-    { property: 'og:description', content: 'Consulta el calendario de Geobizi: rutas, talleres y actividades familiares y educativas. Reserva plazas y revisa fechas, horarios y ubicaciones.' },
-    { property: 'og:type', content: 'website' },
     { property: 'og:url', content: pageUrl },
     { property: 'og:image', content: ogImage }
   ],

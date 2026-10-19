@@ -57,9 +57,18 @@
 </template>
 
 <script setup>
+/* eslint-disable */
 import { ref, onMounted } from "vue";
 import { useRouter } from "vue-router";
 import actividadesData from "@/assets/json/actividades.json";
+
+// Recibimos las actividades cargadas desde la base de datos por prop
+const props = defineProps({
+  actividades: {
+    type: Array,
+    default: () => []
+  }
+});
 
 // Lista de meses
 const meses = ref([
@@ -82,17 +91,19 @@ const mesActual = ref(new Date().getMonth());
 const router = useRouter();
 
 const irAReserva = (actividad) => {
-  // Cerramos tooltip al hacer clic
   ocultarTooltip();
 
   const hoy = new Date();
   hoy.setHours(0, 0, 0, 0); 
   
-  // Usamos replace para asegurar compatibilidad total en navegadores
   const fechaActividad = new Date(actividad.fecha.replace(/-/g, '/')); 
 
   if (fechaActividad >= hoy) {
-    if (actividad.reservas) {
+    const linkExterno = actividad.linkReserva || actividad.link_reserva;
+    // Si la actividad tiene enlace a una web externa, la abre directamente
+    if (actividad.reservas && linkExterno) {
+      window.open(linkExterno, '_blank');
+    } else if (actividad.reservas) {
       router.push({ name: 'reservaActividad', params: { id: actividad.id } });
     } else {
       router.push({ name: 'reservas' });
@@ -103,7 +114,7 @@ const irAReserva = (actividad) => {
 // Función para obtener los días del mes con sus actividades
 const getDiasDelMes = (mesIndex) => {
   const year = anioActual.value;
-  const primerDiaSemana = new Date(year, mesIndex, 1).getDay(); // 0 = Domingo, 1 = Lunes, etc.
+  const primerDiaSemana = new Date(year, mesIndex, 1).getDay();
   const diasEnMes = new Date(year, mesIndex + 1, 0).getDate();
   let dias = [];
 
@@ -115,10 +126,13 @@ const getDiasDelMes = (mesIndex) => {
     dias.push({ numero: null, fecha: null, actividades: [] });
   }
 
+  // Usa las actividades de la base de datos (props) o el JSON como respaldo
+  const fuente = props.actividades && props.actividades.length > 0 ? props.actividades : actividadesData;
+
   // Añadir los días del mes con actividades
   for (let i = 1; i <= diasEnMes; i++) {
     const fecha = `${year}-${(mesIndex + 1).toString().padStart(2, "0")}-${i.toString().padStart(2, "0")}`;
-    const actividades = actividadesData.filter(a => a.fecha === fecha);
+    const actividades = fuente.filter(a => a.fecha === fecha && Boolean(a.publicar));
     dias.push({ numero: i, fecha, actividades });
   }
 
@@ -139,10 +153,8 @@ onMounted(() => {
 // Mostrar tooltip
 const mostrarTooltip = (actividad, event) => {
   if (isMobile.value) {
-    // Centra el tooltip en móvil y ajusta para que no se salga
     let x = event.touches ? event.touches[0].clientX : event.clientX;
     let y = event.touches ? event.touches[0].clientY : event.clientY;
-    // Ajuste para que no se salga de la pantalla
     const tooltipWidth = 180;
     const tooltipHeight = 60;
     const padding = 10;
@@ -150,7 +162,6 @@ const mostrarTooltip = (actividad, event) => {
     if (y + tooltipHeight > window.innerHeight) y = window.innerHeight - tooltipHeight - padding;
     tooltip.value = { visible: true, titulo: actividad.titulo, hora: actividad.hora, x, y, actividad };
   } else {
-    // Desktop: igual que antes, pero ajusta si se sale
     let x = event.pageX + 10;
     let y = event.pageY + 10;
     const tooltipWidth = 180;
