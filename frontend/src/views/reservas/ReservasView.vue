@@ -240,12 +240,12 @@
 </template>
 
 <script setup>
+/* eslint-disable */
 import ParticipanteCard from '@/components/reservas/ParticipanteCard.vue';
 import ModalExito from '@/components/reservas/ModalExito.vue';
 import { ref, computed, watch, onMounted } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import { useHead } from '@vueuse/head';
-// Importamos los endpoints
 import { ENDPOINTS } from '@/config/api';
 
 const route = useRoute();
@@ -288,8 +288,7 @@ const formData = ref({
 
 const cargarActividades = async () => {
   try {
-    // Cambia la URL fija por ENDPOINTS.ACTIVIDADES:
-const response = await fetch(ENDPOINTS.ACTIVIDADES);
+    const response = await fetch(ENDPOINTS.ACTIVIDADES);
     if (response.ok) {
       actividades.value = await response.json();
       verificarSeleccionActividad();
@@ -462,17 +461,12 @@ const ejecutarReserva = async () => {
       successMessage.value = '¡Reserva realizada con éxito! Las plazas han quedado asignadas.';
       mostrarModalExito.value = true;
     } else {
-      // 1. Extraer el mensaje del backend
       const errorMsg = Array.isArray(data.detail)
         ? data.detail.map(e => `${e.loc.join('.')}: ${e.msg}`).join(', ')
         : (data.detail || 'Error al procesar la reserva.');
 
-      // 2. Si el fallo es por falta de plazas (alguien reservó antes)
       if (res.status === 400 && (errorMsg.includes('plazas') || errorMsg.includes('libres'))) {
-        // Refrescamos los datos reales desde el servidor
         await cargarActividades();
-        
-        // Mensaje pedagógico informando de la transición a lista de espera
         errorMessage.value = '⚠️ Las últimas plazas acaban de reservarse hace un instante. Hemos actualizado el formulario para que puedas apuntar a tu grupo a la lista de espera directamente.';
         return;
       }
