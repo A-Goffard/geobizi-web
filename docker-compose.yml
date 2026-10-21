@@ -5,18 +5,19 @@ services:
       dockerfile: Dockerfile.prod
     container_name: vue_frontend
     ports:
-      - "8080:80"
+      - "127.0.0.1:8080:80"
     restart: always
 
-backend:
+  backend:
     build:
       context: ./backend
       dockerfile: Dockerfile
     container_name: python_backend
     ports:
-      - "5000:5000"
+      - "127.0.0.1:5000:5000"
     volumes:
       - /opt/geobizi/data:/app/data
+      - /opt/geobizi/uploads:/app/uploads
     restart: always
     env_file:
       - ./backend/.env

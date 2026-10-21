@@ -16,3 +16,11 @@ __pycache__
 /frontend/node_modules
 /backend/__pycache__
 /backend/data/
+
+# Base de datos SQLite
+data/*.db
+data/*.sqlite3
+
+# Subidas dinámicas de imágenes
+uploads/
+backend/uploads/
