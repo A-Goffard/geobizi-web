@@ -8,7 +8,10 @@ from services.email_service import (
     enviar_correo_reserva,
     enviar_correo_cancelacion,
     enviar_correo_modificacion,
-    enviar_correo_lista_espera
+    enviar_correo_lista_espera,
+    notificar_admin_nueva_reserva,
+    notificar_admin_cancelacion,
+    notificar_admin_modificacion
 )
 from services.reserva_service import (
     reasignar_plazas_liberadas,
@@ -92,6 +95,14 @@ def crear_reserva(datos: SolicitudReserva, background_tasks: BackgroundTasks):
             actividad=dict(actividad),
             token=token_seguro,
             num_personas=datos.num_personas
+        )
+        
+        # Aviso interno para Geobizi
+        background_tasks.add_task(
+            notificar_admin_nueva_reserva,
+            reserva_datos=datos.dict(),
+            actividad=dict(actividad),
+            participantes=datos.participantes
         )
         
         return {
@@ -365,6 +376,16 @@ def cancelar_reserva_por_token(token: str, background_tasks: BackgroundTasks):
             nombre_contacto=nombre_contacto
         )
 
+        # Aviso a Geobizi
+        background_tasks.add_task(
+            notificar_admin_cancelacion,
+            actividad=actividad_datos,
+            nombre_contacto=nombre_contacto,
+            email_contacto=email_contacto,
+            phone=fila["phone"],
+            plazas_liberadas=plazas_a_liberar
+        )
+
         return {
             "status": "success",
             "message": "Cancelación procesada correctamente. Se ha enviado un correo de confirmación."
@@ -488,6 +509,18 @@ def actualizar_reserva_por_token(token: str, datos: dict, background_tasks: Back
             actividad=actividad_datos,
             token=token,
             num_personas=plazas_nuevas,
+            participantes=participantes_nuevos
+        )
+
+        # Aviso a Geobizi
+        background_tasks.add_task(
+            notificar_admin_modificacion,
+            actividad=actividad_datos,
+            nombre_contacto=nombre_contacto,
+            email_contacto=email_contacto,
+            phone=phone_contacto,
+            plazas_nuevas=plazas_nuevas,
+            plazas_antiguas=plazas_antiguas,
             participantes=participantes_nuevos
         )
 

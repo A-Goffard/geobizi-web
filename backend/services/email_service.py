@@ -1,5 +1,6 @@
 import os
 import smtplib
+import ssl
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 
@@ -8,27 +9,39 @@ from email.mime.text import MIMEText
 # ==============================================================================
 def _enviar_email(email_destino: str, asunto: str, html_content: str):
     """
-    Gestiona la conexión con el servidor SMTP y despacha el correo en formato HTML.
-    Muestra trazas informativas en la consola del backend.
+    Gestiona la conexión con el servidor SMTP (SSL en 465 o STARTTLS en 587)
+    y despacha el correo en formato HTML con codificación UTF-8.
     """
-    smtp_host = os.getenv("SMTP_HOST", "smtp.gmail.com")
-    smtp_port = int(os.getenv("SMTP_PORT", 587))
+    smtp_host = os.getenv("SMTP_HOST", "smtp.buzondecorreo.com")
+    smtp_port = int(os.getenv("SMTP_PORT", 465))
     smtp_user = os.getenv("SMTP_USER", "")
     smtp_password = os.getenv("SMTP_PASSWORD", "")
     smtp_from = os.getenv("SMTP_FROM", smtp_user)
+    smtp_ssl = os.getenv("SMTP_SSL", "True").lower() in ("true", "1", "yes")
 
     mensaje = MIMEMultipart("alternative")
     mensaje["Subject"] = asunto
     mensaje["From"] = smtp_from
     mensaje["To"] = email_destino
-    mensaje.attach(MIMEText(html_content, "html"))
+    mensaje.attach(MIMEText(html_content, "html", "utf-8"))
 
     try:
-        with smtplib.SMTP(smtp_host, smtp_port) as servidor:
-            servidor.starttls()
-            if smtp_user and smtp_password:
-                servidor.login(smtp_user, smtp_password)
-            servidor.sendmail(smtp_from, email_destino, mensaje.as_string())
+        contexto = ssl.create_default_context()
+
+        # Puerto 465 (SSL implícito)
+        if smtp_ssl or smtp_port == 465:
+            with smtplib.SMTP_SSL(smtp_host, smtp_port, context=contexto, timeout=15) as servidor:
+                if smtp_user and smtp_password:
+                    servidor.login(smtp_user, smtp_password)
+                servidor.send_message(mensaje)
+        # Puertos 587 / 25 (STARTTLS explícito)
+        else:
+            with smtplib.SMTP(smtp_host, smtp_port, timeout=15) as servidor:
+                servidor.starttls(context=contexto)
+                if smtp_user and smtp_password:
+                    servidor.login(smtp_user, smtp_password)
+                servidor.send_message(mensaje)
+
         print(f"[EMAIL OK] Correo enviado correctamente a '{email_destino}' | Asunto: {asunto}")
     except Exception as e:
         print(f"[EMAIL ERROR] Fallo al enviar correo a '{email_destino}' ({asunto}): {e}")
@@ -63,7 +76,7 @@ def enviar_correo_reserva(email_destino: str, actividad: dict, token: str, num_p
                 <p style="margin: 8px 0;"><strong>Fecha y Hora:</strong> {actividad.get('fecha')} a las {actividad.get('hora')}</p>
                 <p style="margin: 8px 0;"><strong>Ubicación:</strong> {actividad.get('ubicacion')}</p>
                 <p style="margin: 8px 0;"><strong>Plazas reservadas:</strong> {num_personas}</p>
-                <p style="margin: 8px 0; font-size: 14px; color: #555;"><strong>Descripción:</strong> {actividad.get('descripcion', 'Disfruta de esta experiencia única al aire libre.')}</p>
+                <p style="margin: 8px 0; font-size: 14px; color: #555;"><strong>Descripción:</strong> {actividad.get('descripcion', 'Disfruta de esta experiencia al aire libre.')}</p>
             </div>
 
             <div style="background-color: #fff8e6; padding: 12px 15px; border-left: 4px solid #d4a373; border-radius: 4px; margin: 20px 0; font-size: 13px;">
@@ -203,7 +216,7 @@ def enviar_correo_modificacion(email_destino: str, actividad: dict, token: str, 
 
 
 # ==============================================================================
-# 4. CORREO: OFERTA TEMPORAL DE PLAZA LIBERADA (CON BOTONES Y CUENTA ATRÁS)
+# 4. CORREO: OFERTA TEMPORAL DE PLAZA LIBERADA
 # ==============================================================================
 def enviar_correo_oferta_plaza(email_destino: str, actividad: dict, token: str, num_personas: int, fecha_limite_texto: str, nombre_contacto: str):
     frontend_url = os.getenv("FRONTEND_URL", "http://localhost:8080")
@@ -365,3 +378,137 @@ def enviar_correo_turno_expirado(email_destino: str, actividad_titulo: str, nomb
     </html>
     """
     _enviar_email(email_destino, asunto, html_content)
+    
+    
+    # ==============================================================================
+# 7. CORREO: NOTIFICACIÓN INTERNA PARA GEOBIZI (NUEVA RESERVA)
+# ==============================================================================
+def notificar_admin_nueva_reserva(reserva_datos: dict, actividad: dict, participantes: list):
+    """
+    Envía una alerta interna a info@geobizi.com cada vez que entra una reserva web.
+    """
+    admin_email = os.getenv("ADMIN_EMAIL", os.getenv("SMTP_FROM", "info@geobizi.com"))
+    asunto = f"🔔 Nueva reserva ({reserva_datos.get('num_personas')} plazas): {actividad.get('titulo')}"
+
+    items_participantes = "".join([
+        f"<li style='margin: 4px 0;'>{p.nombre} {p.apellidos} ({p.edad} años)</li>"
+        for p in participantes
+    ])
+
+    html_content = f"""
+    <!DOCTYPE html>
+    <html>
+    <head><meta charset="UTF-8"></head>
+    <body style="font-family: Arial, sans-serif; color: #333333; margin: 0; padding: 20px;">
+        <div style="max-width: 600px; margin: 0 auto; background-color: #ffffff; padding: 25px; border-radius: 8px; border: 1px solid #d4e2d4;">
+            <h3 style="color: #2c5e3b; margin-top: 0; border-bottom: 2px solid #e8f0e8; padding-bottom: 8px;">
+                🔔 Nueva reserva recibida en la web
+            </h3>
+            
+            <p><strong>Actividad:</strong> {actividad.get('titulo')}</p>
+            <p><strong>Fecha y hora:</strong> {actividad.get('fecha')} a las {actividad.get('hora')}</p>
+            <p><strong>Plazas reservadas:</strong> {reserva_datos.get('num_personas')}</p>
+            
+            <hr style="border: none; border-top: 1px solid #eee; margin: 15px 0;" />
+            
+            <h4 style="margin-bottom: 8px; color: #2c5e3b;">Datos de contacto:</h4>
+            <ul style="margin: 0; padding-left: 20px;">
+                <li><strong>Titular:</strong> {reserva_datos.get('nombre_contacto')} {reserva_datos.get('apellidos_contacto')}</li>
+                <li><strong>Email:</strong> {reserva_datos.get('email')}</li>
+                <li><strong>Teléfono:</strong> <a href="tel:{reserva_datos.get('phone')}">{reserva_datos.get('phone')}</a></li>
+                <li><strong>Permiso fotos:</strong> {'Sí' if reserva_datos.get('permiso_fotos') else 'No'}</li>
+                <li><strong>Observaciones:</strong> {reserva_datos.get('observaciones') or 'Ninguna'}</li>
+            </ul>
+
+            <h4 style="margin-bottom: 8px; margin-top: 15px; color: #2c5e3b;">Asistentes registrados:</h4>
+            <ul style="margin: 0; padding-left: 20px;">
+                {items_participantes}
+            </ul>
+        </div>
+    </body>
+    </html>
+    """
+    _enviar_email(admin_email, asunto, html_content)
+    
+    # ==============================================================================
+# 8. CORREO: NOTIFICACIÓN INTERNA PARA GEOBIZI (CANCELACIÓN)
+# ==============================================================================
+def notificar_admin_cancelacion(actividad: dict, nombre_contacto: str, email_contacto: str, phone: str, plazas_liberadas: int):
+    """
+    Avisa a administración cuando un participante anula su reserva.
+    """
+    admin_email = os.getenv("ADMIN_EMAIL", os.getenv("SMTP_FROM", "info@geobizi.com"))
+    asunto = f"⚠️ Reserva cancelada ({plazas_liberadas} plazas liberadas): {actividad.get('titulo')}"
+
+    html_content = f"""
+    <!DOCTYPE html>
+    <html>
+    <head><meta charset="UTF-8"></head>
+    <body style="font-family: Arial, sans-serif; color: #333333; margin: 0; padding: 20px;">
+        <div style="max-width: 600px; margin: 0 auto; background-color: #ffffff; padding: 25px; border-radius: 8px; border: 1px solid #f2c2ba;">
+            <h3 style="color: #b85d46; margin-top: 0; border-bottom: 2px solid #fbeae5; padding-bottom: 8px;">
+                ⚠️ Se ha cancelado una reserva
+            </h3>
+            
+            <p><strong>Actividad:</strong> {actividad.get('titulo')}</p>
+            <p><strong>Fecha y hora:</strong> {actividad.get('fecha')} a las {actividad.get('hora')}</p>
+            <p><strong>Plazas liberadas:</strong> {plazas_liberadas}</p>
+            
+            <hr style="border: none; border-top: 1px solid #eee; margin: 15px 0;" />
+            
+            <h4 style="margin-bottom: 8px; color: #b85d46;">Datos del usuario que cancela:</h4>
+            <ul style="margin: 0; padding-left: 20px;">
+                <li><strong>Nombre:</strong> {nombre_contacto}</li>
+                <li><strong>Email:</strong> {email_contacto}</li>
+                <li><strong>Teléfono:</strong> {phone}</li>
+            </ul>
+            <p style="font-size: 13px; color: #666; margin-top: 15px;">
+                <em>Nota: Si había personas en lista de espera, el sistema ya les habrá enviado automáticamente la oferta de plazas.</em>
+            </p>
+        </div>
+    </body>
+    </html>
+    """
+    _enviar_email(admin_email, asunto, html_content)
+
+
+# ==============================================================================
+# 9. CORREO: NOTIFICACIÓN INTERNA PARA GEOBIZI (MODIFICACIÓN)
+# ==============================================================================
+def notificar_admin_modificacion(actividad: dict, nombre_contacto: str, email_contacto: str, phone: str, plazas_nuevas: int, plazas_antiguas: int, participantes: list):
+    """
+    Avisa a administración cuando un participante modifica su reserva o cambia de acompañantes.
+    """
+    admin_email = os.getenv("ADMIN_EMAIL", os.getenv("SMTP_FROM", "info@geobizi.com"))
+    asunto = f"✏️ Reserva modificada ({plazas_antiguas} ➔ {plazas_nuevas} plazas): {actividad.get('titulo')}"
+
+    items_participantes = "".join([
+        f"<li style='margin: 4px 0;'>{p.get('nombre')} {p.get('apellidos')} ({p.get('edad')} años)</li>"
+        for p in participantes
+    ])
+
+    html_content = f"""
+    <!DOCTYPE html>
+    <html>
+    <head><meta charset="UTF-8"></head>
+    <body style="font-family: Arial, sans-serif; color: #333333; margin: 0; padding: 20px;">
+        <div style="max-width: 600px; margin: 0 auto; background-color: #ffffff; padding: 25px; border-radius: 8px; border: 1px solid #d4e2d4;">
+            <h3 style="color: #2c5e3b; margin-top: 0; border-bottom: 2px solid #e8f0e8; padding-bottom: 8px;">
+                ✏️ Cambios registrados en una reserva
+            </h3>
+            
+            <p><strong>Actividad:</strong> {actividad.get('titulo')}</p>
+            <p><strong>Titular:</strong> {nombre_contacto} ({email_contacto} - Tel: {phone})</p>
+            <p><strong>Plazas:</strong> Pasó de {plazas_antiguas} a {plazas_nuevas} plazas.</p>
+            
+            <hr style="border: none; border-top: 1px solid #eee; margin: 15px 0;" />
+            
+            <h4 style="margin-bottom: 8px; color: #2c5e3b;">Nueva lista de asistentes:</h4>
+            <ul style="margin: 0; padding-left: 20px;">
+                {items_participantes}
+            </ul>
+        </div>
+    </body>
+    </html>
+    """
+    _enviar_email(admin_email, asunto, html_content)
