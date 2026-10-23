@@ -90,14 +90,14 @@
               Inscribirse / Reservar
             </button>
 
-            <!-- CASO 3: Inscripción pendiente o por determinar -->
-            <span v-else-if="actividad.estadoReserva === 'pendiente'" class="aviso-pendiente">
-              ⏳ Inscripción por determinar
+            <!-- CASO 3: Entrada libre (solo si se ha marcado expresamente) -->
+            <span v-else-if="actividad.estadoReserva === 'libre'" class="aviso-no-reserva">
+              Entrada libre / Sin reserva
             </span>
 
-            <!-- CASO 4: Entrada libre -->
-            <span v-else class="aviso-no-reserva">
-              Entrada libre / Sin reserva
+            <!-- CASO 4: Inscripción por determinar (por defecto) -->
+            <span v-else class="aviso-pendiente">
+              ⏳ Inscripción por determinar
             </span>
           </div>
         </div>

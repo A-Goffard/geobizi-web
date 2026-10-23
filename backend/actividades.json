@@ -1100,8 +1100,8 @@
     "tipoReserva": null,
     "linkReserva": null,
     "estadoReserva": null,
-    "plazas_totales": 8,
-    "plazas_ocupadas": 0
+    "plazas_totales": 20,
+    "plazas_ocupadas": 1
   },
   {
     "id": 47,
@@ -1114,16 +1114,16 @@
     "detalles": "Para familias y adultos.",
     "oharrak": null,
     "precio": 0.0,
-    "imagen1": "imagenes/proyectos/zallanatura/plantacion1.avif",
-    "imagen2": "imagenes/proyectos/zallanatura/plantacion2.avif",
+    "imagen1": "/imagenes/proyectos/zallanatura/plantacion1.avif",
+    "imagen2": "/imagenes/proyectos/zallanatura/plantacion2.avif",
     "tipo": "actividad",
     "proyecto": "zalla",
     "publicar": true,
     "stripeId": "",
-    "reservas": true,
+    "reservas": false,
     "tipoReserva": null,
     "linkReserva": null,
-    "estadoReserva": null,
+    "estadoReserva": "libre",
     "plazas_totales": 20,
     "plazas_ocupadas": 0
   }
