@@ -65,7 +65,7 @@ onMounted(async () => {
   }
 
   try {
-    const res = await fetch(`http://localhost:5000/api/token/${token}/aceptar-espera`, {
+    const res = await fetch(`/api/token/${token}/aceptar-espera`, {
       method: 'POST'
     });
 
