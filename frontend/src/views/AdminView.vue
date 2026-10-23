@@ -119,6 +119,7 @@
                                         :class="['badge-estado', (act.publicar === 1 || act.publicar === true) ? 'estado-publicado' : 'estado-oculto']">
                                         {{ (act.publicar === 1 || act.publicar === true) ? 'Publicada' : 'Oculta' }}
                                     </span>
+                                    <div class="texto-hora">{{ MODOS_INSCRIPCION[modoInscripcionDe(act)] }}</div>
                                 </td>
                                 <td class="col-acciones">
                                     <button @click="verParticipantes(act.id)" class="btn-servicio"
@@ -394,15 +395,28 @@
                                 </div>
                             </div>
 
+                            <!-- MODO DE INSCRIPCIÓN -->
+                            <div class="campo-grupo">
+                                <label>Inscripciones *</label>
+                                <select v-model="formActividad.modoInscripcion" class="input-geobizi" required>
+                                    <option value="" disabled>Elige una opción...</option>
+                                    <option v-for="(texto, valor) in MODOS_INSCRIPCION" :key="valor" :value="valor">
+                                        {{ texto }}
+                                    </option>
+                                </select>
+                            </div>
+
+                            <div v-if="formActividad.modoInscripcion === 'externa'" class="campo-grupo">
+                                <label>Enlace de inscripción externa *</label>
+                                <input type="url" v-model="formActividad.linkReserva" placeholder="https://..."
+                                    class="input-geobizi" required />
+                            </div>
+
                             <!-- CASILLAS SINCRONIZADAS -->
                             <div class="campo-grupo col-completa fila-checks">
                                 <label class="check-etiqueta">
                                     <input type="checkbox" v-model="formActividad.publicar" /> Publicar actividad en la
                                     web
-                                </label>
-                                <label class="check-etiqueta">
-                                    <input type="checkbox" v-model="formActividad.reservas" /> Habilitar formulario de
-                                    reserva
                                 </label>
                             </div>
                         </div>
@@ -563,8 +577,31 @@ const formActividad = ref({
     tipoReserva: 'web',
     linkReserva: null,
     estadoReserva: 'disponible',
+    modoInscripcion: '',
     plazas_totales: 20
 });
+
+// MODOS DE INSCRIPCIÓN (se guardan en reservas + estadoReserva + linkReserva)
+const MODOS_INSCRIPCION = {
+    abiertas: 'Abiertas en la web de Geobizi',
+    externa: 'Abiertas en una web externa',
+    pendiente: 'Por determinar',
+    libre: 'Entrada libre, sin reserva'
+};
+
+function modoInscripcionDe(act) {
+    const reservas = act.reservas === 1 || act.reservas === true || act.reservas === '1';
+    if (reservas) return act.linkReserva ? 'externa' : 'abiertas';
+    return act.estadoReserva === 'libre' ? 'libre' : 'pendiente';
+}
+
+function aplicarModoInscripcion(payload) {
+    const modo = payload.modoInscripcion;
+    delete payload.modoInscripcion;
+    payload.reservas = modo === 'abiertas' || modo === 'externa';
+    payload.estadoReserva = { abiertas: 'disponible', externa: 'disponible', pendiente: 'pendiente', libre: 'libre' }[modo];
+    if (modo !== 'externa') payload.linkReserva = null;
+}
 
 function getAuthHeaders() {
     const token = localStorage.getItem('geobizi_admin_token');
@@ -656,6 +693,7 @@ function abrirModalCrear() {
         tipoReserva: 'web',
         linkReserva: null,
         estadoReserva: 'disponible',
+        modoInscripcion: '',
         plazas_totales: 20
     };
     mostrarGaleria.value = false;
@@ -670,7 +708,8 @@ function abrirModalEditar(act) {
         imagen1: normalizarRuta(act.imagen1),
         imagen2: normalizarRuta(act.imagen2),
         publicar: act.publicar === 1 || act.publicar === true || act.publicar === '1',
-        reservas: act.reservas === 1 || act.reservas === true || act.reservas === '1'
+        reservas: act.reservas === 1 || act.reservas === true || act.reservas === '1',
+        modoInscripcion: modoInscripcionDe(act)
     };
     mostrarGaleria.value = false;
     modalActividadAbierto.value = true;
@@ -691,7 +730,8 @@ function duplicarActividad(act) {
         imagen1: normalizarRuta(copia.imagen1),
         imagen2: normalizarRuta(copia.imagen2),
         publicar: copia.publicar === 1 || copia.publicar === true || copia.publicar === '1',
-        reservas: copia.reservas === 1 || copia.reservas === true || copia.reservas === '1'
+        reservas: copia.reservas === 1 || copia.reservas === true || copia.reservas === '1',
+        modoInscripcion: modoInscripcionDe(copia)
     };
     mostrarGaleria.value = false;
     modalActividadAbierto.value = true;
@@ -710,6 +750,7 @@ async function guardarActividad() {
 
         const payload = { ...formActividad.value };
         if (!esEdit) delete payload.id;
+        aplicarModoInscripcion(payload);
 
         if (payload.imagen1 && !payload.imagen1.startsWith('/') && !payload.imagen1.startsWith('http')) {
             payload.imagen1 = '/' + payload.imagen1;
