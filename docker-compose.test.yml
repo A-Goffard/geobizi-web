@@ -1,0 +1,25 @@
+services:
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile.prod
+    container_name: vue_frontend_test
+    ports:
+      - "8081:80"
+    depends_on:
+      - backend
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: python_backend
+    volumes:
+      - test_data:/app/data
+      - test_uploads:/app/uploads
+    env_file:
+      - ./backend/.env
+
+volumes:
+  test_data:
+  test_uploads:

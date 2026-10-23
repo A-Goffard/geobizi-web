@@ -15,3 +15,19 @@ __pycache__
 .DS_Store
 /frontend/node_modules
 /backend/__pycache__
+/backend/data/
+backend/data/*.db
+backend/data/*.db-journal
+backend/data/*.db-wal
+data/
+uploads/
+backend/.env
+frontend/dist
+
+# Base de datos SQLite
+data/*.db
+data/*.sqlite3
+
+# Subidas dinámicas de imágenes
+uploads/
+backend/uploads/
