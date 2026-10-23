@@ -29,6 +29,13 @@
     </div>
 
     <div class="fichas-container">
+            <p v-if="cargando" style="text-align:center">Cargando actividades...</p>
+      <p v-else-if="errorCarga" style="text-align:center">
+        No hemos podido cargar las actividades en este momento. Inténtalo de nuevo en unos minutos.
+      </p>
+      <p v-else-if="actividadesFiltradas.length === 0" style="text-align:center">
+        No hay actividades programadas próximamente.
+      </p>
       <div class="container-grid">
         <div v-for="actividad in actividadesFiltradas" :key="actividad.id" class="card">
           <h2>{{ actividad.titulo }}</h2>
@@ -105,29 +112,30 @@ import Calendario from '@/components/calendario/CalendarioActividades.vue'
 import { useHead } from '@vueuse/head'
 import { ref, computed, onMounted } from 'vue'
 import { useRouter } from 'vue-router';
-import actividadesJson from '@/assets/json/actividades.json';
 import { ENDPOINTS } from '@/config/api';
 
 const router = useRouter();
 const filtroSeleccionado = ref('todos');
 
-// Estado reactivo inicializado con el JSON como fallback inmediato
-const listaActividades = ref(actividadesJson);
+const listaActividades = ref([]);
+const cargando = ref(true);
+const errorCarga = ref(false);
 
 // Sincroniza desde el backend SQLite
 onMounted(async () => {
   try {
     const res = await fetch(ENDPOINTS.ACTIVIDADES);
-    if (res.ok) {
-      const actividadesBd = await res.json();
-      // Asignamos directamente las actividades de la base de datos normalizando el enlace externo
-      listaActividades.value = actividadesBd.map(act => ({
-        ...act,
-        linkReserva: act.linkReserva || act.link_reserva
-      }));
-    }
+    if (!res.ok) throw new Error('Respuesta ' + res.status);
+    const actividadesBd = await res.json();
+    listaActividades.value = actividadesBd.map(act => ({
+      ...act,
+      linkReserva: act.linkReserva || act.link_reserva
+    }));
   } catch (err) {
-    console.warn('Aviso: Cargando datos base desde JSON local.', err);
+    console.warn('No se pudieron cargar las actividades.', err);
+    errorCarga.value = true;
+  } finally {
+    cargando.value = false;
   }
 });
 
@@ -173,7 +181,7 @@ const actividadesFiltradas = computed(() => {
     const esFutura = fechaActividad >= hoy;
     const coincideFiltro = filtroSeleccionado.value === 'todos' || a.proyecto === filtroSeleccionado.value;
     return Boolean(a.publicar) && esFutura && coincideFiltro;
-  }).sort((a, b) => new Date(a.fecha) - new Date(b.fecha));
+  }).sort((a, b) => a.fecha.localeCompare(b.fecha) || (a.hora || '').localeCompare(b.hora || ''));
 });
 
 const pageUrl = 'https://www.geobizi.com/calendario'

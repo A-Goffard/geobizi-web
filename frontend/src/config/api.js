@@ -1,6 +1,6 @@
 /* eslint-disable */
 // URL base de la API con fallback seguro a local
-export const API_BASE_URL = process.env.VUE_APP_API_URL || 'http://localhost:5000/api';
+export const API_BASE_URL = process.env.VUE_APP_API_URL || '/api';
 
 // Endpoints centralizados
 export const ENDPOINTS = {

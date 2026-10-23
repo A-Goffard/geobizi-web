@@ -107,12 +107,14 @@ def init_db():
             with open(json_path, "r", encoding="utf-8") as f:
                 acts = json.load(f)
                 for a in acts:
+                                        
                     cursor.execute("""
                         INSERT OR IGNORE INTO actividades (
                             id, titulo, fecha, hora, ubicacion, color, descripcion, 
                             detalles, oharrak, precio, imagen1, imagen2, tipo, proyecto, 
-                            publicar, stripeId, reservas, tipoReserva, linkReserva, estadoReserva
-                        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                            publicar, stripeId, reservas, tipoReserva, linkReserva, estadoReserva,
+                            plazas_totales
+                        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
                     """, (
                         a.get("id"), a.get("titulo"), a.get("fecha"), a.get("hora"),
                         a.get("ubicacion"), a.get("color"), a.get("descripcion"),
@@ -120,7 +122,8 @@ def init_db():
                         a.get("imagen1"), a.get("imagen2"), a.get("tipo"), a.get("proyecto"),
                         1 if a.get("publicar", True) else 0, a.get("stripeId", ""),
                         1 if a.get("reservas", False) else 0, a.get("tipoReserva"),
-                        a.get("linkReserva"), a.get("estadoReserva")
+                        a.get("linkReserva"), a.get("estadoReserva"),
+                        a.get("plazas_totales", 20)
                     ))
                 conn.commit()
     conn.close()

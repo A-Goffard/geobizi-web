@@ -28,7 +28,7 @@
           <div class="puntos">
             <div
               v-for="actividad in dia.actividades"
-              :key="actividad.titulo"
+              :key="actividad.id"
               class="punto"
               :style="{ backgroundColor: actividad.color, cursor: 'pointer' }"
               @mouseover="!isMobile && mostrarTooltip(actividad, $event)"
@@ -60,7 +60,6 @@
 /* eslint-disable */
 import { ref, onMounted } from "vue";
 import { useRouter } from "vue-router";
-import actividadesData from "@/assets/json/actividades.json";
 
 // Recibimos las actividades cargadas desde la base de datos por prop
 const props = defineProps({
@@ -126,8 +125,7 @@ const getDiasDelMes = (mesIndex) => {
     dias.push({ numero: null, fecha: null, actividades: [] });
   }
 
-  // Usa las actividades de la base de datos (props) o el JSON como respaldo
-  const fuente = props.actividades && props.actividades.length > 0 ? props.actividades : actividadesData;
+  const fuente = props.actividades || [];
 
   // Añadir los días del mes con actividades
   for (let i = 1; i <= diasEnMes; i++) {

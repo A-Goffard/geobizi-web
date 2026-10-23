@@ -162,7 +162,7 @@
                 <!-- CABECERA EXCLUSIVA IMPRESIÓN -->
                 <div class="print-solo print-cabecera-documento">
                     <div class="print-fila-superior">
-                        <img src="/imagenes/GeobiziLogo.7ae1d6ce.png" alt="Geobizi" class="print-logo-oficial" />
+                           <img src="/imagenes/GeobiziLogo.png" alt="Geobizi" class="print-logo-oficial" />
                         <div class="print-datos-emision">
                             <h2>Control de Asistencia</h2>
                             <span class="print-sub-fecha">Fecha de emisión: {{ fechaActualFormateada }}</span>
@@ -464,7 +464,7 @@ useHead({
 
 const getAdminApiUrl = () => {
     const envUrl = process.env.VUE_APP_API_URL;
-    if (!envUrl) return 'http://localhost:5000/api/admin';
+    if (!envUrl) return '/api/admin';
     const limpia = envUrl.replace(/\/+$/, '');
     return limpia.endsWith('/api') ? `${limpia}/admin` : `${limpia}/api/admin`;
 };
