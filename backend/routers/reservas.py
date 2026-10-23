@@ -335,7 +335,7 @@ def cancelar_reserva_por_token(token: str, background_tasks: BackgroundTasks):
     
     try:
         cursor.execute("""
-            SELECT r.id, r.actividad_id, r.nombre_contacto, r.email, r.num_personas, r.estado,
+            SELECT r.id, r.actividad_id, r.nombre_contacto, r.email, r.phone, r.num_personas, r.estado,
                    a.titulo, a.fecha, a.hora, a.ubicacion
             FROM reservas r
             JOIN actividades a ON r.actividad_id = a.id

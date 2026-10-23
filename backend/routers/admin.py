@@ -12,7 +12,7 @@ from fastapi.responses import FileResponse
 from core.database import get_db_connection
 from core.security import generar_token_admin, verificar_token_admin
 from services.reserva_service import reasignar_plazas_liberadas
-from services.email_service import enviar_correo_cancelacion, notificar_admin_cancelacion
+from services.email_service import enviar_correo_cancelacion_admin, notificar_admin_cancelacion
 
 router = APIRouter(tags=["Administración"])
 
@@ -343,7 +343,7 @@ def cancelar_reserva_admin(reserva_id: int, background_tasks: BackgroundTasks):
         conn.commit()
 
         background_tasks.add_task(
-            enviar_correo_cancelacion,
+            enviar_correo_cancelacion_admin,
             email_destino=email_contacto,
             actividad=actividad_datos,
             nombre_contacto=nombre_contacto
