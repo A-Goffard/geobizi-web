@@ -26,3 +26,6 @@ docker-compose -f docker-compose.dev.yml up --build
 # --- NOTAS GENERALES ---
 # El Nginx del host (VPS) hace de proxy inverso y sirve la web por HTTPS.
 # No necesitas copiar archivos manualmente ni tocar la configuración de Nginx del host.
+
+# --- SSH ---
+# Para entrar en el SSH del power, pon ssh root@tu ip del VPS

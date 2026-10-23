@@ -23,8 +23,11 @@ services:
       - "5000:5000"
     volumes:
       - ./backend:/app
-      - ./data:/app/data
+      - geobizi_data:/app/data
       - ./uploads:/app/uploads
     command: uvicorn main:app --host 0.0.0.0 --port 5000 --reload
     env_file:
       - ./backend/.env
+
+volumes:
+  geobizi_data:

@@ -16,6 +16,12 @@ __pycache__
 /frontend/node_modules
 /backend/__pycache__
 /backend/data/
+backend/data/*.db
+backend/data/*.db-journal
+backend/data/*.db-wal
+data/
+uploads/
+backend/.env
 
 # Base de datos SQLite
 data/*.db

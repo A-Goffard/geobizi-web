@@ -51,6 +51,10 @@ import DetalleFormacion from "@/components/servicios/DetalleFormacion.vue";
 import DetalleDescargas from "@/components/servicios/DetalleDescargas.vue";
 import FitxasEtnobotanicasEnkarterri from "@/components/contenido-creado/FitxasEtnobotanicasEnkarterri.vue";
 
+// --- GESTIÓN DE ACTIVIDADES ---
+import AdminView from '@/views/AdminView.vue';
+
+// --- RUTAS ---
 const routes = [
   // Inicio y Páginas Generales
   { path: "/", name: "inicio", component: InicioView },
@@ -115,6 +119,9 @@ const routes = [
   { path: "/avisolegal", name: "aviso", component: AvisolegalView },
   { path: "/politicadeprivacidad", name: "privacidad", component: PoliticadeprivacidadView },
 
+  // Gestión de Actividades (Admin)
+  { path: "/admingestion", name: "admin", component: AdminView, meta: { title: 'Gestión Geobizi', noindex: true } },
+
   // Ruta 404 (Wildcard)
   {
     path: "/:pathMatch(.*)*",
@@ -139,10 +146,29 @@ const router = createRouter({
 });
 
 router.afterEach((to) => {
+  // 1. Google Analytics 4
   if (typeof window.gtag === "function") {
     window.gtag("config", "G-LVMVX3Z14P", {
       page_path: to.path,
     });
+  }
+
+  // 2. Título dinámico
+  if (to.meta.title) {
+    document.title = to.meta.title;
+  }
+
+  // 3. Protección anti-indexación para admin
+  let robotsTag = document.querySelector('meta[name="robots"]');
+  if (to.meta.noindex) {
+    if (!robotsTag) {
+      robotsTag = document.createElement('meta');
+      robotsTag.setAttribute('name', 'robots');
+      document.head.appendChild(robotsTag);
+    }
+    robotsTag.setAttribute('content', 'noindex, nofollow, noarchive');
+  } else if (robotsTag) {
+    robotsTag.setAttribute('content', 'index, follow');
   }
 });
 
