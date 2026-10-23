@@ -512,3 +512,54 @@ def notificar_admin_modificacion(actividad: dict, nombre_contacto: str, email_co
     </html>
     """
     _enviar_email(admin_email, asunto, html_content)
+    
+# ==============================================================================
+# 10. CORREO: ANULACIÓN DE RESERVA POR PARTE DE LA ORGANIZACIÓN
+# ==============================================================================
+def enviar_correo_cancelacion_admin(email_destino: str, actividad: dict, nombre_contacto: str):
+    contacto = os.getenv("ADMIN_EMAIL", os.getenv("SMTP_FROM", "info@geobizi.com"))
+    frontend_url = os.getenv("FRONTEND_URL", "http://localhost:8080")
+    link_calendario = f"{frontend_url}/calendario"
+
+    asunto = f"Tu reserva ha sido anulada: {actividad.get('titulo', 'Actividad Geobizi')}"
+
+    html_content = f"""
+    <!DOCTYPE html>
+    <html>
+    <head><meta charset="UTF-8"></head>
+    <body style="font-family: Arial, sans-serif; color: #333333; background-color: #f7f9f6; margin: 0; padding: 20px;">
+        <div style="max-width: 600px; margin: 0 auto; background-color: #ffffff; padding: 30px; border-radius: 8px; border: 1px solid #d4e2d4;">
+
+            <h2 style="color: #b85d46; margin-top: 0; border-bottom: 2px solid #fbeae5; padding-bottom: 10px;">
+                Tu reserva ha sido anulada por Geobizi
+            </h2>
+
+            <p>Hola, {nombre_contacto}:</p>
+            <p>Desde la organización de Geobizi hemos anulado tu reserva para la siguiente actividad:</p>
+
+            <div style="background-color: #fff5f2; padding: 15px 20px; border-left: 4px solid #b85d46; border-radius: 4px; margin: 20px 0;">
+                <p style="margin: 6px 0;"><strong>Actividad:</strong> {actividad.get('titulo')}</p>
+                <p style="margin: 6px 0;"><strong>Fecha y Hora:</strong> {actividad.get('fecha')} a las {actividad.get('hora')}</p>
+                <p style="margin: 6px 0;"><strong>Ubicación:</strong> {actividad.get('ubicacion')}</p>
+            </div>
+
+            <p style="font-size: 14px; color: #555; line-height: 1.5;">
+                Si no esperabas este cambio o tienes cualquier duda, escríbenos a
+                <a href="mailto:{contacto}" style="color: #2c5e3b;">{contacto}</a>
+                y lo revisamos contigo. Lamentamos las molestias.
+            </p>
+
+            <div style="text-align: center; margin: 25px 0;">
+                <a href="{link_calendario}" style="background-color: #50963b; color: #ffffff; padding: 10px 20px; text-decoration: none; border-radius: 5px; font-weight: bold; display: inline-block; font-size: 13px;">
+                    Ver otras actividades
+                </a>
+            </div>
+
+            <div style="margin-top: 30px; padding-top: 15px; border-top: 1px solid #eeeeee; font-size: 11px; color: #999999; text-align: center;">
+                Geobizi &bull; Educación ambiental y bio-regeneración en Enkarterri.
+            </div>
+        </div>
+    </body>
+    </html>
+    """
+    _enviar_email(email_destino, asunto, html_content)

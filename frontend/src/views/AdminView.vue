@@ -146,15 +146,14 @@
 
             <!-- PESTAÑA: PARTICIPANTES -->
             <section v-if="pestanaActiva === 'participantes'" class="seccion-panel">
-                <div class="barra-herramientas">
-                    <h2>Actividades programadas ({{ actividades.length }})</h2>
+                <div class="barra-herramientas print-hide">
+                    <h2>{{ detalleActividad.actividad?.titulo }}</h2>
                     <div style="display: flex; gap: 0.6rem;">
-                        <button @click="descargarCopiaJson" class="btn-secundario"
-                            title="Descargar copia del archivo JSON">
-                            📥 Descargar JSON
+                        <button @click="cambiarPestana('actividades')" class="btn-secundario">
+                            ← Volver a actividades
                         </button>
-                        <button @click="abrirModalCrear" class="btn-guardar">
-                            ➕ Nueva Actividad
+                        <button @click="imprimirLista" class="btn-guardar">
+                            🖨️ Imprimir lista
                         </button>
                     </div>
                 </div>
@@ -162,7 +161,7 @@
                 <!-- CABECERA EXCLUSIVA IMPRESIÓN -->
                 <div class="print-solo print-cabecera-documento">
                     <div class="print-fila-superior">
-                           <img src="/imagenes/GeobiziLogo.png" alt="Geobizi" class="print-logo-oficial" />
+                           <img src="@/assets/GeobiziLogo.png" alt="Geobizi" class="print-logo-oficial" />
                         <div class="print-datos-emision">
                             <h2>Control de Asistencia</h2>
                             <span class="print-sub-fecha">Fecha de emisión: {{ fechaActualFormateada }}</span>
