@@ -22,6 +22,7 @@ backend/data/*.db-wal
 data/
 uploads/
 backend/.env
+frontend/dist
 
 # Base de datos SQLite
 data/*.db
