@@ -97,7 +97,7 @@ const ejecutarCancelacion = async () => {
 
   cargando.value = true;
   try {
-    const response = await fetch(`http://localhost:5000/api/token/${token}`, {
+    const response = await fetch(`/api/token/${token}`, {
       method: 'DELETE'
     });
 

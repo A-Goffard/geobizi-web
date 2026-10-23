@@ -176,7 +176,7 @@ onMounted(async () => {
   }
 
   try {
-    const response = await fetch(`http://localhost:5000/api/token/${token}`);
+    const response = await fetch(`/api/token/${token}`);
     const data = await response.json();
 
     if (response.ok) {
@@ -261,7 +261,7 @@ const actualizarReserva = async () => {
   };
 
   try {
-    const response = await fetch(`http://localhost:5000/api/token/${token}`, {
+    const response = await fetch(`/api/token/${token}`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload)
